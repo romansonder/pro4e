@@ -1,0 +1,41 @@
+# latex ignore list
+*.aux
+*.bbl
+*.blg
+*.synctex.gz
+*.dvi
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.gz
+
+product_specification.pdf
+technical_report.pdf
+00_fhnwreport.pdf
+
+# c ignore list
+**/common
+**/sam
+*.o
+*.d
+*.ko
+*.obj
+*.bin
+*.elf
+*.hex
+*.lss
+*.map
+*.sym
+
+# python ignore list
+*.pyc
+
+# java ignore list
+*.class
