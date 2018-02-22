@@ -4,11 +4,11 @@
 First time you run git:
 $ git clone https://github.com/roman.sonder/pro4e
 
-$ git pull  			# download the newst files from git
+$ git pull			# download the newst files from git
 
-$ git add * 			# selext the fills you will upload
-$ git commit 			# write in your changes
-$ git push				# upload your files to git
+$ git add *			# selext the fills you will upload
+$ git commit			# write in your changes
+$ git push			# upload your files to git
 
 
 ########################################################################
@@ -45,7 +45,7 @@ texlive-collection-mathscience
 #-----------------------------------------------------------------------
 open the cygwin terminal
 
-clone the git repository 
+clone the git repository
 $ git clone http://..
 
 change to the directory with the Makefile (use tab to autofill)
@@ -55,4 +55,4 @@ run makefile
 $ make
 
 clean the directory from unused files
-$ make clean 
+$ make clean
