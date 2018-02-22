@@ -6,7 +6,7 @@ $ git clone https://github.com/roman.sonder/pro4e
 
 $ git pull			# download the newst files from git
 
-$ git add *			# selext the fills you will upload
+$ git add *			# select the fills you want to upload
 $ git commit			# write in your changes
 $ git push			# upload your files to git
 
