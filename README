@@ -4,7 +4,7 @@
 First time you run git:
 $ git clone https://github.com/roman.sonder/pro4e
 
-$ git pull			# download the newst files from git
+$ git pull			# download the newest files from git
 
 $ git add *			# select the files you want to upload
 $ git commit			# write in your changes
