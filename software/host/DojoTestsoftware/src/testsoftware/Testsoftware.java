@@ -23,7 +23,7 @@ public class Testsoftware extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private static final int minWidth = 1000, minheight = 650;
-	private static final int width = 1280, height = 720;
+	private static final int width = 1000, height = 650;
 
 	private ImageIcon icon = Utility.loadResourceIcon("Dojo_Testsoftware_Icon.png");
 
