@@ -151,10 +151,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		add(btEvaluate, new GridBagConstraints(0, 12, 2, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 13, 2, 1, 0.0, 0.0,
-				GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(Box.createVerticalGlue(), new GridBagConstraints(0, 14, 2, 1, 0.0, 1.0, GridBagConstraints.WEST,
+		add(Box.createVerticalGlue(), new GridBagConstraints(0, 13, 2, 1, 0.0, 1.0, GridBagConstraints.WEST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 	}
 
