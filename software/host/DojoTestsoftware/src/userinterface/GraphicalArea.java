@@ -1,7 +1,5 @@
 package userinterface;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -22,8 +20,7 @@ public class GraphicalArea extends JPanel {
 
 		String[] columnNames = { "ID", "Name", "Pfad" };
 
-		Object[][] data = { { "Kathy", "Smith", "Snowboarding" }, { "John", "Doe", "Rowing" },
-				{ "Sue", "Black", "Knitting" }, { "Jane", "White", "Speed reading" }, { "Joe", "Brown", "Pool" } };
+		Object[][] data = { { "Kathy", "Smith", "Snowboarding" } };
 
 		JTable table = new JTable(data, columnNames);
 

@@ -32,15 +32,15 @@ public class TopView extends JPanel implements Observer {
 
 		graphicalArea.setBorder(MyBorderFactory.createMyBorder("Grafischer Bereich"));
 		add(graphicalArea, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+				GridBagConstraints.BOTH, new Insets(10, 10, 5, 5), 0, 0));
 
 		inputParameterArea.setBorder(MyBorderFactory.createMyBorder("Kommandozentrale"));
 		add(inputParameterArea, new GridBagConstraints(1, 0, 1, 2, 0.0, 1.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+				GridBagConstraints.BOTH, new Insets(10, 5, 10, 10), 0, 0));
 
 		outputParameterArea.setBorder(MyBorderFactory.createMyBorder("Konsole"));
 		add(outputParameterArea, new GridBagConstraints(0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.SOUTHWEST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+				GridBagConstraints.BOTH, new Insets(5, 10, 10, 5), 0, 0));
 
 	}
 

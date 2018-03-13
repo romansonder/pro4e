@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
+import model.GuiTypes.AccessRightsTypes;
+import model.GuiTypes.LanguagesTypes;
 import utilities.Utility;
 
 public class InputParameterArea extends JPanel implements ActionListener {
@@ -29,8 +31,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	private JButton btTransmitUSB;
 	private JButton btTransmitBT;
 	private JButton btEvaluate;
-	private JComboBox comboAccessRights;
-	private JComboBox comboLanguage;
+	private JComboBox<AccessRightsTypes> comboAccessRights;
+	private JComboBox<LanguagesTypes> comboLanguage;
 
 	public InputParameterArea(TopView topView) {
 		super(new GridBagLayout());
@@ -38,8 +40,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		this.topView = topView;
 
 		btHelpLibrary = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
-		btHelpLibrary.setToolTipText(
-				"<html><b>Port:</b><br><br>Der genutzte Port der Bluetooth Schnittstelle<br>kann unter Windows 10 via weitere<br>Bluetooth-Optionen unter Bluetooth- und<br>andere Geräte nachgeschaut werden.<br><br>Benötigt wird der ausgehende Port<br>von LogDog_BT.<br><br></html>");
+		btHelpLibrary.setToolTipText("<html><b>Bibliothek:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
 		btHelpLibrary.setOpaque(false);
 		btHelpLibrary.setContentAreaFilled(false);
 		btHelpLibrary.setBorderPainted(false);
@@ -48,8 +49,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btHelpLibrary.setFocusable(false);
 
 		btHelpAccessRights = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
-		btHelpAccessRights.setToolTipText(
-				"<html><b>Port:</b><br><br>Der genutzte Port der Bluetooth Schnittstelle<br>kann unter Windows 10 via weitere<br>Bluetooth-Optionen unter Bluetooth- und<br>andere Geräte nachgeschaut werden.<br><br>Benötigt wird der ausgehende Port<br>von LogDog_BT.<br><br></html>");
+		btHelpAccessRights
+				.setToolTipText("<html><b>Zutrittsrecht:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
 		btHelpAccessRights.setOpaque(false);
 		btHelpAccessRights.setContentAreaFilled(false);
 		btHelpAccessRights.setBorderPainted(false);
@@ -58,8 +59,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btHelpAccessRights.setFocusable(false);
 
 		btHelpLanguage = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
-		btHelpLanguage.setToolTipText(
-				"<html><b>Port:</b><br><br>Der genutzte Port der Bluetooth Schnittstelle<br>kann unter Windows 10 via weitere<br>Bluetooth-Optionen unter Bluetooth- und<br>andere Geräte nachgeschaut werden.<br><br>Benötigt wird der ausgehende Port<br>von LogDog_BT.<br><br></html>");
+		btHelpLanguage.setToolTipText("<html><b>Sprache:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
 		btHelpLanguage.setOpaque(false);
 		btHelpLanguage.setContentAreaFilled(false);
 		btHelpLanguage.setBorderPainted(false);
@@ -68,8 +68,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btHelpLanguage.setFocusable(false);
 
 		btHelpEvaluate = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
-		btHelpEvaluate.setToolTipText(
-				"<html><b>Port:</b><br><br>Der genutzte Port der Bluetooth Schnittstelle<br>kann unter Windows 10 via weitere<br>Bluetooth-Optionen unter Bluetooth- und<br>andere Geräte nachgeschaut werden.<br><br>Benötigt wird der ausgehende Port<br>von LogDog_BT.<br><br></html>");
+		btHelpEvaluate
+				.setToolTipText("<html><b>Dojo Auswerten:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
 		btHelpEvaluate.setOpaque(false);
 		btHelpEvaluate.setContentAreaFilled(false);
 		btHelpEvaluate.setBorderPainted(false);
@@ -97,8 +97,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btEvaluate.setEnabled(true);
 		btEvaluate.addActionListener(this);
 
-		comboAccessRights = new JComboBox();
-		comboLanguage = new JComboBox();
+		comboAccessRights = new JComboBox<>(AccessRightsTypes.values());
+		comboLanguage = new JComboBox<>(LanguagesTypes.values());
 
 		add(new JLabel("Bibliothek:"), new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
@@ -118,7 +118,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JLabel("Zugriffsrecht:"), new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(new JLabel("Zutrittsrecht:"), new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
 		add(btHelpAccessRights, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
