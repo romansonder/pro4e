@@ -10,7 +10,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import model.StatusType;
+import model.GuiTypes.StatusType;
 import utilities.TimerThread;
 
 public final class StatusBar extends JPanel {

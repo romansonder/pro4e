@@ -13,8 +13,8 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 import controller.Controller;
+import model.GuiTypes.StatusType;
 import model.Model;
-import model.StatusType;
 import userinterface.StatusBar;
 import userinterface.TopView;
 import utilities.Utility;
