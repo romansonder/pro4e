@@ -20,92 +20,152 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	private TopView topView;
-	private JComboBox ports;
-	private JButton btHelpOptions;
-	private JButton connectBT;
-	private JButton disconnectBT;
-	private JButton syncTimeBT;
-	private JButton deleteDataBT;
+	private JButton btHelpLibrary;
+	private JButton btHelpAccessRights;
+	private JButton btHelpLanguage;
+	private JButton btHelpEvaluate;
+	private JButton btReadIn;
+	private JButton btNewObject;
+	private JButton btTransmitUSB;
+	private JButton btTransmitBT;
+	private JButton btEvaluate;
+	private JComboBox comboAccessRights;
+	private JComboBox comboLanguage;
 
 	public InputParameterArea(TopView topView) {
 		super(new GridBagLayout());
 
 		this.topView = topView;
 
-		ports = new JComboBox();
-		ports.addActionListener(this);
-
-		btHelpOptions = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
-		btHelpOptions.setToolTipText(
+		btHelpLibrary = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
+		btHelpLibrary.setToolTipText(
 				"<html><b>Port:</b><br><br>Der genutzte Port der Bluetooth Schnittstelle<br>kann unter Windows 10 via weitere<br>Bluetooth-Optionen unter Bluetooth- und<br>andere Geräte nachgeschaut werden.<br><br>Benötigt wird der ausgehende Port<br>von LogDog_BT.<br><br></html>");
+		btHelpLibrary.setOpaque(false);
+		btHelpLibrary.setContentAreaFilled(false);
+		btHelpLibrary.setBorderPainted(false);
+		btHelpLibrary.setHorizontalAlignment(SwingConstants.RIGHT);
+		btHelpLibrary.setMargin(new Insets(0, 0, 0, 0));
+		btHelpLibrary.setFocusable(false);
 
-		btHelpOptions.setOpaque(false);
-		btHelpOptions.setContentAreaFilled(false);
-		btHelpOptions.setBorderPainted(false);
-		btHelpOptions.setHorizontalAlignment(SwingConstants.RIGHT);
-		btHelpOptions.setMargin(new Insets(0, 0, 0, 0));
-		btHelpOptions.setFocusable(false);
+		btHelpAccessRights = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
+		btHelpAccessRights.setToolTipText(
+				"<html><b>Port:</b><br><br>Der genutzte Port der Bluetooth Schnittstelle<br>kann unter Windows 10 via weitere<br>Bluetooth-Optionen unter Bluetooth- und<br>andere Geräte nachgeschaut werden.<br><br>Benötigt wird der ausgehende Port<br>von LogDog_BT.<br><br></html>");
+		btHelpAccessRights.setOpaque(false);
+		btHelpAccessRights.setContentAreaFilled(false);
+		btHelpAccessRights.setBorderPainted(false);
+		btHelpAccessRights.setHorizontalAlignment(SwingConstants.RIGHT);
+		btHelpAccessRights.setMargin(new Insets(0, 0, 0, 0));
+		btHelpAccessRights.setFocusable(false);
 
-		connectBT = new JButton("Verbindung aufbauen");
-		connectBT.setEnabled(true);
-		connectBT.addActionListener(this);
-		disconnectBT = new JButton("Verbindung trennen");
-		disconnectBT.setEnabled(false);
-		disconnectBT.addActionListener(this);
-		syncTimeBT = new JButton("Synchronisiere Zeit");
-		syncTimeBT.setEnabled(false);
-		syncTimeBT.addActionListener(this);
-		deleteDataBT = new JButton("Log-Daten löschen");
-		deleteDataBT.setEnabled(false);
-		deleteDataBT.addActionListener(this);
+		btHelpLanguage = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
+		btHelpLanguage.setToolTipText(
+				"<html><b>Port:</b><br><br>Der genutzte Port der Bluetooth Schnittstelle<br>kann unter Windows 10 via weitere<br>Bluetooth-Optionen unter Bluetooth- und<br>andere Geräte nachgeschaut werden.<br><br>Benötigt wird der ausgehende Port<br>von LogDog_BT.<br><br></html>");
+		btHelpLanguage.setOpaque(false);
+		btHelpLanguage.setContentAreaFilled(false);
+		btHelpLanguage.setBorderPainted(false);
+		btHelpLanguage.setHorizontalAlignment(SwingConstants.RIGHT);
+		btHelpLanguage.setMargin(new Insets(0, 0, 0, 0));
+		btHelpLanguage.setFocusable(false);
 
-		add(new JLabel("Verbindungsoptionen:"), new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0, GridBagConstraints.WEST,
-				GridBagConstraints.NONE, new Insets(10, 10, 10, 10), 0, 0));
+		btHelpEvaluate = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
+		btHelpEvaluate.setToolTipText(
+				"<html><b>Port:</b><br><br>Der genutzte Port der Bluetooth Schnittstelle<br>kann unter Windows 10 via weitere<br>Bluetooth-Optionen unter Bluetooth- und<br>andere Geräte nachgeschaut werden.<br><br>Benötigt wird der ausgehende Port<br>von LogDog_BT.<br><br></html>");
+		btHelpEvaluate.setOpaque(false);
+		btHelpEvaluate.setContentAreaFilled(false);
+		btHelpEvaluate.setBorderPainted(false);
+		btHelpEvaluate.setHorizontalAlignment(SwingConstants.RIGHT);
+		btHelpEvaluate.setMargin(new Insets(0, 0, 0, 0));
+		btHelpEvaluate.setFocusable(false);
 
-		add(btHelpOptions, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 5), 0, 0));
+		btReadIn = new JButton("Einlesen");
+		btReadIn.setEnabled(true);
+		btReadIn.addActionListener(this);
 
-		add(new JLabel("Port:"), new GridBagConstraints(0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.WEST,
-				GridBagConstraints.NONE, new Insets(10, 10, 10, 10), 0, 0));
+		btNewObject = new JButton("Neues Objekt");
+		btNewObject.setEnabled(true);
+		btNewObject.addActionListener(this);
 
-		add(ports, new GridBagConstraints(1, 1, 1, 1, 1.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
-				new Insets(10, 10, 10, 10), 0, 0));
+		btTransmitUSB = new JButton("Übertragen via USB");
+		btTransmitUSB.setEnabled(true);
+		btTransmitUSB.addActionListener(this);
 
-		add(connectBT, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
-				new Insets(10, 10, 10, 10), 0, 0));
+		btTransmitBT = new JButton("Übertragen via BT");
+		btTransmitBT.setEnabled(true);
+		btTransmitBT.addActionListener(this);
 
-		add(disconnectBT, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
-				new Insets(10, 10, 10, 10), 0, 0));
+		btEvaluate = new JButton("Auswerten");
+		btEvaluate.setEnabled(true);
+		btEvaluate.addActionListener(this);
 
-		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.WEST,
+		comboAccessRights = new JComboBox();
+		comboLanguage = new JComboBox();
+
+		add(new JLabel("Bibliothek:"), new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(Box.createVerticalGlue(), new GridBagConstraints(0, 5, 2, 1, 0.0, 1.0, GridBagConstraints.CENTER,
+		add(btHelpLibrary, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0, GridBagConstraints.WEST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(syncTimeBT, new GridBagConstraints(0, 7, 2, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.BOTH,
+		add(btReadIn, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0, GridBagConstraints.WEST,
+		add(btNewObject, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
+				new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btTransmitUSB, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(deleteDataBT, new GridBagConstraints(0, 9, 2, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.BOTH,
+		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JLabel("Zugriffsrecht:"), new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btHelpAccessRights, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(comboAccessRights, new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JLabel("Sprache:"), new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btHelpLanguage, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(comboLanguage, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btTransmitBT, new GridBagConstraints(0, 9, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 10, 2, 1, 0.0, 0.0,
+				GridBagConstraints.EAST, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JLabel("Dojo auswerten:"), new GridBagConstraints(0, 11, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btHelpEvaluate, new GridBagConstraints(1, 11, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btEvaluate, new GridBagConstraints(0, 12, 2, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.BOTH,
+				new Insets(10, 10, 10, 10), 0, 0));
+
+		add(Box.createVerticalGlue(), new GridBagConstraints(0, 13, 2, 1, 0.0, 1.0, GridBagConstraints.WEST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		boolean success = false;
-		if (e.getSource() == connectBT) {
+		if (e.getSource() == btReadIn) {
 
-		} else if (e.getSource() == disconnectBT) {
+		} else if (e.getSource() == btNewObject) {
 
-		} else if (e.getSource() == syncTimeBT) {
+		} else if (e.getSource() == btTransmitUSB) {
 
-		} else if (e.getSource() == deleteDataBT) {
+		} else if (e.getSource() == btTransmitBT) {
+
+		} else if (e.getSource() == btEvaluate) {
 
 		}
 	}
