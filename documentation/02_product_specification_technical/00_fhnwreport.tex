@@ -146,42 +146,238 @@ Studiengang	\> Elektro- und Informationstechnik \\[5mm]
 \clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Ausganslage
+% Übersicht
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{arabic}
 \setcounter{page}{1}
-\section{Ausganslage}\label{sec:ausgangslage}
+\section{Übersicht}\label{sec:uebersicht}
 
+\subsection{Ausgangslage}
+
+\textbf{Anlass:}\\
+Mein letzter Besuch im Kunstmuseum: Ich bezahlte an der Kasse den
+Eintrittspreis, ohne genau zu wissen, wie gross das Museum ist und was es alles zeigt. Dann
+staunte ich beim ziellosen umherschweifen darüber, was alles Kunst ist und reihte natürlich
+auch den Feuerlöscher noch gedanklich in die Kunstobjekte ein, aber nahm dafür den leeren
+Sockel beim Eingang nicht als solches wahr. Erleichterung machte sich beim Verlassen wieder
+bemerkbar und die Erinnerung ist das Erlebnis «Besuch» und nicht die Kunstobjekte.
+Wenn es nach Jana Kalbermatter, einer Absolventin der HGK, geht, dann sieht mein nächster
+Besuch im Kunstmuseum folgendermassen aus: Ich bezahle an der Kasse meinen Eintritt für
+die Räume, die mich interessieren, gebe meinen Sprachwunsch an und erhalte statt eines
+Tickets einen Dojo. Das stabförmige Informations-Gerät regelt meine Zutrittsberechtigung und
+informiert mich via Körperschall-Übertragung über alle Kunstobjekte in dessen Nähe ich mich
+aufhalte. Ich kann lediglich das Ende des Stabes hinter mein Ohr halten und höre die
+«Geisterstimme» mit den Ausführungen zum Kunstobjekt. Werden Objekte entfernt, dazugefügt
+oder ganze Ausstellungen geändert, dann bekommt das Dojo einfach neue Daten. Gefällt mir
+ein Kunstobjekt, dann quittiere ich das mit der Taste, und beim Zurückgeben des Dojos am
+Ausgang erhalte ich z.B. per Mail meine persönliche Museums–History.\\
+\textbf{Aufgabe:}\\
+Dojo wurde funktionell und gestalterisch von Jana Kalbermatter entwickelt. Was
+ihr noch fehlt ist die Technik. Füllen Sie also das vorgegebene Dojo–Gehäuse mit Elektronik.
+Angefangen beim Akku, über Ladeeinrichtungen, Kommunikationsmodule für Erkennung,
+Zutrittskontrolle und Daten-Download bis zum leistungsfähigen Prozessor mit Schnittstelle und
+Aktor für Körperschall-Kommunikation. Weiter müssen die Bedientasten verarbeitet und
+Schnittstellen mit Stecker sowie ev. Anzeigen angebracht werden. Nicht zu vergessen ist die
+Software. Dazu gehört die Ausgabe der gespeicherten Objektdaten auf den Körperschall-Aktor
+und den Kopfhörer. Ebenso sind die Lokalisation und Identifikation beim Kunstobjekt und beim
+Raumzutritt Bestandteil der Firmware. Auch die Quittierung für das Objektinteresse, der Daten-
+Download für neue Objektdaten und die Bedien- und Anzeigefunktionen sollen realisiert
+werden.\cite{PFLVOR}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Ziele
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Ziele}\label{sec:ziele}
+\subsection{Projektziele}
+Ziel dieses Projektes ist es das Innenleben für einen Dojoprototyp zu entwickeln. Dieser Prototyp soll demonstireren wie das Produkt geladen wird, wie Museumsdaten aktualisiert werden können, wie das Museumspersonal den Dojo auf den Kunden abstimmt wird und wie der Dojo während des eigentlichen Museumsbesuches eingesetzt werden kann.\\
+\\
+\textbf{Sollziele}
+\begin{itemize}
+\item{Akku-Betrieb mit integrierter Ladeschaltung}
+\item{Laden über USB-C Schnittstelle}
+\item{Daten-Download über USB-C und BLE}
+\item{Audioausgabe via Körperschall-Aktor}
+\item{Bedienung und Anzeigen (MMI) gemäss Design}
+\item{Komponentenkosten für ein Prototyp ohne Leiterplatte CHF 200.- }
+\item{Lokalisieren von Kunstwerken}
+\item{Raumzutrittskontrolle über Dojo}
+\item{Spracheinstellung und Logeintrag über BLE}
+\item{Vibrationausgabe in Dojo}
+\end{itemize}
+
+\textbf{Wunschziele}
+\begin{itemize}
+\item{Daten-Download nur über USB-C}
+\item{Induktive Ladung des Dojo}
+\item{Möglichst hohe Einsatzbereitschaft über den gesamten Museumstag}
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Konzept
+\subsection{Lieferobjekte}
+
+\begin{tabbing}
+\hspace{80mm}		\= 	\\ % Abstände zu Tabolatoren definieren
+Organisatorisches Pflichtenheft		\>	KW 11 \\
+Technisches Pflichtenheft		\>	KW 13 \\
+Prototyp auf Europlatine		\>	KW 24 \\
+Evt. Prototyp in Dojo			\>	KW 24 \\
+Testsapplikation für PC			\>	KW 24 \\
+BLE Dongle Kasse			\>	KW 24 \\
+BLE Beacon Kunstwerk			\>	KW 24 \\
+BLE Beacon Zutritt			\>	KW 24 \\
+Fachbericht				\>	KW 24 \\
+Hardwaredokumente			\>	KW 24 \\
+Softdokumente				\>	KW 24 \\
+\end{tabbing}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Konzept}\label{sec:konzept}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% pictures
+% Lösungskonzept
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lösungskonzept}\label{sec:konzept}
+Das Projekt wird in vier Zustände aufgeteilt. Es wird das Programmieren, Laden, das Ein- und Auschecken und der Rundgang unteschieden.\\
+Um den Dojo an ein Museum anzupassen müssen Informationen über die Kunstwerke sowie die Zutrittsbereiche darauf geladen werden. Wie in der Abbildung \ref{fig:image3} ersichtlich stehen dafür zwei Kommunikationskanäle zur Verfügung. Zum einen werden über eine USB-C Verbindung Audio-Files in verschiedenen Sprachen auf den Dojo übertragen. Diese werden auf dem Dojo auf einer SD-Karte gespeichert.\\
+Der zweite Kommunikationskanal mittels eines BLE-Dongle, welcher am PC eingesteckt ist, überträgt Informationen welches Audio-File zu welchem Kunstwerk (BLE-Beacon) gehört.
+
 \begin{figure}[htb]
-\includegraphics[width=\textwidth]{blockschaltbild.png}
+\includegraphics[width=\textwidth]{Zustand_Programmieren.png}
+\caption{Zustand beim Programmieren} % picture caption
+\label{fig:image3}
+\end{figure}
+
+In der Abbildung \ref{fig:image2} wird der Zustand Laden dargestellt. Dabei wird das Dojo, über die USB-C Buchse, mit einem Netzteil verbunden.
+
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Zustand_Laden.png}
+\caption{Zustand beim Laden} % picture caption
+\label{fig:image2}
+\end{figure}
+
+Der drite Zustand (Abb. \ref{fig:image3}) beschreibt wie beim Ein- und Auschecken eines Museumsbesuchers Daten zwischen dem PC des Museums und des Dojo ausgetauscht werden. Dabei handelt es sich um Sprach/- und Zutrittseinstellungen.
+
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Zustand_Ein_Aus_Checken.png}
+\caption{Zustand beim Ein- und Auschecken} % picture caption
 \label{fig:image1}
 \end{figure}
-%
-%(Abb. \ref{fig:image1})
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Die Abbildung \ref{fig:image4} ziegt den Zugstand beim Rundgang. Wie darauf ersichtlich kommuniziert das Dojo über BLE mit den Kunstwerken. Sobald sich der Benutzer einem Kunstwerk nähert, vibriert das Dojo zur Bestätigung. Nun lässt sich das zum Kunstwerk gehörende Audio-File abspielen und es ist dem Besucher möglich dieses zu Liken. Das Kunstwerk bestätigt dies.\\
+Möchte der Besucher den Museumsbereich wechseln, so muss er eine Schranke passieren. Durch berühren des Zutrittssystems mit dem Dojo, wird diese Schranke geöffnet oder bleibt geschlossen.
+
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Zustand_Rundgang.png}
+\caption{Zustand beim Rundgang} % picture caption
+\label{fig:image4}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hardware} \label{sec:hardware}
+
+\subsubsection{Endergieversorgung}
+Wie in der Abbildung \ref{fig:image2} ersichtlich bezieht die Elektronik des Dojo ihre Energie aus einem Akkumulator. Verwendet wird ein Lithiumakkumulator mit einer Nennspannung von 3.7V. Dieser soll mindestens eine Kapazität von 0.55Ah haben (siehe Berechnung \ref{eq:equation1}). Mittels eines Spannungsreglers wird aus der Akkumulatorspannung eine stabile Arbeitsspannung erzeugt. Geladen wird das Dojo über die USB-C Buchse. Der Ladestrom wird mithilfe des Ladechips mcp73812 (gem. Datenblatt \cite{MCP73811}), auf 0.5A begrenzt. Die Ladezeit liegt somit unter 6h.\\
+\\
+\textbf{Berechnung Akkumulatorkappazität:}\\
+Das Dojo soll mit einer Akkuladung 8h im Einsatz sein. Als mit Abstand grösster Energieverbraucher wird der Knochenschallgeber eingeschätzt. Während dem Gebrauch in der Ausstellung wird für diesen eine mittlere Leistung von 0.2W angenommen. Wird der Knochenschallgeber mit 3V angesteuert (tiefste in Frage kommende Arbeitsspannung), muss der Akkumulator eine Kapazität von mindestens 0.55Ah haben, ersichtlich in der Berechnung \ref{eq:equation1}.
+
+% equation
+\begin{equation}
+Q_{min} = \frac{P \cdot t_{Einsatz}}{U} = 0.533Ah \approx 0.55Ah
+\label{eq:equation1}
+\end{equation}
+\begin{tabbing}
+\hspace{20mm}	\=  \hspace{60mm} \= \hspace{30mm}	\= 	\\
+mit	\\
+$Q_{min}$	\> Minimale Akku Kappazität	\> Ah	\>	\\
+$P$		\> Mittlere Leistung		\> 0.2 W \>	\\
+$t_{Einsatz}$	\> Einsatzzeit			\> 8 h	\\
+$U$		\> Spannung			\> 3 V	\\
+\end{tabbing}
+
+\subsubsection{BLE-Schnittstelle und Mikrokontroller}
+Die BLE-Schnittstelle wird mit dem Mikrokontroller nRF52832 (siehe Datenblatt \cite{NRF52832}) realisiert. Dieser dient zudem als Steuereinheit für den Dojo und ist der einzige eingesetzte Mikrokontroller. Auf die dabei verwendete Software wird im Abschnitt \ref{sec:software} weiter eingegangen.
+
+\subsubsection{Soundwiedergabe} \label{sec:sound}
+Wie auf der Abbildung \ref{fig:image4} ersichtlich, dient der Chip WTV020 (siehe Datenblatt \cite{WTV020}) als Soundmanger. Er liest die , auf der SD-Karte abgespeicherten Audio-Dateien selbständig ein und gibt ein ensprechnedes PWM-Signal aus. Welches dann mit einer Treiberschaltung verstärkt und an den Knochenschallgeber ausgegeben wird. Gesteuert wird der Soundmanger vom  Mikrokontroller.
+
+\subsubsection{USB-Schnittstelle}
+Um Audiodateien auf den Dojo zu laden, wird dieser über USB 2.0 mit einem Computer verbunden. Dank der USB-SDIO Bridge, welche mit dem Chip VUB300 (siehe Datenblatt \cite{VUB300}) realisiert wird, kann eine PC-Applikation auf die SD-Karte, wie auf ein Laufwerk, zugreiffen.
+
+\subsubsection{Speicher}
+Auf dem Dojo befinden sich zwei nichtflüchtige Speichersysteme.  Zum einen wird auf einer SD-Karte die zu den Kunstwerken gehörende Audiofiles abgespeichert. Aufgrund des Verwendeten Audiochips \ref{sec:sound} kann maximal eine SD-Karte der Grösse 2GB verwendet werden und es können maximal 512 verschiedene Audiofiles darauf abgespeichert werden.\\
+Die Informationen, welches File zu welchem Kunstwerk gehört, welche Sprache gerade aktiv ist, welche Kunstwerke geliket wurden sowie zu welchen Zonen der Besucher zutritt hat, werden im internen nichtflüchtigen Speicher vom Mikrokontroller abgespeichert. Auf die SD-Karte können sowhol der Soundmanger und die USB-SDIO Bridge zugreifen. Um den Zugriff zu regeln wird ein Multiplexer benötigt. Dafür wird der TS3A27 (siehe Datenblatt \cite{TS3A27518E}) verwendet. Umgeschaltet wird dieser vom Mikrokontroller, sobald eine USB-Verbindung detektiert wird.
+
+\subsubsection{Restliches User-Interface}
+Dieses besteht aus Tasten und LEDs nach den Vorgaben aus dem Dojo-Design und einem kleinen Vibrator, welcher den Besucher darüber informiert, dass er sich einem neuen Kunstwerk genähert hat. Angesteuert und verarbeitet werden diese Komponenten durch den Mikrokontroller.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Software} \label{sec:software}
+
+Die Software des Dojo's wird grob aus drei unabhängigen Modulen bestehen (Abb. \ref{fig:grobkonzept}): einem Hauptprogramm, einem Modul für das Management der Bluetooth-Beacons und einem Modul zur Audioverarbeitung. Das Bluetooth-Modul wird auf dem gleichen Chip wie das Hauptprogramm realisiert und ist nur softwaremässig als getrennt zu betrachten, hingegen wird die Audioverarbeitung separat ausgeführt und ist somit auch physikalisch ausgelagert.
+
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{grobkonzept_software.png}
+\caption{Grobkonzept der Firmware des Dojo's} % picture caption
+\label{fig:grobkonzept}
+\end{figure}
+
+Das Bluetooth-Modul hat die Aufgabe, die IDs aller empfangenen Beacons über eine bestimmte Dauer zu speichern und anhand der Signalstärke den Beacon auszuwählen, welcher sich am nächsten zum Dojo befindet.Dem Hauptprogramm wird signalisiert, wenn sich eine neue ID als stärkste Sendequelle erweist.\\
+\\
+Das Hauptprogramm steuert den gesamten Softwareablauf, damit sich das Dojo in allen Situationen so verhält, wie es gemäss der Aufgabenstellung soll. Notwendige Metadaten werden auf dem internen EEPROM abgelegt.\\
+\\
+Das Audio-Modul erhält vom Hauptprogramm befehle, um Audiodateien abzuspielen oder zu pausieren. Diese wiederum werden von der SD-Karte gelesen. Rückwirkend auf das Hauptprogramm wird es seinen eigenen Status mitteilen und so den Programmablauf beeinflussen.
+
+\subsubsection{Mikrokontroller}
+Für dieses Prjekt kommt der nrf52832 zum Einsatz. Alle Programme und Treiber für diesen Mikrokontroller, im Zusammenhang mit diesem Projekt, sind in C geschrieben.\\
+\\
+\textbf{Softdevice}\\
+Die Firma Nordic bietet, zur vereinfachten Programmierung ihrer Mikrokontroller, ein umfassendes Software Development Kit (SDK) an. Dieses umfasst diverse Softdevice, Triber und Libraries. Für dieses Prjekt wird das Softdevice S132 verwendet.\\
+\\
+\textbf{Treiber}\\
+\\
+Es werden für die folgenden Hardwarekomponennten, um diese mit dem Mikrokontroller anstuern zu können, Treiber geschrieben (Infos zur Hardware in Kapitel \ref{sec:hardware}):
+\begin{itemize}
+	\item{Multiplexer}
+	\begin{itemize}
+		\item{Multiplexer Ein/- und Ausschalten}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item{Audiointerface}
+	\begin{itemize}
+		\item{Play,Pause,Stop,Songauswahl und Lautstärke regeln}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item{BLE}
+	\begin{itemize}
+		\item{Detektion von BLE-Beacons und Informationsaustausch mit diesen}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item{Flash EEPROM}
+	\begin{itemize}
+		\item{Lesen und Schreiben}
+	\end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bedienung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bedienung}\label{sec:bedienung}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Validierung
+% Testkonzept
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Validierung}\label{sec:validierung}
+\section{Testkonzept}\label{sec:testkonzept}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Als Testsoftware wird eine Java-Applikation erstellt, mit der die auf dem Dojo befindliche Bibliothek mit Museumsobjekten aktualisiert werden, sowie Museumsbesucher-Einstellungen wie Beispielsweise die gewünschte Sprache übertragen werden kann. Die Daten der Museumsobjekte selbst befinden sich ausgelagert in einer .xml Datei auf dem Computer, welche von der Java-Applikation leicht eingelesen werden kann. Durch diese Auslagerung der Daten, kann der Museumsbetreiber ohne eine Anpassung der Software, neue Museumsobjekte erstellen und Besuchereinstellungen erweitern.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Zeitplan
+% bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Zeitplan}\label{sec:zeitplan}
-
+\section{Bibliographie}\label{sec:bibliographie}
+\bibliography{01_bibliography}
+\clearpage
 
 \end{document}
