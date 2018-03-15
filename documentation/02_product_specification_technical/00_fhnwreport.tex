@@ -62,7 +62,7 @@
 
 \author{}
 
-\date{21.02.2018}
+\date{\today}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % pictures
@@ -266,8 +266,18 @@ Möchte der Besucher den Museumsbereich wechseln, so muss er eine Schranke passi
 \label{fig:image4}
 \end{figure}
 
+\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Hardware} \label{sec:hardware}
+
+Dieser Abschnitt geth auf die in diesem Projekt verbaute Hardware ein. In der Abbildung \ref{fig:dojo} sind die wichtigsten Verbindunge zwischen den Komponennten und deren Anordung aufgezeigt.
+
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Dojo.png}
+\caption{Übersicht der Hardwarekomponennten des Dojo} % picture caption
+\label{fig:dojo}
+\end{figure}
 
 \subsubsection{Endergieversorgung}
 Wie in der Abbildung \ref{fig:image2} ersichtlich bezieht die Elektronik des Dojo ihre Energie aus einem Akkumulator. Verwendet wird ein Lithiumakkumulator mit einer Nennspannung von 3.7V. Dieser soll mindestens eine Kapazität von 0.55Ah haben (siehe Berechnung \ref{eq:equation1}). Mittels eines Spannungsreglers wird aus der Akkumulatorspannung eine stabile Arbeitsspannung erzeugt. Geladen wird das Dojo über die USB-C Buchse. Der Ladestrom wird mithilfe des Ladechips mcp73812 (gem. Datenblatt \cite{MCP73811}), auf 0.5A begrenzt. Die Ladezeit liegt somit unter 6h.\\
@@ -283,7 +293,7 @@ Q_{min} = \frac{P \cdot t_{Einsatz}}{U} = 0.533Ah \approx 0.55Ah
 \begin{tabbing}
 \hspace{20mm}	\=  \hspace{60mm} \= \hspace{30mm}	\= 	\\
 mit	\\
-$Q_{min}$	\> Minimale Akku Kappazität	\> Ah	\>	\\
+$Q_{min}$	\> Minimale Akku Kappazität	\> 0.55 Ah	\>	\\
 $P$		\> Mittlere Leistung		\> 0.2 W \>	\\
 $t_{Einsatz}$	\> Einsatzzeit			\> 8 h	\\
 $U$		\> Spannung			\> 3 V	\\
@@ -364,14 +374,34 @@ Es werden für die folgenden Hardwarekomponennten, um diese mit dem Mikrokontrol
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bedienung}\label{sec:bedienung}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bedienung des Dojo}
+Die Bedienung des Dojo's erfolgt über die Tasten auf der Oberseite des Dojo's (gem. Abbildung \ref{fig:dojointerface}). Diese ermöglicht es dem Museumsbesucher über die Play/Pause Taste, das zum gerade betrachteten Kunstwerk passende Audio-File abzuspielen. Über die plus/minus Taste kann die Lautstärke der Audiowiedergabe verstellt werden. Die Tasten Power Ein/Aus und Vibro Ein/Aus entsprechen ihrer Funktion. Abschliessend besteht die Möglichkeit mittels des Like-Buttons auf der Unterseite des Dojo's, beforzugte Kunstgegenstände zu Liken. Dies ermöglicht es dem Kunden an der Kasse ergänzende Literatur über die von ihm gelikten Kunstgegenstände zu erhalten.
 
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{dojointerface.png}
+\caption{Userinterface des Dojo \cite{DOJO}} % picture caption
+\label{fig:dojointerface}
+\end{figure}
+
+\subsection{Bedienung der Testapplikation}
+Damit bereits in einer ersten Phase Daten und Audio-Files auf den Dojo geladen werden können steht ein Java-Applikation zur Verfügung (siehe Abb. \ref{fig:testaplikation}). Diese ermöglicht es dem Museumspersonal, aus einer Bibliothek von Audio-Files, zusätzliche Files auf den Dojo zu laden oder bestehende zu löschen. Weiter kann, wie auf der linken Seite ersichtlich die Sprache der Ausgabe eingestellt werden und eventuelle Zutrittseinschrenkungen festgelegt werden. Links unten steht weiter noch ein Feld zur Verfügung, über welches die Audio-Files am PC abgespielt werden können.
+
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Testsoftware.png}
+\caption{Userinterface der Testaplikation} % picture caption
+\label{fig:testaplikation}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Testkonzept
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Testkonzept}\label{sec:testkonzept}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Als Testsoftware wird eine Java-Applikation erstellt, mit der die auf dem Dojo befindliche Bibliothek mit Museumsobjekten aktualisiert werden, sowie Museumsbesucher-Einstellungen wie Beispielsweise die gewünschte Sprache übertragen werden kann. Die Daten der Museumsobjekte selbst befinden sich ausgelagert in einer .xml Datei auf dem Computer, welche von der Java-Applikation leicht eingelesen werden kann. Durch diese Auslagerung der Daten, kann der Museumsbetreiber ohne eine Anpassung der Software, neue Museumsobjekte erstellen und Besuchereinstellungen erweitern.
+Zur Validierung des Produkts wird die Firmware auf einem nRF52832 Development Kit entwickelt und getestet. Dieses Board verfügt neben diversen Peripheriegeräten auch einen SEGGER J-Link Debugger. Dieser erlaubt es, die Software direkt auf der Hardware zu debuggen (anstatt nur in einer Simulation der Entwicklungsumgebung).\\
+\\
+Bluetooth-Beacons können mit geringem Aufwand von bluetoothfähigen Geräten wie Notebooks oder Handys simuliert werden. Somit kann einfach eine Simulationsumgebung erschaffen werden, welche die Situation im Museum nachahmen. Nordic Semiconductors, der Hersteller des verwendeten Mikrocontrollers, stellt ausserdem eine Vielzahl von Apps für die Verwendung, Simulation und Analyse von Bluetoothverbindungen und Dienste zur Verfügung. Damit lässt sich auch das Verhalten der Gegenseite (Feedback der Beacons und die Zutrittskontrolle) zum Dojo testen. Die Testsoftware, in diesem Falle eine Java-Applikation, kann direkt in diese Simulationsumgebung einbezogen werden.\\
+\\
+Mit dieser Testsoftware kann die auf dem Dojo befindliche Bibliothek mit Museumsobjekten aktualisiert werden, sowie Museumsbesucher-Einstellungen wie Beispielsweise die gewünschte Sprache übertragen werden kann. Die Daten der Museumsobjekte selbst befinden sich ausgelagert in einer .xml Datei auf dem Computer, welche von der Java-Applikation leicht eingelesen werden kann. Durch diese Auslagerung der Daten, kann der Museumsbetreiber ohne eine Anpassung der Software, neue Museumsobjekte erstellen und Besuchereinstellungen erweitern.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % bibliography
