@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 
 import model.GuiTypes.AccessRightsTypes;
 import model.GuiTypes.LanguagesTypes;
+import model.Museumsobjekt;
 import utilities.Utility;
 
 public class InputParameterArea extends JPanel implements ActionListener {
@@ -28,6 +29,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	private JButton btHelpEvaluate;
 	private JButton btReadIn;
 	private JButton btNewObject;
+	private JButton btDeleteObject;
 	private JButton btTransmitUSB;
 	private JButton btTransmitBT;
 	private JButton btEvaluate;
@@ -84,6 +86,10 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btNewObject = new JButton("Neues Objekt");
 		btNewObject.setEnabled(true);
 		btNewObject.addActionListener(this);
+
+		btDeleteObject = new JButton("Lösche Objekt");
+		btDeleteObject.setEnabled(false);
+		btDeleteObject.addActionListener(this);
 
 		btTransmitUSB = new JButton("Übertragen via USB");
 		btTransmitUSB.setEnabled(true);
@@ -158,9 +164,13 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btReadIn) {
-
+			topView.readInObjects();
 		} else if (e.getSource() == btNewObject) {
-
+			Museumsobjekt museumsObject = new Museumsobjekt();
+			museumsObject.setID(1);
+			museumsObject.setName("Mona Lisa 1");
+			museumsObject.setPath("C:\\Users\\Tobias\\Desktop\\Mona_Lisa_1.mp3");
+			topView.addNewObject(museumsObject);
 		} else if (e.getSource() == btTransmitUSB) {
 
 		} else if (e.getSource() == btTransmitBT) {

@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Museumsobjekt;
+
 public class OutputParameterArea extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
@@ -52,6 +54,12 @@ public class OutputParameterArea extends JPanel implements ActionListener {
 
 		add(bt1, new GridBagConstraints(3, 0, 1, 3, 0.0, 1.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
+	}
+
+	public void displayObject(Museumsobjekt museumObject) {
+		objectID.setText("" + museumObject.getID());
+		name.setText(museumObject.getName());
+		path.setText(museumObject.getPath());
 	}
 
 	@Override

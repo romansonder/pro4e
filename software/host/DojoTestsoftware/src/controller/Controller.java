@@ -1,6 +1,7 @@
 package controller;
 
 import model.Model;
+import model.Museumsobjekt;
 import userinterface.TopView;
 
 public class Controller {
@@ -13,5 +14,13 @@ public class Controller {
 
 	public void setView(TopView topView) {
 		this.topView = topView;
+	}
+
+	public void readInObjects() {
+		model.readInObjects();
+	}
+
+	public void addNewObject(Museumsobjekt museumsObject) {
+		model.addNewObject(museumsObject);
 	}
 }

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import controller.Controller;
 import model.Model;
+import model.Museumsobjekt;
 import utilities.MyBorderFactory;
 
 public class TopView extends JPanel implements Observer {
@@ -41,11 +42,23 @@ public class TopView extends JPanel implements Observer {
 		outputParameterArea.setBorder(MyBorderFactory.createMyBorder("Konsole"));
 		add(outputParameterArea, new GridBagConstraints(0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.SOUTHWEST,
 				GridBagConstraints.BOTH, new Insets(5, 10, 10, 5), 0, 0));
+	}
 
+	public void readInObjects() {
+		controller.readInObjects();
+	}
+
+	public void addNewObject(Museumsobjekt museumObject) {
+		controller.addNewObject(museumObject);
+	}
+
+	public void displayObject(Museumsobjekt museumObject) {
+		outputParameterArea.displayObject(museumObject);
 	}
 
 	@Override
 	public void update(Observable obs, Object obj) {
 		Model model = (Model) obs;
+		graphicalArea.updateMuseumobjekts(model.getMuseum());
 	}
 }
