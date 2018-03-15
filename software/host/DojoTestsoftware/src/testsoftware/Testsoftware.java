@@ -22,8 +22,8 @@ import utilities.Utility;
 public class Testsoftware extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	private static final int minWidth = 1000, minheight = 700;
-	private static final int width = 1000, height = 700;
+	private static final int minWidth = 1000, minheight = 660;
+	private static final int width = 1000, height = 660;
 
 	private ImageIcon icon = Utility.loadResourceIcon("Dojo_Testsoftware_Icon.png");
 

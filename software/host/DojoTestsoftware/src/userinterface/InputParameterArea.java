@@ -118,49 +118,46 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		add(btNewObject, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btDeleteObject, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(btTransmitUSB, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btTransmitUSB, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 5, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(new JLabel("Zutrittsrecht:"), new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JLabel("Zutrittsrecht:"), new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(btHelpAccessRights, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btHelpAccessRights, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(comboAccessRights, new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(comboAccessRights, new GridBagConstraints(0, 7, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(new JLabel("Sprache:"), new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JLabel("Sprache:"), new GridBagConstraints(0, 8, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(btHelpLanguage, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btHelpLanguage, new GridBagConstraints(1, 8, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(comboLanguage, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(comboLanguage, new GridBagConstraints(0, 9, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(btTransmitBT, new GridBagConstraints(0, 10, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 11, 2, 1, 0.0, 0.0,
-				GridBagConstraints.EAST, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(new JLabel("Dojo auswerten:"), new GridBagConstraints(0, 12, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(btHelpEvaluate, new GridBagConstraints(1, 12, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(btEvaluate, new GridBagConstraints(0, 13, 2, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.BOTH,
+		add(btTransmitBT, new GridBagConstraints(0, 9, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(Box.createVerticalGlue(), new GridBagConstraints(0, 14, 2, 1, 0.0, 1.0, GridBagConstraints.WEST,
+		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 10, 2, 1, 0.0, 0.0,
+				GridBagConstraints.EAST, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JLabel("Dojo auswerten:"), new GridBagConstraints(0, 11, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btHelpEvaluate, new GridBagConstraints(1, 11, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btEvaluate, new GridBagConstraints(0, 12, 2, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.BOTH,
+				new Insets(10, 10, 10, 10), 0, 0));
+
+		add(Box.createVerticalGlue(), new GridBagConstraints(0, 13, 2, 1, 0.0, 1.0, GridBagConstraints.WEST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 	}
 
@@ -174,8 +171,6 @@ public class InputParameterArea extends JPanel implements ActionListener {
 			museumsObject.setName("Mona Lisa 1");
 			museumsObject.setPath("C:\\Users\\Tobias\\Desktop\\Mona_Lisa_1.mp3");
 			topView.addNewObject(museumsObject);
-		} else if (e.getSource() == btDeleteObject) {
-
 		} else if (e.getSource() == btTransmitUSB) {
 
 		} else if (e.getSource() == btTransmitBT) {

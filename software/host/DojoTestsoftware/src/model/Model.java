@@ -42,7 +42,16 @@ public class Model extends Observable {
 	}
 
 	public void addNewObject(Museumsobjekt museumsObject) {
+		Serializer serializer = new Persister();
+		File file = new File("museum.xml");
 		this.museum.list.add(museumsObject);
+
+		try {
+			serializer.write(museum, file);
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+
 		notifyObservers();
 	}
 }
