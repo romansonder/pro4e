@@ -1,10 +1,7 @@
 <Museum>
-   <Museumsobjekt ID="1" Name="Mona Lisa 1" Path="C:\Users\Tobias\Desktop\Mona_Lisa_1.mp3"/>
-   <Museumsobjekt ID="2" Name="Mona Lisa 2" Path="C:\Users\Tobias\Desktop\Mona_Lisa_2.mp3"/>
-   <Museumsobjekt ID="3" Name="Mona Lisa 3" Path="C:\Users\Tobias\Desktop\Mona_Lisa_3.mp3"/>
-   <Museumsobjekt ID="4" Name="Mona Lisa 4" Path="C:\Users\Tobias\Desktop\Mona_Lisa_4.mp3"/>
-   <Museumsobjekt ID="5" Name="Mona Lisa 5" Path="C:\Users\Tobias\Desktop\Mona_Lisa_5.mp3"/>
-   <Museumsobjekt ID="6" Name="Mona Lisa 6" Path="C:\Users\Tobias\Desktop\Mona_Lisa_6.mp3"/>
-   <Museumsobjekt ID="7" Name="Mona Lisa 7" Path="C:\Users\Tobias\Desktop\Mona_Lisa_7.mp3"/>
-   <Museumsobjekt ID="8" Name="Mona Lisa 8" Path="C:\Users\Tobias\Desktop\Mona_Lisa_8.mp3"/>
+   <Museumsobjekt ID="1" Name="Mona Lisa 1" Path="D:\FHNW\04_Semester\Pro4ERepoGitHub\trunk\software\host\DojoTestsoftware\Mona_Lisa_1.mp3"/>
+   <Museumsobjekt ID="2" Name="Mona Lisa 2" Path="D:\FHNW\04_Semester\Pro4ERepoGitHub\trunk\software\host\DojoTestsoftware\Mona_Lisa_2.mp3"/>
+   <Museumsobjekt ID="3" Name="Mona Lisa 3" Path="D:\FHNW\04_Semester\Pro4ERepoGitHub\trunk\software\host\DojoTestsoftware\Mona_Lisa_3.mp3"/>
+   <Museumsobjekt ID="4" Name="Mona Lisa 4" Path="D:\FHNW\04_Semester\Pro4ERepoGitHub\trunk\software\host\DojoTestsoftware\Mona_Lisa_4.mp3"/>
+   <Museumsobjekt ID="5" Name="Mona Lisa 5" Path="D:\FHNW\04_Semester\Pro4ERepoGitHub\trunk\software\host\DojoTestsoftware\Mona_Lisa_5.mp3"/>
 </Museum>

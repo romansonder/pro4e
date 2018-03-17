@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +33,7 @@ public class GraphicalArea extends JPanel implements ListSelectionListener {
 		tableModel.setColumnIdentifiers(columnNames);
 		museumTable = new JTable(tableModel);
 		museumTable.setRowHeight(25);
+
 		museumTable.setFillsViewportHeight(true);
 		museumTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -39,8 +41,8 @@ public class GraphicalArea extends JPanel implements ListSelectionListener {
 		rowSelMod.addListSelectionListener(this);
 
 		JScrollPane scrollPane = new JScrollPane(museumTable);
-		scrollPane.setVerticalScrollBarPolicy(scrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setHorizontalScrollBarPolicy(scrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 		add(museumTable.getTableHeader(), new GridBagConstraints(0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(10, 10, 0, 10), 0, 0));
@@ -77,8 +79,8 @@ public class GraphicalArea extends JPanel implements ListSelectionListener {
 			museumObject.setName(name);
 			museumObject.setPath(path);
 			topView.displayObject(museumObject);
-		} catch (ArrayIndexOutOfBoundsException exception) {
-
+		} catch (Exception exception) {
+			topView.displayObject(null);
 		}
 	}
 }

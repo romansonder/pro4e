@@ -28,9 +28,9 @@ public class OutputParameterArea extends JPanel implements ActionListener {
 
 		this.topView = topView;
 
-		objectID = new JLabel("27");
-		name = new JLabel("Mona Lisa 27");
-		path = new JLabel("C:\\Museum\\Objekte\\Mona_Lisa_27.mp3");
+		objectID = new JLabel("-");
+		name = new JLabel("-");
+		path = new JLabel("-");
 
 		bt1 = new JButton("Musik Player");
 
@@ -57,9 +57,15 @@ public class OutputParameterArea extends JPanel implements ActionListener {
 	}
 
 	public void displayObject(Museumsobjekt museumObject) {
-		objectID.setText("" + museumObject.getID());
-		name.setText(museumObject.getName());
-		path.setText(museumObject.getPath());
+		if (null != museumObject) {
+			objectID.setText("" + museumObject.getID());
+			name.setText(museumObject.getName());
+			path.setText(museumObject.getPath());
+		} else {
+			objectID.setText("-");
+			name.setText("-");
+			path.setText("-");
+		}
 	}
 
 	@Override
