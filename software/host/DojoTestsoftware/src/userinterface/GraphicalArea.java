@@ -1,16 +1,22 @@
 package userinterface;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import model.Museum;
 import model.Museumsobjekt;
@@ -21,6 +27,8 @@ public class GraphicalArea extends JPanel implements ListSelectionListener {
 	private TopView topView;
 	private JTable museumTable;
 	private DefaultTableModel tableModel;
+	private final int firstColumnWidth = 40;
+	private final int rowHeight = 25;
 	String[] columnNames = { "ID", "Name", "Pfad" };
 
 	public GraphicalArea(TopView topView) {
@@ -30,22 +38,31 @@ public class GraphicalArea extends JPanel implements ListSelectionListener {
 
 		tableModel = new DefaultTableModel();
 		tableModel.setColumnIdentifiers(columnNames);
+
 		museumTable = new JTable(tableModel);
-		museumTable.setRowHeight(25);
+		museumTable.setRowHeight(rowHeight);
+		museumTable.getColumnModel().getColumn(0).setMaxWidth(firstColumnWidth);
+		museumTable.setBackground(new Color(255, 215, 0));
+		museumTable.setOpaque(false);
 		museumTable.setFillsViewportHeight(true);
 		museumTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		museumTable.setDefaultEditor(Object.class, null);
+		museumTable.setSelectionBackground(new Color(140, 136, 134));
+
+		JTableHeader header = museumTable.getTableHeader();
+		header.setPreferredSize(new Dimension(100, rowHeight));
 
 		ListSelectionModel rowSelMod = museumTable.getSelectionModel();
 		rowSelMod.addListSelectionListener(this);
 
 		JScrollPane scrollPane = new JScrollPane(museumTable);
-		scrollPane.setVerticalScrollBarPolicy(scrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setHorizontalScrollBarPolicy(scrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 		add(museumTable.getTableHeader(), new GridBagConstraints(0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH,
 				GridBagConstraints.BOTH, new Insets(10, 10, 0, 10), 0, 0));
 		add(scrollPane, new GridBagConstraints(0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.NORTH, GridBagConstraints.BOTH,
-				new Insets(0, 10, 10, 10), 0, 0));
+				new Insets(10, 10, 10, 10), 0, 0));
 	}
 
 	public void updateMuseumobjekts(Museum museum) {
@@ -61,7 +78,12 @@ public class GraphicalArea extends JPanel implements ListSelectionListener {
 			row[2] = museum.list.get(i).getPath();
 			tableModel.addRow(row);
 		}
+
 		museumTable.setModel(tableModel);
+		museumTable.getColumnModel().getColumn(0).setMaxWidth(firstColumnWidth);
+		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+		rightRenderer.setHorizontalAlignment(JLabel.CENTER);
+		museumTable.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
 		tableModel.fireTableDataChanged();
 	}
 
@@ -77,8 +99,8 @@ public class GraphicalArea extends JPanel implements ListSelectionListener {
 			museumObject.setName(name);
 			museumObject.setPath(path);
 			topView.displayObject(museumObject);
-		} catch (ArrayIndexOutOfBoundsException exception) {
-
+		} catch (Exception exception) {
+			topView.displayObject(null);
 		}
 	}
 }

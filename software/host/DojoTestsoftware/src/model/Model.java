@@ -32,6 +32,17 @@ public class Model extends Observable {
 		notifyObservers();
 	}
 
+	public void saveObjects() {
+		Serializer serializer = new Persister();
+		File file = new File("museum.xml");
+		try {
+			serializer.write(getMuseum(), file);
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+		notifyObservers();
+	}
+
 	private void setMuseum(Museum museum) {
 		this.museum = museum;
 		notifyObservers();
@@ -42,16 +53,10 @@ public class Model extends Observable {
 	}
 
 	public void addNewObject(Museumsobjekt museumsObject) {
-		Serializer serializer = new Persister();
-		File file = new File("museum.xml");
-		this.museum.list.add(museumsObject);
-
-		try {
-			serializer.write(museum, file);
-		} catch (Exception exception) {
-			exception.printStackTrace();
-		}
-
+		if (null != museumsObject)
+			if (museumsObject.getName() != "" || museumsObject.getPath() != "") {
+				this.museum.list.add(museumsObject);
+			}
 		notifyObservers();
 	}
 }

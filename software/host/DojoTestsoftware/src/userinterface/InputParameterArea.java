@@ -5,14 +5,19 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.GuiTypes.AccessRightsTypes;
 import model.GuiTypes.LanguagesTypes;
@@ -29,7 +34,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	private JButton btHelpEvaluate;
 	private JButton btReadIn;
 	private JButton btNewObject;
-	private JButton btDeleteObject;
+	private JButton btSave;
 	private JButton btTransmitUSB;
 	private JButton btTransmitBT;
 	private JButton btEvaluate;
@@ -87,9 +92,9 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btNewObject.setEnabled(true);
 		btNewObject.addActionListener(this);
 
-		btDeleteObject = new JButton("Lösche Objekt");
-		btDeleteObject.setEnabled(false);
-		btDeleteObject.addActionListener(this);
+		btSave = new JButton("Speichern");
+		btSave.setEnabled(true);
+		btSave.addActionListener(this);
 
 		btTransmitUSB = new JButton("Übertragen via USB");
 		btTransmitUSB.setEnabled(true);
@@ -118,47 +123,85 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		add(btNewObject, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btTransmitUSB, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(new JLabel("Zutrittsrecht:"), new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(btHelpAccessRights, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(comboAccessRights, new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(new JLabel("Sprache:"), new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(btHelpLanguage, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(comboLanguage, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(btTransmitBT, new GridBagConstraints(0, 9, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
+		add(btSave, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 10, 2, 1, 0.0, 0.0,
+		add(btTransmitUSB, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 5, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JLabel("Zutrittsrecht:"), new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btHelpAccessRights, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(comboAccessRights, new GridBagConstraints(0, 7, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JLabel("Sprache:"), new GridBagConstraints(0, 8, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btHelpLanguage, new GridBagConstraints(1, 8, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(comboLanguage, new GridBagConstraints(0, 9, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btTransmitBT, new GridBagConstraints(0, 10, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 11, 2, 1, 0.0, 0.0,
 				GridBagConstraints.EAST, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JLabel("Dojo auswerten:"), new GridBagConstraints(0, 11, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(new JLabel("Dojo auswerten:"), new GridBagConstraints(0, 12, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btHelpEvaluate, new GridBagConstraints(1, 11, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(btHelpEvaluate, new GridBagConstraints(1, 12, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btEvaluate, new GridBagConstraints(0, 12, 2, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.BOTH,
+		add(btEvaluate, new GridBagConstraints(0, 13, 2, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(Box.createVerticalGlue(), new GridBagConstraints(0, 13, 2, 1, 0.0, 1.0, GridBagConstraints.WEST,
+		add(Box.createVerticalGlue(), new GridBagConstraints(0, 14, 2, 1, 0.0, 1.0, GridBagConstraints.WEST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+	}
+
+	private Museumsobjekt displayNewObjectDialog() {
+		Museumsobjekt museumsObject = new Museumsobjekt();
+
+		JTextField id = new JTextField();
+		JTextField name = new JTextField();
+		JTextField path = new JTextField();
+		path.setEditable(false);
+		JButton button = new JButton("Pfad wählen");
+		button.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				JFileChooser fc = new JFileChooser();
+				File workingDirectory = new File(System.getProperty("user.dir"));
+				fc.setCurrentDirectory(workingDirectory);
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("MP3", "mp3");
+				fc.setFileFilter(filter);
+				fc.showOpenDialog(null);
+				path.setText(fc.getSelectedFile().getPath());
+			}
+		});
+
+		Object[] objects = { "ID", id, "Name", name, "Pfad", path, button };
+		JOptionPane pane = new JOptionPane(objects, JOptionPane.PLAIN_MESSAGE, JOptionPane.CANCEL_OPTION);
+		pane.createDialog(null, "Neues Objekt erstellen").setVisible(true);
+
+		try {
+			museumsObject.setID(Integer.parseInt(id.getText()));
+			museumsObject.setName(name.getText());
+			museumsObject.setPath(path.getText());
+		} catch (Exception exception) {
+			museumsObject = null;
+		}
+
+		return museumsObject;
 	}
 
 	@Override
@@ -166,11 +209,10 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		if (e.getSource() == btReadIn) {
 			topView.readInObjects();
 		} else if (e.getSource() == btNewObject) {
-			Museumsobjekt museumsObject = new Museumsobjekt();
-			museumsObject.setID(1);
-			museumsObject.setName("Mona Lisa 1");
-			museumsObject.setPath("C:\\Users\\Tobias\\Desktop\\Mona_Lisa_1.mp3");
-			topView.addNewObject(museumsObject);
+			Museumsobjekt museumObject = displayNewObjectDialog();
+			topView.addNewObject(museumObject);
+		} else if (e.getSource() == btSave) {
+			topView.saveObjects();
 		} else if (e.getSource() == btTransmitUSB) {
 
 		} else if (e.getSource() == btTransmitBT) {
