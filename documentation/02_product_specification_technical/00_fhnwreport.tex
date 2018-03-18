@@ -56,8 +56,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\title{Title\\\large Undertitle}
 \title{
-	\textsc{\LARGE{Technisches-Pflichtenheft}}\\[10mm]
-	\textsc{\LARGE{Dojo - Mehr als nur ein Museumsführer}}
+	\textsc{\LARGE{Technisches Pflichtenheft}}\\[10mm]
+	\textsc{\LARGE{Dojo - Mehr als nur ein Museumsguide}}
 }
 
 \author{}
@@ -157,15 +157,15 @@ Studiengang	\> Elektro- und Informationstechnik \\[5mm]
 \textbf{Anlass:}\\
 Mein letzter Besuch im Kunstmuseum: Ich bezahlte an der Kasse den
 Eintrittspreis, ohne genau zu wissen, wie gross das Museum ist und was es alles zeigt. Dann
-staunte ich beim ziellosen umherschweifen darüber, was alles Kunst ist und reihte natürlich
+staunte ich beim ziellosen Umherschweifen darüber, was alles Kunst ist und reihte natürlich
 auch den Feuerlöscher noch gedanklich in die Kunstobjekte ein, aber nahm dafür den leeren
 Sockel beim Eingang nicht als solches wahr. Erleichterung machte sich beim Verlassen wieder
 bemerkbar und die Erinnerung ist das Erlebnis «Besuch» und nicht die Kunstobjekte.
 Wenn es nach Jana Kalbermatter, einer Absolventin der HGK, geht, dann sieht mein nächster
 Besuch im Kunstmuseum folgendermassen aus: Ich bezahle an der Kasse meinen Eintritt für
 die Räume, die mich interessieren, gebe meinen Sprachwunsch an und erhalte statt eines
-Tickets einen Dojo. Das stabförmige Informations-Gerät regelt meine Zutrittsberechtigung und
-informiert mich via Körperschall-Übertragung über alle Kunstobjekte in dessen Nähe ich mich
+Tickets ein Dojo. Das stabförmige Informationsgerät regelt meine Zutrittsberechtigung und
+informiert mich via Körperschallübertragung über alle Kunstobjekte in dessen Nähe ich mich
 aufhalte. Ich kann lediglich das Ende des Stabes hinter mein Ohr halten und höre die
 «Geisterstimme» mit den Ausführungen zum Kunstobjekt. Werden Objekte entfernt, dazugefügt
 oder ganze Ausstellungen geändert, dann bekommt das Dojo einfach neue Daten. Gefällt mir
@@ -173,30 +173,27 @@ ein Kunstobjekt, dann quittiere ich das mit der Taste, und beim Zurückgeben des
 Ausgang erhalte ich z.B. per Mail meine persönliche Museums–History.\\
 \textbf{Aufgabe:}\\
 Dojo wurde funktionell und gestalterisch von Jana Kalbermatter entwickelt. Was
-ihr noch fehlt ist die Technik. Füllen Sie also das vorgegebene Dojo–Gehäuse mit Elektronik.
+ihm noch fehlt ist die Technik. Füllen Sie also das vorgegebene Dojo–Gehäuse mit Elektronik.
 Angefangen beim Akku, über Ladeeinrichtungen, Kommunikationsmodule für Erkennung,
 Zutrittskontrolle und Daten-Download bis zum leistungsfähigen Prozessor mit Schnittstelle und
-Aktor für Körperschall-Kommunikation. Weiter müssen die Bedientasten verarbeitet und
-Schnittstellen mit Stecker sowie ev. Anzeigen angebracht werden. Nicht zu vergessen ist die
+Aktor für Körperschallkommunikation. Weiter müssen die Bedientasten verarbeitet und
+Schnittstellen mit Stecker sowie evt. Anzeigen angebracht werden. Nicht zu vergessen ist die
 Software. Dazu gehört die Ausgabe der gespeicherten Objektdaten auf den Körperschall-Aktor
-und den Kopfhörer. Ebenso sind die Lokalisation und Identifikation beim Kunstobjekt und beim
-Raumzutritt Bestandteil der Firmware. Auch die Quittierung für das Objektinteresse, der Daten-
-Download für neue Objektdaten und die Bedien- und Anzeigefunktionen sollen realisiert
-werden.\cite{PFLVOR}
+und den Kopfhörer. Des Weiteren soll die Quitierung für das Objektinteresse, der Daten-Download für neue Objektinformationen sowie die Bedien. und Anzeigefunktion realisiert werden.\cite{PFLVOR}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Projektziele}
-Ziel dieses Projektes ist es das Innenleben für einen Dojoprototyp zu entwickeln. Dieser Prototyp soll demonstireren wie das Produkt geladen wird, wie Museumsdaten aktualisiert werden können, wie das Museumspersonal den Dojo auf den Kunden abstimmt wird und wie der Dojo während des eigentlichen Museumsbesuches eingesetzt werden kann.\\
+Ziel dieses Projektes ist es, dass Innenleben für einen Dojo-Prototyp zu entwickeln. Dieser Prototyp soll demonstrieren, wie das Produkt geladen wird, wie Museumsdaten aktualisiert werden können, wie das Museumspersonal den Dojo auf den Kunden abstimmt wird und wie der Dojo während des eigentlichen Museumsbesuches eingesetzt werden kann.\\
 \\
 \textbf{Sollziele}
 \begin{itemize}
 \item{Akku-Betrieb mit integrierter Ladeschaltung}
 \item{Laden über USB-C Schnittstelle}
-\item{Daten-Download über USB-C und BLE}
+\item{Daten-Download über USB-C und BLE (Bluetooth Low Energy)}
 \item{Audioausgabe via Körperschall-Aktor}
-\item{Bedienung und Anzeigen (MMI) gemäss Design}
-\item{Komponentenkosten für ein Prototyp ohne Leiterplatte CHF 200.- }
-\item{Lokalisieren von Kunstwerken}
+\item{Bedienung und Anzeigen (MMI  Mensch-Maschine-Interface) gemäss Design}
+\item{Komponentenkosten für ein Prototyp ohne Leiterplatte nicht grösser als CHF 200.- }
+\item{Kunstwerke sollen nicht nur lokalisiert werden sondern der Besucher erhält auch ein Feedback vom Dojo}
 \item{Raumzutrittskontrolle über Dojo}
 \item{Spracheinstellung und Logeintrag über BLE}
 \item{Vibrationausgabe in Dojo}
@@ -206,7 +203,7 @@ Ziel dieses Projektes ist es das Innenleben für einen Dojoprototyp zu entwickel
 \begin{itemize}
 \item{Daten-Download nur über USB-C}
 \item{Induktive Ladung des Dojo}
-\item{Möglichst hohe Einsatzbereitschaft über den gesamten Museumstag}
+\item{Das Dojo soll möglichst auf Energieeffizienz getrimmt werden damit es einen ganzen Tag lang eingesetzt werden kann}
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -219,7 +216,7 @@ Technisches Pflichtenheft		\>	KW 13 \\
 Prototyp auf Europlatine		\>	KW 24 \\
 Evt. Prototyp in Dojo			\>	KW 24 \\
 Testsapplikation für PC			\>	KW 24 \\
-BLE Dongle Kasse			\>	KW 24 \\
+BLE Dongle  an der asse			\>	KW 24 \\
 BLE Beacon Kunstwerk			\>	KW 24 \\
 BLE Beacon Zutritt			\>	KW 24 \\
 Fachbericht				\>	KW 24 \\
@@ -231,9 +228,9 @@ Softdokumente				\>	KW 24 \\
 % Lösungskonzept
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lösungskonzept}\label{sec:konzept}
-Das Projekt wird in vier Zustände aufgeteilt. Es wird das Programmieren, Laden, das Ein- und Auschecken und der Rundgang unteschieden.\\
-Um den Dojo an ein Museum anzupassen müssen Informationen über die Kunstwerke sowie die Zutrittsbereiche darauf geladen werden. Wie in der Abbildung \ref{fig:image3} ersichtlich stehen dafür zwei Kommunikationskanäle zur Verfügung. Zum einen werden über eine USB-C Verbindung Audio-Files in verschiedenen Sprachen auf den Dojo übertragen. Diese werden auf dem Dojo auf einer SD-Karte gespeichert.\\
-Der zweite Kommunikationskanal mittels eines BLE-Dongle, welcher am PC eingesteckt ist, überträgt Informationen welches Audio-File zu welchem Kunstwerk (BLE-Beacon) gehört.
+Das Projekt wird in vier Zustände aufgeteilt. Es wird das Programmieren,das Laden, das Ein- und Auschecken und der Rundgang unterschieden.\\
+Um das Dojo an ein Museum anzupassen müssen Informationen über die Kunstwerke sowie die Zutrittsbereiche darauf geladen werden. Wie in der Abbildung \ref{fig:image3} ersichtlich stehen dafür zwei Kommunikationskanäle zur Verfügung. Zum einen werden über eine USB-C Verbindung Audio-Files in verschiedenen Sprachen auf den Dojo übertragen. Diese werden auf dem Dojo auf einer SD-Karte gespeichert.\\
+Der zweite Kommunikationskanal wird via BLE realisiert und dient zur Konfiguration des Dojos. Er wird benötigt um dem Gerät mitzuteilen, welche Audiodateien zu welchem Beacon gehören.
 
 \begin{figure}[htb]
 \includegraphics[width=\textwidth]{Zustand_Programmieren.png}
@@ -249,7 +246,7 @@ In der Abbildung \ref{fig:image2} wird der Zustand Laden dargestellt. Dabei wird
 \label{fig:image2}
 \end{figure}
 
-Der drite Zustand (Abb. \ref{fig:image3}) beschreibt wie beim Ein- und Auschecken eines Museumsbesuchers Daten zwischen dem PC des Museums und des Dojo ausgetauscht werden. Dabei handelt es sich um Sprach/- und Zutrittseinstellungen.
+Der dritte Zustand (Abb. \ref{fig:image1}) beschreibt wie beim Ein- und Auschecken eines Museumsbesuchers Daten zwischen dem PC des Museums und des Dojos ausgetauscht werden. Dabei handelt es sich um Sprach- und Zutrittseinstellungen. Wie auf der Abbildung \ref{fig:image1} ersichtlich wird ein USB-Donlge benötigt welcher am PC einzustecken ist. Anhand dieses Dongles weis das Dojo, dass nun Daten mit einem PC ausgetauscht werden und kann so entsprechende Programmefunktionen aufrufen.
 
 \begin{figure}[htb]
 \includegraphics[width=\textwidth]{Zustand_Ein_Aus_Checken.png}
@@ -257,8 +254,8 @@ Der drite Zustand (Abb. \ref{fig:image3}) beschreibt wie beim Ein- und Auschecke
 \label{fig:image1}
 \end{figure}
 
-Die Abbildung \ref{fig:image4} ziegt den Zugstand beim Rundgang. Wie darauf ersichtlich kommuniziert das Dojo über BLE mit den Kunstwerken. Sobald sich der Benutzer einem Kunstwerk nähert, vibriert das Dojo zur Bestätigung. Nun lässt sich das zum Kunstwerk gehörende Audio-File abspielen und es ist dem Besucher möglich dieses zu Liken. Das Kunstwerk bestätigt dies.\\
-Möchte der Besucher den Museumsbereich wechseln, so muss er eine Schranke passieren. Durch berühren des Zutrittssystems mit dem Dojo, wird diese Schranke geöffnet oder bleibt geschlossen.
+Die Abbildung \ref{fig:image4} zeigt den Zugstand beim Rundgang. Die Kommunikation zwischen den Beacons und dem Dojo erfolgt via BLE. Sobald sich der Benutzer einem Kunstwerk nähert, vibriert das Dojo zur Bestätigung. Nun lässt sich das zum Kunstwerk gehörende Audiofile abspielen und es ist dem Besucher möglich dieses zu Liken. Das Kunstwerk bestätigt dies bestätigt dies und gibt ein kurzes Feedback. \\
+Möchte der Besucher den Museumsbereich wechseln, so muss er eine Schranke passieren. Durch Berühren des Zutrittssystems mit dem Dojo, wird diese Schranke geöffnet oder bleibt geschlossen.
 
 \begin{figure}[htb]
 \includegraphics[width=\textwidth]{Zustand_Rundgang.png}
@@ -279,7 +276,7 @@ Dieser Abschnitt geth auf die in diesem Projekt verbaute Hardware ein. In der Ab
 \label{fig:dojo}
 \end{figure}
 
-\subsubsection{Endergieversorgung}
+\subsubsection{Energieversorgung}
 Wie in der Abbildung \ref{fig:image2} ersichtlich bezieht die Elektronik des Dojo ihre Energie aus einem Akkumulator. Verwendet wird ein Lithiumakkumulator mit einer Nennspannung von 3.7V. Dieser soll mindestens eine Kapazität von 0.55Ah haben (siehe Berechnung \ref{eq:equation1}). Mittels eines Spannungsreglers wird aus der Akkumulatorspannung eine stabile Arbeitsspannung erzeugt. Geladen wird das Dojo über die USB-C Buchse. Der Ladestrom wird mithilfe des Ladechips mcp73812 (gem. Datenblatt \cite{MCP73811}), auf 0.5A begrenzt. Die Ladezeit liegt somit unter 6h.\\
 \\
 \textbf{Berechnung Akkumulatorkappazität:}\\
