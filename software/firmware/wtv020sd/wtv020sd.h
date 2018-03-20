@@ -21,11 +21,12 @@ extern void led_test(void);
 void wtv020sd_init(void);
 extern void wtv020sd_inc_vol(void);
 extern void wtv020sd_red_vol(void);
-extern void wtv020sd_play_pause(void);
+extern void wtv020sd_play_pause(void); 
 extern void wtv020sd_stop(void);
 extern void wtv020sd_reset(void);
-extern void wtv020sd_play_audio(uint16_t audio_name);
+extern void wtv020sd_play_audio(uint16_t audio_name); // 0 - 512 ^= ID Beacon 
 extern void wtv020sd_send(uint16_t command);
+extern uint8_t wtv020sd_status(void);
 
 
 #endif /* WTV020SD_H */

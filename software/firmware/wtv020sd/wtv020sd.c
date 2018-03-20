@@ -105,3 +105,7 @@ void wtv020sd_send(uint16_t command){
 
 }
 
+extern uint8_t wtv020sd_status(void){
+	return 1;
+}
+
