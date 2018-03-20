@@ -62,7 +62,7 @@ public class Model extends Observable {
 		}
 		notifyObservers();
 	}
-	
+
 	public void addNewObject(Museumsobjekt museumsObject) {
 		if (null != museumsObject)
 			if (museumsObject.getName() != "" || museumsObject.getPath() != "") {
@@ -70,13 +70,19 @@ public class Model extends Observable {
 			}
 		notifyObservers();
 	}
-	
+
 	public void deleteObject(Museumsobjekt museumsObject) {
 		if (null != museumsObject)
 			if (museumsObject.getName() != "" || museumsObject.getPath() != "") {
-				this.museum.list.remove(museumsObject);
+				for (Museumsobjekt object : this.museum.list) {
+					if (object.getID() == museumsObject.getID()) {
+						System.out.println("Removed object: " + object.getID());
+						this.museum.list.remove(object);
+						notifyObservers();
+						break;
+					}
+				}
 			}
-		notifyObservers();
 	}
 
 	private void setMuseum(Museum museum) {
