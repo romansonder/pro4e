@@ -76,7 +76,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpEvaluate = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpEvaluate
-				.setToolTipText("<html><b>Dojo Auswerten:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
+				.setToolTipText("<html><b>Dojo auswerten:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
 		btHelpEvaluate.setOpaque(false);
 		btHelpEvaluate.setContentAreaFilled(false);
 		btHelpEvaluate.setBorderPainted(false);

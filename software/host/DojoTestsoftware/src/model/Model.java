@@ -11,6 +11,7 @@ import org.simpleframework.xml.core.Persister;
 
 public class Model extends Observable {
 	private Museum museum;
+	private final String fileExtension = "xml";
 
 	public Model() {
 		museum = new Museum();
@@ -26,7 +27,7 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("XML", "xml");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("XML Files (*.xml)", fileExtension);
 		fc.setFileFilter(filter);
 		fc.showOpenDialog(null);
 
@@ -49,26 +50,36 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("XML", "xml");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("XML Files (*.xml)", fileExtension);
 		fc.setFileFilter(filter);
+		fc.setAcceptAllFileFilterUsed(true);
 		fc.showSaveDialog(null);
 
-		Serializer serializer = new Persister();
-		File file = new File(fc.getSelectedFile().getPath());
-		try {
-			serializer.write(getMuseum(), file);
-		} catch (Exception exception) {
-			exception.printStackTrace();
+		File file = fc.getSelectedFile();
+
+		if (null != file) {
+
+			String filePath = file.getAbsolutePath();
+			if (!filePath.endsWith("." + fileExtension)) {
+				file = new File(filePath + "." + fileExtension);
+			}
+
+			try {
+				Serializer serializer = new Persister();
+				serializer.write(getMuseum(), file);
+			} catch (Exception exception) {
+				exception.printStackTrace();
+			}
+			notifyObservers();
 		}
-		notifyObservers();
 	}
 
 	public void addNewObject(Museumsobjekt museumsObject) {
 		if (null != museumsObject)
 			if (museumsObject.getName() != "" || museumsObject.getPath() != "") {
 				this.museum.list.add(museumsObject);
+				notifyObservers();
 			}
-		notifyObservers();
 	}
 
 	public void deleteObject(Museumsobjekt museumsObject) {
