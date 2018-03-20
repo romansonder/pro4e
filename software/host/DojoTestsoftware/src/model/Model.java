@@ -3,6 +3,9 @@ package model;
 import java.io.File;
 import java.util.Observable;
 
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -20,21 +23,38 @@ public class Model extends Observable {
 	}
 
 	public void readInObjects() {
-		Serializer serializer = new Persister();
-		File file = new File("museum.xml");
-		Museum museum = new Museum();
-		try {
-			museum = serializer.read(Museum.class, file);
-		} catch (Exception exception) {
-			exception.printStackTrace();
+		JFileChooser fc = new JFileChooser();
+		File workingDirectory = new File(System.getProperty("user.dir"));
+		fc.setCurrentDirectory(workingDirectory);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("XML", "xml");
+		fc.setFileFilter(filter);
+		fc.showOpenDialog(null);
+
+		if (null != fc.getSelectedFile()) {
+			File file = new File(fc.getSelectedFile().getPath());
+			Serializer serializer = new Persister();
+
+			Museum museum = new Museum();
+			try {
+				museum = serializer.read(Museum.class, file);
+			} catch (Exception exception) {
+				exception.printStackTrace();
+			}
+			setMuseum(museum);
+			notifyObservers();
 		}
-		setMuseum(museum);
-		notifyObservers();
 	}
 
 	public void saveObjects() {
+		JFileChooser fc = new JFileChooser();
+		File workingDirectory = new File(System.getProperty("user.dir"));
+		fc.setCurrentDirectory(workingDirectory);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("XML", "xml");
+		fc.setFileFilter(filter);
+		fc.showSaveDialog(null);
+
 		Serializer serializer = new Persister();
-		File file = new File("museum.xml");
+		File file = new File(fc.getSelectedFile().getPath());
 		try {
 			serializer.write(getMuseum(), file);
 		} catch (Exception exception) {
