@@ -23,6 +23,10 @@ public class Controller {
 	public void addNewObject(Museumsobjekt museumsObject) {
 		model.addNewObject(museumsObject);
 	}
+	
+	public void deleteObject(Museumsobjekt museumsObject) {
+		model.deleteObject(museumsObject);
+	}
 
 	public void saveObjects() {
 		model.saveObjects();

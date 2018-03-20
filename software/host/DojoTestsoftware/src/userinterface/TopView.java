@@ -51,6 +51,10 @@ public class TopView extends JPanel implements Observer {
 	public void addNewObject(Museumsobjekt museumObject) {
 		controller.addNewObject(museumObject);
 	}
+	
+	public void deleteObject(Museumsobjekt museumObject) {
+		controller.deleteObject(museumObject);
+	}
 
 	public void saveObjects() {
 		controller.saveObjects();

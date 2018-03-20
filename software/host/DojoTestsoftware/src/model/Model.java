@@ -62,6 +62,22 @@ public class Model extends Observable {
 		}
 		notifyObservers();
 	}
+	
+	public void addNewObject(Museumsobjekt museumsObject) {
+		if (null != museumsObject)
+			if (museumsObject.getName() != "" || museumsObject.getPath() != "") {
+				this.museum.list.add(museumsObject);
+			}
+		notifyObservers();
+	}
+	
+	public void deleteObject(Museumsobjekt museumsObject) {
+		if (null != museumsObject)
+			if (museumsObject.getName() != "" || museumsObject.getPath() != "") {
+				this.museum.list.remove(museumsObject);
+			}
+		notifyObservers();
+	}
 
 	private void setMuseum(Museum museum) {
 		this.museum = museum;
@@ -70,13 +86,5 @@ public class Model extends Observable {
 
 	public Museum getMuseum() {
 		return this.museum;
-	}
-
-	public void addNewObject(Museumsobjekt museumsObject) {
-		if (null != museumsObject)
-			if (museumsObject.getName() != "" || museumsObject.getPath() != "") {
-				this.museum.list.add(museumsObject);
-			}
-		notifyObservers();
 	}
 }

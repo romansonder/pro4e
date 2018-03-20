@@ -118,19 +118,25 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 	@Override
 	public void keyPressed(KeyEvent e) {
 		Museumsobjekt museumObject = getSelectedObject();
-		int n = JOptionPane.showConfirmDialog(null, "Möchtest du dieses Museumsobjekt wirklich löschen?",
+		
+		
+		int pressedKey = JOptionPane.showConfirmDialog(null, "Möchtest du dieses Museumsobjekt wirklich löschen?",
 				"Museumsobjekt löschen", JOptionPane.YES_NO_OPTION);
+		
+		if(pressedKey == 0){
+			topView.deleteObject(museumObject);
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 }
