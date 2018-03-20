@@ -6,36 +6,36 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
-<layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
-<layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
-<layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
-<layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
-<layer number="6" name="Route6" color="1" fill="8" visible="no" active="no"/>
-<layer number="7" name="Route7" color="4" fill="8" visible="no" active="no"/>
-<layer number="8" name="Route8" color="1" fill="2" visible="no" active="no"/>
-<layer number="9" name="Route9" color="4" fill="2" visible="no" active="no"/>
-<layer number="10" name="Route10" color="1" fill="7" visible="no" active="no"/>
-<layer number="11" name="Route11" color="4" fill="7" visible="no" active="no"/>
-<layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
-<layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
-<layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="no"/>
-<layer number="20" name="Dimension" color="24" fill="1" visible="no" active="no"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="no"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="no"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="no"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="no"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="no"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="no"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="no"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="no"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="no"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="yes" active="no"/>
+<layer number="4" name="Route4" color="1" fill="4" visible="yes" active="no"/>
+<layer number="5" name="Route5" color="4" fill="4" visible="yes" active="no"/>
+<layer number="6" name="Route6" color="1" fill="8" visible="yes" active="no"/>
+<layer number="7" name="Route7" color="4" fill="8" visible="yes" active="no"/>
+<layer number="8" name="Route8" color="1" fill="2" visible="yes" active="no"/>
+<layer number="9" name="Route9" color="4" fill="2" visible="yes" active="no"/>
+<layer number="10" name="Route10" color="1" fill="7" visible="yes" active="no"/>
+<layer number="11" name="Route11" color="4" fill="7" visible="yes" active="no"/>
+<layer number="12" name="Route12" color="1" fill="5" visible="yes" active="no"/>
+<layer number="13" name="Route13" color="4" fill="5" visible="yes" active="no"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="yes" active="no"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="no"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="no"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="no"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="no"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="no"/>
+<layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="no"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="no"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="no"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="no"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="no"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="no"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="no"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="no"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="no"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="no"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="no"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="no"/>
@@ -44,8 +44,8 @@
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="no"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="no"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="no"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="no"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="no" active="no"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="no"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="no"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="no"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="no"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="no"/>
@@ -53,17 +53,17 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="no"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="no"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="no"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="no"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="no"/>
-<layer number="48" name="Document" color="7" fill="1" visible="no" active="no"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="no"/>
-<layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="no"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="no"/>
-<layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
-<layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
-<layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
-<layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="no"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="no"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="no"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="no"/>
+<layer number="50" name="dxf" color="7" fill="1" visible="yes" active="no"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="53" name="tGND_GNDA" color="7" fill="9" visible="yes" active="no"/>
+<layer number="54" name="bGND_GNDA" color="1" fill="9" visible="yes" active="no"/>
+<layer number="56" name="wert" color="7" fill="1" visible="yes" active="no"/>
+<layer number="57" name="tCAD" color="7" fill="1" visible="yes" active="no"/>
 <layer number="88" name="SimResults" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="89" name="SimProbes" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
@@ -11207,6 +11207,9 @@ Source: www.kingbright.com</description>
 <part name="R33" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="0R"/>
 <part name="C28" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="0R"/>
 <part name="C29" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="0R"/>
+<part name="R34" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:26058/1" value="15k"/>
+<part name="R35" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:26058/1" value="15k"/>
+<part name="+3V26" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device="" value="3V3"/>
 </parts>
 <sheets>
 <sheet>
@@ -11278,8 +11281,8 @@ Source: www.kingbright.com</description>
 <instance part="P+1" gate="1" x="157.48" y="210.82" smashed="yes">
 <attribute name="VALUE" x="160.02" y="213.36" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="P+2" gate="1" x="134.62" y="210.82" smashed="yes">
-<attribute name="VALUE" x="137.16" y="213.36" size="1.778" layer="96" rot="R180"/>
+<instance part="P+2" gate="1" x="134.62" y="218.44" smashed="yes">
+<attribute name="VALUE" x="137.16" y="220.98" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="C7" gate="G$1" x="203.2" y="63.5"/>
 <instance part="C8" gate="G$1" x="198.12" y="63.5"/>
@@ -11329,10 +11332,10 @@ Source: www.kingbright.com</description>
 <instance part="C21" gate="G$1" x="71.12" y="83.82"/>
 <instance part="Y1" gate="G$1" x="63.5" y="76.2" rot="R90"/>
 <instance part="GND14" gate="1" x="76.2" y="71.12"/>
-<instance part="C22" gate="G$1" x="106.68" y="200.66"/>
-<instance part="GND15" gate="1" x="106.68" y="190.5"/>
-<instance part="R8" gate="G$1" x="96.52" y="205.74" rot="R180"/>
-<instance part="R9" gate="G$1" x="116.84" y="205.74" rot="R180"/>
+<instance part="C22" gate="G$1" x="106.68" y="208.28"/>
+<instance part="GND15" gate="1" x="106.68" y="198.12"/>
+<instance part="R8" gate="G$1" x="96.52" y="213.36" rot="R180"/>
+<instance part="R9" gate="G$1" x="116.84" y="213.36" rot="R180"/>
 <instance part="R12" gate="G$1" x="111.76" y="91.44" rot="R270"/>
 <instance part="R13" gate="G$1" x="111.76" y="109.22" rot="R270"/>
 <instance part="GND20" gate="1" x="111.76" y="81.28"/>
@@ -11344,6 +11347,11 @@ Source: www.kingbright.com</description>
 <instance part="GND21" gate="1" x="124.46" y="81.28"/>
 <instance part="+3V11" gate="G$1" x="124.46" y="119.38" smashed="yes">
 <attribute name="VALUE" x="124.46" y="121.92" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R34" gate="G$1" x="83.82" y="195.58" rot="R270"/>
+<instance part="R35" gate="G$1" x="93.98" y="195.58" rot="R270"/>
+<instance part="+3V26" gate="G$1" x="88.9" y="208.28" smashed="yes">
+<attribute name="VALUE" x="88.9" y="210.82" size="1.778" layer="96" rot="R180"/>
 </instance>
 </instances>
 <busses>
@@ -11358,7 +11366,7 @@ Source: www.kingbright.com</description>
 </bus>
 <bus name="USB_BUS:D+,D-">
 <segment>
-<wire x1="96.52" y1="187.96" x2="96.52" y2="71.12" width="0.762" layer="92"/>
+<wire x1="99.06" y1="187.96" x2="99.06" y2="71.12" width="0.762" layer="92"/>
 <label x="93.98" y="138.43" size="1.778" layer="95" rot="R90"/>
 </segment>
 </bus>
@@ -11535,7 +11543,7 @@ Source: www.kingbright.com</description>
 <segment>
 <pinref part="GND15" gate="1" pin="GND"/>
 <pinref part="C22" gate="G$1" pin="2"/>
-<wire x1="106.68" y1="193.04" x2="106.68" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="200.66" x2="106.68" y2="203.2" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R12" gate="G$1" pin="2"/>
@@ -11645,6 +11653,17 @@ Source: www.kingbright.com</description>
 <pinref part="R15" gate="G$1" pin="1"/>
 <wire x1="124.46" y1="116.84" x2="124.46" y2="114.3" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="R35" gate="G$1" pin="1"/>
+<wire x1="93.98" y1="200.66" x2="93.98" y2="203.2" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="203.2" x2="88.9" y2="203.2" width="0.1524" layer="91"/>
+<pinref part="+3V26" gate="G$1" pin="+3V3"/>
+<wire x1="88.9" y1="203.2" x2="88.9" y2="205.74" width="0.1524" layer="91"/>
+<pinref part="R34" gate="G$1" pin="1"/>
+<wire x1="88.9" y1="203.2" x2="83.82" y2="203.2" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="203.2" x2="83.82" y2="200.66" width="0.1524" layer="91"/>
+<junction x="88.9" y="203.2"/>
+</segment>
 </net>
 <net name="V+" class="0">
 <segment>
@@ -11699,9 +11718,9 @@ Source: www.kingbright.com</description>
 </segment>
 <segment>
 <pinref part="P+2" gate="1" pin="+5V"/>
-<wire x1="134.62" y1="208.28" x2="134.62" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="215.9" x2="134.62" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="R9" gate="G$1" pin="1"/>
-<wire x1="121.92" y1="205.74" x2="134.62" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="213.36" x2="134.62" y2="213.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -12042,10 +12061,10 @@ Source: www.kingbright.com</description>
 <segment>
 <pinref part="J1" gate="G$1" pin="VBUS"/>
 <wire x1="35.56" y1="193.04" x2="27.94" y2="193.04" width="0.1524" layer="91"/>
-<wire x1="27.94" y1="193.04" x2="27.94" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="193.04" x2="27.94" y2="213.36" width="0.1524" layer="91"/>
 <pinref part="J1" gate="G$1" pin="VBUS2"/>
-<wire x1="27.94" y1="205.74" x2="78.74" y2="205.74" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="205.74" x2="78.74" y2="193.04" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="213.36" x2="78.74" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="213.36" x2="78.74" y2="193.04" width="0.1524" layer="91"/>
 <wire x1="78.74" y1="193.04" x2="71.12" y2="193.04" width="0.1524" layer="91"/>
 <pinref part="J1" gate="G$1" pin="VBUS3"/>
 <wire x1="71.12" y1="180.34" x2="78.74" y2="180.34" width="0.1524" layer="91"/>
@@ -12055,18 +12074,18 @@ Source: www.kingbright.com</description>
 <wire x1="35.56" y1="180.34" x2="27.94" y2="180.34" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="180.34" x2="27.94" y2="193.04" width="0.1524" layer="91"/>
 <junction x="27.94" y="193.04"/>
-<junction x="78.74" y="205.74"/>
+<junction x="78.74" y="213.36"/>
 <pinref part="R8" gate="G$1" pin="2"/>
-<wire x1="91.44" y1="205.74" x2="78.74" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="213.36" x2="78.74" y2="213.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$37" class="0">
 <segment>
 <pinref part="C22" gate="G$1" pin="1"/>
-<wire x1="106.68" y1="203.2" x2="106.68" y2="205.74" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="205.74" x2="101.6" y2="205.74" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="205.74" x2="111.76" y2="205.74" width="0.1524" layer="91"/>
-<junction x="106.68" y="205.74"/>
+<wire x1="106.68" y1="210.82" x2="106.68" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="213.36" x2="101.6" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="213.36" x2="111.76" y2="213.36" width="0.1524" layer="91"/>
+<junction x="106.68" y="213.36"/>
 <pinref part="R8" gate="G$1" pin="1"/>
 <pinref part="R9" gate="G$1" pin="2"/>
 </segment>
@@ -12074,25 +12093,33 @@ Source: www.kingbright.com</description>
 <net name="D-" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="DN2"/>
-<wire x1="71.12" y1="187.96" x2="93.98" y2="187.96" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="185.42" x2="93.98" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="187.96" x2="83.82" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="187.96" x2="96.52" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="185.42" x2="96.52" y2="187.96" width="0.1524" layer="91"/>
+<pinref part="R34" gate="G$1" pin="2"/>
+<wire x1="83.82" y1="190.5" x2="83.82" y2="187.96" width="0.1524" layer="91"/>
+<junction x="83.82" y="187.96"/>
 </segment>
 <segment>
-<wire x1="96.52" y1="73.66" x2="99.06" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="73.66" x2="101.6" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="IC3" gate="G$1" pin="USB-"/>
-<wire x1="99.06" y1="71.12" x2="147.32" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="71.12" x2="147.32" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="D+" class="0">
 <segment>
-<wire x1="96.52" y1="182.88" x2="93.98" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="182.88" x2="96.52" y2="185.42" width="0.1524" layer="91"/>
 <pinref part="J1" gate="G$1" pin="DP2"/>
 <wire x1="71.12" y1="185.42" x2="93.98" y2="185.42" width="0.1524" layer="91"/>
+<pinref part="R35" gate="G$1" pin="2"/>
+<wire x1="93.98" y1="185.42" x2="96.52" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="190.5" x2="93.98" y2="185.42" width="0.1524" layer="91"/>
+<junction x="93.98" y="185.42"/>
 </segment>
 <segment>
 <pinref part="IC3" gate="G$1" pin="USB+"/>
-<wire x1="147.32" y1="73.66" x2="99.06" y2="73.66" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="76.2" x2="99.06" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="73.66" x2="101.6" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="76.2" x2="101.6" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -13310,12 +13337,6 @@ Source: www.kingbright.com</description>
 <wire x1="171.45" y1="148.59" x2="167.64" y2="148.59" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$51" class="0">
-<segment>
-<pinref part="R31" gate="G$1" pin="2"/>
-<wire x1="80.01" y1="220.98" x2="73.66" y2="220.98" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$55" class="0">
 <segment>
 <pinref part="C23" gate="G$1" pin="1"/>
@@ -13331,13 +13352,109 @@ Source: www.kingbright.com</description>
 </net>
 <net name="V+" class="0">
 <segment>
+<pinref part="R31" gate="G$1" pin="2"/>
+<wire x1="80.01" y1="220.98" x2="73.66" y2="220.98" width="0.1524" layer="91"/>
 <pinref part="VBAT1" gate="1" pin="V+"/>
-<wire x1="73.66" y1="223.52" x2="73.66" y2="220.98" width="0.1524" layer="91"/>
+<wire x1="73.66" y1="220.98" x2="73.66" y2="223.52" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="102,1,147.32,60.96,VDDA33,+3V3,,,,"/>
+<approved hash="102,1,182.88,93.98,VDD33_0,+3V3,,,,"/>
+<approved hash="102,1,182.88,91.44,VDD33_1,+3V3,,,,"/>
+<approved hash="102,1,182.88,88.9,VDD33_2,+3V3,,,,"/>
+<approved hash="102,1,182.88,83.82,VSS,GND,,,,"/>
+<approved hash="102,2,238.76,156.21,VCC,+3V3,,,,"/>
+<approved hash="103,1,182.88,48.26,IC3,NC13,N$20,,,"/>
+<approved hash="103,1,182.88,50.8,IC3,NC12,N$19,,,"/>
+<approved hash="103,1,182.88,53.34,IC3,NC11,N$21,,,"/>
+<approved hash="103,1,182.88,55.88,IC3,NC10,N$22,,,"/>
+<approved hash="103,1,182.88,58.42,IC3,NC9,N$24,,,"/>
+<approved hash="103,1,182.88,60.96,IC3,NC8,N$25,,,"/>
+<approved hash="103,1,182.88,63.5,IC3,NC7,N$26,,,"/>
+<approved hash="103,1,182.88,66.04,IC3,NC6,N$29,,,"/>
+<approved hash="103,1,182.88,68.58,IC3,NC5,N$30,,,"/>
+<approved hash="103,1,182.88,71.12,IC3,NC4,N$23,,,"/>
+<approved hash="103,1,182.88,73.66,IC3,NC3,N$28,,,"/>
+<approved hash="103,1,182.88,76.2,IC3,NC2,N$32,,,"/>
+<approved hash="103,1,182.88,78.74,IC3,NC1,N$33,,,"/>
+<approved hash="103,2,238.76,143.51,IC4,NC,N$47,,,"/>
+<approved hash="104,3,167.64,179.07,MOD1,VCC,+3V3,,,"/>
+<approved hash="208,1,312.42,205.74,+3V3,out,,,,"/>
+<approved hash="208,1,350.52,208.28,+3V3,sup,,,,"/>
+<approved hash="208,1,233.68,71.12,+3V3,sup,,,,"/>
+<approved hash="208,1,182.88,93.98,+3V3,sup,,,,"/>
+<approved hash="208,1,203.2,71.12,+3V3,sup,,,,"/>
+<approved hash="208,1,182.88,88.9,+3V3,sup,,,,"/>
+<approved hash="208,1,182.88,91.44,+3V3,sup,,,,"/>
+<approved hash="208,1,218.44,71.12,+3V3,sup,,,,"/>
+<approved hash="208,1,93.98,50.8,+3V3,sup,,,,"/>
+<approved hash="208,1,200.66,38.1,+3V3,sup,,,,"/>
+<approved hash="208,1,53.34,40.64,+3V3,sup,,,,"/>
+<approved hash="208,1,147.32,60.96,+3V3,sup,,,,"/>
+<approved hash="208,1,111.76,116.84,+3V3,sup,,,,"/>
+<approved hash="208,1,124.46,116.84,+3V3,sup,,,,"/>
+<approved hash="208,2,31.75,120.65,+3V3,sup,,,,"/>
+<approved hash="208,2,153.67,107.95,+3V3,sup,,,,"/>
+<approved hash="208,2,293.37,207.01,+3V3,sup,,,,"/>
+<approved hash="208,2,255.27,157.48,+3V3,sup,,,,"/>
+<approved hash="208,2,238.76,156.21,+3V3,sup,,,,"/>
+<approved hash="208,3,175.26,180.34,+3V3,sup,,,,"/>
+<approved hash="208,3,261.62,189.23,+3V3,sup,,,,"/>
+<approved hash="208,3,284.48,212.09,+3V3,sup,,,,"/>
+<approved hash="208,3,247.65,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,264.16,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,280.67,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,297.18,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,313.69,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,330.2,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,349.25,102.87,+3V3,sup,,,,"/>
+<approved hash="208,3,363.22,102.87,+3V3,sup,,,,"/>
+<approved hash="208,3,101.6,102.87,+3V3,sup,,,,"/>
+<approved hash="106,1,147.32,53.34,N$4,,,,,"/>
+<approved hash="106,1,35.56,198.12,N$5,,,,,"/>
+<approved hash="106,1,35.56,195.58,N$6,,,,,"/>
+<approved hash="106,1,35.56,190.5,N$7,,,,,"/>
+<approved hash="106,1,35.56,187.96,N$8,,,,,"/>
+<approved hash="106,1,35.56,185.42,N$9,,,,,"/>
+<approved hash="106,1,35.56,182.88,N$10,,,,,"/>
+<approved hash="106,1,35.56,177.8,N$11,,,,,"/>
+<approved hash="106,1,35.56,175.26,N$12,,,,,"/>
+<approved hash="106,1,71.12,198.12,N$13,,,,,"/>
+<approved hash="106,1,71.12,195.58,N$14,,,,,"/>
+<approved hash="106,1,71.12,190.5,N$15,,,,,"/>
+<approved hash="106,1,71.12,182.88,N$16,,,,,"/>
+<approved hash="106,1,71.12,177.8,N$17,,,,,"/>
+<approved hash="106,1,71.12,175.26,N$18,,,,,"/>
+<approved hash="106,1,182.88,50.8,N$19,,,,,"/>
+<approved hash="106,1,182.88,48.26,N$20,,,,,"/>
+<approved hash="106,1,182.88,53.34,N$21,,,,,"/>
+<approved hash="106,1,182.88,55.88,N$22,,,,,"/>
+<approved hash="106,1,182.88,71.12,N$23,,,,,"/>
+<approved hash="106,1,182.88,58.42,N$24,,,,,"/>
+<approved hash="106,1,182.88,60.96,N$25,,,,,"/>
+<approved hash="106,1,182.88,63.5,N$26,,,,,"/>
+<approved hash="106,1,182.88,66.04,N$29,,,,,"/>
+<approved hash="106,1,182.88,68.58,N$30,,,,,"/>
+<approved hash="106,1,182.88,76.2,N$32,,,,,"/>
+<approved hash="106,1,182.88,78.74,N$33,,,,,"/>
+<approved hash="106,2,238.76,143.51,N$47,,,,,"/>
+<approved hash="113,1,194.206,131.976,FRAME1,,,,,"/>
+<approved hash="113,2,194.206,131.976,FRAME2,,,,,"/>
+<approved hash="113,1,53.34,186.69,J1,,,,,"/>
+<approved hash="113,3,194.206,131.976,FRAME3,,,,,"/>
+<approved hash="113,2,339.535,124.407,J2,,,,,"/>
+<approved hash="113,2,291.723,195.58,T1,,,,,"/>
+<approved hash="113,2,276.483,195.58,T2,,,,,"/>
+<approved hash="113,3,349.572,83.82,LED1,,,,,"/>
+<approved hash="113,3,363.542,83.82,LED2,,,,,"/>
+<approved hash="113,3,103.247,95.25,T3,,,,,"/>
+<approved hash="115,2,159.385,125.73,SDDI,,,,,"/>
+<approved hash="115,2,306.07,130.81,SDDI,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>

@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -11202,11 +11202,11 @@ Source: www.kingbright.com</description>
 <part name="GND35" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R31" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
 <part name="X3" library="con-phoenix-350" library_urn="urn:adsk.eagle:library:174" deviceset="1751248" device="" package3d_urn="urn:adsk.eagle:package:9395/1"/>
-<part name="C24" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
-<part name="R32" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="150"/>
-<part name="R33" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="150"/>
-<part name="C28" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
-<part name="C29" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
+<part name="C24" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="NP"/>
+<part name="R32" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="0R"/>
+<part name="R33" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="0R"/>
+<part name="C28" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="0R"/>
+<part name="C29" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="0R"/>
 </parts>
 <sheets>
 <sheet>
@@ -12123,6 +12123,11 @@ Source: www.kingbright.com</description>
 <text x="375.92" y="7.62" size="2.54" layer="94">0.0</text>
 <text x="289.56" y="27.94" size="3.81" layer="94">Soundsystem inkl. Speicher</text>
 <text x="66.04" y="29.21" size="1.778" layer="97" rot="R180">Knochenschallgeber</text>
+<wire x1="45.72" y1="80.01" x2="45.72" y2="69.85" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="45.72" y1="69.85" x2="74.93" y2="69.85" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="45.72" y1="80.01" x2="74.93" y2="80.01" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="74.93" y1="80.01" x2="74.93" y2="69.85" width="0.1524" layer="97" style="shortdash"/>
+<text x="71.12" y="77.47" size="1.778" layer="97">NP</text>
 </plain>
 <instances>
 <instance part="FRAME2" gate="G$1" x="0" y="0"/>
@@ -12164,11 +12169,11 @@ Source: www.kingbright.com</description>
 <instance part="GND23" gate="1" x="241.3" y="180.34"/>
 <instance part="X3" gate="-1" x="60.96" y="54.61" rot="R270"/>
 <instance part="X3" gate="-2" x="48.26" y="54.61" rot="R270"/>
-<instance part="C24" gate="G$1" x="53.34" y="71.12" rot="R90"/>
-<instance part="R32" gate="G$1" x="48.26" y="80.01" rot="R270"/>
-<instance part="R33" gate="G$1" x="60.96" y="80.01" rot="R270"/>
-<instance part="C28" gate="G$1" x="48.26" y="63.5" rot="R180"/>
-<instance part="C29" gate="G$1" x="60.96" y="63.5" rot="R180"/>
+<instance part="C24" gate="G$1" x="53.34" y="73.66" rot="R90"/>
+<instance part="R32" gate="G$1" x="48.26" y="86.36" rot="R270"/>
+<instance part="R33" gate="G$1" x="60.96" y="86.36" rot="R270"/>
+<instance part="C28" gate="G$1" x="48.26" y="62.23" rot="R180"/>
+<instance part="C29" gate="G$1" x="60.96" y="62.23" rot="R180"/>
 </instances>
 <busses>
 <bus name="SD_BUS:D[0..3],CLK,CMD,WP,NCD,PWR">
@@ -12401,7 +12406,7 @@ Source: www.kingbright.com</description>
 <pinref part="IC5" gate="G$1" pin="SPK_P"/>
 <pinref part="R32" gate="G$1" pin="1"/>
 <wire x1="74.93" y1="113.03" x2="48.26" y2="113.03" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="113.03" x2="48.26" y2="85.09" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="113.03" x2="48.26" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SPK-" class="0">
@@ -12409,7 +12414,7 @@ Source: www.kingbright.com</description>
 <pinref part="IC5" gate="G$1" pin="SPK_N"/>
 <wire x1="74.93" y1="110.49" x2="60.96" y2="110.49" width="0.1524" layer="91"/>
 <pinref part="R33" gate="G$1" pin="1"/>
-<wire x1="60.96" y1="85.09" x2="60.96" y2="110.49" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="91.44" x2="60.96" y2="110.49" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PWM" class="0">
@@ -12627,36 +12632,36 @@ Source: www.kingbright.com</description>
 <segment>
 <pinref part="X3" gate="-2" pin="K"/>
 <pinref part="C28" gate="G$1" pin="1"/>
-<wire x1="48.26" y1="57.15" x2="48.26" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="57.15" x2="48.26" y2="59.69" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$57" class="0">
 <segment>
 <pinref part="C29" gate="G$1" pin="1"/>
 <pinref part="X3" gate="-1" pin="K"/>
-<wire x1="60.96" y1="60.96" x2="60.96" y2="57.15" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="59.69" x2="60.96" y2="57.15" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$58" class="0">
 <segment>
 <pinref part="C29" gate="G$1" pin="2"/>
 <pinref part="R33" gate="G$1" pin="2"/>
-<wire x1="60.96" y1="68.58" x2="60.96" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="67.31" x2="60.96" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="C24" gate="G$1" pin="2"/>
-<wire x1="60.96" y1="71.12" x2="60.96" y2="74.93" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="71.12" x2="60.96" y2="71.12" width="0.1524" layer="91"/>
-<junction x="60.96" y="71.12"/>
+<wire x1="60.96" y1="73.66" x2="60.96" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="73.66" x2="60.96" y2="73.66" width="0.1524" layer="91"/>
+<junction x="60.96" y="73.66"/>
 </segment>
 </net>
 <net name="N$59" class="0">
 <segment>
 <pinref part="R32" gate="G$1" pin="2"/>
 <pinref part="C28" gate="G$1" pin="2"/>
-<wire x1="48.26" y1="74.93" x2="48.26" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="81.28" x2="48.26" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="C24" gate="G$1" pin="1"/>
-<wire x1="48.26" y1="71.12" x2="48.26" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="50.8" y1="71.12" x2="48.26" y2="71.12" width="0.1524" layer="91"/>
-<junction x="48.26" y="71.12"/>
+<wire x1="48.26" y1="73.66" x2="48.26" y2="67.31" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="73.66" x2="48.26" y2="73.66" width="0.1524" layer="91"/>
+<junction x="48.26" y="73.66"/>
 </segment>
 </net>
 </nets>
@@ -13305,12 +13310,6 @@ Source: www.kingbright.com</description>
 <wire x1="171.45" y1="148.59" x2="167.64" y2="148.59" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$51" class="0">
-<segment>
-<pinref part="R31" gate="G$1" pin="2"/>
-<wire x1="80.01" y1="220.98" x2="73.66" y2="220.98" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$55" class="0">
 <segment>
 <pinref part="C23" gate="G$1" pin="1"/>
@@ -13326,13 +13325,109 @@ Source: www.kingbright.com</description>
 </net>
 <net name="V+" class="0">
 <segment>
+<pinref part="R31" gate="G$1" pin="2"/>
+<wire x1="80.01" y1="220.98" x2="73.66" y2="220.98" width="0.1524" layer="91"/>
 <pinref part="VBAT1" gate="1" pin="V+"/>
-<wire x1="73.66" y1="223.52" x2="73.66" y2="220.98" width="0.1524" layer="91"/>
+<wire x1="73.66" y1="220.98" x2="73.66" y2="223.52" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="102,1,147.32,60.96,VDDA33,+3V3,,,,"/>
+<approved hash="102,1,182.88,93.98,VDD33_0,+3V3,,,,"/>
+<approved hash="102,1,182.88,91.44,VDD33_1,+3V3,,,,"/>
+<approved hash="102,1,182.88,88.9,VDD33_2,+3V3,,,,"/>
+<approved hash="102,1,182.88,83.82,VSS,GND,,,,"/>
+<approved hash="102,2,238.76,156.21,VCC,+3V3,,,,"/>
+<approved hash="103,1,182.88,48.26,IC3,NC13,N$20,,,"/>
+<approved hash="103,1,182.88,50.8,IC3,NC12,N$19,,,"/>
+<approved hash="103,1,182.88,53.34,IC3,NC11,N$21,,,"/>
+<approved hash="103,1,182.88,55.88,IC3,NC10,N$22,,,"/>
+<approved hash="103,1,182.88,58.42,IC3,NC9,N$24,,,"/>
+<approved hash="103,1,182.88,60.96,IC3,NC8,N$25,,,"/>
+<approved hash="103,1,182.88,63.5,IC3,NC7,N$26,,,"/>
+<approved hash="103,1,182.88,66.04,IC3,NC6,N$29,,,"/>
+<approved hash="103,1,182.88,68.58,IC3,NC5,N$30,,,"/>
+<approved hash="103,1,182.88,71.12,IC3,NC4,N$23,,,"/>
+<approved hash="103,1,182.88,73.66,IC3,NC3,N$28,,,"/>
+<approved hash="103,1,182.88,76.2,IC3,NC2,N$32,,,"/>
+<approved hash="103,1,182.88,78.74,IC3,NC1,N$33,,,"/>
+<approved hash="103,2,238.76,143.51,IC4,NC,N$47,,,"/>
+<approved hash="104,3,167.64,179.07,MOD1,VCC,+3V3,,,"/>
+<approved hash="208,1,312.42,205.74,+3V3,out,,,,"/>
+<approved hash="208,1,350.52,208.28,+3V3,sup,,,,"/>
+<approved hash="208,1,233.68,71.12,+3V3,sup,,,,"/>
+<approved hash="208,1,182.88,93.98,+3V3,sup,,,,"/>
+<approved hash="208,1,203.2,71.12,+3V3,sup,,,,"/>
+<approved hash="208,1,182.88,88.9,+3V3,sup,,,,"/>
+<approved hash="208,1,182.88,91.44,+3V3,sup,,,,"/>
+<approved hash="208,1,218.44,71.12,+3V3,sup,,,,"/>
+<approved hash="208,1,93.98,50.8,+3V3,sup,,,,"/>
+<approved hash="208,1,200.66,38.1,+3V3,sup,,,,"/>
+<approved hash="208,1,53.34,40.64,+3V3,sup,,,,"/>
+<approved hash="208,1,147.32,60.96,+3V3,sup,,,,"/>
+<approved hash="208,1,111.76,116.84,+3V3,sup,,,,"/>
+<approved hash="208,1,124.46,116.84,+3V3,sup,,,,"/>
+<approved hash="208,2,31.75,120.65,+3V3,sup,,,,"/>
+<approved hash="208,2,153.67,107.95,+3V3,sup,,,,"/>
+<approved hash="208,2,293.37,207.01,+3V3,sup,,,,"/>
+<approved hash="208,2,255.27,157.48,+3V3,sup,,,,"/>
+<approved hash="208,2,238.76,156.21,+3V3,sup,,,,"/>
+<approved hash="208,3,175.26,180.34,+3V3,sup,,,,"/>
+<approved hash="208,3,261.62,189.23,+3V3,sup,,,,"/>
+<approved hash="208,3,284.48,212.09,+3V3,sup,,,,"/>
+<approved hash="208,3,247.65,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,264.16,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,280.67,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,297.18,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,313.69,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,330.2,105.41,+3V3,sup,,,,"/>
+<approved hash="208,3,349.25,102.87,+3V3,sup,,,,"/>
+<approved hash="208,3,363.22,102.87,+3V3,sup,,,,"/>
+<approved hash="208,3,101.6,102.87,+3V3,sup,,,,"/>
+<approved hash="106,1,147.32,53.34,N$4,,,,,"/>
+<approved hash="106,1,35.56,198.12,N$5,,,,,"/>
+<approved hash="106,1,35.56,195.58,N$6,,,,,"/>
+<approved hash="106,1,35.56,190.5,N$7,,,,,"/>
+<approved hash="106,1,35.56,187.96,N$8,,,,,"/>
+<approved hash="106,1,35.56,185.42,N$9,,,,,"/>
+<approved hash="106,1,35.56,182.88,N$10,,,,,"/>
+<approved hash="106,1,35.56,177.8,N$11,,,,,"/>
+<approved hash="106,1,35.56,175.26,N$12,,,,,"/>
+<approved hash="106,1,71.12,198.12,N$13,,,,,"/>
+<approved hash="106,1,71.12,195.58,N$14,,,,,"/>
+<approved hash="106,1,71.12,190.5,N$15,,,,,"/>
+<approved hash="106,1,71.12,182.88,N$16,,,,,"/>
+<approved hash="106,1,71.12,177.8,N$17,,,,,"/>
+<approved hash="106,1,71.12,175.26,N$18,,,,,"/>
+<approved hash="106,1,182.88,50.8,N$19,,,,,"/>
+<approved hash="106,1,182.88,48.26,N$20,,,,,"/>
+<approved hash="106,1,182.88,53.34,N$21,,,,,"/>
+<approved hash="106,1,182.88,55.88,N$22,,,,,"/>
+<approved hash="106,1,182.88,71.12,N$23,,,,,"/>
+<approved hash="106,1,182.88,58.42,N$24,,,,,"/>
+<approved hash="106,1,182.88,60.96,N$25,,,,,"/>
+<approved hash="106,1,182.88,63.5,N$26,,,,,"/>
+<approved hash="106,1,182.88,66.04,N$29,,,,,"/>
+<approved hash="106,1,182.88,68.58,N$30,,,,,"/>
+<approved hash="106,1,182.88,76.2,N$32,,,,,"/>
+<approved hash="106,1,182.88,78.74,N$33,,,,,"/>
+<approved hash="106,2,238.76,143.51,N$47,,,,,"/>
+<approved hash="113,1,194.206,131.976,FRAME1,,,,,"/>
+<approved hash="113,2,194.206,131.976,FRAME2,,,,,"/>
+<approved hash="113,1,53.34,186.69,J1,,,,,"/>
+<approved hash="113,3,194.206,131.976,FRAME3,,,,,"/>
+<approved hash="113,2,339.535,124.407,J2,,,,,"/>
+<approved hash="113,2,291.723,195.58,T1,,,,,"/>
+<approved hash="113,2,276.483,195.58,T2,,,,,"/>
+<approved hash="113,3,349.572,83.82,LED1,,,,,"/>
+<approved hash="113,3,363.542,83.82,LED2,,,,,"/>
+<approved hash="113,3,103.247,95.25,T3,,,,,"/>
+<approved hash="115,2,159.385,125.73,SDDI,,,,,"/>
+<approved hash="115,2,306.07,130.81,SDDI,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>

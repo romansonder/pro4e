@@ -11238,7 +11238,7 @@ Source: www.kingbright.com</description>
 <text x="40.64" y="125.73" size="3.81" layer="94">USB-Verbindung</text>
 <text x="321.31" y="11.43" size="2.54" layer="94">Schema V0.0</text>
 <text x="375.92" y="7.62" size="2.54" layer="94">0.0</text>
-<text x="320.04" y="19.05" size="2.54" layer="94">/ USB-Schnittstelle und Energieversorgung</text>
+<text x="289.56" y="27.94" size="3.81" layer="94">USB-Schnittstelle inkl. Energieversorgung</text>
 </plain>
 <instances>
 <instance part="IC1" gate="G$1" x="195.58" y="185.42" smashed="yes">
@@ -12113,6 +12113,9 @@ Source: www.kingbright.com</description>
 <wire x1="166.37" y1="16.51" x2="21.59" y2="16.51" width="0.4064" layer="94" style="shortdash"/>
 <wire x1="21.59" y1="16.51" x2="21.59" y2="149.86" width="0.4064" layer="94" style="shortdash"/>
 <text x="24.13" y="143.51" size="3.81" layer="94">Soundteil</text>
+<text x="321.31" y="11.43" size="2.54" layer="94">Schema V0.0</text>
+<text x="375.92" y="7.62" size="2.54" layer="94">0.0</text>
+<text x="289.56" y="27.94" size="3.81" layer="94">Soundsystem inkl. Speicher</text>
 </plain>
 <instances>
 <instance part="FRAME2" gate="G$1" x="0" y="0"/>
@@ -12639,6 +12642,9 @@ Source: www.kingbright.com</description>
 <wire x1="67.31" y1="118.11" x2="205.74" y2="118.11" width="0.4064" layer="94" style="shortdash"/>
 <wire x1="205.74" y1="118.11" x2="205.74" y2="196.85" width="0.4064" layer="94" style="shortdash"/>
 <wire x1="205.74" y1="196.85" x2="67.31" y2="196.85" width="0.4064" layer="94" style="shortdash"/>
+<text x="321.31" y="11.43" size="2.54" layer="94">Schema V0.0</text>
+<text x="375.92" y="7.62" size="2.54" layer="94">0.0</text>
+<text x="289.56" y="27.94" size="3.81" layer="94">Mikrokontroller / Benutzerschnittstellen</text>
 </plain>
 <instances>
 <instance part="FRAME3" gate="G$1" x="0" y="0"/>
