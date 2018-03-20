@@ -5,8 +5,11 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,7 +24,7 @@ import javax.swing.table.JTableHeader;
 import model.Museum;
 import model.Museumsobjekt;
 
-public class GraphicalArea extends JPanel implements ListSelectionListener {
+public class GraphicalArea extends JPanel implements ListSelectionListener, KeyListener {
 	private static final long serialVersionUID = 1L;
 
 	private TopView topView;
@@ -48,6 +51,7 @@ public class GraphicalArea extends JPanel implements ListSelectionListener {
 		museumTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		museumTable.setDefaultEditor(Object.class, null);
 		museumTable.setSelectionBackground(new Color(140, 136, 134));
+		museumTable.addKeyListener(this);
 
 		JTableHeader header = museumTable.getTableHeader();
 		header.setPreferredSize(new Dimension(100, rowHeight));
@@ -63,6 +67,20 @@ public class GraphicalArea extends JPanel implements ListSelectionListener {
 				GridBagConstraints.BOTH, new Insets(10, 10, 0, 10), 0, 0));
 		add(scrollPane, new GridBagConstraints(0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.NORTH, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
+	}
+
+	private Museumsobjekt getSelectedObject() {
+		int row = museumTable.getSelectedRow();
+
+		int id = (int) museumTable.getModel().getValueAt(row, 0);
+		String name = museumTable.getModel().getValueAt(row, 1).toString();
+		String path = museumTable.getModel().getValueAt(row, 2).toString();
+		Museumsobjekt museumObject = new Museumsobjekt();
+		museumObject.setID(id);
+		museumObject.setName(name);
+		museumObject.setPath(path);
+
+		return museumObject;
 	}
 
 	public void updateMuseumobjekts(Museum museum) {
@@ -90,17 +108,29 @@ public class GraphicalArea extends JPanel implements ListSelectionListener {
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		try {
-			int[] rows = museumTable.getSelectedRows();
-			int id = (int) museumTable.getModel().getValueAt(rows[0], 0);
-			String name = museumTable.getModel().getValueAt(rows[0], 1).toString();
-			String path = museumTable.getModel().getValueAt(rows[0], 2).toString();
-			Museumsobjekt museumObject = new Museumsobjekt();
-			museumObject.setID(id);
-			museumObject.setName(name);
-			museumObject.setPath(path);
+			Museumsobjekt museumObject = getSelectedObject();
 			topView.displayObject(museumObject);
 		} catch (Exception exception) {
 			topView.displayObject(null);
 		}
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		Museumsobjekt museumObject = getSelectedObject();
+		int n = JOptionPane.showConfirmDialog(null, "Möchtest du dieses Museumsobjekt wirklich löschen?",
+				"Museumsobjekt löschen", JOptionPane.YES_NO_OPTION);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 }
