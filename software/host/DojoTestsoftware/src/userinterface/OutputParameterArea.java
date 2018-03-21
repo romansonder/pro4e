@@ -11,28 +11,24 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import model.Museumsobjekt;
+import model.MuseumsObject;
 
 public class OutputParameterArea extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
-	private TopView topView;
 	private JLabel objectID;
 	private JLabel name;
 	private JLabel path;
-
-	private JButton bt1;
+	private JButton musicPlayer;
 
 	public OutputParameterArea(TopView topView) {
 		super(new GridBagLayout());
-
-		this.topView = topView;
 
 		objectID = new JLabel("-");
 		name = new JLabel("-");
 		path = new JLabel("-");
 
-		bt1 = new JButton("Musik Player");
+		musicPlayer = new JButton("Musik Player");
 
 		add(new JLabel("Object ID:"), new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
@@ -52,15 +48,15 @@ public class OutputParameterArea extends JPanel implements ActionListener {
 		add(Box.createHorizontalGlue(), new GridBagConstraints(2, 0, 1, 3, 1.0, 0.0, GridBagConstraints.WEST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(bt1, new GridBagConstraints(3, 0, 1, 3, 0.0, 1.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
+		add(musicPlayer, new GridBagConstraints(3, 0, 1, 3, 0.0, 1.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 	}
 
-	public void displayObject(Museumsobjekt museumObject) {
-		if (null != museumObject) {
-			objectID.setText("" + museumObject.getID());
-			name.setText(museumObject.getName());
-			path.setText(museumObject.getPath());
+	public void displayObject(MuseumsObject museumsObject) {
+		if (null != museumsObject) {
+			objectID.setText("" + museumsObject.getID());
+			name.setText(museumsObject.getName());
+			path.setText(museumsObject.getPath());
 		} else {
 			objectID.setText("-");
 			name.setText("-");
@@ -69,6 +65,6 @@ public class OutputParameterArea extends JPanel implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent event) {
 	}
 }

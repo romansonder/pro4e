@@ -21,7 +21,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.GuiTypes.AccessRightsTypes;
 import model.GuiTypes.LanguagesTypes;
-import model.Museumsobjekt;
+import model.MuseumsObject;
 import utilities.Utility;
 
 public class InputParameterArea extends JPanel implements ActionListener {
@@ -169,8 +169,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 	}
 
-	private Museumsobjekt displayNewObjectDialog() {
-		Museumsobjekt museumsObject = new Museumsobjekt();
+	private MuseumsObject displayNewObjectDialog() {
+		MuseumsObject museumsObject = new MuseumsObject();
 
 		JTextField id = new JTextField();
 		JTextField name = new JTextField();
@@ -209,7 +209,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		if (e.getSource() == btReadIn) {
 			topView.readInObjects();
 		} else if (e.getSource() == btNewObject) {
-			Museumsobjekt museumObject = displayNewObjectDialog();
+			MuseumsObject museumObject = displayNewObjectDialog();
 			topView.addNewObject(museumObject);
 		} else if (e.getSource() == btSave) {
 			topView.saveObjects();

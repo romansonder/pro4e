@@ -24,8 +24,8 @@ public class Testsoftware extends JFrame {
 
 	private static final int minWidth = 1000, minheight = 700;
 	private static final int width = 1000, height = 700;
-
-	private ImageIcon icon = Utility.loadResourceIcon("Dojo_Testsoftware_Icon.png");
+	private final String dojoIconFileName = "Dojo_Testsoftware_Icon.png";
+	private ImageIcon icon = Utility.loadResourceIcon(dojoIconFileName);
 
 	private Model model = new Model();
 	private Controller controller = new Controller(model);
@@ -42,14 +42,13 @@ public class Testsoftware extends JFrame {
 		initToolTips();
 		setVisible(true);
 
-		controller.setView(topView);
 		model.addObserver(topView);
 
 		getContentPane().add(topView, BorderLayout.CENTER);
 		getContentPane().add(statusBar, BorderLayout.SOUTH);
 
 		addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
+			public void windowClosing(WindowEvent event) {
 				System.exit(1);
 			}
 		});
