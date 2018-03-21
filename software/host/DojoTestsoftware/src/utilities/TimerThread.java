@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 public class TimerThread extends Thread {
 	private boolean isRunning;
 
-	private JLabel tempLabel;
 	private JLabel dateLabel;
 	private JLabel timeLabel;
 
@@ -33,17 +32,13 @@ public class TimerThread extends Thread {
 
 			try {
 				TimeUnit.SECONDS.sleep(1);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			} catch (InterruptedException exception) {
+				exception.printStackTrace();
 			}
 		}
 	}
 
 	public void setRunning(boolean isRunning) {
 		this.isRunning = isRunning;
-	}
-
-	public void setTemperatur(int temperature) {
-		this.tempLabel.setText(Integer.toString(temperature) + " °C");
 	}
 }

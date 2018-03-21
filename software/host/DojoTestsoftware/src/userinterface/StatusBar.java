@@ -80,36 +80,36 @@ public final class StatusBar extends JPanel {
 	}
 
 	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
+	protected void paintComponent(Graphics graphics) {
+		super.paintComponent(graphics);
 
 		int y = 0;
-		g.setColor(new Color(156, 154, 140));
-		g.drawLine(0, y, getWidth(), y);
+		graphics.setColor(new Color(156, 154, 140));
+		graphics.drawLine(0, y, getWidth(), y);
 		y++;
 
-		g.setColor(new Color(196, 194, 183));
-		g.drawLine(0, y, getWidth(), y);
+		graphics.setColor(new Color(196, 194, 183));
+		graphics.drawLine(0, y, getWidth(), y);
 		y++;
 
-		g.setColor(new Color(218, 215, 201));
-		g.drawLine(0, y, getWidth(), y);
+		graphics.setColor(new Color(218, 215, 201));
+		graphics.drawLine(0, y, getWidth(), y);
 		y++;
 
-		g.setColor(new Color(233, 231, 217));
-		g.drawLine(0, y, getWidth(), y);
+		graphics.setColor(new Color(233, 231, 217));
+		graphics.drawLine(0, y, getWidth(), y);
 
 		y = getHeight() - 3;
 
-		g.setColor(new Color(233, 232, 218));
-		g.drawLine(0, y, getWidth(), y);
+		graphics.setColor(new Color(233, 232, 218));
+		graphics.drawLine(0, y, getWidth(), y);
 		y++;
 
-		g.setColor(new Color(233, 231, 216));
-		g.drawLine(0, y, getWidth(), y);
+		graphics.setColor(new Color(233, 231, 216));
+		graphics.drawLine(0, y, getWidth(), y);
 		y++;
 
-		g.setColor(new Color(221, 221, 220));
-		g.drawLine(0, y, getWidth(), y);
+		graphics.setColor(new Color(221, 221, 220));
+		graphics.drawLine(0, y, getWidth(), y);
 	}
 }
