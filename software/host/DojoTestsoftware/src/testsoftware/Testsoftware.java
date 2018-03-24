@@ -15,6 +15,7 @@ import javax.swing.plaf.ColorUIResource;
 import controller.Controller;
 import model.GuiTypes.StatusType;
 import model.Model;
+import userinterface.MenuBar;
 import userinterface.StatusBar;
 import userinterface.TopView;
 import utilities.Utility;
@@ -29,6 +30,7 @@ public class Testsoftware extends JFrame {
 
 	private Model model = new Model();
 	private Controller controller = new Controller(model);
+	private MenuBar menuBar = new MenuBar(controller);
 	private StatusBar statusBar = new StatusBar();
 	private TopView topView = new TopView(controller);
 
@@ -46,6 +48,7 @@ public class Testsoftware extends JFrame {
 
 		getContentPane().add(topView, BorderLayout.CENTER);
 		getContentPane().add(statusBar, BorderLayout.SOUTH);
+		setJMenuBar(menuBar);
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent event) {
