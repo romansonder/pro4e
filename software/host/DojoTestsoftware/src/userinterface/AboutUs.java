@@ -17,22 +17,22 @@ import utilities.Utility;
 
 public class AboutUs extends JDialog {
 	private static final long serialVersionUID = 1L;
-	private static ImageIcon icon = Utility.loadResourceIcon("Dojo_Testsoftware_Icon.png");
+	private final static String title = "Über uns";
+	private final static String dojoIconFileName = "Dojo_Testsoftware_Icon.png";
+	private final static String dojoLogoFileName = "Dojo_Testsoftware_Logo.png";
+	private static final int width = 570, height = 420;
 
 	public static void aboutUsAnzeigen() {
-		final String title = "Über uns";
-		final int width = 570;
-		final int height = 420;
-
 		final JDialog aboutUsDialog = new JDialog(null, title, ModalityType.APPLICATION_MODAL);
 		aboutUsDialog.setSize(new Dimension(width, height));
 		aboutUsDialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		aboutUsDialog.setLocationRelativeTo(null);
 		aboutUsDialog.setResizable(false);
+		ImageIcon icon = Utility.loadResourceIcon(dojoIconFileName);
 		aboutUsDialog.setIconImage(icon.getImage());
 		aboutUsDialog.setLayout(new GridBagLayout());
 
-		ImageIcon backgroundImage = Utility.loadResourceIcon("Dojo_Testsoftware_Logo.png");
+		ImageIcon backgroundImage = Utility.loadResourceIcon(dojoLogoFileName);
 		backgroundImage.setImage(backgroundImage.getImage().getScaledInstance(340, 200, Image.SCALE_DEFAULT));
 		JLabel backgroundLabel = new JLabel(backgroundImage);
 		backgroundLabel.setSize(new Dimension(width, height));

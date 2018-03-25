@@ -23,8 +23,9 @@ import utilities.Utility;
 public class Testsoftware extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	private static final int minWidth = 1000, minheight = 700;
-	private static final int width = 1000, height = 700;
+	private static final int minWidth = 1000, minheight = 685;
+	private static final int width = 1000, height = 685;
+	private final String title = "Dojo - Testsoftware";
 	private final String dojoIconFileName = "Dojo_Testsoftware_Icon.png";
 	private ImageIcon icon = Utility.loadResourceIcon(dojoIconFileName);
 
@@ -39,7 +40,7 @@ public class Testsoftware extends JFrame {
 		setMinimumSize(new Dimension(minWidth, minheight));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		setTitle("Dojo - Testsoftware");
+		setTitle(title);
 		setIconImage(icon.getImage());
 		initToolTips();
 		setVisible(true);
