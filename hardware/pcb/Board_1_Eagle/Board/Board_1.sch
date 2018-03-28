@@ -10902,6 +10902,89 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 </deviceset>
 </devicesets>
 </library>
+<library name="TI_IC">
+<packages>
+<package name="SO08-6.0">
+<wire x1="-2.4511" y1="1.9558" x2="2.4511" y2="1.9558" width="0.127" layer="21"/>
+<wire x1="2.4511" y1="1.9558" x2="2.4511" y2="-1.9558" width="0.127" layer="21"/>
+<wire x1="2.4511" y1="-1.9558" x2="-1.574434375" y2="-1.9558" width="0.127" layer="21"/>
+<wire x1="-1.574434375" y1="-1.9558" x2="-2.4511" y2="-1.079134375" width="0.127" layer="21"/>
+<wire x1="-2.4511" y1="-1.079134375" x2="-2.4511" y2="1.9558" width="0.127" layer="21"/>
+<smd name="1" x="-1.905" y="-2.8" dx="1.27" dy="0.635" layer="1" rot="R90"/>
+<smd name="2" x="-0.635" y="-2.8" dx="1.27" dy="0.635" layer="1" rot="R90"/>
+<smd name="3" x="0.635" y="-2.8" dx="1.27" dy="0.635" layer="1" rot="R90"/>
+<smd name="4" x="1.905" y="-2.8" dx="1.27" dy="0.635" layer="1" rot="R90"/>
+<smd name="5" x="1.905" y="2.8" dx="1.27" dy="0.635" layer="1" rot="R90"/>
+<smd name="6" x="0.635" y="2.8" dx="1.27" dy="0.635" layer="1" rot="R90"/>
+<smd name="7" x="-0.635" y="2.8" dx="1.27" dy="0.635" layer="1" rot="R90"/>
+<smd name="8" x="-1.905" y="2.8" dx="1.27" dy="0.635" layer="1" rot="R90"/>
+<circle x="-2.794" y="-1.778" radius="0.3" width="0.3" layer="21"/>
+<rectangle x1="-2.413" y1="-1.905" x2="2.413" y2="1.905" layer="39"/>
+<text x="-2.54" y="-1.27" size="0.8128" layer="25" ratio="10" rot="R90">&gt;NAME</text>
+<text x="3.556" y="-2.032" size="0.8128" layer="27" ratio="10" rot="R90">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="TS4890">
+<pin name="!STANDBY" x="-13.97" y="3.81" length="short"/>
+<pin name="BYPASS" x="-13.97" y="1.27" length="short"/>
+<pin name="VIN+" x="-13.97" y="-1.27" length="short"/>
+<pin name="VIN-" x="-13.97" y="-3.81" length="short"/>
+<pin name="VOUT1" x="13.97" y="-3.81" length="short" rot="R180"/>
+<pin name="VCC" x="13.97" y="-1.27" length="short" rot="R180"/>
+<pin name="GND" x="13.97" y="1.27" length="short" rot="R180"/>
+<pin name="VOUT2" x="13.97" y="3.81" length="short" rot="R180"/>
+<wire x1="-10.16" y1="5.08" x2="10.16" y2="5.08" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="5.08" x2="10.16" y2="3.81" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="3.81" x2="10.16" y2="1.27" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="1.27" x2="10.16" y2="-1.27" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="-1.27" x2="10.16" y2="-3.81" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="-3.81" x2="10.16" y2="-5.08" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="-5.08" x2="-10.16" y2="-5.08" width="0.1524" layer="94"/>
+<wire x1="-10.16" y1="-5.08" x2="-10.16" y2="-3.81" width="0.1524" layer="94"/>
+<wire x1="-10.16" y1="-3.81" x2="-10.16" y2="-1.27" width="0.1524" layer="94"/>
+<wire x1="-10.16" y1="-1.27" x2="-10.16" y2="1.27" width="0.1524" layer="94"/>
+<wire x1="-10.16" y1="1.27" x2="-10.16" y2="3.81" width="0.1524" layer="94"/>
+<wire x1="-10.16" y1="3.81" x2="-10.16" y2="5.08" width="0.1524" layer="94"/>
+<wire x1="-11.43" y1="3.81" x2="-10.16" y2="3.81" width="0.1524" layer="94"/>
+<wire x1="-11.43" y1="1.27" x2="-10.16" y2="1.27" width="0.1524" layer="94"/>
+<wire x1="-11.43" y1="-1.27" x2="-10.16" y2="-1.27" width="0.1524" layer="94"/>
+<wire x1="-11.43" y1="-3.81" x2="-10.16" y2="-3.81" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="-3.81" x2="11.43" y2="-3.81" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="-1.27" x2="11.43" y2="-1.27" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="1.27" x2="11.43" y2="1.27" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="3.81" x2="11.43" y2="3.81" width="0.1524" layer="94"/>
+<text x="-10.16" y="5.08" size="1.778" layer="95">&gt;NAME</text>
+<text x="0" y="5.08" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="TS4890">
+<description>Rail To Rail OUTPUT 1W Audio Power Amplifier With Standby Mode Active Low
+ http://www.alldatasheet.com/datasheet-pdf/pdf/25462/STMICROELECTRONICS/TS4890.html</description>
+<gates>
+<gate name="G$1" symbol="TS4890" x="0" y="0"/>
+</gates>
+<devices>
+<device name="D" package="SO08-6.0">
+<connects>
+<connect gate="G$1" pin="!STANDBY" pad="1"/>
+<connect gate="G$1" pin="BYPASS" pad="2"/>
+<connect gate="G$1" pin="GND" pad="7"/>
+<connect gate="G$1" pin="VCC" pad="6"/>
+<connect gate="G$1" pin="VIN+" pad="3"/>
+<connect gate="G$1" pin="VIN-" pad="4"/>
+<connect gate="G$1" pin="VOUT1" pad="5"/>
+<connect gate="G$1" pin="VOUT2" pad="8"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -11065,11 +11148,8 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <part name="GND35" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R31" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
 <part name="X3" library="con-phoenix-350" library_urn="urn:adsk.eagle:library:174" deviceset="1751248" device="" package3d_urn="urn:adsk.eagle:package:9395/1"/>
-<part name="C24" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="NP"/>
-<part name="R32" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="0R"/>
-<part name="R33" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="0R"/>
 <part name="C28" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="0R"/>
-<part name="C29" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="0R"/>
+<part name="C29" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="5.6u"/>
 <part name="R34" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:26058/1" value="15k"/>
 <part name="R35" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:26058/1" value="15k"/>
 <part name="+3V26" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device="" value="3V3"/>
@@ -11079,6 +11159,20 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <part name="GND36" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V27" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device="" value="3V3"/>
 <part name="R38" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="MELF0102W" package3d_urn="urn:adsk.eagle:package:26105/1" value="0R"/>
+<part name="U$1" library="TI_IC" deviceset="TS4890" device="D"/>
+<part name="+3V28" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device="" value="3V3"/>
+<part name="GND37" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="GND38" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="C30" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
+<part name="C31" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
+<part name="GND39" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="C32" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805K" package3d_urn="urn:adsk.eagle:package:23681/2" value="1u"/>
+<part name="C34" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="100u"/>
+<part name="R39" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
+<part name="R40" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
+<part name="R41" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
+<part name="R42" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k"/>
+<part name="X4" library="con-phoenix-350" library_urn="urn:adsk.eagle:library:174" deviceset="1751248" device="" package3d_urn="urn:adsk.eagle:package:9395/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -11938,20 +12032,20 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <wire x1="360.68" y1="152.4" x2="311.15" y2="152.4" width="0.4064" layer="94" style="shortdash"/>
 <wire x1="311.15" y1="152.4" x2="311.15" y2="85.09" width="0.4064" layer="94" style="shortdash"/>
 <text x="313.69" y="146.05" size="3.81" layer="94">SD-Karte</text>
-<wire x1="21.59" y1="149.86" x2="166.37" y2="149.86" width="0.4064" layer="94" style="shortdash"/>
-<wire x1="166.37" y1="149.86" x2="166.37" y2="16.51" width="0.4064" layer="94" style="shortdash"/>
-<wire x1="166.37" y1="16.51" x2="21.59" y2="16.51" width="0.4064" layer="94" style="shortdash"/>
-<wire x1="21.59" y1="16.51" x2="21.59" y2="149.86" width="0.4064" layer="94" style="shortdash"/>
+<wire x1="11.43" y1="149.86" x2="166.37" y2="149.86" width="0.4064" layer="94" style="shortdash"/>
+<wire x1="166.37" y1="149.86" x2="166.37" y2="1.27" width="0.4064" layer="94" style="shortdash"/>
+<wire x1="166.37" y1="1.27" x2="11.43" y2="2.54" width="0.4064" layer="94" style="shortdash"/>
+<wire x1="11.43" y1="2.54" x2="11.43" y2="149.86" width="0.4064" layer="94" style="shortdash"/>
 <text x="24.13" y="143.51" size="3.81" layer="94">Soundteil</text>
 <text x="321.31" y="11.43" size="2.54" layer="94">Schema V0.0</text>
 <text x="375.92" y="7.62" size="2.54" layer="94">0.0</text>
 <text x="289.56" y="27.94" size="3.81" layer="94">Soundsystem inkl. Speicher</text>
-<text x="66.04" y="29.21" size="1.778" layer="97" rot="R180">Knochenschallgeber</text>
-<wire x1="45.72" y1="80.01" x2="45.72" y2="69.85" width="0.1524" layer="97" style="shortdash"/>
-<wire x1="45.72" y1="69.85" x2="74.93" y2="69.85" width="0.1524" layer="97" style="shortdash"/>
-<wire x1="45.72" y1="80.01" x2="74.93" y2="80.01" width="0.1524" layer="97" style="shortdash"/>
-<wire x1="74.93" y1="80.01" x2="74.93" y2="69.85" width="0.1524" layer="97" style="shortdash"/>
-<text x="71.12" y="77.47" size="1.778" layer="97">NP</text>
+<text x="130.81" y="62.23" size="1.778" layer="97" rot="R270">Knochenschallgeber</text>
+<text x="59.69" y="92.71" size="1.778" layer="97" rot="R180">NP</text>
+<wire x1="45.72" y1="93.98" x2="71.12" y2="93.98" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="45.72" y1="77.47" x2="71.12" y2="77.47" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="45.72" y1="77.47" x2="45.72" y2="93.98" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="71.12" y1="77.47" x2="71.12" y2="93.98" width="0.1524" layer="97" style="shortdash"/>
 </plain>
 <instances>
 <instance part="FRAME2" gate="G$1" x="0" y="0"/>
@@ -11964,11 +12058,11 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <instance part="+3V9" gate="G$1" x="153.67" y="110.49" smashed="yes">
 <attribute name="VALUE" x="153.67" y="113.03" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="+3V10" gate="G$1" x="31.75" y="123.19" smashed="yes">
-<attribute name="VALUE" x="31.75" y="125.73" size="1.778" layer="96" rot="R180"/>
+<instance part="+3V10" gate="G$1" x="17.78" y="123.19" smashed="yes">
+<attribute name="VALUE" x="17.78" y="125.73" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="GND17" gate="1" x="125.73" y="102.87"/>
-<instance part="GND18" gate="1" x="31.75" y="100.33"/>
+<instance part="GND18" gate="1" x="17.78" y="100.33"/>
 <instance part="J2" gate="G$1" x="341.63" y="120.65"/>
 <instance part="GND19" gate="1" x="205.74" y="90.17"/>
 <instance part="T1" gate="A" x="293.37" y="195.58" rot="MR180"/>
@@ -11987,18 +12081,32 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <instance part="R18" gate="G$1" x="153.67" y="97.79" rot="R270"/>
 <instance part="R19" gate="G$1" x="113.03" y="97.79" rot="R270"/>
 <instance part="C26" gate="G$1" x="120.65" y="99.06"/>
-<instance part="C27" gate="G$1" x="31.75" y="110.49"/>
+<instance part="C27" gate="G$1" x="17.78" y="110.49"/>
 <instance part="D1" gate="G$1" x="241.3" y="204.47" rot="R180"/>
 <instance part="R10" gate="G$1" x="241.3" y="190.5" rot="R270"/>
 <instance part="GND23" gate="1" x="241.3" y="180.34"/>
-<instance part="X3" gate="-1" x="60.96" y="54.61" rot="R270"/>
-<instance part="X3" gate="-2" x="48.26" y="54.61" rot="R270"/>
-<instance part="C24" gate="G$1" x="53.34" y="73.66" rot="R90"/>
-<instance part="R32" gate="G$1" x="48.26" y="86.36" rot="R270"/>
-<instance part="R33" gate="G$1" x="60.96" y="86.36" rot="R270"/>
-<instance part="C28" gate="G$1" x="48.26" y="62.23" rot="R180"/>
-<instance part="C29" gate="G$1" x="60.96" y="62.23" rot="R180"/>
+<instance part="X3" gate="-1" x="105.41" y="46.99"/>
+<instance part="X3" gate="-2" x="105.41" y="54.61"/>
+<instance part="C28" gate="G$1" x="97.79" y="54.61" rot="R270"/>
+<instance part="C29" gate="G$1" x="97.79" y="46.99" rot="R270"/>
 <instance part="R38" gate="G$1" x="220.98" y="204.47"/>
+<instance part="U$1" gate="G$1" x="63.5" y="50.8"/>
+<instance part="+3V28" gate="G$1" x="83.82" y="77.47" smashed="yes">
+<attribute name="VALUE" x="83.82" y="80.01" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="GND37" gate="1" x="80.01" y="33.02"/>
+<instance part="GND38" gate="1" x="19.05" y="26.67"/>
+<instance part="C30" gate="G$1" x="19.05" y="39.37"/>
+<instance part="C31" gate="G$1" x="78.74" y="67.31"/>
+<instance part="GND39" gate="1" x="78.74" y="57.15"/>
+<instance part="C32" gate="G$1" x="13.97" y="39.37"/>
+<instance part="C34" gate="G$1" x="66.04" y="67.31"/>
+<instance part="R39" gate="G$1" x="63.5" y="40.64" rot="R180"/>
+<instance part="R40" gate="G$1" x="43.18" y="68.58" rot="R270"/>
+<instance part="R41" gate="G$1" x="35.56" y="68.58" rot="R270"/>
+<instance part="R42" gate="G$1" x="26.67" y="49.53" rot="R180"/>
+<instance part="X4" gate="-1" x="48.26" y="86.36"/>
+<instance part="X4" gate="-2" x="48.26" y="81.28"/>
 </instances>
 <busses>
 <bus name="SD_BUS:D[0..3],CLK,CMD,WP,NCD,PWR">
@@ -12019,7 +12127,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <wire x1="276.86" y1="236.22" x2="276.86" y2="251.46" width="0.762" layer="92" style="shortdash"/>
 </segment>
 </bus>
-<bus name="SOUND_BUS:RESET,NEXT,PREV,DCLK,DIN,BUSY,PLAY">
+<bus name="SOUND_BUS:RESET,NEXT,PREV,DCLK,DIN,BUSY,PLAY,STANDBY">
 <segment>
 <wire x1="55.88" y1="116.84" x2="55.88" y2="135.89" width="0.762" layer="92"/>
 <label x="138.43" y="158.75" size="1.778" layer="95" rot="R90"/>
@@ -12028,6 +12136,9 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <wire x1="140.97" y1="144.78" x2="140.97" y2="167.64" width="0.762" layer="92"/>
 <wire x1="140.97" y1="167.64" x2="140.97" y2="181.61" width="0.762" layer="92" style="shortdash"/>
 <wire x1="55.88" y1="135.89" x2="60.96" y2="140.97" width="0.762" layer="92"/>
+<wire x1="60.96" y1="140.97" x2="29.21" y2="140.97" width="0.762" layer="92"/>
+<wire x1="29.21" y1="140.97" x2="25.4" y2="137.16" width="0.762" layer="92"/>
+<wire x1="25.4" y1="137.16" x2="25.4" y2="54.61" width="0.762" layer="92"/>
 </segment>
 </bus>
 </busses>
@@ -12062,11 +12173,11 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <net name="+3V3" class="0">
 <segment>
 <pinref part="IC5" gate="G$1" pin="VCC"/>
-<wire x1="74.93" y1="115.57" x2="31.75" y2="115.57" width="0.1524" layer="91"/>
-<wire x1="31.75" y1="115.57" x2="31.75" y2="113.03" width="0.1524" layer="91"/>
-<junction x="31.75" y="115.57"/>
+<wire x1="74.93" y1="115.57" x2="17.78" y2="115.57" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="115.57" x2="17.78" y2="113.03" width="0.1524" layer="91"/>
+<junction x="17.78" y="115.57"/>
 <pinref part="+3V10" gate="G$1" pin="+3V3"/>
-<wire x1="31.75" y1="120.65" x2="31.75" y2="115.57" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="120.65" x2="17.78" y2="115.57" width="0.1524" layer="91"/>
 <pinref part="C27" gate="G$1" pin="1"/>
 </segment>
 <segment>
@@ -12099,6 +12210,21 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <pinref part="GND" gate="G$1" pin="VCC"/>
 <wire x1="255.27" y1="156.21" x2="238.76" y2="156.21" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="VCC"/>
+<wire x1="77.47" y1="49.53" x2="83.82" y2="49.53" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="49.53" x2="83.82" y2="72.39" width="0.1524" layer="91"/>
+<pinref part="+3V28" gate="G$1" pin="+3V3"/>
+<pinref part="C31" gate="G$1" pin="1"/>
+<wire x1="83.82" y1="72.39" x2="83.82" y2="74.93" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="69.85" x2="78.74" y2="72.39" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="72.39" x2="83.82" y2="72.39" width="0.1524" layer="91"/>
+<junction x="83.82" y="72.39"/>
+<pinref part="C34" gate="G$1" pin="1"/>
+<wire x1="66.04" y1="69.85" x2="66.04" y2="72.39" width="0.1524" layer="91"/>
+<junction x="78.74" y="72.39"/>
+<wire x1="66.04" y1="72.39" x2="78.74" y2="72.39" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="GND" class="0">
 <segment>
@@ -12108,7 +12234,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <pinref part="GND17" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="31.75" y1="102.87" x2="31.75" y2="105.41" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="102.87" x2="17.78" y2="105.41" width="0.1524" layer="91"/>
 <pinref part="GND18" gate="1" pin="GND"/>
 <pinref part="C27" gate="G$1" pin="2"/>
 </segment>
@@ -12156,6 +12282,32 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <pinref part="R10" gate="G$1" pin="2"/>
 <pinref part="GND23" gate="1" pin="GND"/>
 <wire x1="241.3" y1="185.42" x2="241.3" y2="182.88" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="GND"/>
+<pinref part="GND37" gate="1" pin="GND"/>
+<wire x1="77.47" y1="52.07" x2="80.01" y2="52.07" width="0.1524" layer="91"/>
+<wire x1="80.01" y1="52.07" x2="80.01" y2="35.56" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C30" gate="G$1" pin="2"/>
+<pinref part="GND38" gate="1" pin="GND"/>
+<wire x1="19.05" y1="34.29" x2="19.05" y2="31.75" width="0.1524" layer="91"/>
+<pinref part="C32" gate="G$1" pin="2"/>
+<wire x1="19.05" y1="31.75" x2="19.05" y2="29.21" width="0.1524" layer="91"/>
+<wire x1="13.97" y1="34.29" x2="13.97" y2="31.75" width="0.1524" layer="91"/>
+<wire x1="13.97" y1="31.75" x2="19.05" y2="31.75" width="0.1524" layer="91"/>
+<junction x="19.05" y="31.75"/>
+</segment>
+<segment>
+<pinref part="GND39" gate="1" pin="GND"/>
+<pinref part="C31" gate="G$1" pin="2"/>
+<wire x1="78.74" y1="59.69" x2="78.74" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="60.96" x2="78.74" y2="62.23" width="0.1524" layer="91"/>
+<junction x="78.74" y="60.96"/>
+<pinref part="C34" gate="G$1" pin="2"/>
+<wire x1="78.74" y1="60.96" x2="66.04" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="60.96" x2="66.04" y2="62.23" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$38" class="0">
@@ -12224,17 +12376,25 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <net name="SPK+" class="0">
 <segment>
 <pinref part="IC5" gate="G$1" pin="SPK_P"/>
-<pinref part="R32" gate="G$1" pin="1"/>
-<wire x1="74.93" y1="113.03" x2="48.26" y2="113.03" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="113.03" x2="48.26" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="74.93" y1="113.03" x2="43.18" y2="113.03" width="0.1524" layer="91"/>
+<pinref part="R40" gate="G$1" pin="1"/>
+<wire x1="43.18" y1="73.66" x2="43.18" y2="86.36" width="0.1524" layer="91"/>
+<pinref part="X4" gate="-1" pin="K"/>
+<wire x1="43.18" y1="86.36" x2="43.18" y2="113.03" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="86.36" x2="43.18" y2="86.36" width="0.1524" layer="91"/>
+<junction x="43.18" y="86.36"/>
 </segment>
 </net>
 <net name="SPK-" class="0">
 <segment>
 <pinref part="IC5" gate="G$1" pin="SPK_N"/>
-<wire x1="74.93" y1="110.49" x2="60.96" y2="110.49" width="0.1524" layer="91"/>
-<pinref part="R33" gate="G$1" pin="1"/>
-<wire x1="60.96" y1="91.44" x2="60.96" y2="110.49" width="0.1524" layer="91"/>
+<wire x1="74.93" y1="110.49" x2="35.56" y2="110.49" width="0.1524" layer="91"/>
+<pinref part="R41" gate="G$1" pin="1"/>
+<wire x1="35.56" y1="73.66" x2="35.56" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="X4" gate="-2" pin="K"/>
+<wire x1="35.56" y1="81.28" x2="35.56" y2="110.49" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="81.28" x2="35.56" y2="81.28" width="0.1524" layer="91"/>
+<junction x="35.56" y="81.28"/>
 </segment>
 </net>
 <net name="PWM" class="0">
@@ -12448,42 +12608,6 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <label x="59.69" y="123.19" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$56" class="0">
-<segment>
-<pinref part="X3" gate="-2" pin="K"/>
-<pinref part="C28" gate="G$1" pin="1"/>
-<wire x1="48.26" y1="57.15" x2="48.26" y2="59.69" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$57" class="0">
-<segment>
-<pinref part="C29" gate="G$1" pin="1"/>
-<pinref part="X3" gate="-1" pin="K"/>
-<wire x1="60.96" y1="59.69" x2="60.96" y2="57.15" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$58" class="0">
-<segment>
-<pinref part="C29" gate="G$1" pin="2"/>
-<pinref part="R33" gate="G$1" pin="2"/>
-<wire x1="60.96" y1="67.31" x2="60.96" y2="73.66" width="0.1524" layer="91"/>
-<pinref part="C24" gate="G$1" pin="2"/>
-<wire x1="60.96" y1="73.66" x2="60.96" y2="81.28" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="73.66" x2="60.96" y2="73.66" width="0.1524" layer="91"/>
-<junction x="60.96" y="73.66"/>
-</segment>
-</net>
-<net name="N$59" class="0">
-<segment>
-<pinref part="R32" gate="G$1" pin="2"/>
-<pinref part="C28" gate="G$1" pin="2"/>
-<wire x1="48.26" y1="81.28" x2="48.26" y2="73.66" width="0.1524" layer="91"/>
-<pinref part="C24" gate="G$1" pin="1"/>
-<wire x1="48.26" y1="73.66" x2="48.26" y2="67.31" width="0.1524" layer="91"/>
-<wire x1="50.8" y1="73.66" x2="48.26" y2="73.66" width="0.1524" layer="91"/>
-<junction x="48.26" y="73.66"/>
-</segment>
-</net>
 <net name="N$8" class="0">
 <segment>
 <pinref part="R38" gate="G$1" pin="2"/>
@@ -12496,6 +12620,86 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <pinref part="IC5" gate="G$1" pin="P01"/>
 <pinref part="GND" gate="G$1" pin="NO3"/>
 <wire x1="110.49" y1="125.73" x2="208.28" y2="125.73" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="VOUT1"/>
+<wire x1="77.47" y1="46.99" x2="83.82" y2="46.99" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="40.64" x2="83.82" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="40.64" x2="83.82" y2="46.99" width="0.1524" layer="91"/>
+<pinref part="R39" gate="G$1" pin="1"/>
+<pinref part="C29" gate="G$1" pin="2"/>
+<wire x1="92.71" y1="46.99" x2="83.82" y2="46.99" width="0.1524" layer="91"/>
+<junction x="83.82" y="46.99"/>
+</segment>
+</net>
+<net name="STANDBY" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="!STANDBY"/>
+<wire x1="25.4" y1="57.15" x2="27.94" y2="54.61" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="54.61" x2="49.53" y2="54.61" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$13" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="BYPASS"/>
+<wire x1="49.53" y1="52.07" x2="19.05" y2="52.07" width="0.1524" layer="91"/>
+<pinref part="R42" gate="G$1" pin="2"/>
+<wire x1="21.59" y1="49.53" x2="19.05" y2="49.53" width="0.1524" layer="91"/>
+<wire x1="19.05" y1="49.53" x2="19.05" y2="52.07" width="0.1524" layer="91"/>
+<wire x1="19.05" y1="49.53" x2="19.05" y2="44.45" width="0.1524" layer="91"/>
+<junction x="19.05" y="49.53"/>
+<pinref part="C30" gate="G$1" pin="1"/>
+<pinref part="C32" gate="G$1" pin="1"/>
+<wire x1="19.05" y1="44.45" x2="13.97" y2="44.45" width="0.1524" layer="91"/>
+<wire x1="13.97" y1="44.45" x2="13.97" y2="41.91" width="0.1524" layer="91"/>
+<wire x1="19.05" y1="41.91" x2="19.05" y2="44.45" width="0.1524" layer="91"/>
+<junction x="19.05" y="44.45"/>
+</segment>
+</net>
+<net name="N$14" class="0">
+<segment>
+<pinref part="R40" gate="G$1" pin="2"/>
+<pinref part="U$1" gate="G$1" pin="VIN-"/>
+<wire x1="43.18" y1="63.5" x2="43.18" y2="46.99" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="46.99" x2="49.53" y2="46.99" width="0.1524" layer="91"/>
+<pinref part="R39" gate="G$1" pin="2"/>
+<wire x1="43.18" y1="46.99" x2="43.18" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="40.64" x2="58.42" y2="40.64" width="0.1524" layer="91"/>
+<junction x="43.18" y="46.99"/>
+</segment>
+</net>
+<net name="N$15" class="0">
+<segment>
+<pinref part="R42" gate="G$1" pin="1"/>
+<pinref part="U$1" gate="G$1" pin="VIN+"/>
+<wire x1="31.75" y1="49.53" x2="35.56" y2="49.53" width="0.1524" layer="91"/>
+<pinref part="R41" gate="G$1" pin="2"/>
+<wire x1="35.56" y1="49.53" x2="49.53" y2="49.53" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="63.5" x2="35.56" y2="49.53" width="0.1524" layer="91"/>
+<junction x="35.56" y="49.53"/>
+</segment>
+</net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="C28" gate="G$1" pin="1"/>
+<pinref part="X3" gate="-2" pin="K"/>
+<wire x1="100.33" y1="54.61" x2="102.87" y2="54.61" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$16" class="0">
+<segment>
+<pinref part="C29" gate="G$1" pin="1"/>
+<pinref part="X3" gate="-1" pin="K"/>
+<wire x1="100.33" y1="46.99" x2="102.87" y2="46.99" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$11" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="VOUT2"/>
+<pinref part="C28" gate="G$1" pin="2"/>
+<wire x1="77.47" y1="54.61" x2="92.71" y2="54.61" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -12618,7 +12822,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <instance part="R31" gate="G$1" x="85.09" y="220.98" rot="R180"/>
 </instances>
 <busses>
-<bus name="SOUND_BUS:RESET,NEXT,PREV,DCLK,DIN,BUSY,PLAY">
+<bus name="SOUND_BUS:RESET,NEXT,PREV,DCLK,DIN,BUSY,PLAY,STANDBY">
 <segment>
 <wire x1="99.06" y1="184.15" x2="93.98" y2="189.23" width="0.762" layer="92"/>
 <label x="48.26" y="190.5" size="1.778" layer="95"/>
@@ -13179,6 +13383,14 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <wire x1="99.06" y1="158.75" x2="101.6" y2="156.21" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="156.21" x2="114.3" y2="156.21" width="0.1524" layer="91"/>
 <label x="101.6" y="156.21" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="STANDBY" class="0">
+<segment>
+<pinref part="MOD1" gate="G$1" pin="P0.04/AIN2"/>
+<wire x1="114.3" y1="173.99" x2="101.6" y2="173.99" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="173.99" x2="99.06" y2="176.53" width="0.1524" layer="91"/>
+<label x="101.6" y="173.99" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
