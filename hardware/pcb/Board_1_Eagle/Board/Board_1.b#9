@@ -4269,7 +4269,7 @@ Covered vias can be set in Masks (Limit).
 <via x="79.375" y="89.535" extent="1-16" drill="0.4"/>
 <via x="51.562" y="18.8976" extent="1-16" drill="0.4"/>
 <via x="52.6542" y="12.9286" extent="1-16" drill="0.4"/>
-<polygon width="0.254" layer="1" isolate="0.2032">
+<polygon width="0.254" layer="1" isolate="0.2032" rank="2">
 <vertex x="80.645" y="28.575"/>
 <vertex x="53.975" y="28.575"/>
 <vertex x="53.975" y="5.08"/>
@@ -4286,7 +4286,7 @@ Covered vias can be set in Masks (Limit).
 <via x="17.78" y="36.83" extent="1-16" drill="0.4"/>
 <via x="17.78" y="47.625" extent="1-16" drill="0.4"/>
 <via x="17.78" y="60.325" extent="1-16" drill="0.4"/>
-<polygon width="0.254" layer="16">
+<polygon width="0.254" layer="16" rank="2">
 <vertex x="3.175" y="90.805"/>
 <vertex x="3.175" y="4.445"/>
 <vertex x="53.975" y="4.445"/>
@@ -5824,6 +5824,8 @@ Covered vias can be set in Masks (Limit).
 <approved hash="7,39,ce6c15f415f7ce6f"/>
 <approved hash="19,1,80d6b918b82181ef"/>
 <approved hash="19,1,a734110a103aa604"/>
+<approved hash="3,1,c352450b53cfd596"/>
+<approved hash="3,16,8d9567cc710f9b56"/>
 </errors>
 </board>
 </drawing>

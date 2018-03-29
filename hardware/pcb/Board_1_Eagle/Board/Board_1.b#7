@@ -183,6 +183,10 @@ Top Layer</text>
 Team3
 Prototyp 1.0
 Top Layer</text>
+<text x="27.305" y="31.115" size="1.016" layer="1" font="vector" rot="R90">Hergestellt aus
+biologisch
+gehaltenen
+Halbleitern...</text>
 </plain>
 <libraries>
 <library name="rcl" urn="urn:adsk.eagle:library:334">

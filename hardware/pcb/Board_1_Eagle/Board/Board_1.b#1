@@ -6,9 +6,9 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="25" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="25" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
@@ -23,14 +23,14 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="no" active="yes"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
-<layer number="20" name="Dimension" color="24" fill="1" visible="no" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
@@ -5076,14 +5076,14 @@ Covered vias can be set in Masks (Limit).
 <signal name="N$41">
 <contactref element="IC5" pad="16"/>
 <wire x1="47.69485" y1="37.07765" x2="45.96245" y2="38.81005" width="0.1524" layer="1"/>
-<wire x1="47.69485" y1="37.07765" x2="49.54905" y2="37.07765" width="0.1524" layer="1"/>
 <via x="49.54905" y="37.07765" extent="1-16" drill="0.35"/>
-<wire x1="49.54905" y1="37.07765" x2="48.34915" y2="37.07765" width="0.1524" layer="16"/>
+<wire x1="48.34915" y1="37.07765" x2="49.54905" y2="37.07765" width="0.1524" layer="16"/>
 <wire x1="45.96245" y1="38.81005" x2="45.96245" y2="43.89005" width="0.1524" layer="1"/>
 <wire x1="45.4862" y1="44.3663" x2="45.4862" y2="45.01405" width="0.1524" layer="1"/>
 <wire x1="45.96245" y1="43.89005" x2="45.4862" y2="44.3663" width="0.1524" layer="1"/>
 <contactref element="GND" pad="17"/>
-<wire x1="48.34915" y1="37.07765" x2="48.3203" y2="37.1065" width="0" layer="19" extent="16-16"/>
+<wire x1="49.54905" y1="37.07765" x2="47.69485" y2="37.07765" width="0.1524" layer="1"/>
+<wire x1="48.3203" y1="37.1065" x2="48.34915" y2="37.07765" width="0.1524" layer="16"/>
 </signal>
 <signal name="N$42">
 <contactref element="IC5" pad="15"/>
@@ -5830,6 +5830,7 @@ Covered vias can be set in Masks (Limit).
 <approved hash="4,16,986cdb1b1c5f30bc"/>
 <approved hash="4,16,e1e9cb33e1e7a4a9"/>
 <approved hash="4,16,be31a118aeb39117"/>
+<approved hash="3,1,195407b57c5f62be"/>
 </errors>
 </board>
 </drawing>

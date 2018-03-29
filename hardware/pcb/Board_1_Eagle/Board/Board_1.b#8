@@ -3361,8 +3361,8 @@ Copyright: Würth Elektronik</description>
 <text x="-2.005" y="-2.61" size="0.3048" layer="51">CONNECTOR EDGE</text>
 <text x="-1.963" y="4.2289" size="0.8128" layer="25">&gt;NAME</text>
 <text x="-2.463" y="-3.7854" size="0.8128" layer="27">&gt;VALUE</text>
-<hole x="-2.075" y="2.45" drill="0.7"/>
-<hole x="2.075" y="2.45" drill="0.7"/>
+<hole x="-2.075" y="2.45" drill="0.65"/>
+<hole x="2.075" y="2.45" drill="0.65"/>
 <text x="-1.605" y="1.205" size="0.6096" layer="21">1</text>
 <wire x1="-1.68" y1="3.15" x2="-4" y2="3.15" width="0.127" layer="21"/>
 <wire x1="-4" y1="3.15" x2="-4" y2="1.17" width="0.127" layer="21"/>
@@ -5812,10 +5812,6 @@ Covered vias can be set in Masks (Limit).
 <approved hash="19,1,681a9458e6e5501a"/>
 <approved hash="19,1,ec77caf3cb81ed05"/>
 <approved hash="19,1,47efd6a0719a2a70"/>
-<approved hash="4,16,1a1f4fb59ac4729c"/>
-<approved hash="4,16,bf8e5689396af0e0"/>
-<approved hash="4,16,ada1425acb0bfc0f"/>
-<approved hash="4,16,5cc3cf44a0c913c3"/>
 <approved hash="7,39,26c4a2a648f474a8"/>
 <approved hash="7,39,7496487b8ecd0a1e"/>
 <approved hash="7,39,026c00f400f6026e"/>
@@ -5826,6 +5822,10 @@ Covered vias can be set in Masks (Limit).
 <approved hash="19,1,a734110a103aa604"/>
 <approved hash="3,1,c352450b53cfd596"/>
 <approved hash="3,16,8d9567cc710f9b56"/>
+<approved hash="4,16,909adb1b1ba33ff2"/>
+<approved hash="4,16,986cdb1b1c5f30bc"/>
+<approved hash="4,16,e1e9cb33e1e7a4a9"/>
+<approved hash="4,16,be31a118aeb39117"/>
 </errors>
 </board>
 </drawing>

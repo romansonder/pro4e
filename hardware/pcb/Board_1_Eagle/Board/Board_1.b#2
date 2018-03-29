@@ -3794,7 +3794,7 @@ Covered vias can be set in Masks (Limit).
 <element name="R36" library="resistor" library_urn="urn:adsk.eagle:library:348" package="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="NP" x="50.419" y="11.557"/>
 <element name="R37" library="resistor" library_urn="urn:adsk.eagle:library:348" package="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="1k" x="50.38725" y="10.033" rot="R180"/>
 <element name="R38" library="resistor" library_urn="urn:adsk.eagle:library:348" package="MINI_MELF-0102W" package3d_urn="urn:adsk.eagle:package:26105/1" value="0R" x="37.0713" y="22.606" rot="R180"/>
-<element name="U$1" library="TI_IC" package="SO08-6.0" value="TS4890D" x="30.734" y="52.959"/>
+<element name="U$1" library="TI_IC" package="SO08-6.0" value="TS487ID" x="30.734" y="52.959"/>
 <element name="C30" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n" x="30.607" y="46.863" rot="R270">
 <attribute name="SPICEPREFIX" value="C" x="30.607" y="46.863" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
