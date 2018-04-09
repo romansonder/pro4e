@@ -4,15 +4,15 @@ public class GuiTypes {
 	public enum StatusType {
 		RUNNING("Anwendung geladen.");
 
-		private final String statusMitteilung;
+		private final String statusMessage;
 
-		private StatusType(final String statusMitteilung) {
-			this.statusMitteilung = statusMitteilung;
+		private StatusType(final String statusMessage) {
+			this.statusMessage = statusMessage;
 		}
 
 		@Override
 		public String toString() {
-			return statusMitteilung;
+			return statusMessage;
 		}
 	}
 

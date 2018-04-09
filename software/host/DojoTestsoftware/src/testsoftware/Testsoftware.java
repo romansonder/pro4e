@@ -15,6 +15,7 @@ import javax.swing.plaf.ColorUIResource;
 import controller.Controller;
 import model.GuiTypes.StatusType;
 import model.Model;
+import userinterface.MenuBar;
 import userinterface.StatusBar;
 import userinterface.TopView;
 import utilities.Utility;
@@ -22,13 +23,15 @@ import utilities.Utility;
 public class Testsoftware extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	private static final int minWidth = 1000, minheight = 700;
-	private static final int width = 1000, height = 700;
-
-	private ImageIcon icon = Utility.loadResourceIcon("Dojo_Testsoftware_Icon.png");
+	private static final int minWidth = 1000, minheight = 685;
+	private static final int width = 1000, height = 685;
+	private final String title = "Dojo - Testsoftware";
+	private final String dojoIconFileName = "Dojo_Testsoftware_Icon.png";
+	private ImageIcon icon = Utility.loadResourceIcon(dojoIconFileName);
 
 	private Model model = new Model();
 	private Controller controller = new Controller(model);
+	private MenuBar menuBar = new MenuBar(controller);
 	private StatusBar statusBar = new StatusBar();
 	private TopView topView = new TopView(controller);
 
@@ -37,19 +40,19 @@ public class Testsoftware extends JFrame {
 		setMinimumSize(new Dimension(minWidth, minheight));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		setTitle("Dojo - Testsoftware");
+		setTitle(title);
 		setIconImage(icon.getImage());
 		initToolTips();
 		setVisible(true);
 
-		controller.setView(topView);
 		model.addObserver(topView);
 
 		getContentPane().add(topView, BorderLayout.CENTER);
 		getContentPane().add(statusBar, BorderLayout.SOUTH);
+		setJMenuBar(menuBar);
 
 		addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
+			public void windowClosing(WindowEvent event) {
 				System.exit(1);
 			}
 		});

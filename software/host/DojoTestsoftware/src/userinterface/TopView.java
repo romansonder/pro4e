@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import controller.Controller;
 import model.Model;
-import model.Museumsobjekt;
+import model.MuseumsObject;
 import utilities.MyBorderFactory;
 
 public class TopView extends JPanel implements Observer {
@@ -48,20 +48,20 @@ public class TopView extends JPanel implements Observer {
 		controller.readInObjects();
 	}
 
-	public void addNewObject(Museumsobjekt museumObject) {
-		controller.addNewObject(museumObject);
+	public void addNewObject(MuseumsObject museumsObject) {
+		controller.addNewObject(museumsObject);
 	}
-	
-	public void deleteObject(Museumsobjekt museumObject) {
-		controller.deleteObject(museumObject);
+
+	public void deleteObject(MuseumsObject museumsObject) {
+		controller.deleteObject(museumsObject);
 	}
 
 	public void saveObjects() {
 		controller.saveObjects();
 	}
 
-	public void displayObject(Museumsobjekt museumObject) {
-		outputParameterArea.displayObject(museumObject);
+	public void displayObject(MuseumsObject museumsObject) {
+		outputParameterArea.displayObject(museumsObject);
 	}
 
 	@Override

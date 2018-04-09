@@ -11,6 +11,8 @@ import org.simpleframework.xml.core.Persister;
 
 public class Model extends Observable {
 	private Museum museum;
+	private final String fileExtensionDescrption = "XML Files (*.xml)";
+	private final String fileExtension = "xml";
 
 	public Model() {
 		museum = new Museum();
@@ -26,16 +28,15 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("XML", "xml");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(fileExtensionDescrption, fileExtension);
 		fc.setFileFilter(filter);
 		fc.showOpenDialog(null);
 
 		if (null != fc.getSelectedFile()) {
-			File file = new File(fc.getSelectedFile().getPath());
-			Serializer serializer = new Persister();
-
 			Museum museum = new Museum();
 			try {
+				File file = new File(fc.getSelectedFile().getPath());
+				Serializer serializer = new Persister();
 				museum = serializer.read(Museum.class, file);
 			} catch (Exception exception) {
 				exception.printStackTrace();
@@ -49,42 +50,55 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("XML", "xml");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(fileExtensionDescrption, fileExtension);
 		fc.setFileFilter(filter);
 		fc.showSaveDialog(null);
 
-		Serializer serializer = new Persister();
-		File file = new File(fc.getSelectedFile().getPath());
-		try {
-			serializer.write(getMuseum(), file);
-		} catch (Exception exception) {
-			exception.printStackTrace();
+		File file = fc.getSelectedFile();
+
+		if (null != file) {
+			String filePath = file.getAbsolutePath();
+			if (!filePath.endsWith("." + fileExtension)) {
+				file = new File(filePath + "." + fileExtension);
+			}
+			try {
+				Serializer serializer = new Persister();
+				serializer.write(getMuseum(), file);
+			} catch (Exception exception) {
+				exception.printStackTrace();
+			}
+
+			notifyObservers();
 		}
-		notifyObservers();
 	}
-	
-	public void addNewObject(Museumsobjekt museumsObject) {
+
+	public void addNewObject(MuseumsObject museumsObject) {
 		if (null != museumsObject)
-			if (museumsObject.getName() != "" || museumsObject.getPath() != "") {
+			if (museumsObject.getName() != "" || museumsObject.getPath().toString() != "") {
 				this.museum.list.add(museumsObject);
+				notifyObservers();
 			}
-		notifyObservers();
 	}
-	
-	public void deleteObject(Museumsobjekt museumsObject) {
+
+	public void deleteObject(MuseumsObject museumsObject) {
 		if (null != museumsObject)
-			if (museumsObject.getName() != "" || museumsObject.getPath() != "") {
-				this.museum.list.remove(museumsObject);
+			for (MuseumsObject object : this.museum.list) {
+				if (object.getID() == museumsObject.getID()) {
+					this.museum.list.remove(object);
+					System.out.println("Model: Removed object with ID " + object.getID());
+
+					notifyObservers();
+					break;
+				}
 			}
-		notifyObservers();
+	}
+
+	public Museum getMuseum() {
+		return this.museum;
 	}
 
 	private void setMuseum(Museum museum) {
 		this.museum = museum;
 		notifyObservers();
-	}
-
-	public Museum getMuseum() {
-		return this.museum;
 	}
 }

@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import model.Museum;
-import model.Museumsobjekt;
+import model.MuseumsObject;
 
 public class GraphicalArea extends JPanel implements ListSelectionListener, KeyListener {
 	private static final long serialVersionUID = 1L;
@@ -32,7 +32,7 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 	private DefaultTableModel tableModel;
 	private final int firstColumnWidth = 40;
 	private final int rowHeight = 25;
-	String[] columnNames = { "ID", "Name", "Pfad" };
+	private final String[] columnNames = { "ID", "Name", "Pfad" };
 
 	public GraphicalArea(TopView topView) {
 		super(new GridBagLayout());
@@ -69,24 +69,25 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 				new Insets(10, 10, 10, 10), 0, 0));
 	}
 
-	private Museumsobjekt getSelectedObject() {
-		int row = museumTable.getSelectedRow();
+	private MuseumsObject getSelectedObject() {
+		int selectedRow = museumTable.getSelectedRow();
+		MuseumsObject museumObject = new MuseumsObject();
 
-		int id = (int) museumTable.getModel().getValueAt(row, 0);
-		String name = museumTable.getModel().getValueAt(row, 1).toString();
-		String path = museumTable.getModel().getValueAt(row, 2).toString();
-		Museumsobjekt museumObject = new Museumsobjekt();
-		museumObject.setID(id);
-		museumObject.setName(name);
-		museumObject.setPath(path);
+		if (-1 != selectedRow) {
+			int id = (int) museumTable.getModel().getValueAt(selectedRow, 0);
+			String name = museumTable.getModel().getValueAt(selectedRow, 1).toString();
+			String path = museumTable.getModel().getValueAt(selectedRow, 2).toString();
+			museumObject.setID(id);
+			museumObject.setName(name);
+			museumObject.setPath(path);
+		}
 
 		return museumObject;
 	}
 
 	public void updateMuseumobjekts(Museum museum) {
-		museumTable.removeAll();
 		museumTable.clearSelection();
-		String[] columnNames = { "ID", "Name", "Pfad" };
+		museumTable.removeAll();
 		tableModel = new DefaultTableModel();
 		tableModel.setColumnIdentifiers(columnNames);
 		for (int i = 0; i < museum.list.size(); i++) {
@@ -106,37 +107,40 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 	}
 
 	@Override
-	public void valueChanged(ListSelectionEvent e) {
+	public void valueChanged(ListSelectionEvent event) {
 		try {
-			Museumsobjekt museumObject = getSelectedObject();
+			MuseumsObject museumObject = getSelectedObject();
 			topView.displayObject(museumObject);
 		} catch (Exception exception) {
+			exception.printStackTrace();
 			topView.displayObject(null);
 		}
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
-		Museumsobjekt museumObject = getSelectedObject();
-		
-		
-		int pressedKey = JOptionPane.showConfirmDialog(null, "Möchtest du dieses Museumsobjekt wirklich löschen?",
-				"Museumsobjekt löschen", JOptionPane.YES_NO_OPTION);
-		
-		if(pressedKey == 0){
-			topView.deleteObject(museumObject);
+	public void keyPressed(KeyEvent event) {
+		int key = event.getKeyCode();
+		if (key == KeyEvent.VK_DELETE) {
+			MuseumsObject museumsObject = getSelectedObject();
+			if (null != museumsObject) {
+				int pressedKey = JOptionPane.showConfirmDialog(null,
+						"Möchtest du dieses Museumsobjekt wirklich löschen?", "Museumsobjekt löschen",
+						JOptionPane.YES_NO_OPTION);
+
+				if (pressedKey == 0) {
+					topView.deleteObject(museumsObject);
+				} else {
+					// Action was canceled by user.
+				}
+			}
 		}
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void keyReleased(KeyEvent event) {
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void keyTyped(KeyEvent event) {
 	}
 }

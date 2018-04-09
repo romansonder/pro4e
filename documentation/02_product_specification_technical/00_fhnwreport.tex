@@ -182,7 +182,7 @@ Schnittstellen mit Stecker sowie evt. Anzeigen angebracht werden. Nicht zu verge
 Software. Dazu gehört die Ausgabe der gespeicherten Objektdaten auf den Körperschallaktor
 und den Kopfhörer. Ebenso ist die Lokalisation und Identifikation beim Kunstobjekt und beim Raumzutritt
 Bestandteil der Firmware. Des Weiteren soll die Quitierung für das Objektinteresse, der Daten-Download für neue Objektinformationen sowie die Bedien- und Anzeigefunktion realisiert werden.\cite{PFLVOR}
-\newline
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Projektziele}
@@ -190,21 +190,33 @@ Ziel dieses Projektes ist es, das Innenleben für einen Dojo-Prototyp zu entwick
 \\
 \textbf{Sollziele}
 \begin{itemize}
-\item{Akku-Betrieb mit integrierter Ladeschaltung}
-\item{Laden über USB-C Schnittstelle}
-\item{Daten-Download über USB-C und BLE (Bluetooth Low Energy)}
-\item{Audioausgabe via Körperschall-Aktor}
+\item{Akku-Betrieb mit integriertere Ladeschaltung}
+\item{Die Akkulaufzeit beträgt 8h}
+\item{Der Akku verfügt über einen Tiefentladungsschutz}
+\item{Der Akku wird über eine USB-C Schnittstelle geladen}
+\end{itemize}
+
+\begin{itemize}
+\item{Download der Audio-Daten auf den Dojo über die USB-C Schnittstelle}
+\item{Die Audio-Daten werden mit USB 2.0 Hi-Speed (480 Mbps) übertragen}
+\item{Es können 512 Audio-Dateien, im WAV-Format, mit einer Gesamtgrösse von 1 GB gespeichert werden}
+\item{Die Dojoaudioausgabe übernimmt ein Körperschall-Aktor}
+\end{itemize}
+
+\begin{itemize}
+\item{Die Zuordnung der BLE-Beacons mit den Audiofiles, so wie Sprach- und Zutrittseinstellungen, werden über BLE (Bluetooth Low Energy) auf dem internen Speicher des Mikrokontrollers gespeichert}
+\end{itemize}
+
+\begin{itemize}
 \item{Bedienung und Anzeigen MMI (Mensch-Maschine-Interface) gemäss Design}
 \item{Komponentenkosten für ein Prototyp ohne Leiterplatte nicht grösser als CHF 200.- }
 \item{Kunstwerke sollen nicht nur lokalisiert werden, sondern der Besucher erhält auch ein Feedback vom Dojo}
-\item{Raumzutrittskontrolle über Dojo}
-\item{Spracheinstellung und Logeintrag über BLE}
-\item{Vibrationausgabe in Dojo}
+\item{Vibrationausgabe im Dojo}
 \end{itemize}
 
 \textbf{Wunschziele}
 \begin{itemize}
-\item{Daten-Download nur über USB-C}
+\item{Daten-Download nur über USB-C, konfigurations Daten können mit den Audiodaten auf der SD-Karte abgelegt werden, dadurch entfällt der BLE-Dongel an der Kasse.}
 \item{Induktive Ladung des Dojo}
 \item{Das Dojo soll möglichst auf Energieeffizienz getrimmt werden, damit es einen ganzen Tag lang eingesetzt werden kann}
 \end{itemize}
@@ -240,7 +252,7 @@ Um das Dojo an ein Museum anzupassen, müssen Informationen über die Kunstwerke
 \caption{Zustand beim Programmieren} % picture caption
 \label{fig:image3}
 \end{figure}
-\newpage
+
 Der zweite Kommunikationskanal wird via BLE realisiert und dient zur Konfiguration des Dojos. Er wird benötigt, um dem Gerät mitzuteilen, welche Audiodateien zu welchem Beacon gehören.\\
 \\
 In der Abbildung \ref{fig:image2} wird der Zustand Laden dargestellt. Dabei wird das Dojo über die USB-C Buchse mit einem Netzteil verbunden.
@@ -252,6 +264,7 @@ In der Abbildung \ref{fig:image2} wird der Zustand Laden dargestellt. Dabei wird
 \end{figure}
 
 Der dritte Zustand (Abb. \ref{fig:image1}) beschreibt wie beim Ein- und Auschecken eines Museumsbesuchers Daten zwischen dem PC des Museums und des Dojos ausgetauscht werden. Dabei handelt es sich um Sprach- und Zutrittseinstellungen. Wie auf der Abbildung \ref{fig:image1} ersichtlich wird ein USB-Donlge benötigt, welcher am PC einzustecken ist. Anhand dieses Dongles weiss das Dojo, dass nun Daten mit einem PC ausgetauscht werden und kann so entsprechende Programmfunktionen aufrufen.
+\newpage
 
 \begin{figure}[htb]
 \includegraphics[width=\textwidth]{Zustand_Ein_Aus_Checken.png}

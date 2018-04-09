@@ -21,7 +21,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.GuiTypes.AccessRightsTypes;
 import model.GuiTypes.LanguagesTypes;
-import model.Museumsobjekt;
+import model.MuseumsObject;
 import utilities.Utility;
 
 public class InputParameterArea extends JPanel implements ActionListener {
@@ -32,7 +32,6 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	private JButton btHelpAccessRights;
 	private JButton btHelpLanguage;
 	private JButton btHelpEvaluate;
-	private JButton btReadIn;
 	private JButton btNewObject;
 	private JButton btSave;
 	private JButton btTransmitUSB;
@@ -76,17 +75,13 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpEvaluate = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpEvaluate
-				.setToolTipText("<html><b>Dojo Auswerten:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
+				.setToolTipText("<html><b>Dojo auswerten:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
 		btHelpEvaluate.setOpaque(false);
 		btHelpEvaluate.setContentAreaFilled(false);
 		btHelpEvaluate.setBorderPainted(false);
 		btHelpEvaluate.setHorizontalAlignment(SwingConstants.RIGHT);
 		btHelpEvaluate.setMargin(new Insets(0, 0, 0, 0));
 		btHelpEvaluate.setFocusable(false);
-
-		btReadIn = new JButton("Einlesen");
-		btReadIn.setEnabled(true);
-		btReadIn.addActionListener(this);
 
 		btNewObject = new JButton("Neues Objekt");
 		btNewObject.setEnabled(true);
@@ -117,60 +112,57 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		add(btHelpLibrary, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btReadIn, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
+		add(btNewObject, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btNewObject, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
+		add(btSave, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btSave, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
+		add(btTransmitUSB, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JLabel("Zutrittsrecht:"), new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btHelpAccessRights, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(comboAccessRights, new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JLabel("Sprache:"), new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btHelpLanguage, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(comboLanguage, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btTransmitBT, new GridBagConstraints(0, 9, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btTransmitUSB, new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 5, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(new JLabel("Zutrittsrecht:"), new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(btHelpAccessRights, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(comboAccessRights, new GridBagConstraints(0, 7, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(new JLabel("Sprache:"), new GridBagConstraints(0, 8, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(btHelpLanguage, new GridBagConstraints(1, 8, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(comboLanguage, new GridBagConstraints(0, 9, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(btTransmitBT, new GridBagConstraints(0, 10, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
-				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-
-		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 11, 2, 1, 0.0, 0.0,
+		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 10, 2, 1, 0.0, 0.0,
 				GridBagConstraints.EAST, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JLabel("Dojo auswerten:"), new GridBagConstraints(0, 12, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(new JLabel("Dojo auswerten:"), new GridBagConstraints(0, 11, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btHelpEvaluate, new GridBagConstraints(1, 12, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(btHelpEvaluate, new GridBagConstraints(1, 11, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btEvaluate, new GridBagConstraints(0, 13, 2, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.BOTH,
+		add(btEvaluate, new GridBagConstraints(0, 12, 2, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(Box.createVerticalGlue(), new GridBagConstraints(0, 14, 2, 1, 0.0, 1.0, GridBagConstraints.WEST,
+		add(Box.createVerticalGlue(), new GridBagConstraints(0, 13, 2, 1, 0.0, 1.0, GridBagConstraints.WEST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 	}
 
-	private Museumsobjekt displayNewObjectDialog() {
-		Museumsobjekt museumsObject = new Museumsobjekt();
+	private MuseumsObject displayNewObjectDialog() {
+		MuseumsObject museumsObject = new MuseumsObject();
 
 		JTextField id = new JTextField();
 		JTextField name = new JTextField();
@@ -206,10 +198,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btReadIn) {
-			topView.readInObjects();
-		} else if (e.getSource() == btNewObject) {
-			Museumsobjekt museumObject = displayNewObjectDialog();
+		if (e.getSource() == btNewObject) {
+			MuseumsObject museumObject = displayNewObjectDialog();
 			topView.addNewObject(museumObject);
 		} else if (e.getSource() == btSave) {
 			topView.saveObjects();
