@@ -11059,7 +11059,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <part name="FRAME3" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="DINA3_L" device=""/>
 <part name="R8" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="Ferit Bead"/>
 <part name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="Ferit Bead"/>
-<part name="GND" library="TS3a27" deviceset="TS3A27" device=""/>
+<part name="IC30" library="TS3a27" deviceset="TS3A27" device=""/>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="IC5" library="SparkFun-DigitalIC" deviceset="WTV020SD" device="" value="WTV020SD-20S">
 <attribute name="PROD_ID" value="IC-11012"/>
@@ -12050,7 +12050,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <instances>
 <instance part="FRAME2" gate="G$1" x="0" y="0"/>
 <instance part="FRAME2" gate="G$2" x="287.02" y="0"/>
-<instance part="GND" gate="G$1" x="218.44" y="173.99"/>
+<instance part="IC30" gate="G$1" x="218.44" y="173.99"/>
 <instance part="GND16" gate="1" x="325.12" y="92.71"/>
 <instance part="IC5" gate="G$1" x="80.01" y="140.97">
 <attribute name="PROD_ID" x="80.01" y="140.97" size="1.778" layer="96" display="off"/>
@@ -12148,14 +12148,14 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <pinref part="J2" gate="G$1" pin="DAT0"/>
 <wire x1="288.29" y1="120.65" x2="328.93" y2="120.65" width="0.1524" layer="91"/>
 <wire x1="288.29" y1="120.65" x2="288.29" y2="115.57" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="COM5"/>
+<pinref part="IC30" gate="G$1" pin="COM5"/>
 <wire x1="288.29" y1="115.57" x2="238.76" y2="115.57" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SDCS" class="0">
 <segment>
 <pinref part="IC5" gate="G$1" pin="P00"/>
-<pinref part="GND" gate="G$1" pin="NO2"/>
+<pinref part="IC30" gate="G$1" pin="NO2"/>
 <wire x1="113.03" y1="161.29" x2="127" y2="161.29" width="0.1524" layer="91"/>
 <wire x1="127" y1="161.29" x2="127" y2="168.91" width="0.1524" layer="91"/>
 <wire x1="127" y1="168.91" x2="208.28" y2="168.91" width="0.1524" layer="91"/>
@@ -12166,7 +12166,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <pinref part="J2" gate="G$1" pin="CMD"/>
 <wire x1="283.21" y1="130.81" x2="328.93" y2="130.81" width="0.1524" layer="91"/>
 <wire x1="283.21" y1="130.81" x2="283.21" y2="125.73" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="COM3"/>
+<pinref part="IC30" gate="G$1" pin="COM3"/>
 <wire x1="283.21" y1="125.73" x2="238.76" y2="125.73" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -12207,7 +12207,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <wire x1="255.27" y1="157.48" x2="255.27" y2="156.21" width="0.1524" layer="91"/>
 <wire x1="255.27" y1="156.21" x2="255.27" y2="154.94" width="0.1524" layer="91"/>
 <junction x="255.27" y="156.21"/>
-<pinref part="GND" gate="G$1" pin="VCC"/>
+<pinref part="IC30" gate="G$1" pin="VCC"/>
 <wire x1="255.27" y1="156.21" x2="238.76" y2="156.21" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -12255,10 +12255,10 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <segment>
 <pinref part="GND19" gate="1" pin="GND"/>
 <wire x1="205.74" y1="92.71" x2="205.74" y2="148.59" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="NO1"/>
+<pinref part="IC30" gate="G$1" pin="NO1"/>
 <wire x1="205.74" y1="148.59" x2="205.74" y2="173.99" width="0.1524" layer="91"/>
 <wire x1="208.28" y1="173.99" x2="205.74" y2="173.99" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="NO6"/>
+<pinref part="IC30" gate="G$1" pin="NO6"/>
 <wire x1="208.28" y1="148.59" x2="205.74" y2="148.59" width="0.1524" layer="91"/>
 <junction x="205.74" y="148.59"/>
 </segment>
@@ -12268,7 +12268,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <wire x1="293.37" y1="173.99" x2="293.37" y2="171.45" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="GND" gate="G$1" pin="GND"/>
+<pinref part="IC30" gate="G$1" pin="GND"/>
 <wire x1="238.76" y1="151.13" x2="247.65" y2="151.13" width="0.1524" layer="91"/>
 <wire x1="247.65" y1="151.13" x2="247.65" y2="143.51" width="0.1524" layer="91"/>
 <pinref part="GND24" gate="1" pin="GND"/>
@@ -12315,7 +12315,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <pinref part="J2" gate="G$1" pin="CLK"/>
 <wire x1="285.75" y1="125.73" x2="328.93" y2="125.73" width="0.1524" layer="91"/>
 <wire x1="285.75" y1="125.73" x2="285.75" y2="120.65" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="COM4"/>
+<pinref part="IC30" gate="G$1" pin="COM4"/>
 <wire x1="285.75" y1="120.65" x2="238.76" y2="120.65" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -12417,14 +12417,14 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <wire x1="208.28" y1="158.75" x2="127" y2="158.75" width="0.1524" layer="91"/>
 <wire x1="127" y1="158.75" x2="127" y2="156.21" width="0.1524" layer="91"/>
 <wire x1="127" y1="156.21" x2="113.03" y2="156.21" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="NO4"/>
+<pinref part="IC30" gate="G$1" pin="NO4"/>
 </segment>
 </net>
 <net name="N$42" class="0">
 <segment>
 <pinref part="IC5" gate="G$1" pin="OSCI/P10"/>
 <wire x1="113.03" y1="153.67" x2="208.28" y2="153.67" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="NO5"/>
+<pinref part="IC30" gate="G$1" pin="NO5"/>
 </segment>
 </net>
 <net name="N$45" class="0">
@@ -12432,7 +12432,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <pinref part="J2" gate="G$1" pin="CD/DAT3"/>
 <wire x1="280.67" y1="133.35" x2="328.93" y2="133.35" width="0.1524" layer="91"/>
 <wire x1="280.67" y1="133.35" x2="280.67" y2="130.81" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="COM2"/>
+<pinref part="IC30" gate="G$1" pin="COM2"/>
 <wire x1="280.67" y1="130.81" x2="238.76" y2="130.81" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -12440,12 +12440,12 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <segment>
 <pinref part="J2" gate="G$1" pin="DAT2"/>
 <wire x1="328.93" y1="135.89" x2="238.76" y2="135.89" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="COM1"/>
+<pinref part="IC30" gate="G$1" pin="COM1"/>
 </segment>
 </net>
 <net name="N$44" class="0">
 <segment>
-<pinref part="GND" gate="G$1" pin="COM6"/>
+<pinref part="IC30" gate="G$1" pin="COM6"/>
 <wire x1="238.76" y1="110.49" x2="290.83" y2="110.49" width="0.1524" layer="91"/>
 <wire x1="290.83" y1="110.49" x2="290.83" y2="118.11" width="0.1524" layer="91"/>
 <pinref part="J2" gate="G$1" pin="DAT1"/>
@@ -12454,7 +12454,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 </net>
 <net name="D2" class="0">
 <segment>
-<pinref part="GND" gate="G$1" pin="NC1"/>
+<pinref part="IC30" gate="G$1" pin="NC1"/>
 <wire x1="208.28" y1="135.89" x2="193.04" y2="135.89" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="135.89" x2="190.5" y2="138.43" width="0.1524" layer="91"/>
 <label x="194.31" y="137.16" size="1.778" layer="95"/>
@@ -12462,7 +12462,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 </net>
 <net name="D3" class="0">
 <segment>
-<pinref part="GND" gate="G$1" pin="NC2"/>
+<pinref part="IC30" gate="G$1" pin="NC2"/>
 <wire x1="208.28" y1="130.81" x2="193.04" y2="130.81" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="130.81" x2="190.5" y2="133.35" width="0.1524" layer="91"/>
 <label x="194.31" y="132.08" size="1.778" layer="95"/>
@@ -12470,7 +12470,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 </net>
 <net name="CMD" class="0">
 <segment>
-<pinref part="GND" gate="G$1" pin="NC3"/>
+<pinref part="IC30" gate="G$1" pin="NC3"/>
 <wire x1="208.28" y1="125.73" x2="193.04" y2="125.73" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="125.73" x2="190.5" y2="128.27" width="0.1524" layer="91"/>
 <label x="194.31" y="127" size="1.778" layer="95"/>
@@ -12478,7 +12478,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 </net>
 <net name="CLK" class="0">
 <segment>
-<pinref part="GND" gate="G$1" pin="NC4"/>
+<pinref part="IC30" gate="G$1" pin="NC4"/>
 <wire x1="208.28" y1="120.65" x2="193.04" y2="120.65" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="120.65" x2="190.5" y2="123.19" width="0.1524" layer="91"/>
 <label x="194.31" y="121.92" size="1.778" layer="95"/>
@@ -12486,7 +12486,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 </net>
 <net name="D0" class="0">
 <segment>
-<pinref part="GND" gate="G$1" pin="NC5"/>
+<pinref part="IC30" gate="G$1" pin="NC5"/>
 <wire x1="208.28" y1="115.57" x2="193.04" y2="115.57" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="115.57" x2="190.5" y2="118.11" width="0.1524" layer="91"/>
 <label x="194.31" y="116.84" size="1.778" layer="95"/>
@@ -12496,7 +12496,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <segment>
 <wire x1="208.28" y1="110.49" x2="193.04" y2="110.49" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="110.49" x2="190.5" y2="113.03" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="NC6"/>
+<pinref part="IC30" gate="G$1" pin="NC6"/>
 <label x="194.31" y="111.76" size="1.778" layer="95"/>
 </segment>
 </net>
@@ -12537,10 +12537,10 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <net name="IN" class="0">
 <segment>
 <wire x1="252.73" y1="217.17" x2="250.19" y2="214.63" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="IN1"/>
+<pinref part="IC30" gate="G$1" pin="IN1"/>
 <wire x1="238.76" y1="173.99" x2="241.3" y2="173.99" width="0.1524" layer="91"/>
 <wire x1="241.3" y1="173.99" x2="241.3" y2="168.91" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="IN2"/>
+<pinref part="IC30" gate="G$1" pin="IN2"/>
 <wire x1="241.3" y1="168.91" x2="238.76" y2="168.91" width="0.1524" layer="91"/>
 <wire x1="241.3" y1="168.91" x2="250.19" y2="168.91" width="0.1524" layer="91"/>
 <junction x="241.3" y="168.91"/>
@@ -12554,14 +12554,14 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 </net>
 <net name="N$47" class="0">
 <segment>
-<pinref part="GND" gate="G$1" pin="NC"/>
+<pinref part="IC30" gate="G$1" pin="NC"/>
 <wire x1="238.76" y1="143.51" x2="241.3" y2="143.51" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="/EN" class="0">
 <segment>
 <wire x1="261.62" y1="217.17" x2="259.08" y2="214.63" width="0.1524" layer="91"/>
-<pinref part="GND" gate="G$1" pin="/EN"/>
+<pinref part="IC30" gate="G$1" pin="/EN"/>
 <wire x1="278.13" y1="163.83" x2="259.08" y2="163.83" width="0.1524" layer="91"/>
 <wire x1="259.08" y1="163.83" x2="238.76" y2="163.83" width="0.1524" layer="91"/>
 <wire x1="259.08" y1="214.63" x2="259.08" y2="163.83" width="0.1524" layer="91"/>
@@ -12618,7 +12618,7 @@ Created 2014-07-09, Karrer Zheng&lt;br&gt;
 <net name="N$9" class="0">
 <segment>
 <pinref part="IC5" gate="G$1" pin="P01"/>
-<pinref part="GND" gate="G$1" pin="NO3"/>
+<pinref part="IC30" gate="G$1" pin="NO3"/>
 <wire x1="113.03" y1="163.83" x2="208.28" y2="163.83" width="0.1524" layer="91"/>
 </segment>
 </net>
