@@ -46,7 +46,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		this.topView = topView;
 
 		btHelpLibrary = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
-		btHelpLibrary.setToolTipText("<html><b>Bibliothek:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
+		btHelpLibrary
+				.setToolTipText("<html><b>Ausstellung:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
 		btHelpLibrary.setOpaque(false);
 		btHelpLibrary.setContentAreaFilled(false);
 		btHelpLibrary.setBorderPainted(false);
@@ -106,7 +107,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		comboAccessRights = new JComboBox<>(AccessRightsTypes.values());
 		comboLanguage = new JComboBox<>(LanguagesTypes.values());
 
-		add(new JLabel("Bibliothek:"), new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(new JLabel("Ausstellung:"), new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
 		add(btHelpLibrary, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,

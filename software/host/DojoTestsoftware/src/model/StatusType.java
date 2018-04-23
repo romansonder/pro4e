@@ -1,10 +1,15 @@
 package model;
 
 public enum StatusType {
-	RUNNING("Anwendung geladen."), NOOPENCONNECTION("Keine Bluetooth Verbindung."), OPENPORTFAILURE(
-			"Fehler beim Verbindung aufbauen: "), ClOSEPORTFAILURE(
-					"Fehler beim schliessen des COM-Ports: "), OPENEDCONNECTION(
-							"Verbidung wurde geöffnet: "), PORTCLOSED("Verbidung wurde erfolgreich geschlossen: ");
+	RUNNING("Anwendung geladen."), DATATRANSMITTINGSUCCESSFUL(
+			"Ausstellung wurde erfolgreich übertragen."), DOJODRIVENOTFOUND(
+					"Dojo wurde nicht gefunden."), READOBJECTSFAILURE(
+							"Fehler beim laden der Austellung."), NOOPENCONNECTION(
+									"Keine Bluetooth Verbindung."), OPENPORTFAILURE(
+											"Fehler beim Verbindung aufbauen: "), ClOSEPORTFAILURE(
+													"Fehler beim schliessen des COM-Ports: "), OPENEDCONNECTION(
+															"Verbidung wurde geöffnet: "), PORTCLOSED(
+																	"Verbidung wurde erfolgreich geschlossen: ");
 
 	private final String statusMitteilung;
 

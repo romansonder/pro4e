@@ -58,8 +58,8 @@ public class Model extends Observable {
 				notifyObservers();
 			}
 
-		} catch (SerialPortException ex) {
-			System.out.println("Fehler beim öffnen von Port: " + ex);
+		} catch (SerialPortException exception) {
+			System.out.println("Fehler beim öffnen von Port: " + exception);
 			StatusBar.setStatus(StatusType.OPENPORTFAILURE, serialPort.getPortName());
 		}
 
@@ -79,8 +79,8 @@ public class Model extends Observable {
 					success = true;
 				}
 			}
-		} catch (SerialPortException ex) {
-			System.out.println("Fehler beim chliessen von Port: " + ex);
+		} catch (SerialPortException exception) {
+			System.out.println("Fehler beim chliessen von Port: " + exception);
 			StatusBar.setStatus(StatusType.ClOSEPORTFAILURE, serialPort.getPortName());
 		}
 
@@ -97,6 +97,7 @@ public class Model extends Observable {
 			if (null != serialPort) {
 				serialPort.writeBytes(message.getBytes());
 				System.out.println(message + " gesendet");
+				success = true;
 				notifyObservers();
 			}
 
@@ -123,7 +124,9 @@ public class Model extends Observable {
 				File file = new File(fc.getSelectedFile().getPath());
 				Serializer serializer = new Persister();
 				museum = serializer.read(Museum.class, file);
+				success = true;
 			} catch (Exception exception) {
+				StatusBar.setStatus(StatusType.READOBJECTSFAILURE, "");
 				exception.printStackTrace();
 			}
 			setMuseum(museum);
@@ -135,6 +138,7 @@ public class Model extends Observable {
 
 	public boolean saveObjects() {
 		boolean success = false;
+
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
@@ -152,6 +156,7 @@ public class Model extends Observable {
 			try {
 				Serializer serializer = new Persister();
 				serializer.write(getMuseum(), file);
+				success = true;
 			} catch (Exception exception) {
 				exception.printStackTrace();
 			}
@@ -164,9 +169,11 @@ public class Model extends Observable {
 
 	public boolean addNewObject(MuseumsObject museumsObject) {
 		boolean success = false;
+
 		if (null != museumsObject)
 			if (museumsObject.getName() != "" || museumsObject.getPath().toString() != "") {
 				this.museum.list.add(museumsObject);
+				success = true;
 				notifyObservers();
 			}
 
@@ -175,12 +182,13 @@ public class Model extends Observable {
 
 	public boolean deleteObject(MuseumsObject museumsObject) {
 		boolean success = false;
+
 		if (null != museumsObject)
 			for (MuseumsObject object : this.museum.list) {
 				if (object.getID() == museumsObject.getID()) {
 					this.museum.list.remove(object);
 					System.out.println("Model: Removed object with ID " + object.getID());
-
+					success = true;
 					notifyObservers();
 					break;
 				}
@@ -195,6 +203,11 @@ public class Model extends Observable {
 		success = recogniseDriveByDriveName(driveName);
 		if (success) {
 			success = writeMuseumDataToDrive(storageDrive);
+			if (success) {
+				StatusBar.setStatus(StatusType.DATATRANSMITTINGSUCCESSFUL, "");
+			}
+		} else {
+			StatusBar.setStatus(StatusType.DOJODRIVENOTFOUND, "");
 		}
 
 		return success;
@@ -238,10 +251,6 @@ public class Model extends Observable {
 
 		for (int i = 0; i < museum.list.size(); i++) {
 			MuseumsObject museumObject = museum.list.get(i);
-			System.out.println(museumObject.getID());
-			System.out.println(museumObject.getName());
-			System.out.println(museumObject.getPath());
-
 			File src = new File(museumObject.getPath());
 			File dst = new File(driveName.getAbsolutePath() + src.getName());
 
@@ -249,7 +258,6 @@ public class Model extends Observable {
 				Files.copy(src.toPath(), dst.toPath(), StandardCopyOption.REPLACE_EXISTING);
 				success = true;
 			} catch (IOException e) {
-				success = false;
 				e.printStackTrace();
 			}
 		}
