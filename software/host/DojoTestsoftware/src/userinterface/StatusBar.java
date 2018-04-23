@@ -10,7 +10,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import model.GuiTypes.StatusType;
+import model.StatusType;
 import utilities.TimerThread;
 
 public final class StatusBar extends JPanel {
@@ -30,12 +30,12 @@ public final class StatusBar extends JPanel {
 	/**
 	 * Setzt neue Statusmeldung in der Statusbar.
 	 * 
-	 * @param statusType
+	 * @param portclosed
 	 * @param message
 	 */
-	public static void setStatus(StatusType statusType, String message) {
+	public static void setStatus(StatusType portclosed, String message) {
 		setLeftComponent(statusLabel);
-		statusLabel.setText(statusType.toString() + message);
+		statusLabel.setText(portclosed.toString() + message);
 	}
 
 	private void setDateTime() {

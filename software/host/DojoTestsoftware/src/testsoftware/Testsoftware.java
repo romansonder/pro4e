@@ -13,7 +13,7 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 import controller.Controller;
-import model.GuiTypes.StatusType;
+import model.StatusType;
 import model.Model;
 import userinterface.MenuBar;
 import userinterface.StatusBar;

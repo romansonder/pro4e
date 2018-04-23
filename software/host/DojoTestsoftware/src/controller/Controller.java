@@ -25,4 +25,10 @@ public class Controller {
 	public void saveObjects() {
 		model.saveObjects();
 	}
+	
+	public void TestBluetooth(){
+		model.OpenBluetoothConnection("COM1");
+		//model.SendStringToBluetooth("");
+		model.CloseBluetoothConnection();
+	}
 }
