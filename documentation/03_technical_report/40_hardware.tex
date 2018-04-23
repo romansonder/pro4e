@@ -1,0 +1,34 @@
+Um herauszufinden welche Leistung von der Energieversorung bereitgestellt wird, wurden einige Test durchgeführt.
+
+Zuerst wurde die Messung ohne zusätzlichen Widerstand durchgeführt. Somit kann die Leerlaufleistung der Batterie bestimmt werden. Dies führte zu folgenden Werten:
+\begin{equation}
+I = 1.07mA
+\end{equation}
+
+\begin{equation}
+U_{Ndl} = 3.295V
+\end{equation}
+
+\begin{equation}
+U_{B} = 3.925V
+\end{equation}
+dabei ist $I$ der gemessene Srom, $U_{Ndl}$ ist die Spannung welche nach dem Linearregler gemessen wurde und $U_{B}$ ist die Batteriespannung. Somit beträgt die Leistung der Ladeschaltung im Leerlauf:
+\begin{equation}
+P_{LL}  = 4.199mW
+\end{equation}
+
+Die Messungen mit einem angeschlossenen Widerstand haben ergeben: \\
+
+\begin{table}[hp]
+\centering
+\label{messungen_Energie}
+\begin{tabular}{|l|c|c|c|}
+\hline
+Widerstand [$\Omega$]     & 100   & 50    & 10    \\ \hline
+Batteriestrom [$mA$]    & 32.55 & 63.79 & 293.3 \\ \hline
+Batteriespannung [$V$] & 3.823 & 3.735 & 2.979 \\ \hline
+Widerstandsstrom [$mA$] & 31.06 & 62.03 & 278.1 \\ \hline
+Ausgangsspannung [$V$]  & 3.293 & 3.292 & 2.95  \\ \hline
+Leistung [$mW$]  & 0.124 & 0.238 & 0.874  \\ \hline
+\end{tabular}
+\end{table}
