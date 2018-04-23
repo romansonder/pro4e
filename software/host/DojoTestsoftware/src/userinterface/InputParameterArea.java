@@ -19,7 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import jssc.SerialPort;
 import model.GuiTypes.AccessRightsTypes;
 import model.GuiTypes.LanguagesTypes;
 import model.MuseumsObject;
@@ -205,7 +204,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		} else if (e.getSource() == btSave) {
 			topView.saveObjects();
 		} else if (e.getSource() == btTransmitUSB) {
-
+			topView.transmitMuseumData();
 		} else if (e.getSource() == btTransmitBT) {
 			topView.TestBluetooth();
 		} else if (e.getSource() == btEvaluate) {

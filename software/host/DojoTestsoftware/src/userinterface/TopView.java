@@ -63,9 +63,13 @@ public class TopView extends JPanel implements Observer {
 	public void displayObject(MuseumsObject museumsObject) {
 		outputParameterArea.displayObject(museumsObject);
 	}
-	
-	public void TestBluetooth(){
+
+	public void TestBluetooth() {
 		controller.TestBluetooth();
+	}
+
+	public void transmitMuseumData() {
+		controller.transmitMuseumData();
 	}
 
 	@Override

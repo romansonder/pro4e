@@ -1,10 +1,14 @@
 package model;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Observable;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
@@ -17,7 +21,9 @@ public class Model extends Observable {
 	private Museum museum;
 	private final String fileExtensionDescrption = "XML Files (*.xml)";
 	private final String fileExtension = "xml";
+	private final String driveName = "SANDISK";
 	public static SerialPort serialPort;
+	public static File storageDrive;
 	public static boolean portIsOpened;
 
 	public Model() {
@@ -32,6 +38,7 @@ public class Model extends Observable {
 
 	public boolean OpenBluetoothConnection(String port) {
 		boolean success = false;
+
 		serialPort = new SerialPort(port);
 		try {
 			if (false == serialPort.isOpened()) {
@@ -46,7 +53,7 @@ public class Model extends Observable {
 
 				serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_RTSCTS_IN | SerialPort.FLOWCONTROL_RTSCTS_OUT);
 
-				//SendStringToBluetooth("c>");
+				// SendStringToBluetooth("c>");
 				success = true;
 				notifyObservers();
 			}
@@ -55,11 +62,13 @@ public class Model extends Observable {
 			System.out.println("Fehler beim öffnen von Port: " + ex);
 			StatusBar.setStatus(StatusType.OPENPORTFAILURE, serialPort.getPortName());
 		}
+
 		return success;
 	}
 
 	public boolean CloseBluetoothConnection() {
 		boolean success = false;
+
 		try {
 			if (null != serialPort) {
 				if (serialPort.isOpened()) {
@@ -74,10 +83,12 @@ public class Model extends Observable {
 			System.out.println("Fehler beim chliessen von Port: " + ex);
 			StatusBar.setStatus(StatusType.ClOSEPORTFAILURE, serialPort.getPortName());
 		}
+
 		return success;
 	}
 
-	public void SendStringToBluetooth(String message) {
+	public boolean SendStringToBluetooth(String message) {
+		boolean success = false;
 		try {
 			if (false == portIsOpened) {
 				StatusBar.setStatus(StatusType.NOOPENCONNECTION, "");
@@ -92,9 +103,13 @@ public class Model extends Observable {
 		} catch (SerialPortException ex) {
 			System.out.println("Fehler beim senden von String aufgetreten: " + ex);
 		}
+
+		return success;
 	}
 
-	public void readInObjects() {
+	public boolean readInObjects() {
+		boolean success = false;
+
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
@@ -114,9 +129,12 @@ public class Model extends Observable {
 			setMuseum(museum);
 			notifyObservers();
 		}
+
+		return success;
 	}
 
-	public void saveObjects() {
+	public boolean saveObjects() {
+		boolean success = false;
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
@@ -140,17 +158,23 @@ public class Model extends Observable {
 
 			notifyObservers();
 		}
+
+		return success;
 	}
 
-	public void addNewObject(MuseumsObject museumsObject) {
+	public boolean addNewObject(MuseumsObject museumsObject) {
+		boolean success = false;
 		if (null != museumsObject)
 			if (museumsObject.getName() != "" || museumsObject.getPath().toString() != "") {
 				this.museum.list.add(museumsObject);
 				notifyObservers();
 			}
+
+		return success;
 	}
 
-	public void deleteObject(MuseumsObject museumsObject) {
+	public boolean deleteObject(MuseumsObject museumsObject) {
+		boolean success = false;
 		if (null != museumsObject)
 			for (MuseumsObject object : this.museum.list) {
 				if (object.getID() == museumsObject.getID()) {
@@ -161,6 +185,76 @@ public class Model extends Observable {
 					break;
 				}
 			}
+
+		return success;
+	}
+
+	public boolean transmitMuseumData() {
+		boolean success = false;
+
+		success = recogniseDriveByDriveName(driveName);
+		if (success) {
+			success = writeMuseumDataToDrive(storageDrive);
+		}
+
+		return success;
+	}
+
+	public boolean testBluetooth() {
+		boolean success = false;
+
+		success = OpenBluetoothConnection("COM1");
+		if (success) {
+			// success = SendStringToBluetooth("");
+			success = CloseBluetoothConnection();
+		}
+
+		return success;
+	}
+
+	public boolean recogniseDriveByDriveName(String driveName) {
+		boolean success = false;
+
+		FileSystemView fsv = FileSystemView.getFileSystemView();
+		File[] fileList = File.listRoots();
+
+		for (int i = 0; i < fileList.length; i++) {
+			if (fsv.getSystemDisplayName(fileList[i]).contains(driveName)) {
+				if (fsv.isDrive(fileList[i])) {
+					System.out.println("Display name: " + fsv.getSystemDisplayName(fileList[i]));
+					System.out.println("Absolute path: " + fileList[i].getAbsolutePath());
+					storageDrive = fileList[i];
+					success = true;
+					break;
+				}
+			}
+		}
+
+		return success;
+	}
+
+	public boolean writeMuseumDataToDrive(File driveName) {
+		boolean success = false;
+
+		for (int i = 0; i < museum.list.size(); i++) {
+			MuseumsObject museumObject = museum.list.get(i);
+			System.out.println(museumObject.getID());
+			System.out.println(museumObject.getName());
+			System.out.println(museumObject.getPath());
+
+			File src = new File(museumObject.getPath());
+			File dst = new File(driveName.getAbsolutePath() + src.getName());
+
+			try {
+				Files.copy(src.toPath(), dst.toPath(), StandardCopyOption.REPLACE_EXISTING);
+				success = true;
+			} catch (IOException e) {
+				success = false;
+				e.printStackTrace();
+			}
+		}
+
+		return success;
 	}
 
 	public Museum getMuseum() {

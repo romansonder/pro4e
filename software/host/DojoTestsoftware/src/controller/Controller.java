@@ -10,25 +10,40 @@ public class Controller {
 		this.model = model;
 	}
 
-	public void readInObjects() {
-		model.readInObjects();
+	public boolean readInObjects() {
+		boolean success = false;
+		success = model.readInObjects();
+		return success;
 	}
 
-	public void addNewObject(MuseumsObject museumsObject) {
-		model.addNewObject(museumsObject);
+	public boolean addNewObject(MuseumsObject museumsObject) {
+		boolean success = false;
+		success = model.addNewObject(museumsObject);
+		return success;
 	}
 
-	public void deleteObject(MuseumsObject museumsObject) {
-		model.deleteObject(museumsObject);
+	public boolean deleteObject(MuseumsObject museumsObject) {
+		boolean success = false;
+		success = model.deleteObject(museumsObject);
+		return success;
 	}
 
-	public void saveObjects() {
-		model.saveObjects();
+	public boolean saveObjects() {
+		boolean success = false;
+		success = model.saveObjects();
+		return success;
 	}
-	
-	public void TestBluetooth(){
-		model.OpenBluetoothConnection("COM1");
-		//model.SendStringToBluetooth("");
-		model.CloseBluetoothConnection();
+
+	public boolean TestBluetooth() {
+		boolean success = false;
+		success = model.testBluetooth();
+		return success;
+
+	}
+
+	public boolean transmitMuseumData() {
+		boolean success = false;
+		success = model.transmitMuseumData();
+		return success;
 	}
 }
