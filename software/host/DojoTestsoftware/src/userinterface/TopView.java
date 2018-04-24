@@ -44,32 +44,50 @@ public class TopView extends JPanel implements Observer {
 				GridBagConstraints.BOTH, new Insets(5, 10, 10, 5), 0, 0));
 	}
 
-	public void readInObjects() {
-		controller.readInObjects();
+	public boolean readInObjects() {
+		boolean success = false;
+		success = controller.readInObjects();
+		return success;
 	}
 
-	public void addNewObject(MuseumsObject museumsObject) {
-		controller.addNewObject(museumsObject);
+	public boolean addNewObject(MuseumsObject museumsObject) {
+		boolean success = false;
+		success = controller.addNewObject(museumsObject);
+		return success;
 	}
 
-	public void deleteObject(MuseumsObject museumsObject) {
-		controller.deleteObject(museumsObject);
+	public boolean deleteObject(MuseumsObject museumsObject) {
+		boolean success = false;
+		success = controller.deleteObject(museumsObject);
+		return success;
 	}
 
-	public void saveObjects() {
-		controller.saveObjects();
+	public boolean saveObjects() {
+		boolean success = false;
+		success = controller.saveObjects();
+		return success;
+	}
+
+	public boolean transmitUserPreferences() {
+		boolean success = false;
+		success = controller.transmitUserPreferences();
+		return success;
+	}
+
+	public boolean transmitMuseumData() {
+		boolean success = false;
+		success = controller.transmitMuseumData();
+		return success;
+	}
+
+	public boolean evaluateDojo() {
+		boolean success = false;
+		success = controller.evaluateDojo();
+		return success;
 	}
 
 	public void displayObject(MuseumsObject museumsObject) {
 		outputParameterArea.displayObject(museumsObject);
-	}
-
-	public void TestBluetooth() {
-		controller.TestBluetooth();
-	}
-
-	public void transmitMuseumData() {
-		controller.transmitMuseumData();
 	}
 
 	@Override
