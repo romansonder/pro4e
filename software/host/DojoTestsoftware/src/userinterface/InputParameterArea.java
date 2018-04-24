@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import jssc.SerialPortList;
 import model.GuiTypes.AccessRightsTypes;
 import model.GuiTypes.LanguagesTypes;
 import model.MuseumsObject;
@@ -39,6 +40,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	private JButton btEvaluate;
 	private JComboBox<AccessRightsTypes> comboAccessRights;
 	private JComboBox<LanguagesTypes> comboLanguage;
+	private JComboBox<String> comboPorts;
 
 	public InputParameterArea(TopView topView) {
 		super(new GridBagLayout());
@@ -97,7 +99,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btTransmitUSB.setEnabled(true);
 		btTransmitUSB.addActionListener(this);
 
-		btTransmitBT = new JButton("Übertragen via BT");
+		btTransmitBT = new JButton("Übertragen");
 		btTransmitBT.setEnabled(true);
 		btTransmitBT.addActionListener(this);
 
@@ -107,6 +109,11 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		comboAccessRights = new JComboBox<>(AccessRightsTypes.values());
 		comboLanguage = new JComboBox<>(LanguagesTypes.values());
+
+		String[] portNames = null;
+		portNames = SerialPortList.getPortNames();
+		comboPorts = new JComboBox<String>(portNames);
+		comboPorts.setSelectedIndex(comboPorts.getItemCount() - 1);
 
 		add(new JLabel("Ausstellung:"), new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
@@ -144,8 +151,11 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		add(comboLanguage, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btTransmitBT, new GridBagConstraints(0, 9, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
-				new Insets(10, 10, 10, 10), 0, 0));
+		add(comboPorts, new GridBagConstraints(0, 9, 1, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
+				new Insets(10, 10, 10, 5), 0, 0));
+
+		add(btTransmitBT, new GridBagConstraints(1, 9, 1, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
+				new Insets(10, 5, 10, 10), 0, 0));
 
 		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 10, 2, 1, 0.0, 0.0,
 				GridBagConstraints.EAST, GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
@@ -208,7 +218,9 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		} else if (e.getSource() == btTransmitUSB) {
 			topView.transmitMuseumData();
 		} else if (e.getSource() == btTransmitBT) {
-			topView.transmitUserPreferences();
+			boolean success = false;
+			success = topView.transmitUserPreferences(comboPorts.getSelectedItem().toString());
+			comboPorts.setEnabled(!success);
 		} else if (e.getSource() == btEvaluate) {
 			topView.evaluateDojo();
 		}

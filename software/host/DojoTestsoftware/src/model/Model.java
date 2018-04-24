@@ -59,9 +59,7 @@ public class Model extends Observable {
 					serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
 
 					success = true;
-					notifyObservers();
 				}
-
 			} catch (SerialPortException exception) {
 				System.out.println("Fehler beim öffnen von Port: " + exception);
 				StatusBar.setStatus(StatusType.OPENPORTFAILURE, serialPort.getPortName());
@@ -106,7 +104,6 @@ public class Model extends Observable {
 				serialPort.writeBytes(commandType.toCommand().getBytes());
 				System.out.println("Command sent: " + commandType);
 				success = true;
-				notifyObservers();
 			}
 
 		} catch (SerialPortException exception) {
@@ -222,10 +219,10 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean transmitUserPreferences() {
+	public boolean transmitUserPreferences(String port) {
 		boolean success = false;
 
-		success = openSerialConnection("COM14");
+		success = openSerialConnection(port);
 		if (success) {
 			success = sendCommandToSerial(JavaBle.REQUESTALIVE);
 		}
@@ -299,8 +296,8 @@ public class Model extends Observable {
 			try {
 				Files.copy(src.toPath(), dst.toPath(), StandardCopyOption.REPLACE_EXISTING);
 				success = true;
-			} catch (IOException e) {
-				e.printStackTrace();
+			} catch (IOException exception) {
+				exception.printStackTrace();
 			}
 		}
 

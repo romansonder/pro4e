@@ -68,9 +68,9 @@ public class TopView extends JPanel implements Observer {
 		return success;
 	}
 
-	public boolean transmitUserPreferences() {
+	public boolean transmitUserPreferences(String port) {
 		boolean success = false;
-		success = controller.transmitUserPreferences();
+		success = controller.transmitUserPreferences(port);
 		return success;
 	}
 

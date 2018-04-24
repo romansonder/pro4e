@@ -46,11 +46,10 @@ public class Controller {
 		return success;
 	}
 
-	public boolean transmitUserPreferences() {
+	public boolean transmitUserPreferences(String port) {
 		boolean success = false;
-		success = model.transmitUserPreferences();
+		success = model.transmitUserPreferences(port);
 		return success;
-
 	}
 
 	public boolean transmitMuseumData() {
