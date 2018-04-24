@@ -40,7 +40,7 @@ public class Model extends Observable {
 		System.out.println("Model: NotifyObserver called");
 	}
 
-	public boolean OpenBluetoothConnection(String port) {
+	public boolean OpenSerialConnection(String port) {
 		boolean success = false;
 
 		serialPort = new SerialPort(port);
@@ -220,9 +220,9 @@ public class Model extends Observable {
 	public boolean transmitUserPreferences() {
 		boolean success = false;
 
-		success = OpenBluetoothConnection("COM1");
+		success = OpenSerialConnection("COM9");
 		if (success) {
-			success = SendStringToBluetooth("");
+			success = SendStringToBluetooth("test");
 			success = CloseBluetoothConnection();
 		}
 
