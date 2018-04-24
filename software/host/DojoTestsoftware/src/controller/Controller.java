@@ -10,6 +10,18 @@ public class Controller {
 		this.model = model;
 	}
 
+	public boolean openSerialConnection(String port) {
+		boolean success = false;
+		success = model.openSerialConnection(port);
+		return success;
+	}
+
+	public boolean closeSerialConnection() {
+		boolean success = false;
+		success = model.closeSerialConnection();
+		return success;
+	}
+
 	public boolean readInObjects() {
 		boolean success = false;
 		success = model.readInObjects();

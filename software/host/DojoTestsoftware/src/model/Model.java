@@ -38,37 +38,42 @@ public class Model extends Observable {
 		museum = new Museum();
 	}
 
-	public boolean OpenSerialConnection(String port) {
+	public boolean openSerialConnection(String port) {
 		boolean success = false;
 
-		serialPort = new SerialPort(port);
-		try {
-			if (false == serialPort.isOpened()) {
-				serialPort.openPort();
+		if (null == serialPort) {
+			serialPort = new SerialPort(port);
 
-				StatusBar.setStatus(StatusType.OPENEDCONNECTION, serialPort.getPortName());
-				portIsOpened = true;
-				System.out.println("Verbindung geöffnet");
+			try {
+				if (false == serialPort.isOpened()) {
+					serialPort.openPort();
 
-				serialPort.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
-						SerialPort.PARITY_NONE);
+					StatusBar.setStatus(StatusType.OPENEDCONNECTION, serialPort.getPortName());
+					portIsOpened = true;
+					System.out.println("Port geöffnet");
 
-				serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_RTSCTS_IN | SerialPort.FLOWCONTROL_RTSCTS_OUT);
-				serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
+					serialPort.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
+							SerialPort.PARITY_NONE);
 
-				success = true;
-				notifyObservers();
+					serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_RTSCTS_IN | SerialPort.FLOWCONTROL_RTSCTS_OUT);
+					serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
+
+					success = true;
+					notifyObservers();
+				}
+
+			} catch (SerialPortException exception) {
+				System.out.println("Fehler beim öffnen von Port: " + exception);
+				StatusBar.setStatus(StatusType.OPENPORTFAILURE, serialPort.getPortName());
 			}
-
-		} catch (SerialPortException exception) {
-			System.out.println("Fehler beim öffnen von Port: " + exception);
-			StatusBar.setStatus(StatusType.OPENPORTFAILURE, serialPort.getPortName());
+		} else {
+			success = true;
 		}
 
 		return success;
 	}
 
-	public boolean CloseBluetoothConnection() {
+	public boolean closeSerialConnection() {
 		boolean success = false;
 
 		try {
@@ -77,19 +82,19 @@ public class Model extends Observable {
 					serialPort.closePort();
 					StatusBar.setStatus(StatusType.PORTCLOSED, serialPort.getPortName());
 					portIsOpened = false;
-					System.out.println("Verbindung geschlossen");
+					System.out.println("Port geschlossen");
 					success = true;
 				}
 			}
 		} catch (SerialPortException exception) {
-			System.out.println("Fehler beim chliessen von Port: " + exception);
+			System.out.println("Fehler beim schliessen von Port: " + exception);
 			StatusBar.setStatus(StatusType.ClOSEPORTFAILURE, serialPort.getPortName());
 		}
 
 		return success;
 	}
 
-	public boolean SendCommandToSerial(String message) {
+	public boolean sendCommandToSerial(JavaBle commandType) {
 		boolean success = false;
 
 		try {
@@ -98,15 +103,15 @@ public class Model extends Observable {
 			}
 
 			if (null != serialPort) {
-				serialPort.writeBytes(message.getBytes());
-				System.out.println("Command sent: " + message);
+				serialPort.writeBytes(commandType.toCommand().getBytes());
+				System.out.println("Command sent: " + commandType);
 				success = true;
 				notifyObservers();
 			}
 
-		} catch (SerialPortException ex) {
+		} catch (SerialPortException exception) {
 			StatusBar.setStatus(StatusType.USERPREFERENCESTRANSMITTINGFAILURE, "");
-			System.out.println("Fehler beim senden von String aufgetreten: " + ex);
+			System.out.println("Fehler beim senden von String aufgetreten: " + exception);
 		}
 
 		return success;
@@ -220,9 +225,9 @@ public class Model extends Observable {
 	public boolean transmitUserPreferences() {
 		boolean success = false;
 
-		success = OpenSerialConnection("COM14");
+		success = openSerialConnection("COM14");
 		if (success) {
-			success = SendCommandToSerial(JavaBle.REQUESTALIVE.toCommand());
+			success = sendCommandToSerial(JavaBle.REQUESTALIVE);
 		}
 
 		return success;
@@ -329,7 +334,6 @@ public class Model extends Observable {
 						if (oneByte == '\n') {
 							receivedMessage = message.toString();
 							message = new StringBuilder();
-							CloseBluetoothConnection();
 							JavaBle commandType = JavaBle.convert(receivedMessage);
 							HandleReceivedCommand(commandType);
 						} else {
@@ -350,6 +354,7 @@ public class Model extends Observable {
 				break;
 			case REQUESTALIVE:
 				System.out.println("Command received: " + JavaBle.REQUESTALIVE.toString());
+				sendCommandToSerial(JavaBle.ALIVE);
 				break;
 			case ALIVE:
 				System.out.println("Command received: " + JavaBle.ALIVE.toString());

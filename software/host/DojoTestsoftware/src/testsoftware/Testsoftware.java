@@ -53,6 +53,7 @@ public class Testsoftware extends JFrame {
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent event) {
+				controller.closeSerialConnection();
 				System.exit(1);
 			}
 		});
