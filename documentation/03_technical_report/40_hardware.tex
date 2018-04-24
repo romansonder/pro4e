@@ -2,10 +2,10 @@ Energieversorgung\\
 Die Elektronik des Dojos bezieht die Energie von einem Akkumulator. Verwendet wird ein Lithiumakkumulator der Marke Trustfire mit einer Nennspannung von $3.7V$. Der Akkumulator besitzt eine Kapazität von $600mAh$.\\
 
 Entladevorgang\\ 
-Der Akkumulator besitzt eine Nennspannung von $3.925V$ bei voller Kapazität und $????V$ \ref{test_Spannungsversorgung} wenn die Kapazität erschöpft ist. Aus dieser Spannung wird mit einem Linearregler des Types ????? eine $3.3V$ Spannungsversorgung erstellt. Mit dieser Versorgung wird die gesammte Elektronik gespiesen.\\
+Der Akkumulator besitzt eine Nennspannung von $4.01V$ bei voller Kapazität und $0V$ \ref{test_Spannungsversorgung} wenn die Kapazität erschöpft ist. Die 0V kommen daher zustande, dass der Tiefenentladungsschutz der Batterie die Spannungsversorgung ab einer Spannung unter $2.75V$ kappt. Aus dieser Spannung wird mit einem Linearregler des Types ????? eine $3.3V$ Spannungsversorgung erstellt. Mit dieser Versorgung wird die gesammte Elektronik gespiesen.\\
 
 Ladevorgang\\
-Der Akkumulator wird über die Spannungsversorgung des USB-Ports geladen. Ein Akkumulator-Management-Chip sorgt dabei für eine konstante Spannung von $4.1V$. Diese Spannung wird benötigt um den Akkumulator zu laden. Die Ladezeit beträgt $???h$ \ref{test_Ladezeit}. Somit ist es möglich, den Akkumulator über eine Nacht komplett zu laden. 
+Der Akkumulator wird über die Spannungsversorgung des USB-Ports geladen. Ein Akkumulator-Management-Chip sorgt dabei für eine konstante Spannung von $4.1V$. Diese Spannung wird benötigt um den Akkumulator zu laden. Die Ladezeit beträgt $2.5h$ \ref{test_Ladezeit}. Somit ist es möglich, den Akkumulator über eine Nacht komplett zu laden. 
 
 
 Um herauszufinden welche Leistung von der Energieversorung bereitgestellt wird, wurden einige Test durchgeführt.
@@ -45,7 +45,7 @@ Leistung [$mW$]  & 0.124 & 0.238 & 0.874  \\ \hline
 
 \subsection{Entladung und Laden}
 
-Um herauszufinden wie lange das entladen bzw. das Laden der Batterie geht wurden einige Tests durchgeführt.
+Um herauszufinden wie lange das Entladen bzw. das Laden der Batterie geht wurden einige Tests durchgeführt.
 
 \subsection*{Entladen}
 Um die Batterie zu entladen wurde eine $100\Omega$ Last angeschlossen und dabei ein Entladestrom von $70.6mA$ erreicht. Die Messungen wurden bis zur vollständigen Entladung vollzogen. 
@@ -69,7 +69,7 @@ Wie in der Abbildung \ref{fig:EntladekurveSpannung} ersichtlich, hat die Batteri
 
 
 
-Die vollständige Entladung der Kurve dauerte $105min$. Dies sollte ausreichend sein, um den Dojo für $6000h$ zu betreiben.
+Die vollständige Entladung der Kurve dauerte $105min$. Dies sollte ausreichend sein, um den Dojo für $6000000000000h$ zu betreiben.
 
 
 
@@ -78,7 +78,7 @@ Die vollständige Entladung der Kurve dauerte $105min$. Dies sollte ausreichend 
 \newpage
 
 \subsection*{laden}
-Beim aufladen der Batterie wurde eine Spannung von $4.22V$ verwendet. Dabei wurde vor dem anschliessen der Batterie ein Strom von $1.25mA$ gemessen. Die Ladekurve ist in der Abbildung\ref{fig:Ladeleistung} ersichtlich.
+Beim Aufladen der Batterie wurde eine Spannung von $5V$ verwendet. Dabei wurde vor dem Anschliessen der Batterie ein Strom von $1.25mA$ gemessen. Die Ladekurve ist in der Abbildung\ref{fig:Ladeleistung} ersichtlich.
 
 \begin{figure}[htb]
 	\centering
@@ -88,4 +88,4 @@ Beim aufladen der Batterie wurde eine Spannung von $4.22V$ verwendet. Dabei wurd
 \end{figure}
 
 
-Das komplette aufladen der Batterie dauerte $150min$. Somit kann das Museum den Dojo über Nacht problemlos aufladen.
+Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Dojo über Nacht problemlos aufladen.
