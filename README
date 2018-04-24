@@ -2,7 +2,7 @@
 # How to use git
 ########################################################################
 First time you run git:
-$ git clone https://github.com/roman.sonder/pro4e
+$ git clone https://github.com/roman.sonder/pro4e.git
 
 $ git pull			# download the newest files from git
 
