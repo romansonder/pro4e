@@ -46,8 +46,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		this.topView = topView;
 
 		btHelpLibrary = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
-		btHelpLibrary
-				.setToolTipText("<html><b>Ausstellung:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
+		btHelpLibrary.setToolTipText(
+				"<html><b>Ausstellung:</b><br><br>Einer Ausstellung kann eine beliebige Anzahl<br> an Museumsobjekten hinzugefügt werden.<br><br></html>");
 		btHelpLibrary.setOpaque(false);
 		btHelpLibrary.setContentAreaFilled(false);
 		btHelpLibrary.setBorderPainted(false);
@@ -56,8 +56,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btHelpLibrary.setFocusable(false);
 
 		btHelpAccessRights = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
-		btHelpAccessRights
-				.setToolTipText("<html><b>Zutrittsrecht:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
+		btHelpAccessRights.setToolTipText(
+				"<html><b>Zutrittsrecht:</b><br><br>Das Zutrittsrecht regelt den erlaubten Zugang<br> zu allen Besichtigungsräumen.<br><br></html>");
 		btHelpAccessRights.setOpaque(false);
 		btHelpAccessRights.setContentAreaFilled(false);
 		btHelpAccessRights.setBorderPainted(false);
@@ -66,7 +66,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btHelpAccessRights.setFocusable(false);
 
 		btHelpLanguage = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
-		btHelpLanguage.setToolTipText("<html><b>Sprache:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
+		btHelpLanguage.setToolTipText(
+				"<html><b>Sprache:</b><br><br>Spezifiziert in welcher Sprache die Hördateien<br> abgespielt werden.<br><br></html>");
 		btHelpLanguage.setOpaque(false);
 		btHelpLanguage.setContentAreaFilled(false);
 		btHelpLanguage.setBorderPainted(false);
@@ -75,8 +76,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btHelpLanguage.setFocusable(false);
 
 		btHelpEvaluate = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
-		btHelpEvaluate
-				.setToolTipText("<html><b>Dojo auswerten:</b><br><br>Hier kommt die Beschreibung hin.<br><br></html>");
+		btHelpEvaluate.setToolTipText(
+				"<html><b>Dojo auswerten:</b><br><br>Wertet Informationen auf dem Dojo aus und<br> legt diese in einer Textdatei ab.<br><br></html>");
 		btHelpEvaluate.setOpaque(false);
 		btHelpEvaluate.setContentAreaFilled(false);
 		btHelpEvaluate.setBorderPainted(false);
