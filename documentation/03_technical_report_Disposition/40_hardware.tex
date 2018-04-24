@@ -1,45 +1,22 @@
-Energieversorgung\\
-Die Elektronik des Dojos bezieht die Energie von einem Akkumulator. Verwendet wird ein Lithiumakkumulator der Marke Trustfire mit einer Nennspannung von $3.7V$. Der Akkumulator besitzt eine Kapazität von $600mAh$.\\
+Hier wird das Grobkonzept der Hardware vorgestellt. Dies gibt einem einen Überblick über den Hardwareteil.
 
-Entladevorgang\\ 
-Der Akkumulator besitzt eine Nennspannung von $3.925V$ bei voller Kapazität und $????V$ \ref{test_Spannungsversorgung} wenn die Kapazität erschöpft ist. Aus dieser Spannung wird mit einem Linearregler des Types ????? eine $3.3V$ Spannungsversorgung erstellt. Mit dieser Versorgung wird die gesammte Elektronik gespiesen.\\
+\subsection{Energieversorgung}
+Dieser Abschnitt gibt einem einen Überblick über die Energieversorgung.
 
-Ladevorgang\\
-Der Akkumulator wird über die Spannungsversorgung des USB-Ports geladen. Ein Akkumulator-Management-Chip sorgt dabei für eine konstante Spannung von $4.1V$. Diese Spannung wird benötigt um den Akkumulator zu laden. Die Ladezeit beträgt $???h$ \ref{test_Ladezeit}. Somit ist es möglich, den Akkumulator über eine Nacht komplett zu laden. 
+\subsubsection{Validierung}
+In diesem Abschnitt werden die Messprotokolle über die Lade und Entladekurfen aufgeführt. Diese werden benötigt, um die technischen Daten der Energieversorgung zu evaluieren.
 
+\subsection{USB-Schnittstelle}
+Es wird der Konvertierungschip FUP300 und seine Schaltung dokumentiert.
 
-Um herauszufinden welche Leistung von der Energieversorung bereitgestellt wird, wurden einige Test durchgeführt.
+\subsection{Audio-Schnittstelle}
+Dieser Abschnitt witmet sich dem Audio-chip und der Soundausgabe über den Knochenschallgeber. 
 
-Zuerst wurde die Messung ohne zusätzlichen Widerstand durchgeführt. Somit kann die Leerlaufleistung der Batterie bestimmt werden. Dies führte zu folgenden Werten:
-\begin{equation}
-I = 1.07mA
-\end{equation}
+\subsubsection{Validierung}
+In diesem Abschnitt wird eine Messung über die Soundausgabe dokumentiert.
 
-\begin{equation}
-U_{Ndl} = 3.295V
-\end{equation}
+\subsection{Zugriff auf SD-Karte}
+Dieser Abschnitt wittmet sich dem Umschalten der SD-Karte zur USB-Schnittstelle und dem Audio-Chip. Es wird dabei Wert auf die technischen Daten dieser Verbindung gelegt.
 
-\begin{equation}
-U_{B} = 3.925V
-\end{equation}
-dabei ist $I$ der gemessene Srom, $U_{Ndl}$ ist die Spannung welche nach dem Linearregler gemessen wurde und $U_{B}$ ist die Batteriespannung. Somit beträgt die Leistung der Ladeschaltung im Leerlauf:
-\begin{equation}
-P_{LL}  = 4.199mW
-\end{equation}
-
-Die Messungen mit einem angeschlossenen Widerstand haben ergeben: \\
-
-\begin{table}[hp]
-\centering
-\label{messungen_Energie}
-\begin{tabular}{|l|c|c|c|}
-\hline
-Widerstand [$\Omega$]     & 100   & 50    & 10    \\ \hline
-Batteriestrom [$mA$]    & 32.55 & 63.79 & 293.3 \\ \hline
-Batteriespannung [$V$] & 3.823 & 3.735 & 2.979 \\ \hline
-Widerstandsstrom [$mA$] & 31.06 & 62.03 & 278.1 \\ \hline
-Ausgangsspannung [$V$]  & 3.293 & 3.292 & 2.95  \\ \hline
-Leistung [$mW$]  & 0.124 & 0.238 & 0.874  \\ \hline
-\end{tabular}
-\end{table}
-
+\subsection{Mikrokontroller}
+In diesem Abschnitt wird die Wahl des Mikrokontrollers dokumentiert.
