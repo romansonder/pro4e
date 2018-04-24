@@ -8,9 +8,8 @@ public enum StatusType {
 									"Keine Bluetooth Verbindung."), OPENPORTFAILURE(
 											"Fehler beim Verbindung aufbauen: "), ClOSEPORTFAILURE(
 													"Fehler beim schliessen des COM-Ports: "), OPENEDCONNECTION(
-															"Verbidung wurde geöffnet: "), EXTRACTDOJOINFORMATIONFAILURE(
-																	"Fehler beim Dojo auswerten aufgetreten."), PORTCLOSED(
-																			"Verbidung wurde erfolgreich geschlossen: ");
+															"Verbidung wurde geöffnet: "), PORTCLOSED(
+																	"Verbidung wurde erfolgreich geschlossen: ");
 
 	private final String statusMitteilung;
 

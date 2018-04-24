@@ -1,8 +1,6 @@
 package model;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -21,10 +19,8 @@ import userinterface.StatusBar;
 
 public class Model extends Observable {
 	private Museum museum;
-	private final String fileExtensionDescrptionXml = "XML Files (*.xml)";
-	private final String fileExtensionDescrptionTxt = "Txt Files (*.txt)";
-	private final String fileExtensionXml = "xml";
-	private final String fileExtensionTxt = "txt";
+	private final String fileExtensionDescrption = "XML Files (*.xml)";
+	private final String fileExtension = "xml";
 	private final String driveName = "SANDISK";
 	public static SerialPort serialPort;
 	public static File storageDrive;
@@ -40,7 +36,7 @@ public class Model extends Observable {
 		System.out.println("Model: NotifyObserver called");
 	}
 
-	public boolean OpenSerialConnection(String port) {
+	public boolean OpenBluetoothConnection(String port) {
 		boolean success = false;
 
 		serialPort = new SerialPort(port);
@@ -118,7 +114,7 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(fileExtensionDescrptionXml, fileExtensionXml);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(fileExtensionDescrption, fileExtension);
 		fc.setFileFilter(filter);
 		fc.showOpenDialog(null);
 
@@ -146,7 +142,7 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(fileExtensionDescrptionXml, fileExtensionXml);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(fileExtensionDescrption, fileExtension);
 		fc.setFileFilter(filter);
 		fc.showSaveDialog(null);
 
@@ -154,8 +150,8 @@ public class Model extends Observable {
 
 		if (null != file) {
 			String filePath = file.getAbsolutePath();
-			if (!filePath.endsWith("." + fileExtensionXml)) {
-				file = new File(filePath + "." + fileExtensionXml);
+			if (!filePath.endsWith("." + fileExtension)) {
+				file = new File(filePath + "." + fileExtension);
 			}
 			try {
 				Serializer serializer = new Persister();
@@ -217,47 +213,13 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean transmitUserPreferences() {
+	public boolean testBluetooth() {
 		boolean success = false;
 
-		success = OpenSerialConnection("COM9");
+		success = OpenBluetoothConnection("COM1");
 		if (success) {
-			success = SendStringToBluetooth("test");
+			// success = SendStringToBluetooth("");
 			success = CloseBluetoothConnection();
-		}
-
-		return success;
-	}
-
-	public boolean evaluateDojo() {
-		boolean success = false;
-
-		JFileChooser fc = new JFileChooser();
-		File workingDirectory = new File(System.getProperty("user.dir"));
-		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(fileExtensionDescrptionTxt, fileExtensionTxt);
-		fc.setFileFilter(filter);
-		fc.showSaveDialog(null);
-
-		File file = fc.getSelectedFile();
-
-		if (null != file) {
-			String filePath = file.getAbsolutePath();
-			if (!filePath.endsWith("." + fileExtensionTxt)) {
-				file = new File(filePath + "." + fileExtensionTxt);
-			}
-
-			try {
-				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-				writer.write("The first test line");
-				writer.newLine();
-				writer.write("The second test line");
-				writer.close();
-				success = true;
-			} catch (Exception exception) {
-				StatusBar.setStatus(StatusType.EXTRACTDOJOINFORMATIONFAILURE, "");
-				exception.printStackTrace();
-			}
 		}
 
 		return success;

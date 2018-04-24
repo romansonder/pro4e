@@ -208,9 +208,9 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		} else if (e.getSource() == btTransmitUSB) {
 			topView.transmitMuseumData();
 		} else if (e.getSource() == btTransmitBT) {
-			topView.transmitUserPreferences();
+			topView.TestBluetooth();
 		} else if (e.getSource() == btEvaluate) {
-			topView.evaluateDojo();
+
 		}
 	}
 }

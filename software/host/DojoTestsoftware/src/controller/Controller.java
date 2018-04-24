@@ -34,9 +34,9 @@ public class Controller {
 		return success;
 	}
 
-	public boolean transmitUserPreferences() {
+	public boolean TestBluetooth() {
 		boolean success = false;
-		success = model.transmitUserPreferences();
+		success = model.testBluetooth();
 		return success;
 
 	}
@@ -44,12 +44,6 @@ public class Controller {
 	public boolean transmitMuseumData() {
 		boolean success = false;
 		success = model.transmitMuseumData();
-		return success;
-	}
-
-	public boolean evaluateDojo() {
-		boolean success = false;
-		success = model.evaluateDojo();
 		return success;
 	}
 }
