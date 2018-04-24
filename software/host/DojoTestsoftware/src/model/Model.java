@@ -19,6 +19,7 @@ import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
+import protocol.JavaBle;
 import userinterface.StatusBar;
 
 public class Model extends Observable {
@@ -88,7 +89,7 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean SendStringToSerial(String message) {
+	public boolean SendCommandToSerial(String message) {
 		boolean success = false;
 
 		try {
@@ -98,7 +99,7 @@ public class Model extends Observable {
 
 			if (null != serialPort) {
 				serialPort.writeBytes(message.getBytes());
-				System.out.println("Message sent: " + message);
+				System.out.println("Command sent: " + message);
 				success = true;
 				notifyObservers();
 			}
@@ -219,9 +220,9 @@ public class Model extends Observable {
 	public boolean transmitUserPreferences() {
 		boolean success = false;
 
-		success = OpenSerialConnection("COM13");
+		success = OpenSerialConnection("COM14");
 		if (success) {
-			success = SendStringToSerial("ra\n");
+			success = SendCommandToSerial(JavaBle.REQUESTALIVE.toCommand());
 		}
 
 		return success;
@@ -327,9 +328,10 @@ public class Model extends Observable {
 					for (byte oneByte : buffer) {
 						if (oneByte == '\n') {
 							receivedMessage = message.toString();
-							System.out.println("Received message: " + receivedMessage);
 							message = new StringBuilder();
 							CloseBluetoothConnection();
+							JavaBle commandType = JavaBle.convert(receivedMessage);
+							HandleReceivedCommand(commandType);
 						} else {
 							message.append((char) oneByte);
 						}
@@ -338,6 +340,29 @@ public class Model extends Observable {
 				} catch (SerialPortException exception) {
 					System.out.println(exception);
 				}
+			}
+		}
+
+		public void HandleReceivedCommand(JavaBle commandType) {
+			switch (commandType) {
+			case COMMANDOENDING:
+				System.out.println("Command received: " + JavaBle.COMMANDOENDING.toString());
+				break;
+			case REQUESTALIVE:
+				System.out.println("Command received: " + JavaBle.REQUESTALIVE.toString());
+				break;
+			case ALIVE:
+				System.out.println("Command received: " + JavaBle.ALIVE.toString());
+				break;
+			case SENDACCESSRIGHT:
+				System.out.println("Command received: " + JavaBle.SENDACCESSRIGHT.toString());
+				break;
+			case SENDLANGUAGE:
+				System.out.println("Command received: " + JavaBle.SENDLANGUAGE.toString());
+				break;
+			default:
+				System.out.println("Command received: " + "Unknown command");
+				break;
 			}
 		}
 	}
