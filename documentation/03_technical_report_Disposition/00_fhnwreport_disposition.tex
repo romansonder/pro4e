@@ -7,7 +7,7 @@
 \usepackage[T1]{fontenc} % font encoding
 \usepackage{lmodern} % font latin modern
 \usepackage[utf8]{inputenc} % input encoding
-\usepackage[ngerman]{babel} % english and german word spelling
+\usepackage[ngerman,english]{babel} % english and german word spelling
 \usepackage[babel, german=swiss]{csquotes} % german cites
 %\usepackage[babel, english=british]{csquotes} % english cites
 
@@ -142,10 +142,13 @@ Studiengang	\> Elektro- und Informationstechnik \\[5mm]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{roman}
 \setcounter{page}{1}
+\begin{otherlanguage}{english}
 \begin{abstract}
 \section*{Abstract}\label{sec:abstract}
 \input{10_abstract}
 \end{abstract}
+\end{otherlanguage}
+\begin{otherlanguage}{ngerman}
 \clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -201,13 +204,6 @@ Studiengang	\> Elektro- und Informationstechnik \\[5mm]
 \clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Test
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Test}\label{sec:test}
-\input{60_test}
-\clearpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Schlusswort
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Schlusswort}\label{sec:schlusswort}
@@ -227,4 +223,5 @@ Studiengang	\> Elektro- und Informationstechnik \\[5mm]
 \begin{appendix}
 \input{90_appendix}
 \end{appendix}
+\end{otherlanguage}
 \end{document}
