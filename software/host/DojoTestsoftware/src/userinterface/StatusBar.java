@@ -28,7 +28,7 @@ public final class StatusBar extends JPanel {
 	}
 
 	public static void setStatus(StatusType statusType, String message) {
-		if (statusType == StatusType.TRANSMITTING) {
+		if (statusType == StatusType.TRANSMITTINGDATA || statusType == StatusType.TRANSMITTINGPREFERENCES) {
 			if (null != timerThread) {
 				timerThread.setTransmittingRunning(true);
 			}

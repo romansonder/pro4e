@@ -33,7 +33,8 @@ public class Model extends Observable {
 	private String receivedMessage;
 	private File storageDrive;
 	private boolean portIsOpened;
-	private TransmittingWorker transmittingWorker;
+	private TransmittingDataWorker transmittingDataWorker;
+	private TransmittingPreferencesWorker transmittingPreferencesWorker;
 
 	public Model() {
 		museum = new Museum();
@@ -207,8 +208,14 @@ public class Model extends Observable {
 	public boolean transmitMuseumData() {
 		boolean success = false;
 
-		transmittingWorker = new TransmittingWorker(this, driveName);
-		transmittingWorker.execute();
+		try {
+			transmittingDataWorker = new TransmittingDataWorker(this, driveName);
+			transmittingDataWorker.execute();
+			success = true;
+		} catch (Exception exception) {
+			StatusBar.setStatus(StatusType.DATATRANSMITTINGFAILURE, "");
+			exception.printStackTrace();
+		}
 
 		return success;
 	}
@@ -216,9 +223,13 @@ public class Model extends Observable {
 	public boolean transmitUserPreferences(String port) {
 		boolean success = false;
 
-		success = openSerialConnection(port);
-		if (success) {
-			success = sendCommandToSerial(JavaBleCommunication.REQUESTALIVE);
+		try {
+			transmittingPreferencesWorker = new TransmittingPreferencesWorker(this, port);
+			transmittingPreferencesWorker.execute();
+			success = true;
+		} catch (Exception exception) {
+			StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGFAILURE, "");
+			exception.printStackTrace();
 		}
 
 		return success;

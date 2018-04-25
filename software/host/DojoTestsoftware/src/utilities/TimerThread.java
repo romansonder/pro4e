@@ -43,27 +43,27 @@ public class TimerThread extends Thread {
 				if (isTransmittingRunning) {
 					switch (counter) {
 					case 0:
-						StatusBar.setStatus(StatusType.TRANSMITTING, " ");
+						StatusBar.setStatus(StatusType.TRANSMITTINGDATA, " ");
 						counter++;
 						break;
 					case 1:
-						StatusBar.setStatus(StatusType.TRANSMITTING, ".");
+						StatusBar.setStatus(StatusType.TRANSMITTINGDATA, ".");
 						counter++;
 						break;
 					case 2:
-						StatusBar.setStatus(StatusType.TRANSMITTING, ". .");
+						StatusBar.setStatus(StatusType.TRANSMITTINGDATA, ". .");
 						counter++;
 						break;
 					case 3:
-						StatusBar.setStatus(StatusType.TRANSMITTING, ". . .");
+						StatusBar.setStatus(StatusType.TRANSMITTINGDATA, ". . .");
 						counter++;
 						break;
 					case 4:
-						StatusBar.setStatus(StatusType.TRANSMITTING, ". . . .");
+						StatusBar.setStatus(StatusType.TRANSMITTINGDATA, ". . . .");
 						counter++;
 						break;
 					case 5:
-						StatusBar.setStatus(StatusType.TRANSMITTING, ". . . . .");
+						StatusBar.setStatus(StatusType.TRANSMITTINGDATA, ". . . . .");
 						counter = 0;
 						break;
 					default:
