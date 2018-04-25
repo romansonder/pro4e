@@ -3,8 +3,8 @@ package model;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.StandardCopyOption;
 import java.util.Observable;
 
@@ -296,8 +296,16 @@ public class Model extends Observable {
 			try {
 				Files.copy(src.toPath(), dst.toPath(), StandardCopyOption.REPLACE_EXISTING);
 				success = true;
-			} catch (IOException exception) {
+			} catch (NoSuchFileException exception) {
+				success = false;
+				StatusBar.setStatus(StatusType.DATAFILENOTFOUND, src.getName());
 				exception.printStackTrace();
+				break;
+			} catch (Exception exception) {
+				success = false;
+				StatusBar.setStatus(StatusType.DATATRANSMITTINGFAILURE, "");
+				exception.printStackTrace();
+				break;
 			}
 		}
 
