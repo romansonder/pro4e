@@ -7,8 +7,13 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JLabel;
 
+import model.StatusType;
+import userinterface.StatusBar;
+
 public class TimerThread extends Thread {
 	private boolean isRunning;
+	private boolean isTransmittingRunning;
+	private int counter = 0;
 
 	private JLabel dateLabel;
 	private JLabel timeLabel;
@@ -19,7 +24,9 @@ public class TimerThread extends Thread {
 	public TimerThread(JLabel dateLabel, JLabel timeLabel) {
 		this.dateLabel = dateLabel;
 		this.timeLabel = timeLabel;
+		this.counter = 0;
 		setRunning(true);
+		setTransmittingRunning(false);
 	}
 
 	@Override
@@ -32,6 +39,34 @@ public class TimerThread extends Thread {
 
 			try {
 				TimeUnit.SECONDS.sleep(1);
+
+				if (isTransmittingRunning) {
+					switch (counter) {
+					case 0:
+						StatusBar.setStatus(StatusType.TRANSMITTING, ".");
+						counter++;
+						break;
+					case 1:
+						StatusBar.setStatus(StatusType.TRANSMITTING, ". .");
+						counter++;
+						break;
+					case 2:
+						StatusBar.setStatus(StatusType.TRANSMITTING, ". . .");
+						counter++;
+						break;
+					case 3:
+						StatusBar.setStatus(StatusType.TRANSMITTING, ". . . .");
+						counter++;
+						break;
+					case 4:
+						StatusBar.setStatus(StatusType.TRANSMITTING, ". . . . .");
+						counter = 0;
+						break;
+					default:
+						break;
+					}
+				}
+
 			} catch (InterruptedException exception) {
 				exception.printStackTrace();
 			}
@@ -40,5 +75,9 @@ public class TimerThread extends Thread {
 
 	public void setRunning(boolean isRunning) {
 		this.isRunning = isRunning;
+	}
+
+	public void setTransmittingRunning(boolean isTransmittingRunning) {
+		this.isTransmittingRunning = isTransmittingRunning;
 	}
 }

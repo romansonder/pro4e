@@ -29,10 +29,11 @@ public class Model extends Observable {
 	private final String fileExtensionXml = "xml";
 	private final String fileExtensionTxt = "txt";
 	private final String driveName = "SANDISK";
-	public static SerialPort serialPort;
-	public static String receivedMessage;
-	public static File storageDrive;
-	public static boolean portIsOpened;
+	private SerialPort serialPort;
+	private String receivedMessage;
+	private File storageDrive;
+	private boolean portIsOpened;
+	private TransmittingWorker transmittingWorker;
 
 	public Model() {
 		museum = new Museum();
@@ -206,15 +207,8 @@ public class Model extends Observable {
 	public boolean transmitMuseumData() {
 		boolean success = false;
 
-		success = recogniseDriveByDriveName(driveName);
-		if (success) {
-			success = writeMuseumDataToDrive(storageDrive);
-			if (success) {
-				StatusBar.setStatus(StatusType.DATATRANSMITTINGSUCCESSFUL, "");
-			}
-		} else {
-			StatusBar.setStatus(StatusType.DOJODRIVENOTFOUND, "");
-		}
+		transmittingWorker = new TransmittingWorker(this, driveName);
+		transmittingWorker.execute();
 
 		return success;
 	}
@@ -288,6 +282,11 @@ public class Model extends Observable {
 	public boolean writeMuseumDataToDrive(File driveName) {
 		boolean success = false;
 
+		if (museum.list.isEmpty()) {
+			StatusBar.setStatus(StatusType.NODATATOTRANSMIT, "");
+			return success;
+		}
+
 		for (int i = 0; i < museum.list.size(); i++) {
 			MuseumsObject museumObject = museum.list.get(i);
 			File src = new File(museumObject.getPath());
@@ -314,6 +313,10 @@ public class Model extends Observable {
 
 	public Museum getMuseum() {
 		return this.museum;
+	}
+
+	public File getStorageDrive() {
+		return this.storageDrive;
 	}
 
 	private void setMuseum(Museum museum) {

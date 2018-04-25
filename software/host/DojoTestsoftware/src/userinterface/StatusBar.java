@@ -27,15 +27,19 @@ public final class StatusBar extends JPanel {
 		setDateTime();
 	}
 
-	/**
-	 * Setzt neue Statusmeldung in der Statusbar.
-	 * 
-	 * @param portclosed
-	 * @param message
-	 */
-	public static void setStatus(StatusType portclosed, String message) {
+	public static void setStatus(StatusType statusType, String message) {
+		if (statusType == StatusType.TRANSMITTING) {
+			if (null != timerThread) {
+				timerThread.setTransmittingRunning(true);
+			}
+		} else {
+			if (null != timerThread) {
+				timerThread.setTransmittingRunning(false);
+			}
+		}
+
 		setLeftComponent(statusLabel);
-		statusLabel.setText(portclosed.toString() + message);
+		statusLabel.setText(statusType.toString() + message);
 	}
 
 	private void setDateTime() {
