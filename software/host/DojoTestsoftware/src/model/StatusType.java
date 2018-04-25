@@ -7,7 +7,7 @@ public enum StatusType {
 							"Folgende Datei wurde nicht gefunden: "), DATATRANSMITTINGFAILURE(
 									"Fehler beim Übertragen von Ausstellung."), READOBJECTSFAILURE(
 											"Fehler beim laden der Austellung."), NOOPENCONNECTION(
-													"Keine Bluetooth Verbindung."), USERPREFERENCESTRANSMITTINGFAILURE(
+													"Keine serielle Verbindung."), USERPREFERENCESTRANSMITTINGFAILURE(
 															"Fehler beim Übertragen von Benutzereinstellungen: "), OPENPORTFAILURE(
 																	"Fehler beim Verbindung aufbauen: "), ClOSEPORTFAILURE(
 																			"Fehler beim schliessen des COM-Ports: "), OPENEDCONNECTION(
@@ -15,14 +15,14 @@ public enum StatusType {
 																							"Fehler beim Dojo auswerten aufgetreten."), PORTCLOSED(
 																									"Verbidung wurde erfolgreich geschlossen: ");
 
-	private final String statusMitteilung;
+	private final String statusMessage;
 
-	private StatusType(final String statusMitteilung) {
-		this.statusMitteilung = statusMitteilung;
+	private StatusType(final String statusMessage) {
+		this.statusMessage = statusMessage;
 	}
 
 	@Override
 	public String toString() {
-		return statusMitteilung;
+		return statusMessage;
 	}
 }

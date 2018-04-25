@@ -55,15 +55,15 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals(load)) {
+	public void actionPerformed(ActionEvent event) {
+		if (event.getActionCommand().equals(load)) {
 			controller.readInObjects();
-		} else if (e.getActionCommand().equals(close)) {
+		} else if (event.getActionCommand().equals(close)) {
 			System.exit(1);
-		} else if (e.getActionCommand().equals(aboutUs)) {
+		} else if (event.getActionCommand().equals(aboutUs)) {
 			AboutUs.aboutUsAnzeigen();
 		} else {
-			System.out.println(e.getActionCommand());
+			System.out.println(event.getActionCommand());
 		}
 	}
 }

@@ -19,7 +19,7 @@ import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
-import protocol.JavaBle;
+import protocol.JavaBleCommunication;
 import userinterface.StatusBar;
 
 public class Model extends Observable {
@@ -92,7 +92,7 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean sendCommandToSerial(JavaBle commandType) {
+	public boolean sendCommandToSerial(JavaBleCommunication commandType) {
 		boolean success = false;
 
 		try {
@@ -224,7 +224,7 @@ public class Model extends Observable {
 
 		success = openSerialConnection(port);
 		if (success) {
-			success = sendCommandToSerial(JavaBle.REQUESTALIVE);
+			success = sendCommandToSerial(JavaBleCommunication.REQUESTALIVE);
 		}
 
 		return success;
@@ -339,7 +339,8 @@ public class Model extends Observable {
 						if (oneByte == '\n') {
 							receivedMessage = message.toString();
 							message = new StringBuilder();
-							JavaBle commandType = JavaBle.convert(receivedMessage);
+							JavaBleCommunication commandType = JavaBleCommunication
+									.convertCommandStringToCommandType(receivedMessage);
 							HandleReceivedCommand(commandType);
 						} else {
 							message.append((char) oneByte);
@@ -352,23 +353,23 @@ public class Model extends Observable {
 			}
 		}
 
-		public void HandleReceivedCommand(JavaBle commandType) {
+		public void HandleReceivedCommand(JavaBleCommunication commandType) {
 			switch (commandType) {
 			case COMMANDOENDING:
-				System.out.println("Command received: " + JavaBle.COMMANDOENDING.toString());
+				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
 				break;
 			case REQUESTALIVE:
-				System.out.println("Command received: " + JavaBle.REQUESTALIVE.toString());
-				sendCommandToSerial(JavaBle.ALIVE);
+				System.out.println("Command received: " + JavaBleCommunication.REQUESTALIVE.toString());
+				sendCommandToSerial(JavaBleCommunication.ALIVE);
 				break;
 			case ALIVE:
-				System.out.println("Command received: " + JavaBle.ALIVE.toString());
+				System.out.println("Command received: " + JavaBleCommunication.ALIVE.toString());
 				break;
 			case SENDACCESSRIGHT:
-				System.out.println("Command received: " + JavaBle.SENDACCESSRIGHT.toString());
+				System.out.println("Command received: " + JavaBleCommunication.SENDACCESSRIGHT.toString());
 				break;
 			case SENDLANGUAGE:
-				System.out.println("Command received: " + JavaBle.SENDLANGUAGE.toString());
+				System.out.println("Command received: " + JavaBleCommunication.SENDLANGUAGE.toString());
 				break;
 			default:
 				System.out.println("Command received: " + "Unknown command");

@@ -209,19 +209,19 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btNewObject) {
+	public void actionPerformed(ActionEvent event) {
+		if (event.getSource() == btNewObject) {
 			MuseumsObject museumObject = displayNewObjectDialog();
 			topView.addNewObject(museumObject);
-		} else if (e.getSource() == btSave) {
+		} else if (event.getSource() == btSave) {
 			topView.saveObjects();
-		} else if (e.getSource() == btTransmitUSB) {
+		} else if (event.getSource() == btTransmitUSB) {
 			topView.transmitMuseumData();
-		} else if (e.getSource() == btTransmitBT) {
+		} else if (event.getSource() == btTransmitBT) {
 			boolean success = false;
 			success = topView.transmitUserPreferences(comboPorts.getSelectedItem().toString());
 			comboPorts.setEnabled(!success);
-		} else if (e.getSource() == btEvaluate) {
+		} else if (event.getSource() == btEvaluate) {
 			topView.evaluateDojo();
 		}
 	}

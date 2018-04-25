@@ -1,20 +1,6 @@
 package model;
 
 public class GuiTypes {
-	public enum StatusType {
-		RUNNING("Anwendung geladen.");
-
-		private final String statusMessage;
-
-		private StatusType(final String statusMessage) {
-			this.statusMessage = statusMessage;
-		}
-
-		@Override
-		public String toString() {
-			return statusMessage;
-		}
-	}
 
 	public enum AccessRightsTypes {
 		LEVEL1("Level 1"), LEVEL2("Level 2"), LEVEL3("Level 3");
