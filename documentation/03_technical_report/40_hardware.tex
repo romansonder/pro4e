@@ -10,7 +10,7 @@ Der Akkumulator wird über die Spannungsversorgung des USB-Ports geladen. Ein Ak
 
 Um herauszufinden welche Leistung von der Energieversorung bereitgestellt wird, wurden einige Test durchgeführt.
 
-Zuerst wurde die Messung ohne zusätzlichen Widerstand durchgeführt. Somit kann die Leerlaufleistung der Batterie bestimmt werden. Dies führte zu folgenden Werten:
+Zuerst wurde die Messung ohne zusätzlichen Widerstand durchgeführt. Dies führte zu folgenden Werten:
 \begin{equation}
 I = 1.07mA
 \end{equation}
@@ -22,10 +22,7 @@ U_{Ndl} = 3.295V
 \begin{equation}
 U_{B} = 3.925V
 \end{equation}
-dabei ist $I$ der gemessene Srom, $U_{Ndl}$ ist die Spannung welche nach dem Linearregler gemessen wurde und $U_{B}$ ist die Batteriespannung. Somit beträgt die Leistung der Ladeschaltung im Leerlauf:
-\begin{equation}
-P_{LL}  = 4.199mW
-\end{equation}
+dabei ist $I$ der gemessene Srom, $U_{Ndl}$ ist die Spannung welche nach dem Linearregler gemessen wurde und $U_{B}$ ist die Batteriespannung.
 
 Die Messungen mit einem angeschlossenen Widerstand haben ergeben: \\
 
@@ -41,6 +38,7 @@ Widerstandsstrom [$mA$] & 31.06 & 62.03 & 278.1 \\ \hline
 Ausgangsspannung [$V$]  & 3.293 & 3.292 & 2.95  \\ \hline
 Leistung [$mW$]  & 0.124 & 0.238 & 0.874  \\ \hline
 \end{tabular}
+\caption{Messungen mit verschiedene Widerstände}
 \end{table}
 
 \subsection{Entladung und Laden}
