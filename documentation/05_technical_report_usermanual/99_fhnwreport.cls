@@ -1,10 +1,10 @@
 %%
-%% This is file `fhnwreport_usermanual.cls',
+%% This is file `fhnwreport.cls',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% fhnwreport_usermanual.dtx
+%% fhnwreport.dtx
 %%
 %% IMPORTANT NOTICE:
 %%
@@ -21,7 +21,7 @@
 %% same distribution. (The sources need not necessarily be
 %% in the same archive or directory.)
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{99_fhnwreport_usermanual}[2015/03/07 v2.2 PDF-LaTeX class for FHNW reports]
+\ProvidesClass{99_fhnwreport}[2015/03/07 v2.2 PDF-LaTeX class for FHNW reports]
 \LoadClass{article}
 \RequirePackage{geometry}
 \RequirePackage{calc}
@@ -218,4 +218,4 @@
 \renewcommand{\bottomfraction}{0.7}
 \endinput
 %%
-%% End of file `fhnwreport_usermanual.cls'.
+%% End of file `fhnwreport.cls'.
