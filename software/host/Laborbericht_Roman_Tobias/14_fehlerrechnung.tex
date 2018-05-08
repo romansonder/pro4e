@@ -1,0 +1,94 @@
+Im folgenden Abschnitt geht es darum die Fehlerrechnung zu den oben ausgeführten Messungen durchzuführen (gem. Skript \cite{LOOSER2013}).\\
+\\
+Es wird unterschieden zwischen dem systematischen Fehler und dem zufälligen
+Fehler. Unter \textbf{systematischen Fehlern} bzw. Unsicherheiten werden Fehler
+verstanden welche sich z.B. durch die Versuchsanordnung/ -umgebung einstellen. Ist der systematische Fehler erkannt lässt er sich meist korrigieren. In diesen Versuchen tritt der systematische Fehler bei den Messungen der Strecken auf. Einmal bei den Abständen der Maximaleninterferenzen und bei der Abstandsmessung: Objektträger - Matscheibe und Linse Matscheibe. Dabei wird der statistische Fehler auf $s_{strecke} = 0.5mm$ festgelgt.\\
+\\
+Desweiteren ist die Fehlerfortpflanzung durch Regression zu beachten gemäs der allgemeinen Formel:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% equation
+\begin{equation}
+s_{\overline{sy}} = \sqrt{\left(\left. \frac{\partial R}{\partial x}\right|_{\overline{R}} \cdot s_{\overline{x}}\right)^{2} + \left(\left. \frac{\partial R}{\partial y}\right|_{\overline{R}} \cdot s_{\overline{y}}\right)^{2} + \left(\left. \frac{\partial R}{\partial z}\right|_{\overline{R}} \cdot s_{\overline{z}}\right)^{2} + \dots}
+\label{eq:fortpflanzungsgesetz}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tabbing}
+\hspace{40mm}			\=   \\
+mit		\>					\\
+$s_{\overline{sy}}$		\>  Systematischer Fehler\\
+$R$	\> Fit Funktion		\\
+$\overline{R}$ 	\> Mittelwert der Parameter von R		\\
+$s_{\overline{x}},s_{\overline{y}..}$	\> Fehler des Paramter x,y..\\
+\end{tabbing}
+
+Es folgt die Berechnung des statistischen Fehlers für alle Gitter und Spälte da bei diesen die Fittfunktion die selbe ist:\\
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+R = \frac{m \cdot \lambda}{sin \left(arctan \left(\frac{s_m}{s_o}\right)\right)}
+\label{eq:fitt_loch}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tabbing}
+\hspace{40mm}			\=   			\\
+mit	\>						\\
+$R$	\> Spalt/- Gitterabstand			\\
+$m$ 	\> Ordnung der Interferenz			\\
+$s_m$	\> Abstand der Maximas				\\
+$s_o$	\> Abstand: Objekt zu Linse oder Objektträger 	\\
+$\lambda$	\> Wellenlänge der Lichtquelle 	\\
+\end{tabbing}
+
+Für die Fehlerrechnung aller Löcher kann folgenden Formel verwendet werden:\\
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+R = \frac{\left( 3.238 + \left(m-3 \right) \right) \cdot \lambda}{sin \left(arctan \left(\frac{s_m}{s_o}\right)\right)}
+\label{eq:fitt_loch}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tabbing}
+\hspace{40mm}			\=   			\\
+mit	\>						\\
+$R$	\> Lochdurchmesser					\\
+$m$ 	\> Ordnung der Interferenz			\\
+$s_m$	\> Abstand der Maximas				\\
+$s_o$	\> Abstand: Objekt zu Linse oder Objektträger 	\\
+$\lambda$	\> Wellenlänge der Lichtquelle 	\\
+\end{tabbing}
+
+
+Daraus ergiebt sich die Formel für den totalen systematischen Fehler:\\
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% equation
+\begin{equation}
+s_{\overline{sy}} = \sqrt{\left(\left. \frac{\partial R}{\partial x}\right|_{\overline{R}} \cdot s_m \right)^{2} + \left(\left. \frac{\partial R}{\partial y}\right|_{\overline{R}} \cdot s_o \right)^{2} }
+\label{eq:fortpflanzungsgesetz}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+Der \textbf{statistische Fehler} beschreibt die Fehler welche nicht kontrolliert und/oder verhindert werden können. Z.B. Schwankungen in der Raumtemperatur oder
+Gebäudeerschütterungen. Die daraus resultierende Messungenauigkeit lässt
+sich durch mehrmalige Wiederholung der Messung beliebig verringern.\\
+Bei diesen Versuchen kann der statistische Fehler aus den mit Pyhton berechneten Fittfunktionen abgelesen werden. Dieser ist bei jeder Messung angegeben (siehe Kapitel \ref{sec:auswertung}).\\
+\\
+Der totale Resultierende Fehler kann nun wie Folgt berechnet werden:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mittelwert und Unsicherheit
+\begin{equation}
+s = \sqrt{{s_{sy}}^2 + {s_{st}}^2}
+\label{eq:gesamtfehler}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{tabbing}
+\hspace{40mm}			\=   \\
+mit		\>					\\
+$s$		\>  Fehler Total			\\
+${s_{sy}}$	\> Systematischer Fehler		\\
+${s_{st}}$ 	\> Statistischer Fehler			\\
+\end{tabbing}
+
+Die Werte wurden Nummerisch eingesetzt. Der systematische Fehler hat einen Einfluss von $\pm 0.2\mu$ bei den Spälten und Gitter. Bei den Löcher ist es nur $\pm 0.1\mu$. Die Resultate werden in der Diskusion aufgeführt.
