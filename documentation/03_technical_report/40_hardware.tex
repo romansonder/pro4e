@@ -33,18 +33,18 @@ Diese Daten zeigen, dass mit einer Leistung von $1W$ die Versorgungsspannung des
 
 
 \subsubsection*{Entladevorgang}
-Um die Batterie zu entladen wurde eine $30\Omega$ Last angeschlossen und dabei ein Entladestrom von $100mA$ erreicht. Dieser Entladestrom entspricht der Leistung, die verbraucht wird, wenn der Print ein Audiofile abspielt. Die Messungen wurde bis zur vollständigen Entladung vollzogen. 
+Um die Batterie zu entladen wurden 2 Messvorgänge durchgeführt. Beim ersten Messvorgang wurde eine Last von $30\Omega$ angeschlossen. Diese Last entspricht einem konstanten Entlagestom von $100mA$, was dem Stromverbrauch unserer Schaltung während dem Abspielen der Musik entspricht. Beim zweiten Messvorgang wurde eine Last von $220\Omega$ angeschlossen, welche einen konstanten Entlagestrom von $15mA$ ergibt. Dieser Entladestrom entspricht dem Verbrauch des Dojos im Ruhestatus. Die Messungen wurde bis zur vollständigen Entladung vollzogen. 
 In den Abbildungen \ref{fig:SpannungZuZeit} und  \ref{fig:SpannungZuLadung} ist die Entladekurve für die Spannung im Vergleich zur Zeit und zur Ladung abgebildet:
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{graphics/SpannungzuZeit.png}
-	\caption{Entladekurve bei einer Belastung von 30$\Omega$}
+	 \subfigure[Entladekurve bei $100mA$ Entladestrom]{\includegraphics[width=0.49\textwidth]{graphics/SpannungzuZeit}} 
+    \subfigure[Entladekurve bei $15mA$ Entladestrom]{\includegraphics[width=0.49\textwidth]{graphics/SpannungzuZeit15}}
+	\caption{Entladekurve der Batterie in Funktion der Zeit}
 	\label{fig:SpannungZuZeit}
 \end{figure}
 
 Wie in der Abbildung \ref{fig:SpannungZuZeit} ersichtlich, hat die Batterie ein Tiefenentladungsschutz bei $2.75V$. Sobald diese Spannung erreicht ist, wird die Spannungsversorgung gekappt, und die Spannung sinkt auf $0V$.\\
-Die gesammte Entladung dauert $3h 26min$. Dies entspricht der Laufzeit, die erreicht wird, wenn der Dojo permanent Audiofiles abspielt.
+Die gesammte Entladung dauert $3h 26min$ bei einem Entladestrom von $100mA$ und $20h50min$ bei einem Entladestrom von 15mA. Die effektive Laufzeit des Dojos befindet sich zwischen diesen Werten. Sie ist abhängig davo, wie stark der Dojo belastet wird, dass heisst, in welchem zyklus neue Audiofiles gestartet werden, und wie lange diese dauern.
 
 \newpage
 
@@ -55,7 +55,7 @@ Die gesammte Entladung dauert $3h 26min$. Dies entspricht der Laufzeit, die erre
 	\label{fig:SpannungZuLadung}
 \end{figure}
 
-Die Abbildung \ref{fig:SpannungZuLadung} zeigt die abgegebene Ladung im Vergleich zur Batteriespannung. Sie zeigt, dass bei einem Belastung von 100mA die Ladung der Batterie $334mAh$ beträgt. Dies entspricht nicht der angegebenen Ladungskapazität von 600mAh, die der Hersteller verspricht. Die Messung zeigt uns, das der Hersteller die Angaben zu optimistisch ermittelt hat.
+Die Abbildung \ref{fig:SpannungZuLadung} zeigt die abgegebene Ladung im Vergleich zur Batteriespannung. Sie zeigt, dass bei einer Belastung von 100mA und bei einer Belastung von 15mA die Ladung der Batterie im Schnitt $335mAh$ beträgt. Dies entspricht nicht der angegebenen Ladungskapazität von 600mAh, die der Hersteller verspricht. Die Messung zeigt uns, das der Hersteller die Angaben zu optimistisch ermittelt hat. Die Messung zeigt uns auch, dass die benötigte Spannung von $3.3V$ lange gehalten werden kann und erst bei einem Bezug von $320mAh$ die Spannung zusammenfällt.
 
 \newpage
 
@@ -70,7 +70,7 @@ Beim Aufladen der Batterie wurde eine Spannung von $5V$ verwendet. Dabei wurde v
 	\label{fig:Ladeleistung}
 \end{figure}
 
-Die gestrichelte Fläche repräsentiert die Verlustleistung beim Laden des Dojos.
+Die gestrichelte Fläche repräsentiert die Verlustleistung der Ladeschaltung beim Laden des Dojos.
 Wir erhalten einen Wirkunsggrad von
 \begin{equation}
 \eta = 83.39%
