@@ -9,7 +9,8 @@
 
 #include "nrf_delay.h"
 #include "nrf_gpio.h"
-#include "boards.h"
+#include "dojo.h"
+
 
 
 #define PLAY_PAUSE 	0xFFFE
@@ -26,5 +27,6 @@ extern void wtv020sd_dec_vol(void);
 extern void wtv020sd_reset(void);
 extern void wtv020sd_play_audio(uint16_t audio_name);
 extern uint8_t wtv020sd_status(void);
+
 
 #endif /* WTV020SD_H */
