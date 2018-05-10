@@ -9,6 +9,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.Observable;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
@@ -21,8 +22,10 @@ import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
 import protocol.JavaBleCommunication;
 import userinterface.StatusBar;
+import userinterface.TopView;
 
 public class Model extends Observable {
+	private TopView topView;
 	private Museum museum;
 	private SerialPort serialPort;
 	private String receivedMessage;
@@ -117,7 +120,8 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionXml, Definitions.fileExtensionXml);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionXml,
+				Definitions.fileExtensionXml);
 		fc.setFileFilter(filter);
 		fc.showOpenDialog(null);
 
@@ -145,7 +149,8 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionXml, Definitions.fileExtensionXml);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionXml,
+				Definitions.fileExtensionXml);
 		fc.setFileFilter(filter);
 		fc.showSaveDialog(null);
 
@@ -236,7 +241,8 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionTxt, Definitions.fileExtensionTxt);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionTxt,
+				Definitions.fileExtensionTxt);
 		fc.setFileFilter(filter);
 		fc.showSaveDialog(null);
 
@@ -285,7 +291,7 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean writeMuseumDataToDrive(File driveName) {
+	public boolean checkMuseumsData() {
 		boolean success = false;
 
 		if (museum.list.isEmpty()) {
@@ -294,10 +300,73 @@ public class Model extends Observable {
 		}
 
 		for (int i = 0; i < museum.list.size(); i++) {
-			MuseumsObject museumObject = museum.list.get(i);
-			File src = new File(museumObject.getPath());
-			File dst = new File(driveName.getAbsolutePath() + src.getName());
+			MuseumsObject museumsObject = museum.list.get(i);
 
+			boolean germanAvailable = false;
+			boolean frenchAvailable = false;
+			boolean englishAvailable = false;
+
+			for (MuseumsObject otherObject : this.museum.list) {
+				if (museumsObject.getID() == otherObject.getID()) {
+					if (otherObject.getLanguage().equals(Definitions.german)) {
+						germanAvailable = true;
+					} else if (otherObject.getLanguage().equals(Definitions.french)) {
+						frenchAvailable = true;
+					} else if (otherObject.getLanguage().equals(Definitions.english)) {
+						englishAvailable = true;
+					}
+
+					if (germanAvailable && frenchAvailable && englishAvailable) {
+						success = true;
+						break;
+					} else {
+						success = false;
+					}
+
+				}
+			}
+
+			if (!success) {
+				String missingLanguage = "Unknown";
+				if (!germanAvailable) {
+					missingLanguage = Definitions.german;
+				} else if (!frenchAvailable) {
+					missingLanguage = Definitions.french;
+				} else if (!englishAvailable) {
+					missingLanguage = Definitions.english;
+				}
+
+				StatusBar.setStatus(StatusType.LANGUAGEMISSING,
+						"ID: " + museumsObject.getID() + ", Sprach: " + missingLanguage);
+				break;
+			}
+		}
+
+		return success;
+
+	}
+
+	public boolean writeMuseumDataToDrive(File driveName) {
+		boolean success = false;
+
+		for (int i = 0; i < museum.list.size(); i++) {
+			MuseumsObject museumObject = museum.list.get(i);
+			int languageIndex = 0;
+
+			if (museumObject.getLanguage().equals(Definitions.german)) {
+				languageIndex = 1;
+			} else if (museumObject.getLanguage().equals(Definitions.french)) {
+				languageIndex = 2;
+			} else if (museumObject.getLanguage().equals(Definitions.english)) {
+				languageIndex = 3;
+			} else {
+				languageIndex = 0;
+			}
+
+			File src = new File(museumObject.getPath());
+			String newFileName = String.format("%03d" + languageIndex, museumObject.getID()) + "."
+					+ Definitions.fileExtensionAd4;
+			File dst = new File(driveName.getAbsolutePath() + newFileName);
 			try {
 				Files.copy(src.toPath(), dst.toPath(), StandardCopyOption.REPLACE_EXISTING);
 				success = true;
@@ -334,6 +403,10 @@ public class Model extends Observable {
 		setChanged();
 		super.notifyObservers();
 		System.out.println("Model: NotifyObserver called");
+	}
+
+	public void setView(TopView topView) {
+		this.topView = topView;
 	}
 
 	public class PortReader implements SerialPortEventListener {

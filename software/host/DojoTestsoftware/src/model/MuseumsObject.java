@@ -11,7 +11,7 @@ public class MuseumsObject {
 
 	@Attribute(name = "Name")
 	private String name;
-	
+
 	@Attribute(name = "Language")
 	private String language;
 
@@ -33,7 +33,7 @@ public class MuseumsObject {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getLanguage() {
 		return language;
 	}

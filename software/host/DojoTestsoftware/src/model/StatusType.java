@@ -4,8 +4,9 @@ public enum StatusType {
 	RUNNING("Anwendung geladen."), PREFERENCESTRANSMITTINGFAILURE(
 			"Fehler beim Übertragen von Einstellungen."), PREFERENCESTRANSMITTINGSUCCESSFUL(
 					"Einstellungen wurde erfolgreich übertragen."), DATATRANSMITTINGSUCCESSFUL(
-							"Ausstellung wurde erfolgreich übertragen."), TRANSMITTINGDATA(
-									"Einstellungen werden übertragen "), TRANSMITTINGPREFERENCES(
+							"Ausstellung wurde erfolgreich übertragen."), LANGUAGEMISSING(
+									"Ausstellungsobjekt nicht vorhanden: "), TRANSMITTINGDATA(
+									"Ausstellung wird übertragen "), TRANSMITTINGPREFERENCES(
 											"Ausstellung wird übertragen "), DOJODRIVENOTFOUND(
 													"Dojo wurde nicht gefunden."), DATAFILENOTFOUND(
 															"Folgende Datei wurde nicht gefunden: "), NODATATOTRANSMIT(

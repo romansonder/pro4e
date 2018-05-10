@@ -21,10 +21,14 @@ public class TransmittingDataWorker extends SwingWorker<Object, Object> {
 
 		success = model.recogniseDriveByDriveName(driveName);
 		if (success) {
-			success = model.writeMuseumDataToDrive(model.getStorageDrive());
+			success = model.checkMuseumsData();
 			if (success) {
-				StatusBar.setStatus(StatusType.DATATRANSMITTINGSUCCESSFUL, "");
+				success = model.writeMuseumDataToDrive(model.getStorageDrive());
+				if (success) {
+					StatusBar.setStatus(StatusType.DATATRANSMITTINGSUCCESSFUL, "");
+				}
 			}
+
 		} else {
 			StatusBar.setStatus(StatusType.DOJODRIVENOTFOUND, "");
 		}

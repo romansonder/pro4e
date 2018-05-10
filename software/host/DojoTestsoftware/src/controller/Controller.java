@@ -2,6 +2,7 @@ package controller;
 
 import model.Model;
 import model.MuseumsObject;
+import userinterface.TopView;
 
 public class Controller {
 	private Model model;
@@ -62,5 +63,9 @@ public class Controller {
 		boolean success = false;
 		success = model.evaluateDojo();
 		return success;
+	}
+
+	public void setView(TopView topView) {
+		model.setView(topView);
 	}
 }

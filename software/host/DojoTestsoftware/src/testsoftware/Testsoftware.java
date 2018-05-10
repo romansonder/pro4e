@@ -45,6 +45,7 @@ public class Testsoftware extends JFrame {
 		initToolTips();
 		setVisible(true);
 
+		controller.setView(topView);
 		model.addObserver(topView);
 
 		getContentPane().add(topView, BorderLayout.CENTER);
