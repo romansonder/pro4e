@@ -9,7 +9,6 @@ import java.nio.file.StandardCopyOption;
 import java.util.Observable;
 
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
@@ -22,10 +21,8 @@ import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
 import protocol.JavaBleCommunication;
 import userinterface.StatusBar;
-import userinterface.TopView;
 
 public class Model extends Observable {
-	private TopView topView;
 	private Museum museum;
 	private SerialPort serialPort;
 	private String receivedMessage;
@@ -180,9 +177,28 @@ public class Model extends Observable {
 
 		if (null != museumsObject)
 			if (museumsObject.getName() != "" || museumsObject.getPath().toString() != "") {
-				this.museum.list.add(museumsObject);
-				success = true;
-				notifyObservers();
+
+				for (MuseumsObject object : this.museum.list) {
+					if (object.getID() == museumsObject.getID()) {
+
+						if (object.getLanguage().equals(museumsObject.getLanguage())) {
+							success = false;
+
+							StatusBar.setStatus(StatusType.LANGUAGEDUPLICATE,
+									"ID: " + museumsObject.getID() + ", Sprache: " + museumsObject.getLanguage());
+							break;
+						} else {
+							success = true;
+						}
+					}
+				}
+
+				if (success) {
+					this.museum.list.add(museumsObject);
+					success = true;
+					notifyObservers();
+				}
+
 			}
 
 		return success;
@@ -337,7 +353,7 @@ public class Model extends Observable {
 				}
 
 				StatusBar.setStatus(StatusType.LANGUAGEMISSING,
-						"ID: " + museumsObject.getID() + ", Sprach: " + missingLanguage);
+						"ID: " + museumsObject.getID() + ", Sprache: " + missingLanguage);
 				break;
 			}
 		}
@@ -403,10 +419,6 @@ public class Model extends Observable {
 		setChanged();
 		super.notifyObservers();
 		System.out.println("Model: NotifyObserver called");
-	}
-
-	public void setView(TopView topView) {
-		this.topView = topView;
 	}
 
 	public class PortReader implements SerialPortEventListener {
