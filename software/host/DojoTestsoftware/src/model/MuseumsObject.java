@@ -11,6 +11,9 @@ public class MuseumsObject {
 
 	@Attribute(name = "Name")
 	private String name;
+	
+	@Attribute(name = "Language")
+	private String language;
 
 	@Attribute(name = "Path")
 	private String path;
@@ -29,6 +32,14 @@ public class MuseumsObject {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 	public String getPath() {

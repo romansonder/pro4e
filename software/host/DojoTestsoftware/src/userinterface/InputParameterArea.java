@@ -14,12 +14,14 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import jssc.SerialPortList;
+import model.Definitions;
 import model.GuiTypes.AccessRightsTypes;
 import model.GuiTypes.LanguagesTypes;
 import model.MuseumsObject;
@@ -178,28 +180,83 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		JTextField id = new JTextField();
 		JTextField name = new JTextField();
+		JRadioButton germanRadioBtn = new JRadioButton(Definitions.german, true);
+		JRadioButton frenchRadioBtn = new JRadioButton(Definitions.french, false);
+		JRadioButton englishRadioBtn = new JRadioButton(Definitions.english, false);
+		JPanel radioButtonPanel = new JPanel();
+		radioButtonPanel.add(germanRadioBtn);
+		radioButtonPanel.add(frenchRadioBtn);
+		radioButtonPanel.add(englishRadioBtn);
 		JTextField path = new JTextField();
 		path.setEditable(false);
 		JButton button = new JButton("Pfad wählen");
+
 		button.addActionListener(new java.awt.event.ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				JFileChooser fc = new JFileChooser();
 				File workingDirectory = new File(System.getProperty("user.dir"));
 				fc.setCurrentDirectory(workingDirectory);
-				FileNameExtensionFilter filter = new FileNameExtensionFilter("MP3", "mp3");
+				FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionAd4,
+						Definitions.fileExtensionAd4);
 				fc.setFileFilter(filter);
+				fc.setMultiSelectionEnabled(false);
 				fc.showOpenDialog(null);
 				path.setText(fc.getSelectedFile().getPath());
 			}
 		});
 
-		Object[] objects = { "ID", id, "Name", name, "Pfad", path, button };
+		germanRadioBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (frenchRadioBtn.isSelected() == false && englishRadioBtn.isSelected() == false) {
+					germanRadioBtn.setSelected(true);
+				}
+				frenchRadioBtn.setSelected(!germanRadioBtn.isSelected());
+				englishRadioBtn.setSelected(!germanRadioBtn.isSelected());
+			}
+		});
+
+		frenchRadioBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (germanRadioBtn.isSelected() == false && englishRadioBtn.isSelected() == false) {
+					frenchRadioBtn.setSelected(true);
+				}
+				germanRadioBtn.setSelected(!frenchRadioBtn.isSelected());
+				englishRadioBtn.setSelected(!frenchRadioBtn.isSelected());
+			}
+		});
+
+		englishRadioBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (germanRadioBtn.isSelected() == false && frenchRadioBtn.isSelected() == false) {
+					englishRadioBtn.setSelected(true);
+				}
+				germanRadioBtn.setSelected(!englishRadioBtn.isSelected());
+				frenchRadioBtn.setSelected(!englishRadioBtn.isSelected());
+			}
+		});
+
+		Object[] objects = { "ID", id, "Name", name, "Pfad", radioButtonPanel, button };
 		JOptionPane pane = new JOptionPane(objects, JOptionPane.PLAIN_MESSAGE, JOptionPane.CANCEL_OPTION);
 		pane.createDialog(null, "Neues Objekt erstellen").setVisible(true);
 
 		try {
 			museumsObject.setID(Integer.parseInt(id.getText()));
 			museumsObject.setName(name.getText());
+
+			if (germanRadioBtn.isSelected()) {
+				museumsObject.setLanguage(Definitions.german);
+			} else if (frenchRadioBtn.isSelected()) {
+				museumsObject.setLanguage(Definitions.french);
+			} else if (englishRadioBtn.isSelected()) {
+				museumsObject.setLanguage(Definitions.english);
+			} else {
+				museumsObject.setLanguage("Unknown");
+			}
+
 			museumsObject.setPath(path.getText());
 		} catch (Exception exception) {
 			museumsObject = null;

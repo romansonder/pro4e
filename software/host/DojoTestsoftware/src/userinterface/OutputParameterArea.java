@@ -15,6 +15,7 @@ public class OutputParameterArea extends JPanel {
 
 	private JLabel objectID;
 	private JLabel name;
+	private JLabel language;
 	private JLabel path;
 
 	public OutputParameterArea(TopView topView) {
@@ -22,9 +23,10 @@ public class OutputParameterArea extends JPanel {
 
 		objectID = new JLabel("-");
 		name = new JLabel("-");
+		language = new JLabel("-");
 		path = new JLabel("-");
 
-		add(new JLabel("Object ID:"), new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
+		add(new JLabel("Beacon ID:"), new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 		add(objectID, new GridBagConstraints(1, 0, 2, 1, 1.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
@@ -33,10 +35,15 @@ public class OutputParameterArea extends JPanel {
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 		add(name, new GridBagConstraints(1, 1, 2, 1, 1.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
-
-		add(new JLabel("Path:"), new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
+		
+		add(new JLabel("Sprache:"), new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
-		add(path, new GridBagConstraints(1, 2, 2, 1, 1.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
+		add(language, new GridBagConstraints(1, 2, 2, 1, 1.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
+				new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JLabel("Path:"), new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+		add(path, new GridBagConstraints(1, 3, 2, 1, 1.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
 		add(Box.createHorizontalGlue(), new GridBagConstraints(2, 0, 1, 3, 1.0, 0.0, GridBagConstraints.WEST,
@@ -47,10 +54,12 @@ public class OutputParameterArea extends JPanel {
 		if (null != museumsObject) {
 			objectID.setText("" + museumsObject.getID());
 			name.setText(museumsObject.getName());
+			language.setText(museumsObject.getLanguage());
 			path.setText(museumsObject.getPath());
 		} else {
 			objectID.setText("-");
 			name.setText("-");
+			language.setText("-");
 			path.setText("-");
 		}
 	}

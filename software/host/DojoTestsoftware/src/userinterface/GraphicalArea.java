@@ -32,7 +32,7 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 	private DefaultTableModel tableModel;
 	private final int firstColumnWidth = 40;
 	private final int rowHeight = 25;
-	private final String[] columnNames = { "ID", "Name", "Pfad" };
+	private final String[] columnNames = { "ID", "Name", "Sprache", "Pfad" };
 
 	public GraphicalArea(TopView topView) {
 		super(new GridBagLayout());
@@ -76,9 +76,11 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 		if (-1 != selectedRow) {
 			int id = (int) museumTable.getModel().getValueAt(selectedRow, 0);
 			String name = museumTable.getModel().getValueAt(selectedRow, 1).toString();
-			String path = museumTable.getModel().getValueAt(selectedRow, 2).toString();
+			String language = museumTable.getModel().getValueAt(selectedRow, 2).toString();
+			String path = museumTable.getModel().getValueAt(selectedRow, 3).toString();
 			museumObject.setID(id);
 			museumObject.setName(name);
+			museumObject.setLanguage(language);
 			museumObject.setPath(path);
 		}
 
@@ -91,10 +93,11 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 		tableModel = new DefaultTableModel();
 		tableModel.setColumnIdentifiers(columnNames);
 		for (int i = 0; i < museum.list.size(); i++) {
-			Object[] row = new Object[3];
+			Object[] row = new Object[4];
 			row[0] = museum.list.get(i).getID();
 			row[1] = museum.list.get(i).getName();
-			row[2] = museum.list.get(i).getPath();
+			row[2] = museum.list.get(i).getLanguage();
+			row[3] = museum.list.get(i).getPath();
 			tableModel.addRow(row);
 		}
 

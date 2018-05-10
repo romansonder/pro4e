@@ -24,11 +24,6 @@ import userinterface.StatusBar;
 
 public class Model extends Observable {
 	private Museum museum;
-	private final String fileExtensionDescrptionXml = "XML Files (*.xml)";
-	private final String fileExtensionDescrptionTxt = "Txt Files (*.txt)";
-	private final String fileExtensionXml = "xml";
-	private final String fileExtensionTxt = "txt";
-	private final String driveName = "SANDISK";
 	private SerialPort serialPort;
 	private String receivedMessage;
 	private File storageDrive;
@@ -122,7 +117,7 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(fileExtensionDescrptionXml, fileExtensionXml);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionXml, Definitions.fileExtensionXml);
 		fc.setFileFilter(filter);
 		fc.showOpenDialog(null);
 
@@ -150,7 +145,7 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(fileExtensionDescrptionXml, fileExtensionXml);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionXml, Definitions.fileExtensionXml);
 		fc.setFileFilter(filter);
 		fc.showSaveDialog(null);
 
@@ -158,8 +153,8 @@ public class Model extends Observable {
 
 		if (null != file) {
 			String filePath = file.getAbsolutePath();
-			if (!filePath.endsWith("." + fileExtensionXml)) {
-				file = new File(filePath + "." + fileExtensionXml);
+			if (!filePath.endsWith("." + Definitions.fileExtensionXml)) {
+				file = new File(filePath + "." + Definitions.fileExtensionXml);
 			}
 			try {
 				Serializer serializer = new Persister();
@@ -209,7 +204,7 @@ public class Model extends Observable {
 		boolean success = false;
 
 		try {
-			transmittingDataWorker = new TransmittingDataWorker(this, driveName);
+			transmittingDataWorker = new TransmittingDataWorker(this, Definitions.driveName);
 			transmittingDataWorker.execute();
 			success = true;
 		} catch (Exception exception) {
@@ -241,7 +236,7 @@ public class Model extends Observable {
 		JFileChooser fc = new JFileChooser();
 		File workingDirectory = new File(System.getProperty("user.dir"));
 		fc.setCurrentDirectory(workingDirectory);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(fileExtensionDescrptionTxt, fileExtensionTxt);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionTxt, Definitions.fileExtensionTxt);
 		fc.setFileFilter(filter);
 		fc.showSaveDialog(null);
 
@@ -249,8 +244,8 @@ public class Model extends Observable {
 
 		if (null != file) {
 			String filePath = file.getAbsolutePath();
-			if (!filePath.endsWith("." + fileExtensionTxt)) {
-				file = new File(filePath + "." + fileExtensionTxt);
+			if (!filePath.endsWith("." + Definitions.fileExtensionTxt)) {
+				file = new File(filePath + "." + Definitions.fileExtensionTxt);
 			}
 
 			try {
