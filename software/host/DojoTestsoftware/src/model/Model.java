@@ -182,23 +182,18 @@ public class Model extends Observable {
 					if (object.getID() == museumsObject.getID()) {
 
 						if (object.getLanguage().equals(museumsObject.getLanguage())) {
-							success = false;
-
 							StatusBar.setStatus(StatusType.LANGUAGEDUPLICATE,
-									"ID: " + museumsObject.getID() + ", Sprache: " + museumsObject.getLanguage());
-							break;
-						} else {
-							success = true;
+									"ID: " + museumsObject.getID() + "; Sprache: " + museumsObject.getLanguage());
+							success = false;
+							return success;
 						}
 					}
 				}
 
-				if (success) {
-					this.museum.list.add(museumsObject);
-					success = true;
-					notifyObservers();
-				}
-
+				this.museum.list.add(museumsObject);
+				success = true;
+				StatusBar.setStatus(StatusType.MUSEUMSOBJECTSUCCESSFULLCREATED, "");
+				notifyObservers();
 			}
 
 		return success;
@@ -353,7 +348,7 @@ public class Model extends Observable {
 				}
 
 				StatusBar.setStatus(StatusType.LANGUAGEMISSING,
-						"ID: " + museumsObject.getID() + ", Sprache: " + missingLanguage);
+						"ID: " + museumsObject.getID() + "; Sprache: " + missingLanguage);
 				break;
 			}
 		}
