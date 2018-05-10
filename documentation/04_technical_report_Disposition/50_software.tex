@@ -1,13 +1,37 @@
-Hier wird das Grobkonzept der Software dokumentiert. Dies hilft, einen Überblick über die Funktionen der Software zu erhalten.
+Zuerst wird das Grobkonzept der Software erläutert. Es gibt einen Überblick über alle Teilmodule der Firmware und definiert für jedes Modul die Anforderungen.
 
-\subsection{Bluetooth-Modul}
-Dieser Abschnitt widmet sich der Bluetooth-Komunikation mit der Testumgebung, sowie den Bluetooth-Beacons. Es wird zum einen die Funktionsweise erklährt, und zum andern erklährt, wie es realisiert wurde.
+\subsection{Kurzeinführung in Bluetooth Low Energy}
+Als Einführung werden die wichtigsten Punkte des BLE Standards erläutert. Die verschiedenen Abstraktionsebenen und Rollen eines BLE-Gerätes werden beschrieben.
 
-\subsection{Audioverarbeitung}
-In diesem Abschnitt wird erklährt, wie die Audioverarbeitung funktioniert und wie es ausprogrammiert wurde.
+\subsection{Aufbau des Bluetooth-Moduls}
+Jedes Gerät im Projekt 4 hat unterschiedliche Anforderungen an das Bluetooth-Modul. Hier wird beschrieben, welches Geräte welche Funktionen nutzt und wie diese eingesetzt werden.
 
-\subsection{Hauptprogramm}
-Hier wird das Hauptprogramm erklährt. Dokumentiert wird die Funktionalität, sowie die Realisierung.
+\subsubsection{Bluetooth-Modul der Peripheriegeräte}
+Hier erfolgt (bezogen auf BLE) die ausführliche Beschreibung der Funktionsweise eines Peripheriegerätes.
+
+\subsubsection{Bluetooth-Modul des Dojos}
+Dieses Kapitel ist strukturell gleich wie das vorherige, nur bezieht sich der Inhalt auf den Dojo und nicht auf ein Peripheriegerät. Insbesondere sollen folgende Punkte beschrieben werden:
+\begin{itemize}
+\item Fortlaufende Lokalisierung der Beacons
+\item Erkennung von Zugangskontrollpunkten sowie des PC-Dongles
+\item Automatisierter Auf- und Abbau einer Verbindung
+\item Automatisierter Datenaustausch zwischen den Geräten
+\end{itemize}
+
+\subsection{Ein- und Ausgabeelemente des Dojos}
+Dieser Abschnitt erklärt die Ansteuerung und Nutzung der übrigen Hardwarekomponenten. Diese sind:
+\begin{itemize}
+\item Audiochip via SPI
+\item Vibrationsmodul via GPIO
+\item Buttons und LEDs via GPIO
+\item USB-zu-Seriell-Multiplexer
+\item SD-Karten-Multiplexer
+\end{itemize}
+Des Weiteren wird erläutert, wie der Audiochip mit dem Hauptprogramm kommuniziert und wie Statusabfragen gehandhabt werden.
+
+\subsection{Hauptprogrammablauf}
+Dieser Abschnitt verknüpft das Zusammenspiel aller Software-Module.
+Es wird erklärt, wie sich die Software in welcher Situation verhält und wie Ereignisse des Bluetooth-Moduls gehandhabt werden.
 
 \subsection{Testumgebung}
-Dieser Abschnitt widmet sich der Java Testumgebung. Es wird das GUI sowie die verschiedenen Funktionalitäten dokumentiert.
+Der Abschluss dieses Kapitels wird mit dem Aufbau der Simulationsumgebung gemacht. Die Charakterisierung des Produkts erfolgt durch diverse Messungen und Testversuche. Einerseits werden die Funktionen des Software-Moduls getestet, andererseits das Zusammenspiel des gesamten Systems.
