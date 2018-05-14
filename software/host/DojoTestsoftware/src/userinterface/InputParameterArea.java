@@ -6,11 +6,13 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.text.NumberFormat;
 
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -19,12 +21,14 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.NumberFormatter;
 
 import jssc.SerialPortList;
 import model.Definitions;
 import model.GuiTypes.AccessRightsTypes;
 import model.GuiTypes.LanguagesTypes;
 import model.MuseumsObject;
+import model.StatusType;
 import utilities.Utility;
 
 public class InputParameterArea extends JPanel implements ActionListener {
@@ -33,7 +37,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	private TopView topView;
 	private JButton btHelpLibrary;
 	private JButton btHelpAccessRights;
-	private JButton btHelpLanguage;
+	private JButton btHelpLanguage1;
+	private JButton btHelpLanguage2;
 	private JButton btHelpEvaluate;
 	private JButton btNewObject;
 	private JButton btSave;
@@ -69,15 +74,25 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btHelpAccessRights.setMargin(new Insets(0, 0, 0, 0));
 		btHelpAccessRights.setFocusable(false);
 
-		btHelpLanguage = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
-		btHelpLanguage.setToolTipText(
+		btHelpLanguage1 = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
+		btHelpLanguage1.setToolTipText(
 				"<html><b>Sprache:</b><br><br>Spezifiziert in welcher Sprache die Hördateien<br> abgespielt werden.<br><br></html>");
-		btHelpLanguage.setOpaque(false);
-		btHelpLanguage.setContentAreaFilled(false);
-		btHelpLanguage.setBorderPainted(false);
-		btHelpLanguage.setHorizontalAlignment(SwingConstants.RIGHT);
-		btHelpLanguage.setMargin(new Insets(0, 0, 0, 0));
-		btHelpLanguage.setFocusable(false);
+		btHelpLanguage1.setOpaque(false);
+		btHelpLanguage1.setContentAreaFilled(false);
+		btHelpLanguage1.setBorderPainted(false);
+		btHelpLanguage1.setHorizontalAlignment(SwingConstants.RIGHT);
+		btHelpLanguage1.setMargin(new Insets(0, 0, 0, 0));
+		btHelpLanguage1.setFocusable(false);
+
+		btHelpLanguage2 = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
+		btHelpLanguage2.setToolTipText(
+				"<html><b>Sprache:</b><br><br>Spezifiziert in welcher Sprache die ausgewählte Hördateien<br> ist.<br><br></html>");
+		btHelpLanguage2.setOpaque(false);
+		btHelpLanguage2.setContentAreaFilled(false);
+		btHelpLanguage2.setBorderPainted(false);
+		btHelpLanguage2.setHorizontalAlignment(SwingConstants.RIGHT);
+		btHelpLanguage2.setMargin(new Insets(0, 0, 0, 0));
+		btHelpLanguage2.setFocusable(false);
 
 		btHelpEvaluate = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpEvaluate.setToolTipText(
@@ -147,7 +162,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		add(new JLabel("Sprache:"), new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btHelpLanguage, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(btHelpLanguage1, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
 		add(comboLanguage, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
@@ -178,7 +193,14 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	private MuseumsObject displayNewObjectDialog() {
 		MuseumsObject museumsObject = new MuseumsObject();
 
-		JTextField id = new JTextField();
+		NumberFormat format = NumberFormat.getInstance();
+		NumberFormatter formatter = new NumberFormatter(format);
+		formatter.setValueClass(Integer.class);
+		formatter.setMinimum(0);
+		formatter.setMaximum(512);
+		formatter.setAllowsInvalid(false);
+		JFormattedTextField id = new JFormattedTextField(formatter);
+
 		JTextField name = new JTextField();
 		JRadioButton germanRadioBtn = new JRadioButton(Definitions.german, true);
 		JRadioButton frenchRadioBtn = new JRadioButton(Definitions.french, false);
@@ -187,6 +209,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		radioButtonPanel.add(germanRadioBtn);
 		radioButtonPanel.add(frenchRadioBtn);
 		radioButtonPanel.add(englishRadioBtn);
+		radioButtonPanel.add(btHelpLanguage2);
 		JTextField path = new JTextField();
 		path.setEditable(false);
 		JButton button = new JButton("Pfad wählen");
@@ -240,7 +263,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		});
 
 		Object[] objects = { "ID", id, "Name", name, "Pfad", radioButtonPanel, button };
-		JOptionPane pane = new JOptionPane(objects, JOptionPane.PLAIN_MESSAGE, JOptionPane.CANCEL_OPTION);
+		JOptionPane pane = new JOptionPane(objects, JOptionPane.PLAIN_MESSAGE);
 		pane.createDialog(null, "Neues Objekt erstellen").setVisible(true);
 
 		try {
@@ -258,8 +281,11 @@ public class InputParameterArea extends JPanel implements ActionListener {
 			}
 
 			museumsObject.setPath(path.getText());
+		} catch (NumberFormatException exception) {
+			museumsObject = null;
 		} catch (Exception exception) {
 			museumsObject = null;
+			StatusBar.setStatus(StatusType.FILLOUTALLFIELDS, "");
 		}
 
 		return museumsObject;

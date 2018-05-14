@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -14,12 +16,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowSorter;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SortOrder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import model.Museum;
 import model.MuseumsObject;
@@ -44,9 +50,12 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 
 		museumTable = new JTable(tableModel);
 		museumTable.setRowHeight(rowHeight);
+		museumTable.getColumnModel().getColumn(0).setMinWidth(firstColumnWidth);
 		museumTable.getColumnModel().getColumn(0).setMaxWidth(firstColumnWidth);
+		museumTable.getColumnModel().getColumn(0).setResizable(false);
 		museumTable.setBackground(new Color(255, 215, 0));
 		museumTable.setOpaque(false);
+		museumTable.setAutoCreateRowSorter(true);
 		museumTable.setFillsViewportHeight(true);
 		museumTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		museumTable.setDefaultEditor(Object.class, null);
@@ -102,10 +111,26 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 		}
 
 		museumTable.setModel(tableModel);
+
+		TableRowSorter<TableModel> sorter = new TableRowSorter<>(museumTable.getModel());
+		museumTable.setRowSorter(sorter);
+		List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+		int columnIndexToSort = 0;
+		sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.ASCENDING));
+		sorter.setSortKeys(sortKeys);
+		sorter.sort();
+
+		museumTable.getColumnModel().getColumn(0).setMinWidth(firstColumnWidth);
 		museumTable.getColumnModel().getColumn(0).setMaxWidth(firstColumnWidth);
-		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
-		rightRenderer.setHorizontalAlignment(JLabel.CENTER);
-		museumTable.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
+		museumTable.getColumnModel().getColumn(0).setResizable(false);
+		museumTable.getColumnModel().getColumn(1).sizeWidthToFit();
+		museumTable.getColumnModel().getColumn(2).sizeWidthToFit();
+		museumTable.getColumnModel().getColumn(3).sizeWidthToFit();
+		DefaultTableCellRenderer centeringRenderer = new DefaultTableCellRenderer();
+		centeringRenderer.setHorizontalAlignment(JLabel.CENTER);
+		museumTable.getColumnModel().getColumn(0).setCellRenderer(centeringRenderer);
+		museumTable.getColumnModel().getColumn(1).setCellRenderer(centeringRenderer);
+		museumTable.getColumnModel().getColumn(2).setCellRenderer(centeringRenderer);
 		tableModel.fireTableDataChanged();
 	}
 

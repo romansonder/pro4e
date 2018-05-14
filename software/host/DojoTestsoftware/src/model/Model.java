@@ -175,8 +175,8 @@ public class Model extends Observable {
 	public boolean addNewObject(MuseumsObject museumsObject) {
 		boolean success = false;
 
-		if (null != museumsObject)
-			if (museumsObject.getName() != "" || museumsObject.getPath().toString() != "") {
+		if (null != museumsObject) {
+			if (!museumsObject.getName().equals("") && !museumsObject.getPath().equals("")) {
 
 				for (MuseumsObject object : this.museum.list) {
 					if (object.getID() == museumsObject.getID()) {
@@ -194,7 +194,10 @@ public class Model extends Observable {
 				success = true;
 				StatusBar.setStatus(StatusType.MUSEUMSOBJECTSUCCESSFULLCREATED, "");
 				notifyObservers();
+			} else {
+				StatusBar.setStatus(StatusType.FILLOUTALLFIELDS, "");
 			}
+		}
 
 		return success;
 	}
