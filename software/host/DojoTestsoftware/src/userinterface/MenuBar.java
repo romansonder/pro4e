@@ -16,11 +16,12 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
 	private JMenu menu1;
 	private JMenu menu2;
-	private JMenuItem menuItemLoad, menuItemClose, menuItemAboutUs;
+	private JMenuItem menuItemLoad, menuItemSave, menuItemClose, menuItemAboutUs;
 	private Controller controller;
 
 	final String close = "Schliessen";
 	final String load = "Laden";
+	final String save = "Speichern";
 	final String aboutUs = "Über uns";
 
 	public MenuBar(Controller controller) {
@@ -32,20 +33,26 @@ public class MenuBar extends JMenuBar implements ActionListener {
 		menu2 = new JMenu("Info");
 		menu2.setMnemonic(KeyEvent.VK_I);
 
-		menuItemLoad = new JMenuItem("Ausstellung laden", KeyEvent.VK_A);
-		menuItemLoad.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.ALT_MASK));
+		menuItemLoad = new JMenuItem("Ausstellung laden", KeyEvent.VK_L);
+		menuItemLoad.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 		menuItemLoad.setActionCommand(load);
 		menuItemLoad.addActionListener(this);
 		menu1.add(menuItemLoad);
 
-		menuItemClose = new JMenuItem("Anwendung schliessen", KeyEvent.VK_E);
-		menuItemClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.ALT_MASK));
+		menuItemSave = new JMenuItem("Ausstellung speichern", KeyEvent.VK_S);
+		menuItemSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+		menuItemSave.setActionCommand(save);
+		menuItemSave.addActionListener(this);
+		menu1.add(menuItemSave);
+
+		menuItemClose = new JMenuItem("Anwendung schliessen", KeyEvent.VK_Q);
+		menuItemClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
 		menuItemClose.setActionCommand(close);
 		menuItemClose.addActionListener(this);
 		menu1.add(menuItemClose);
 
 		menuItemAboutUs = new JMenuItem("Über uns", KeyEvent.VK_U);
-		menuItemAboutUs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, ActionEvent.ALT_MASK));
+		menuItemAboutUs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, ActionEvent.CTRL_MASK));
 		menuItemAboutUs.setActionCommand(aboutUs);
 		menuItemAboutUs.addActionListener(this);
 		menu2.add(menuItemAboutUs);
@@ -58,6 +65,8 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getActionCommand().equals(load)) {
 			controller.readInObjects();
+		} else if (event.getActionCommand().equals(save)) {
+			controller.saveObjects();
 		} else if (event.getActionCommand().equals(close)) {
 			System.exit(1);
 		} else if (event.getActionCommand().equals(aboutUs)) {

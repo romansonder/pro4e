@@ -40,8 +40,8 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	private JButton btHelpLanguage1;
 	private JButton btHelpLanguage2;
 	private JButton btHelpEvaluate;
+	private JButton btHelpSettings;
 	private JButton btNewObject;
-	private JButton btSave;
 	private JButton btTransmitUSB;
 	private JButton btTransmitBT;
 	private JButton btEvaluate;
@@ -56,7 +56,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpLibrary = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpLibrary.setToolTipText(
-				"<html><b>Ausstellung:</b><br><br>Einer Ausstellung kann eine beliebige Anzahl<br> an Museumsobjekten hinzugefügt werden.<br><br></html>");
+				"<html><b>Ausstellung:</b><br><br>Einer Ausstellung kann eine beliebige Anzahl<br> an Kunstobjekten hinzugefügt werden.<br><br></html>");
 		btHelpLibrary.setOpaque(false);
 		btHelpLibrary.setContentAreaFilled(false);
 		btHelpLibrary.setBorderPainted(false);
@@ -104,13 +104,19 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btHelpEvaluate.setMargin(new Insets(0, 0, 0, 0));
 		btHelpEvaluate.setFocusable(false);
 
-		btNewObject = new JButton("Neues Objekt");
+		btHelpSettings = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
+		btHelpSettings.setToolTipText(
+				"<html><b>Einstellungen:</b><br><br>Der genutzte Port der Dojo Schnittstelle<br>kann unter Windows 10 via weitere<br>Bluetooth-Optionen unter Bluetooth- und<br>andere Geräte nachgeschaut werden.<br><br>Benötigt wird der ausgehende Port<br>von XYZ.<br><br></html>");
+		btHelpSettings.setOpaque(false);
+		btHelpSettings.setContentAreaFilled(false);
+		btHelpSettings.setBorderPainted(false);
+		btHelpSettings.setHorizontalAlignment(SwingConstants.RIGHT);
+		btHelpSettings.setMargin(new Insets(0, 0, 0, 0));
+		btHelpSettings.setFocusable(false);
+
+		btNewObject = new JButton("Neues Kunstobjekt");
 		btNewObject.setEnabled(true);
 		btNewObject.addActionListener(this);
-
-		btSave = new JButton("Speichern");
-		btSave.setEnabled(true);
-		btSave.addActionListener(this);
 
 		btTransmitUSB = new JButton("Übertragen via USB");
 		btTransmitUSB.setEnabled(true);
@@ -141,31 +147,34 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		add(btNewObject, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btSave, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
-				new Insets(10, 10, 10, 10), 0, 0));
-
-		add(btTransmitUSB, new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(btTransmitUSB, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 4, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(new JSeparator(JSeparator.HORIZONTAL), new GridBagConstraints(0, 3, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JLabel("Zutrittsrecht:"), new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(new JLabel("Zutrittsrecht:"), new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btHelpAccessRights, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(btHelpAccessRights, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(comboAccessRights, new GridBagConstraints(0, 6, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(comboAccessRights, new GridBagConstraints(0, 5, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(new JLabel("Sprache:"), new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(new JLabel("Sprache:"), new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(btHelpLanguage1, new GridBagConstraints(1, 7, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(btHelpLanguage1, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
-		add(comboLanguage, new GridBagConstraints(0, 8, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+		add(comboLanguage, new GridBagConstraints(0, 7, 2, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(new JLabel("Einstellungen:"), new GridBagConstraints(0, 8, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
+				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
+
+		add(btHelpSettings, new GridBagConstraints(1, 8, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
 
 		add(comboPorts, new GridBagConstraints(0, 9, 1, 1, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.BOTH,
@@ -264,7 +273,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		Object[] objects = { "ID", id, "Name", name, "Pfad", radioButtonPanel, button };
 		JOptionPane pane = new JOptionPane(objects, JOptionPane.PLAIN_MESSAGE);
-		pane.createDialog(null, "Neues Objekt erstellen").setVisible(true);
+		pane.createDialog(null, "Neues Kunstobjekt erstellen").setVisible(true);
 
 		try {
 			museumsObject.setID(Integer.parseInt(id.getText()));
@@ -296,8 +305,6 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		if (event.getSource() == btNewObject) {
 			MuseumsObject museumObject = displayNewObjectDialog();
 			topView.addNewObject(museumObject);
-		} else if (event.getSource() == btSave) {
-			topView.saveObjects();
 		} else if (event.getSource() == btTransmitUSB) {
 			topView.transmitMuseumData();
 		} else if (event.getSource() == btTransmitBT) {
