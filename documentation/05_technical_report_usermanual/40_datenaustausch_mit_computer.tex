@@ -15,7 +15,7 @@ Dazu sind folgende Schritte nötig:
 \end{itemize}
 \textbf{Datenkonvertierung}
 \\[4mm]
-Damit die Audioinformationen auf dem Dojo abgespielt werden können, müssen sie vorgängig in ein geeignetes Dateiformat konvertiert werden. Dies kann mit dem mitgelieferten Audio-Konvertierungs-Tool erledigt werden. Das Audio-Konvertierungs-Tool unterstütz dabei folgende Dateitypen:
+Damit die Audioinformationen auf dem Dojo abgespielt werden können, müssen sie vorgängig in ein geeignetes Dateiformat konvertiert werden. Dies kann mit Hilfe des mitgelieferten Audio-Konvertierungs-Tool erledigt werden. Das Audio-Konvertierungs-Tool unterstützt dabei folgende Dateiformate:
 \begin{itemize}
 \item .mp3
 \end{itemize}
@@ -25,4 +25,16 @@ Damit die Audioinformationen auf dem Dojo abgespielt werden können, müssen sie
 \begin{itemize}
 \item .ad4
 \end{itemize}
-Die Samplerate im Audio-Konvertierungs-Tool muss auf den Wert 32'000 Hz gesetzt werden.
+\textbf{Wichtig:} Die Sample-Rate im Audio-Konvertierungs-Tool muss auf den Wert 32'000 Hz gesetzt werden.
+\\[4mm]
+\textbf{Übertragen von Audioinformationen}
+\\[4mm]
+Um Audioinformationen auf den Dojo übertragen zu können, müssen die zuvor konvertierten Audiodateien in der Testsoftware als neue Kunstobjekte erfasst werden. Dazu gibt es in der Kommandozentrale der Testsoftware einen Knopf ``Neues Kunstobjekt'', welcher ein Dialog öffnet zum Erstellen eines neuen Kunstobjektes. Die so erstellten Kunstobjekte können dann schliesslich in der Testsoftware via Menubar als Austellung abgespeichert resp. wieder geladen werden. Abschliessend kann mit Hilfe des Knopfes ``Übertragen via USB'' die in der Austellung tabellierten Kunstobjekte übertragen werden. Damit die Übertragung funktioniert, muss der Dojo via USB-Kabel mit dem Computer verbunden sein.
+\\[4mm]
+\textbf{Wichtig:} Zu jedem Kunstobjekt muss für jede Sprache (Deutsch, Englisch und Französisch) die entsprechende Audioinformation als Museumsobjekt hinzugefügt werden.
+\\[4mm]
+\textbf{Konfiguration von Dojo}
+\\[4mm]
+Als letzter Schritt muss der Dojo noch konfiguriert werden, indem die gewünschte Sprache und die gewünschten Zugangsrechte auf den Dojo übertragen werden. Auch dies kann wiederrum mit Hilfe der Java Testsoftware gemacht werden. Dazu muss lediglich die Testsoftware geöffnet werden und das gewünschte Zugangsrecht sowie Sprache in der Kommandozentrale selektiert werden. Anschliessend kann mit Hilfe des Knopfes ``Konfigurieren'' der Dojo konfiguriert werden.
+\\[4mm]
+\textbf{Wichtig:} Damit die Konfiguration funktioniert, muss der Dojo-Transmitterstation eingesteckt sein und dessen Port selektiert sein. Unter Windows kann der genutzer Port via Geräte-Manager Anschlüsse(COM und LPT) herausgefunden werden. Benötigt wird der Port von XYZ.
