@@ -200,17 +200,21 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	}
 
 	private MuseumsObject displayNewObjectDialog() {
+		final int minValue = 0;
+		final int maxValue = 512;
 		MuseumsObject museumsObject = new MuseumsObject();
 
 		NumberFormat format = NumberFormat.getInstance();
 		NumberFormatter formatter = new NumberFormatter(format);
 		formatter.setValueClass(Integer.class);
-		formatter.setMinimum(0);
-		formatter.setMaximum(512);
+		formatter.setMinimum(minValue);
+		formatter.setMaximum(maxValue);
 		formatter.setAllowsInvalid(false);
 		JFormattedTextField id = new JFormattedTextField(formatter);
+		id.setToolTipText("" + String.valueOf(minValue) + " \u2264 Eingabe \u2264 " + String.valueOf(maxValue));
 
 		JTextField name = new JTextField();
+		name.setToolTipText("Name des Kunstobjektes");
 		JRadioButton germanRadioBtn = new JRadioButton(Definitions.german, true);
 		JRadioButton frenchRadioBtn = new JRadioButton(Definitions.french, false);
 		JRadioButton englishRadioBtn = new JRadioButton(Definitions.english, false);
