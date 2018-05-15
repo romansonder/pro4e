@@ -275,7 +275,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 			}
 		});
 
-		Object[] objects = { "ID", id, "Name", name, "Pfad", radioButtonPanel, button };
+		Object[] objects = { "Beacon ID", id, "Name", name, "Pfad", radioButtonPanel, button };
 		JOptionPane pane = new JOptionPane(objects, JOptionPane.PLAIN_MESSAGE);
 		pane.createDialog(null, "Neues Kunstobjekt erstellen").setVisible(true);
 

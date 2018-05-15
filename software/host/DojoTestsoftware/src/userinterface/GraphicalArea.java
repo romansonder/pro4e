@@ -36,9 +36,9 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 	private TopView topView;
 	private JTable museumTable;
 	private DefaultTableModel tableModel;
-	private final int firstColumnWidth = 40;
+	private final int firstColumnWidth = 80;
 	private final int rowHeight = 25;
-	private final String[] columnNames = { "ID", "Name", "Sprache", "Pfad" };
+	private final String[] columnNames = { "Beacon ID", "Name", "Sprache", "Pfad" };
 
 	public GraphicalArea(TopView topView) {
 		super(new GridBagLayout());
