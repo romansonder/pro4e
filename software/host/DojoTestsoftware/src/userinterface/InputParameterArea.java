@@ -296,6 +296,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 			museumsObject.setPath(path.getText());
 		} catch (NumberFormatException exception) {
 			museumsObject = null;
+			StatusBar.setStatus(StatusType.FILLOUTALLFIELDS, "");
 		} catch (Exception exception) {
 			museumsObject = null;
 			StatusBar.setStatus(StatusType.FILLOUTALLFIELDS, "");
