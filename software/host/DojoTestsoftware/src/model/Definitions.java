@@ -5,9 +5,9 @@ public class Definitions {
 	public static String fileExtensionAd4 = "ad4";
 	public static String fileExtensionTxt = "txt";
 
-	public static String fileExtensionDescriptionXml = "xml";
-	public static String fileExtensionDescriptionAd4 = "ad4";
-	public static String fileExtensionDescriptionTxt = "txt";
+	public static String fileExtensionDescriptionXml = "Extensible Markup Language (.xml)";
+	public static String fileExtensionDescriptionAd4 = "4-bit ADPCM Compressed Audio (.ad4)";
+	public static String fileExtensionDescriptionTxt = "Textdatei (.txt)";
 
 	public static String german = "Deutsch";
 	public static String french = "Französisch";
