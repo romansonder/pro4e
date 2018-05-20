@@ -1,5 +1,7 @@
 In diesem Kapitel werden alle Grundlagen erläutert, welche nötig sind um den Versuch durchführen zu können. 
-\subsection{Die Lichtgeschwindkeit heute}
+
+\subsection{Die Lichtgeschwindkeit}
+
 An der Internationalen Konferenz für Mass und Gewicht kurz ICPM wurde der Meter durch Festlegung des Zahlenwertes für die Lichgeschwindigkeit im Vakuum wie folgt neu definiert.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -67,3 +69,75 @@ p_{w} = \dfrac{Luftfeuchtigkeit}{100\%}\cdot p-Saettigung
 Werden die aus Abbildung \ref{fig:Wasserdampfsättigung und Normbrechungsindex} ausgelesenen Werte und die restlich berechneten Werte in Formel \ref{eq:Formel_Brechungsindex_in_der_Luft} eingesetzt sowie nach $n$ aufgelöst, erhält man den spezifischen Brechungsindex $n$ der Versuchdurchführung. Dieser ermittelte Brechungsindex $n$, kann dann wiederrum in Formel \ref{eq:Formel_Brechungsindex} eingesetzt werden und man erhält den für die Versuchumgebung spezifische Wert der Lichtgeschwindigkeit $c$. 
 
 \subsection{Messung der Lichtgeschwindigkeit nach Michelson}
+
+Zur Bestimmung der Lichtgeschwindigkeit gibt es verschiendeste Methoden. Eine davon ist die Messung der Lichtgeschwindigkeit nach Michelson, welche die Funktion der Abbildung und Kollimation in einer langbrennweitigen Linse vereint. Dadurch kann erreicht werden, dass die Abbildungsqualität verbessert wird und man hat die Möglichkeit einer gewissen Freiheit bei der Wahl der Basisstrecke.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Messaufbau_Michelson_Grafik.png}
+\caption{Messaufbau Michelson}
+\label{fig:Messaufbau Michelson}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Um jedoch den Strahlengang verstehen zu können werden, werden noch die Abbildugnsgleichung sowie den Abbildungsmasstab $\beta$ benötigt.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+\dfrac{1}{f} = \dfrac{1}{g} + \dfrac{1}{b}
+\label{eq:Formel_Abbilungsgleichung}
+\end{equation}
+\begin{equation}
+\beta = \frac{B}{G} = \frac{b}{g}
+\label{eq:Formel_Abbildungsmassstab}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In den Formeln \ref{eq:Formel_Abbilungsgleichung} und \ref{eq:Formel_Abbildungsmassstab} enthalten sind $f$ die Brennweite, $g$ die Gegenstandsweite, $b$ die Bildweite, $B$ die Bildgrösse und $G$ die Gegenstandsgrösse. Abbildung \ref{fig:Abbildung an einer Linse} zeigt die Anwendung dieser Formeln anhand einer Linse.
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Abbildung_Linse_Grafik.png}
+\caption{Abbildung an einer Linse}
+\label{fig:Abbildung an einer Linse}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Abbildung \ref{fig:Strahlengang Michelson} zeigt den Strahlengang. Als Messmarke dient anstatt eines Gitters ein einstellbarer vertikaler Spalt. Das an diesem Spalt leicht divergent auslaufende Licht wird durch die Linse $L_{1}$ abgebildet, wobei die Distanz zwischen Spalt und $L_{1}$ möglichst genau auf die Brennweite $f_{1}$ eingestellt werden muss. Der Drehspiegel DS wiederrum soll so justiert werden, dass das Licht auf die Mitte des Hohlspiegels HS trifft. Dieser Hohlspiegel HS bildet den Spalt in seine Brennebene ab, wo sich der Endspiegel ES befindet. Mit Hilfe des Strahlenteilers wird sodann das rückrefelektierte Bild im Messokular sichtbar.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Strahlengang_Michelson_Grafik.png}
+\caption{Strahlengang Michelson}
+\label{fig:Strahlengang Michelson}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Bei einem sich rotierenden Spiegel findet das vom Endspiegel ES zurückkehrende Licht den Drehspiegel um einen Winkel $\delta$ gedreht. Daher gilt nachfolgende Formel \ref{eq:Formel_Winkeländerung}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+\delta = \omega\cdot\Delta t = \omega\cdot\dfrac{2\cdot(s_{2}+f_{2})}{c}
+\label{eq:Formel_Winkeländerung}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In Formel \ref{eq:Formel_Winkeländerung} enthalten ist die Kreisfrequenz $\omega$ des Drehspiegels, und $\Delta t$ die Laufzeit des Lichtes vom Drehspiegel zum Endspiegel und zurück. Genau diese Drehung des Speigels führt zu einer Richtungsänderung der Bündelachse um den Winkel $2\delta$ und damit auch zu einer seitlichen Verschiebung x wie in Abbildung \ref{fig:Strahlengang Michelson} ersichtlich. Durch die mit Formel \ref{eq:Formel_Kleinwinkelnäherung_Michelson} angewendete Kleinwinkelnäherung ergibt sich schliesslich die gesuchte Formel \ref{eq:Formel_Lichtgeschwindigkeit_Michelson} zur Bestimmung der Lichgeschwindigkeit $c$ nach der Michelson Methode.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+2\cdot\delta = x/f_{1}
+\label{eq:Formel_Kleinwinkelnäherung_Michelson}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+c = 4\cdot\omega\cdot\dfrac{(s_{2}+f_{2})\cdot f_{1}}{x}
+\label{eq:Formel_Lichtgeschwindigkeit_Michelson}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
