@@ -118,11 +118,11 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btNewObject.setEnabled(true);
 		btNewObject.addActionListener(this);
 
-		btTransmitUSB = new JButton("Übertragen via USB");
+		btTransmitUSB = new JButton("Synchronisieren");
 		btTransmitUSB.setEnabled(true);
 		btTransmitUSB.addActionListener(this);
 
-		btTransmitBT = new JButton("Übertragen");
+		btTransmitBT = new JButton("Konfigurieren");
 		btTransmitBT.setEnabled(true);
 		btTransmitBT.addActionListener(this);
 
