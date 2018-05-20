@@ -31,20 +31,31 @@ Die in Formel \ref{eq:Formel_Brechungsindex_in_der_Luft} enthaltenen Parameter s
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{equation*}
-\beta = 4.292 \cdot 10^{-8} mbar^{-1},\;\gamma = 3.43 \cdot 10^{-2},\;\lambda_{0} = 632.8 nm (nm)^{2}mbar^{-1}
+\beta = 4.292 \cdot 10^{-8} mbar^{-1}
 \label{eq:Faktor_Beta}
+\end{equation*}
+\begin{equation*}
+\gamma = 3.43 \cdot 10^{-2}
+\label{eq:Faktor_Gamma}
+\end{equation*}
+\begin{equation*}
+\lambda_{0} = 632.8 nm (nm)^{2}mbar^{-1}
+\label{eq:Faktor_Lambda}
 \end{equation*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Mit Hilfe der nachfolgenden Abbildung \ref{fig:Wasserdampfsättigung und Normbrechungsindex}, können die restlichen Parameter bestimmt werden. So kann beispielsweise aus der Abbildung links die p-Sättigung gelesen werden, anhand der gemessenen Raumtermperatur oder in der rechten Abbildung auf Grund der vorgegebenen Wellenlänge der Normbrechnungsindex $(n_{n} - 1)$ herausgelesen werden. Die restlichen Parameter $T_{n}$ und $p_{n}$ sind ebenfalls in der rechten Abbildung ablesbar.
+Mit Hilfe der nachfolgenden Abbildung \ref{fig:Wasserdampfsättigung und Normbrechungsindex}, können die restlichen Parameter bestimmt werden. So kann beispielsweise aus der Abbildung links die p-Sättigung gelesen werden, anhand der gemessenen Raumtemperatur $T$ oder in der rechten Abbildung auf Grund der vorgegebenen Wellenlänge der Normbrechnungsindex $(n_{n} - 1)$ herausgelesen werden. Die restlichen Parameter $T_{n}$ und $p_{n}$ sind ebenfalls in der rechten Abbildung aus dem Text ablesbar und stellen die Parameter dar, auf welche die Abbildung rechts normiert ist.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htb]
+\begin{figure}[b]
 \includegraphics[width=\textwidth]{Brechungsindex_Luft_Grafik.png}
 \caption{Wasserdampfsättigung und Normbrechungsindex}
 \label{fig:Wasserdampfsättigung und Normbrechungsindex}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Der Parameter $p_{w}$ wiederrum ist der Wasserdampfpartialdruck und wird separat mit Formel \ref{eq:Formel_Wasserdampfpartialdruck} ausgerechnet, wobei der aus Abbildung \ref{fig:Wasserdampfsättigung und Normbrechungsindex} gelesene Wert für die p-Sättigung verwendet wird, sowie die gemessene Luftfeuchtigkeit während der Versuchdurchführung.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{equation}
@@ -53,7 +64,6 @@ p_{w} = \dfrac{Luftfeuchtigkeit}{100\%}\cdot p-Saettigung
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Der Parameter $p_{w}$ wiederrum ist der Wasserdampfpartialdruck und wird separat mit Formel ausgerechnet, wobei der aus Abbildung \ref{fig:Wasserdampfsättigung und Normbrechungsindex} gelesene Wert verwendet wird, sowie die gemessene Luftfeuchtigkeit.
-
+Werden die aus Abbildung \ref{fig:Wasserdampfsättigung und Normbrechungsindex} ausgelesenen Werte und die restlich berechneten Werte in Formel \ref{eq:Formel_Brechungsindex_in_der_Luft} eingesetzt sowie nach $n$ aufgelöst, erhält man den spezifischen Brechungsindex $n$ der Versuchdurchführung. Dieser ermittelte Brechungsindex $n$, kann dann wiederrum in Formel \ref{eq:Formel_Brechungsindex} eingesetzt werden und man erhält den für die Versuchumgebung spezifische Wert der Lichtgeschwindigkeit $c$. 
 
 \subsection{Messung der Lichtgeschwindigkeit nach Michelson}
