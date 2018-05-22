@@ -36,9 +36,8 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 	private TopView topView;
 	private JTable museumTable;
 	private DefaultTableModel tableModel;
-	private final int firstColumnWidth = 40;
 	private final int rowHeight = 25;
-	private final String[] columnNames = { "ID", "Name", "Sprache", "Pfad" };
+	private final String[] columnNames = { "Beacon ID", "Name", "Sprache", "Pfad" };
 
 	public GraphicalArea(TopView topView) {
 		super(new GridBagLayout());
@@ -50,9 +49,6 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 
 		museumTable = new JTable(tableModel);
 		museumTable.setRowHeight(rowHeight);
-		museumTable.getColumnModel().getColumn(0).setMinWidth(firstColumnWidth);
-		museumTable.getColumnModel().getColumn(0).setMaxWidth(firstColumnWidth);
-		museumTable.getColumnModel().getColumn(0).setResizable(false);
 		museumTable.setBackground(new Color(255, 215, 0));
 		museumTable.setOpaque(false);
 		museumTable.setAutoCreateRowSorter(true);
@@ -120,12 +116,6 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 		sorter.setSortKeys(sortKeys);
 		sorter.sort();
 
-		museumTable.getColumnModel().getColumn(0).setMinWidth(firstColumnWidth);
-		museumTable.getColumnModel().getColumn(0).setMaxWidth(firstColumnWidth);
-		museumTable.getColumnModel().getColumn(0).setResizable(false);
-		museumTable.getColumnModel().getColumn(1).sizeWidthToFit();
-		museumTable.getColumnModel().getColumn(2).sizeWidthToFit();
-		museumTable.getColumnModel().getColumn(3).sizeWidthToFit();
 		DefaultTableCellRenderer centeringRenderer = new DefaultTableCellRenderer();
 		centeringRenderer.setHorizontalAlignment(JLabel.CENTER);
 		museumTable.getColumnModel().getColumn(0).setCellRenderer(centeringRenderer);

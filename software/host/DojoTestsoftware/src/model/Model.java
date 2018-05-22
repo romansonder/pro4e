@@ -52,7 +52,7 @@ public class Model extends Observable {
 					serialPort.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
 							SerialPort.PARITY_NONE);
 
-					serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_RTSCTS_IN | SerialPort.FLOWCONTROL_RTSCTS_OUT);
+					serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
 					serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
 
 					success = true;
@@ -452,7 +452,7 @@ public class Model extends Observable {
 				break;
 			case REQUESTALIVE:
 				System.out.println("Command received: " + JavaBleCommunication.REQUESTALIVE.toString());
-				sendCommandToSerial(JavaBleCommunication.ALIVE);
+				// sendCommandToSerial(JavaBleCommunication.ALIVE);
 				break;
 			case ALIVE:
 				System.out.println("Command received: " + JavaBleCommunication.ALIVE.toString());

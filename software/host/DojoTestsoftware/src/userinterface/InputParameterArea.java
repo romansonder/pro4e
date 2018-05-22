@@ -118,11 +118,11 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		btNewObject.setEnabled(true);
 		btNewObject.addActionListener(this);
 
-		btTransmitUSB = new JButton("Übertragen via USB");
+		btTransmitUSB = new JButton("Synchronisieren");
 		btTransmitUSB.setEnabled(true);
 		btTransmitUSB.addActionListener(this);
 
-		btTransmitBT = new JButton("Übertragen");
+		btTransmitBT = new JButton("Konfigurieren");
 		btTransmitBT.setEnabled(true);
 		btTransmitBT.addActionListener(this);
 
@@ -200,17 +200,21 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	}
 
 	private MuseumsObject displayNewObjectDialog() {
+		final int minValue = 0;
+		final int maxValue = 512;
 		MuseumsObject museumsObject = new MuseumsObject();
 
 		NumberFormat format = NumberFormat.getInstance();
 		NumberFormatter formatter = new NumberFormatter(format);
 		formatter.setValueClass(Integer.class);
-		formatter.setMinimum(0);
-		formatter.setMaximum(512);
+		formatter.setMinimum(minValue);
+		formatter.setMaximum(maxValue);
 		formatter.setAllowsInvalid(false);
 		JFormattedTextField id = new JFormattedTextField(formatter);
+		id.setToolTipText("" + String.valueOf(minValue) + " \u2264 Eingabe \u2264 " + String.valueOf(maxValue));
 
 		JTextField name = new JTextField();
+		name.setToolTipText("Name des Kunstobjektes");
 		JRadioButton germanRadioBtn = new JRadioButton(Definitions.german, true);
 		JRadioButton frenchRadioBtn = new JRadioButton(Definitions.french, false);
 		JRadioButton englishRadioBtn = new JRadioButton(Definitions.english, false);
@@ -271,7 +275,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 			}
 		});
 
-		Object[] objects = { "ID", id, "Name", name, "Pfad", radioButtonPanel, button };
+		Object[] objects = { "Beacon ID", id, "Name", name, "Pfad", radioButtonPanel, button };
 		JOptionPane pane = new JOptionPane(objects, JOptionPane.PLAIN_MESSAGE);
 		pane.createDialog(null, "Neues Kunstobjekt erstellen").setVisible(true);
 
@@ -292,6 +296,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 			museumsObject.setPath(path.getText());
 		} catch (NumberFormatException exception) {
 			museumsObject = null;
+			StatusBar.setStatus(StatusType.FILLOUTALLFIELDS, "");
 		} catch (Exception exception) {
 			museumsObject = null;
 			StatusBar.setStatus(StatusType.FILLOUTALLFIELDS, "");
