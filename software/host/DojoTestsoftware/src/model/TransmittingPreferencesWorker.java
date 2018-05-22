@@ -23,6 +23,8 @@ public class TransmittingPreferencesWorker extends SwingWorker<Object, Object> {
 		success = model.openSerialConnection(port);
 		if (success) {
 			success = model.sendCommandToSerial(JavaBleCommunication.REQUESTALIVE);
+			success = model.sendCommandToSerial(JavaBleCommunication.SENDACCESSRIGHT);
+			success = model.sendCommandToSerial(JavaBleCommunication.SENDLANGUAGE);
 			if (success) {
 				StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGSUCCESSFUL, "");
 			}
