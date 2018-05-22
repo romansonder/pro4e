@@ -2,4 +2,26 @@
 Das Modul wtv020sd.c beinhaltet die Initialisierung und Ansteuerung des Audiochip Wtv020sd \cite{WTV020}. Die Kommunikation zum Audiointerface erfolgt über die Standard GPIO (General Purpose Input Output). Über das Audiointerface können die Audiofiles der SD-Karte gezielt Abgespielt, Pausiert und die Audioausgabe vermindert oder verstärkt werden (Mehr Details zum Hardwareaufbau im Kapitel \ref{}). Die 16-Bit Befehle werden über ein SPI (synchroner serieller Datenbus) mit einer Geschwindigkeit von 5kHz gesendet.
 
 
-\subsection{Peripherie --ts3a27518e.c ts4871.c }
+\subsection{Peripherie --ts3a27518e.c ts4871.c}
+
+\subsection{Java Anwendung}
+
+Um es dem Benutzer so einfach wie möglich zu machen, wurde eine Java Anwendung gestaltet, welche Audioinformationen auf den Dojo übertragen kann. Dabei versucht die Anwendung im Prinzip nichts anderes als die SD Karte im Dojo via USB-Schnittstelle zu erkennen und dann die Audioinformationen auf die SD Karte zu kopieren. Dabei werden die Audioinformationen auch gleich so Umbenannt, dass sie zu den entsprechenden Beacons zugeordnet und abgespielt werden können. Da sich immer alle Audioinformationen in allen Sprachen auf dem Dojo befinden müssen, muss dieser Schritt auch nur bei neu dazugekommenen Kunstobjekten wiederholt werden. Weiter können mit der Anwendung Benutzerspezifische Einstellungen wie Sprache und Zugangsrechte übertragen werden. Dies geschieht jedoch im Gegensatz zu den Audioinformationen über BLE, weshalb auch der entsprechende COM-Port von Anwender selektiert werden muss.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{graphics/Java_Anwendung.png}
+	\caption{Java Anwendung}
+	\label{fig:Java Anwendung}
+\end{figure}
+
+Abbildung \ref{fig:Java Anwendung} zeigt die Java Anwendung, in der zurzeit gerade eine Ausstellung mit  drei Kunstobjekten (in allen drei Sprachen) geladen ist. Die Idee hinter dem Aufbau der Java Anwendung war, dass der Benutzer nichts falsch machen kann und auf falsche Aktionen entsprechend hingewiesen wird. Dies wurde schliesslich mittels treffenden Statusmeldungen unten links in der Statusbar umgesetzt.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{graphics/Dateiname.png}
+	\caption{Dateiname Konventionen}
+	\label{fig:Dateiname Konventionen}
+\end{figure}
+
+Abbildung wiederrum \ref{fig:Dateiname Konventionen} zeigt nach welchen Konventionen der Dateiname der Audioinformationen umbenannt wird, damit die Dateien von der Firmware erkannt und abgespielt werden kann.
