@@ -30,6 +30,7 @@ public class Model extends Observable {
 	private boolean portIsOpened;
 	private TransmittingDataWorker transmittingDataWorker;
 	private TransmittingPreferencesWorker transmittingPreferencesWorker;
+	private String OS = System.getProperty("os.name").toLowerCase();
 
 	public Model() {
 		museum = new Museum();
@@ -284,22 +285,59 @@ public class Model extends Observable {
 		return success;
 	}
 
+	private boolean isWindows() {
+		return (OS.indexOf("win") >= 0);
+	}
+
+	private boolean isUnix() {
+		return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
+	}
+
 	public boolean recogniseDriveByDriveName(String driveName) {
 		boolean success = false;
 
-		FileSystemView fsv = FileSystemView.getFileSystemView();
-		File[] fileList = File.listRoots();
+		if (true == isWindows()) {
+			System.out.println("Windows detected!");
 
-		for (int i = 0; i < fileList.length; i++) {
-			if (fsv.getSystemDisplayName(fileList[i]).contains(driveName)) {
-				if (fsv.isDrive(fileList[i])) {
-					System.out.println("Display name: " + fsv.getSystemDisplayName(fileList[i]));
-					System.out.println("Absolute path: " + fileList[i].getAbsolutePath());
-					storageDrive = fileList[i];
-					success = true;
-					break;
+			FileSystemView fsv = FileSystemView.getFileSystemView();
+			File[] fileList = File.listRoots();
+
+			for (int i = 0; i < fileList.length; i++) {
+				if (fsv.getSystemTypeDescription(fileList[i]).contains(driveName)) {
+
+					if (fsv.isDrive(fileList[i])) {
+						System.out.println("Display name: " + fsv.getSystemDisplayName(fileList[i]));
+						System.out.println("Absolute path: " + fileList[i].getAbsolutePath());
+						storageDrive = fileList[i];
+						success = true;
+						break;
+					}
 				}
 			}
+		} else if (true == isUnix()) {
+			System.out.println("Unix or Linux detected!");
+
+			FileSystemView fsv = FileSystemView.getFileSystemView();
+			File[] fileList = File.listRoots();
+			System.out.println("Absolute path: " + fileList[0].getAbsolutePath());
+
+			File f = new File("\\" + driveName);
+
+			if (true == fsv.isFileSystem(f)) {
+				System.out.println("is real directory");
+			}
+			if (true == fsv.isDrive(f)) {
+				System.out.println("is drive");
+			}
+			if (f.exists()) {
+				System.out.println("is exists");
+			}
+			if (f.isDirectory()) {
+				System.out.println("is directory");
+			}
+
+		} else {
+			System.out.println("Unknown OS detected!");
 		}
 
 		return success;
