@@ -30,7 +30,8 @@ public class Model extends Observable {
 	private boolean portIsOpened;
 	private TransmittingDataWorker transmittingDataWorker;
 	private TransmittingPreferencesWorker transmittingPreferencesWorker;
-	private String OS = System.getProperty("os.name").toLowerCase();
+	private String operatingSystem = System.getProperty("os.name").toLowerCase();
+	private String loggedInUserName = System.getProperty("user.name");
 
 	public Model() {
 		museum = new Museum();
@@ -48,7 +49,7 @@ public class Model extends Observable {
 
 					StatusBar.setStatus(StatusType.OPENEDCONNECTION, serialPort.getPortName());
 					portIsOpened = true;
-					System.out.println("Port geöffnet");
+					System.out.println("Port geÃ¶ffnet");
 
 					serialPort.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
 							SerialPort.PARITY_NONE);
@@ -59,7 +60,7 @@ public class Model extends Observable {
 					success = true;
 				}
 			} catch (SerialPortException exception) {
-				System.out.println("Fehler beim öffnen von Port: " + exception);
+				System.out.println("Fehler beim Ã¶ffnen von Port: " + exception);
 				StatusBar.setStatus(StatusType.OPENPORTFAILURE, serialPort.getPortName());
 			}
 		} else {
@@ -286,11 +287,12 @@ public class Model extends Observable {
 	}
 
 	private boolean isWindows() {
-		return (OS.indexOf("win") >= 0);
+		return (operatingSystem.indexOf("win") >= 0);
 	}
 
 	private boolean isUnix() {
-		return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
+		return (operatingSystem.indexOf("nix") >= 0 || operatingSystem.indexOf("nux") >= 0
+				|| operatingSystem.indexOf("aix") > 0);
 	}
 
 	public boolean recogniseDriveByDriveName(String driveName) {
@@ -317,25 +319,12 @@ public class Model extends Observable {
 		} else if (true == isUnix()) {
 			System.out.println("Unix or Linux detected!");
 
-			FileSystemView fsv = FileSystemView.getFileSystemView();
-			File[] fileList = File.listRoots();
-			System.out.println("Absolute path: " + fileList[0].getAbsolutePath());
+			File drive = new File("//media//" + loggedInUserName + "//" + driveName);
 
-			File f = new File("\\" + driveName);
-
-			if (true == fsv.isFileSystem(f)) {
-				System.out.println("is real directory");
+			if (drive.exists() && drive.isDirectory()) {
+				storageDrive = drive;
+				success = true;
 			}
-			if (true == fsv.isDrive(f)) {
-				System.out.println("is drive");
-			}
-			if (f.exists()) {
-				System.out.println("is exists");
-			}
-			if (f.isDirectory()) {
-				System.out.println("is directory");
-			}
-
 		} else {
 			System.out.println("Unknown OS detected!");
 		}
@@ -395,16 +384,14 @@ public class Model extends Observable {
 		}
 
 		return success;
-
 	}
 
-	public boolean writeMuseumDataToDrive(File driveName) {
+	public boolean writeMuseumDataToDrive(File drivePath) {
 		boolean success = false;
 
 		for (int i = 0; i < museum.list.size(); i++) {
 			MuseumsObject museumObject = museum.list.get(i);
 			int languageIndex = 0;
-
 			if (museumObject.getLanguage().equals(Definitions.german)) {
 				languageIndex = 1;
 			} else if (museumObject.getLanguage().equals(Definitions.french)) {
@@ -418,7 +405,7 @@ public class Model extends Observable {
 			File src = new File(museumObject.getPath());
 			String newFileName = String.format("%03d" + languageIndex, museumObject.getID()) + "."
 					+ Definitions.fileExtensionAd4;
-			File dst = new File(driveName.getAbsolutePath() + newFileName);
+			File dst = new File(drivePath.getAbsolutePath() + "//" + newFileName);
 			try {
 				Files.copy(src.toPath(), dst.toPath(), StandardCopyOption.REPLACE_EXISTING);
 				success = true;
