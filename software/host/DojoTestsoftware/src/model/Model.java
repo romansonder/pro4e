@@ -305,8 +305,7 @@ public class Model extends Observable {
 			File[] fileList = File.listRoots();
 
 			for (int i = 0; i < fileList.length; i++) {
-				if (fsv.getSystemTypeDescription(fileList[i]).contains(driveName)) {
-
+				if (fsv.getSystemDisplayName(fileList[i]).contains(driveName)) {
 					if (fsv.isDrive(fileList[i])) {
 						System.out.println("Display name: " + fsv.getSystemDisplayName(fileList[i]));
 						System.out.println("Absolute path: " + fileList[i].getAbsolutePath());
