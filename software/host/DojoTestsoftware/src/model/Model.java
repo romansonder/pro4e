@@ -49,18 +49,17 @@ public class Model extends Observable {
 
 					StatusBar.setStatus(StatusType.OPENEDCONNECTION, serialPort.getPortName());
 					portIsOpened = true;
-					System.out.println("Port geÃ¶ffnet");
+					System.out.println("Port geöffnet");
 
 					serialPort.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
 							SerialPort.PARITY_NONE);
 
 					serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
 					serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
-
 					success = true;
 				}
 			} catch (SerialPortException exception) {
-				System.out.println("Fehler beim Ã¶ffnen von Port: " + exception);
+				System.out.println("Fehler beim öffnen von Port: " + exception);
 				StatusBar.setStatus(StatusType.OPENPORTFAILURE, serialPort.getPortName());
 			}
 		} else {
@@ -272,9 +271,9 @@ public class Model extends Observable {
 
 			try {
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-				writer.write("The first test line");
+				writer.write("Dieser Funktion wurde leider noch nicht implementiert.");
 				writer.newLine();
-				writer.write("The second test line");
+				writer.write("Beste Grüsse Team 3 HS18.");
 				writer.close();
 				success = true;
 			} catch (Exception exception) {
