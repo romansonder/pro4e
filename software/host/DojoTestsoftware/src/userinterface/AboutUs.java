@@ -1,7 +1,6 @@
 package userinterface;
 
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -20,7 +19,7 @@ public class AboutUs extends JDialog {
 	private final static String title = "Über uns";
 	private final static String dojoIconFileName = "Dojo_Testsoftware_Icon.png";
 	private final static String dojoLogoFileName = "Dojo_Testsoftware_Logo.png";
-	private static final int width = 570, height = 420;
+	private static final int width = 570, height = 500;
 
 	public static void aboutUsAnzeigen() {
 		final JDialog aboutUsDialog = new JDialog(null, title, ModalityType.APPLICATION_MODAL);
@@ -33,17 +32,11 @@ public class AboutUs extends JDialog {
 		aboutUsDialog.setLayout(new GridBagLayout());
 
 		ImageIcon backgroundImage = Utility.loadResourceIcon(dojoLogoFileName);
-		backgroundImage.setImage(backgroundImage.getImage().getScaledInstance(340, 200, Image.SCALE_DEFAULT));
+		backgroundImage.setImage(backgroundImage.getImage().getScaledInstance(340, 300, Image.SCALE_DEFAULT));
 		JLabel backgroundLabel = new JLabel(backgroundImage);
 		backgroundLabel.setSize(new Dimension(width, height));
 
-		JLabel swName = new JLabel("Dojo - Testsoftware");
-		swName.setFont(new Font("Arial", Font.BOLD, 25));
-
-		aboutUsDialog.add(swName, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
-				GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-
-		aboutUsDialog.add(backgroundLabel, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
+		aboutUsDialog.add(backgroundLabel, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.WEST,
 				GridBagConstraints.NONE, new Insets(10, 10, 10, 10), 0, 0));
 
 		JPanel teamPanel = new JPanel();
