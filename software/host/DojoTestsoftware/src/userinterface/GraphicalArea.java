@@ -75,8 +75,8 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 	}
 
 	private MuseumsObject getSelectedObject() {
-		int selectedRow = museumTable.getSelectedRow();
 		MuseumsObject museumObject = new MuseumsObject();
+		int selectedRow = museumTable.getSelectedRow();
 
 		if (-1 != selectedRow) {
 			int id = (int) museumTable.getModel().getValueAt(selectedRow, 0);
@@ -87,6 +87,8 @@ public class GraphicalArea extends JPanel implements ListSelectionListener, KeyL
 			museumObject.setName(name);
 			museumObject.setLanguage(language);
 			museumObject.setPath(path);
+		} else {
+			museumObject = null;
 		}
 
 		return museumObject;
