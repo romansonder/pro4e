@@ -70,7 +70,6 @@ public class TimerThread extends Thread {
 						break;
 					}
 				}
-
 			} catch (InterruptedException exception) {
 				exception.printStackTrace();
 			}
@@ -83,5 +82,9 @@ public class TimerThread extends Thread {
 
 	public void setTransmittingRunning(boolean isTransmittingRunning) {
 		this.isTransmittingRunning = isTransmittingRunning;
+
+		if (isTransmittingRunning == false) {
+			counter = 0;
+		}
 	}
 }
