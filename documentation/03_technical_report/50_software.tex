@@ -1,12 +1,25 @@
-\subsection{Audiointerface -- wtv020sd.c}
+\subsection{Grobkonzept}
+
+\subsection{Kurzeinführung in Bluetooth Low Energy}
+
+\subsection{Aufbau des Bluetooth-Moduls}
+
+\subsubsection{Bluetooth-Modul der Peripheriegeräte}
+
+\subsection{Ein- und Ausgabeelemente des Dojos}
+
+\subsubsection{Audiointerface -- wtv020sd.c}
 Das Modul wtv020sd.c beinhaltet die Initialisierung und Ansteuerung des Audiochip Wtv020sd \cite{WTV020}. Die Kommunikation zum Audiointerface erfolgt über die Standard GPIO (General Purpose Input Output) des nRF52. Es werden die Pins: Reset, Busy, Clk und Data verwendet. Über das Audiointerface können die Audiofiles der SD-Karte gezielt Abgespielt, Pausiert und die Audioausgabe vermindert oder verstärkt werden (Mehr Details zum Hardwareaufbau im Kapitel \ref{}). Dabei handelt es sich um 16-Bit Befehle welche über ein SPI (synchroner serieller Datenbus) mit einer Geschwindigkeit von 5kHz gesendet werden.
 
-\subsection{Peripherie -- ts3a27518e.c ts4871.c periphery.c }
+\subsubsection{Peripherie -- ts3a27518e.c ts4871.c periphery.c }
 Im Modul ts4871.c ist definiert mit welchem Pin der Audioverstärker ein- und ausgeschalten werden kann, in diesem Falle ist es der Standbypin (gem. Datenblat \cite{TS4871}). Des weiteren sind im Modul ts3a27518e.c die Pinausgänge für den Multiplexer, zwischen SD-Karte und Audiointerface definiert (gem. Datenblatt \cite{TS3A27518E}). Es kann zwischen Adio- und USB-Modus gewechselt werden.\\
 Das Modul periphery.c beinhaltet die Verarbeitung der Tastereingaben und die Ausgabe des Feedbacks über den Vi1
 
 
-\subsection{Peripherie --ts3a27518e.c ts4871.c}
+\subsubsection{Peripherie --ts3a27518e.c ts4871.c}
+
+\subsection{Hauptprogrammablauf}
+
 
 \subsection{Java Anwendung}
 

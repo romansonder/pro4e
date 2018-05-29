@@ -1,10 +1,10 @@
 \subsection{Energieversorgung} 
 Die Elektronik des Dojos bezieht die Energie von einem Akkumulator. Verwendet wird ein Lithiumakkumulator der Marke Trustfire mit einer Nennspannung von $3.7V$. Der Akkumulator besitzt eine Ladungskapazität von $600mAh$.
 
-\subsubsection*{Entladevorgang} 
+\subsubsection{Entladevorgang} 
 Der Akkumulator besitzt eine Nennspannung von $4.2V$ bei voller Kapazität und $0V$ \ref{test_Spannungsversorgung} wenn die Kapazität erschöpft ist. Die $0V$ kommen daher zustande, dass der Tiefenentladungsschutz der Batterie die Spannungsversorgung ab einer Spannung unter $2.75V$ kappt. Aus der Batteriespannung wird mit einem Linearregler des Types TL1963A eine $3.3V$ Spannungsversorgung erstellt. Mit dieser Versorgung wird die gesammte Elektronik gespiesen.
 
-\subsubsection*{Ladevorgang}
+\subsubsection{Ladevorgang}
 Der Akkumulator wird über die Spannungsversorgung des USB-Ports geladen. Ein Akkumulator-Management-Chip sorgt dabei für eine konstante Spannung von $4.2V$. Diese Spannung wird benötigt um den Akkumulator zu laden. Die Ladezeit beträgt $2.5h$, siehe Messungen Ladevorgang \ref{sec:Ladevorgang}. Somit ist es möglich, den Akkumulator über eine Nacht komplett zu laden, oder ihn zwischen den Benützungen einmal zu laden. 
 
 \subsubsection{Messungen}
@@ -76,3 +76,14 @@ Wir erhalten einen Wirkunsggrad von
 \eta = 83.39%
 \end{equation}
 Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Dojo über Nacht problemlos aufladen. Auch Aufladungen zwischen Besuchen können so realisiert werden.
+\clearpage
+
+\subsection{USB-Schnittstelle}
+
+\subsection{Audio-Schnittstelle}
+
+\subsubsection{Messungen}
+
+\subsection{Zugriff auf SD-Karte}
+
+\subsection{Mikrokontroller}
