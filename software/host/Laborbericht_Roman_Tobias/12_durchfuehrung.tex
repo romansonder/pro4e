@@ -12,6 +12,8 @@ Abbildung \ref{fig:Versuchaufbau} zeigt den in diesem Versuch verwendeten Versuc
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Wichtig hierbei ist, dass die Strecke $f1$ genau einem Meter enspricht, da dies die Brennweite der Linse ist.
+
 \subsection{Messung der Lichtgeschwindigkeit in Luft}
 
 In diesem Unterkapitel werden die verwendeten Geräte, die eingestellten Distanzen, sowie der Messvorgang erläutert.
@@ -23,7 +25,7 @@ Nachfolgende Auflistung zeigt alle Geräte die bei diesem Versuch verwendet wurd
 \begin{itemize}
 \item Motorspeisung: Power Supply ES030-5
 \item Drehfrequenzmessgerät: Pasco OS-9263
-\item Laser: 4mW 632 nm
+\item Laser: Helium-Neon-Laser 4mW 632 nm
 \item Distanzmessung: Leica Disto D8
 \end{itemize}
 
@@ -32,10 +34,10 @@ Nachfolgende Auflistung zeigt alle Geräte die bei diesem Versuch verwendet wurd
 Nachfolgende Auflistung zeigt alle für diesen Versuch relevanten Distanzen die eingestellt wurden.
 
 \begin{itemize}
-\item Distanz Linse-Spalt ($f_{1}$): $(1\pm 1)m$
-\item Distanz Hohlspiegel-Endspiegel ($f_{2}$): $(4.955\pm 1)m$
-\item Distanz Strahlenteiler-Spalt und Messokular ($s_{1}$): $(0.12\pm 1)m$
-\item Distanz Hohlspiegel-Drehspiegel ($s_{2}$): $(1.075\pm 1)m$
+\item Distanz Linse-Spalt ($f_{1}$): $(1\pm 0.005)m$
+\item Distanz Hohlspiegel-Endspiegel ($f_{2}$): $(4.955\pm 0.005)m$
+\item Distanz Strahlenteiler-Spalt und Messokular ($s_{1}$): $(0.12\pm 0.005)m$
+\item Distanz Hohlspiegel-Drehspiegel ($s_{2}$): $(1.075\pm 0.005)m$
 \end{itemize}
 
 \subsubsection{Messvorgang}
@@ -43,11 +45,45 @@ Nachfolgende Auflistung zeigt alle für diesen Versuch relevanten Distanzen die 
 Zuerst wurde der Versuchaufbau wie in Abbildung \ref{fig:Versuchaufbau} grob aufgebaut und mit dem durch den Polarisator abgeschwächten Laser kontrolliert. Danach wurden die Distanzen fein eingestellt und die benötigten Distanzen vermessen. Danach wurde eine Drehspiegelfrequenz von 300-400 Hz eingestellt was zu einen leicht verschobenen Beugungsmuster geführt hat. Nach dem Absegnen des Versuchsaufbaus durch den Dozenten wurde dann schliesslich der Drehspiegel auf die gewünschte Drehfrequenz eingestellt und die Okular-Strichmarke auf die markante Stelle des verschobenen Beugungsmusters eingestellt, sodass mittels der Mikrometerschraube der Wert x aus Abbildung \ref{fig:Strahlengang Michelson} abgelesen werden konnte. Diese Messung wurde dann für verschiedene Drehspiegelfrequenzen wiederholt.
 
 \subsection{Äussere Einflüsse}
+\label{sec:Äussere Einflüsse}
 
-Da die äusseren Einflüsse wie Temperatur, Luftfeuchtigkeit und Luftdruck eine Rolle spielen für den Wert der Lichtgeschwindigkeit wurden diese Einflüsse während des Versuches gemessen. Die Berechnung des theoretischen Wertes der Lichtgeschwindigkeit $c$ folgt dann im Kapitel \ref{sec:auswertung}.
+Da die äusseren Einflüsse wie Temperatur, Luftfeuchtigkeit und Luftdruck eine Rolle spielen für den Wert der Lichtgeschwindigkeit $c$ wurden diese Einflüsse während des Versuches gemessen.
 
 \begin{itemize}
-\item relative Luftfeuchtigkeit: rF = 26\% = 0.26
-\item Temperatur: T = 22.3 = 295.45
-\item Luftdruck: p = 983hPa = 983 mBar
+\item relative Luftfeuchtigkeit: rF = 34\% = 0.34
+\item Temperatur: T = 19.6 = 292.75
+\item Luftdruck: p = 974 hPa = 974 mBar = 0.974 Bar
 \end{itemize}
+
+Da die Lichtgeschwindigkeit im Laborraum in Luft bei den entsprechenden äusseren Einflüssen gemessen wurde, muss der ensprechende Brechnungsindex $n$ berechnet werden. Durch Anwenden des Brechungsindexes $n$ in Formel \ref{eq:Formel_Brechungsindex} kann dann schliesslich der theoretische Wert der Lichtgeschwindigkeit $c$ in Luft berechnet werden.\\[4mm]
+Aus der Abbildung \ref{fig:Wasserdampfsättigung und Normbrechungsindex} wurden folgende Werte entnommen, basierend auf der im Laborraum gemessenen Raumtemperatur $T$ und der Wellenlänge $\lambda_{0}$ des verwendeten Helium-Neon-Lasers herausgelesen.
+
+\begin{itemize}
+\item $p_{n}$ = 1013.25 mBar
+\item $T_{n}$ = 288.15 K
+\item $n_{n}-1$ = $2.762\cdot10^{-4}$
+\end{itemize}
+
+Durch Anwenden der Formel \ref{eq:Formel_Wasserdampfpartialdruck} und dem gemessenen Wert für die relative Luftfeuchtigkeit $rF$ kann nun der Wasserdampfpartialdruck $p_{w}$ berechnet werden.
+
+\begin{itemize}
+\item $p_{w}$ = 7.14 mBar
+\end{itemize}
+
+Die restlichen Parameter von Formel \ref{eq:Formel_Brechungsindex_in_der_Luft} sind Konstanten, welche in Kapitel \ref{Die Lichtgeschwindkeit}  definiert wurden. Setzt man nun all diese Werte in die Formel \ref{eq:Formel_Brechungsindex_in_der_Luft} ein und formt die Gleichung nach $n$ um, ergibt sich der spezifische Brechnungsindex für Luft.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation*}
+n = 1.00026
+\label{eq:Brechungsindex Wert in Luft}
+\end{equation*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Abschliessend kann nun Formel \ref{eq:Formel_Brechungsindex} angewendet werden und man erhält den spezifischen Wert für Lichtgeschwindigkeit in Luft.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation*}
+c = 299'713'951 m/s
+\label{eq:Lichtgeschwindigkeit Wert in Luft}
+\end{equation*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
