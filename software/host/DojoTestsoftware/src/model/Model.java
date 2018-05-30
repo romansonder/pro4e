@@ -183,8 +183,8 @@ public class Model extends Observable {
 					if (object.getID() == museumsObject.getID()) {
 
 						if (object.getLanguage().equals(museumsObject.getLanguage())) {
-							StatusBar.setStatus(StatusType.LANGUAGEDUPLICATE,
-									"ID: " + museumsObject.getID() + "; Sprache: " + museumsObject.getLanguage());
+							StatusBar.setStatus(StatusType.LANGUAGEDUPLICATE, "Beacon ID: " + museumsObject.getID()
+									+ "; Sprache: " + museumsObject.getLanguage());
 							success = false;
 							return success;
 						}
@@ -210,7 +210,7 @@ public class Model extends Observable {
 			for (MuseumsObject object : this.museum.list) {
 				if (object.getID() == museumsObject.getID()) {
 					this.museum.list.remove(object);
-					System.out.println("Model: Removed object with ID " + object.getID());
+					System.out.println("Model: Removed object with Beacon ID " + object.getID());
 					success = true;
 					notifyObservers();
 					break;
@@ -376,7 +376,7 @@ public class Model extends Observable {
 				}
 
 				StatusBar.setStatus(StatusType.LANGUAGEMISSING,
-						"ID: " + museumsObject.getID() + "; Sprache: " + missingLanguage);
+						"Beacon ID: " + museumsObject.getID() + "; Sprache: " + missingLanguage);
 				break;
 			}
 		}

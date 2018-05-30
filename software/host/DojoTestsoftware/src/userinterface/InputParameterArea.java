@@ -225,7 +225,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		radioButtonPanel.add(btHelpLanguage2);
 		JTextField path = new JTextField();
 		path.setEditable(false);
-		JButton button = new JButton("Pfad wählen");
+		JButton button = new JButton("Audiodatei auswählen");
 
 		button.addActionListener(new java.awt.event.ActionListener() {
 			@Override
