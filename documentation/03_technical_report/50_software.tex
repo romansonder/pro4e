@@ -33,7 +33,9 @@ Das Modul periphery.c beinhaltet die Verarbeitung der Tastereingaben und die Aus
 
 \subsection{Java Anwendung}
 
-Um es dem Benutzer so einfach wie möglich zu machen, wurde eine Java Anwendung gestaltet, welche Audioinformationen auf den Dojo übertragen kann. Dabei versucht die Anwendung im Prinzip nichts anderes als die SD Karte im Dojo via USB-Schnittstelle zu erkennen und dann die Audioinformationen auf die SD Karte zu kopieren. Dabei werden die Audioinformationen auch gleich so Umbenannt, dass sie zu den entsprechenden Beacons zugeordnet und abgespielt werden können. Da sich immer alle Audioinformationen in allen Sprachen auf dem Dojo befinden müssen, muss dieser Schritt auch nur bei neu dazugekommenen Kunstobjekten wiederholt werden. Weiter können mit der Anwendung Benutzerspezifische Einstellungen wie Sprache und Zugangsrechte übertragen werden. Dies geschieht jedoch im Gegensatz zu den Audioinformationen über BLE, weshalb auch der entsprechende COM-Port von Anwender selektiert werden muss.
+Um es dem Benutzer so einfach wie möglich zu machen, wurde eine Java Anwendung gestaltet, welche Audiodateien auf den Dojo übertragen kann. Dabei versucht die Anwendung nichts anderes als die SD-Karte im Dojo via USB-Schnittstelle zu erkennen und dann die Audiodateien auf die SD-Karte zu kopieren. Dabei werden die Audiodateien auch gleich so Umbenannt, dass sie zu den entsprechenden Beacons zugeordnet und abgespielt werden können. Da sich immer alle Audiodateien in allen Sprachen auf dem Dojo befinden müssen, muss dieser Schritt auch nur bei neu dazugekommenen Kunstobjekten wiederholt werden. Weiter kann mit der Java Anwendung benutzerspezifische Einstellungen wie Sprache und Zugangsrechte übertragen werden. Dies geschieht jedoch im Gegensatz zu den Audiodateien über BLE, weshalb auch der entsprechende COM-Port von Anwender selektiert werden muss, sowie die BLE Transmitter Station eingesteckt sein muss.
+
+\newpage
 
 \begin{figure}[htb]
 	\centering
@@ -42,13 +44,13 @@ Um es dem Benutzer so einfach wie möglich zu machen, wurde eine Java Anwendung 
 	\label{fig:Java Anwendung}
 \end{figure}
 
-Abbildung \ref{fig:Java Anwendung} zeigt die Java Anwendung, in der zurzeit gerade eine Ausstellung mit  drei Kunstobjekten (in allen drei Sprachen) geladen ist. Die Idee hinter dem Aufbau der Java Anwendung war, dass der Benutzer nichts falsch machen kann und auf falsche Aktionen entsprechend hingewiesen wird. Dies wurde schliesslich mittels treffenden Statusmeldungen unten links in der Statusbar umgesetzt.
+Abbildung \ref{fig:Java Anwendung} zeigt die Java Anwendung, in der zurzeit gerade eine Ausstellung mit drei Kunstobjekten (in allen drei Sprachen) geladen ist. Die Idee hinter dem Aufbau der Java Anwendung ist, dass der Benutzer nichts falsch machen kann und auf falsche Aktionen entsprechend hingewiesen wird. Dies wurde mittels informativen Statusmeldungen unten links in der Statusbar umgesetzt.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=\textwidth]{graphics/Dateiname.png}
+	\includegraphics[width=10cm]{graphics/Dateiname_Konvention.jpeg}
 	\caption{Dateiname Konventionen}
 	\label{fig:Dateiname Konventionen}
 \end{figure}
 
-Abbildung wiederrum \ref{fig:Dateiname Konventionen} zeigt nach welchen Konventionen der Dateiname der Audioinformationen umbenannt wird, damit die Dateien von der Firmware erkannt und abgespielt werden kann.
+Abbildung \ref{fig:Dateiname Konventionen} wiederrum zeigt, nach welchen Konventionen der Dateiname der Audiodateien umbenannt wird, damit die Dateien von der Firmware erkannt und abgespielt werden können. In dem Beispiel wird der neue Dateiname des in Abbildung \ref{fig:Java Anwendung} selektierten Kunstobjektes dargestellt. Da dieses Kunstobjekt Audioinformationen in Deutsch bereitstellt, sowie Beacon ID 1 besitzt, enthält auch der neue Dateiname dementsprechend eine 1 als Sprachindex und eine 1 als Beacon ID. Die restlichen Stellen der 4 Ziffern, welche im Dateinamen benötigt werden, werden wie oben ersichtlich mit Nullen als Platzhalter von links nach rechts aufgefüllt. Entsprechend für die anderen Sprachen gäbe es noch einen Sprachindex von 2 für Englisch und eine 3 für Französisch.
