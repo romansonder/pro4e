@@ -1,15 +1,15 @@
 \subsection{Hardwarekonzept}
   Das Hardwarekonzept des Dojos ist in der Abbildung \ref{fig:HWKonzept} dargestellt. 
   Man erkennt, dass es sich um ein System mit einem Mikrocontroller (nRF832) und diversen Hilfsbausteinen handelt. Es wird der nRF52832 verwendet, weil dieser eine BLE-fähige Peripherie beinhaltet und somit weiter bluetoothspezifische Hardware entfällt. 
-  Ein Teil der restlichen Elektronik kümmert sich um die Energie. Mittels einer Ladeschaltung wird der Akkumulator geladen, falls der Dojo über USB eingesteckt ist und der Energieversorgungsblock erzeugt aus der Akkumulatorspannung die Arbeitsspannung der restlichen Schaltung. Auf die Energieversorgung wird im Abschnitt \ref{sec:Energie} detailliert eingegangen.
-  Damit Sounddateien auf dem Dojo abgespeichert werden können, beinhaltet dieser eine SD-Karte. Für das Übertragen der Dateien über USB ist die USB-SDIO-Bridge zuständig (siehe Abschnitt \ref{sec:USB}).
-  Das Abspielen der Sounddateien erfolgt über den Soundmanager-Block, welcher den WTV020 beinhaltet und über den nachfolgenden Treiber. Dieses Teilsystem ist im Abschnitt \ref{sec:AUDIO} genauer beschrieben.
-  
-  
+  Ein Teil der restlichen Elektronik kümmert sich um die Energie. Mittels einer Ladeschaltung wird der Akkumulator geladen, falls der Dojo über USB eingesteckt ist und der Energieversorgungsblock erzeugt aus der Akkumulatorspannung die Arbeitsspannung der restlichen Schaltung. Auf die Energieversorgung wird im Kapitel \ref{sec:Energie} detailliert eingegangen.
+  Damit Sounddateien auf dem Dojo abgespeichert werden können, beinhaltet dieser eine SD-Karte. Für das Übertragen der Dateien über USB ist die USB-SDIO-Bridge zuständig (siehe Kapitel \ref{sec:USB}).
+  Das Abspielen der Sounddateien erfolgt über den Soundmanager-Block, welcher den WTV020 beinhaltet und über den nachfolgenden Treiber. Dieses Teilsystem ist im Kapitel \ref{sec:AUDIO} genauer beschrieben.
+  Da sowohl der USB- als auch der Sound-Teil auf die SD-Karte zugreifen, muss ein Multiplexer verwendet werden (siehe Kapitel \ref{sec:SD_KART}). 
+  Die restliche Hardware besteht aus Ein- und Ausgaben, die vom nRF52 fast direkt angesteuert werden.
   
   \begin{figure}[h]
     \centering
-    \includegraphics[width=0.7\textwidth]{graphics/Dojo.png}
+    \includegraphics[width=0.8\textwidth]{graphics/Dojo.png}
     \caption{Hardwarekonzept des Dojo}
     \label{fig:HWKonzept}
   \end{figure}
@@ -95,23 +95,7 @@ Wir erhalten einen Wirkunsggrad von
 Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Dojo über Nacht problemlos aufladen. Auch Aufladungen zwischen Besuchen können so realisiert werden.
 \clearpage
 
-\subsection{Zugriff auf SD-Karte}\label{sec:SD_KART}
 
-
-
-\subsection{USB-Schnittstelle}\label{sec:USB}
-Das Konzept im Pflichtenheft sieht vor, dass ein Computer auf eine Speicherkarte auf dem Dojo wie auf ein Laufwerk zugreift. Gewöhnlich löst man dieses Problem indem man einen Mikrocontroller mit USB-Peripherie in die Elektronik implementiert.
-Dieser Mikrocontroller müsste dann ausserdem mit einem komplexen Speichersystem arbeiten können. Um dieses Problem zu umgehen, wird in diesem Projekt die USB/SDIO-Bridge VUB300 von Elan verwendet. Diese verwaltet selbständig die Kommunikation zwischen dem PC und der SD-Karte.
-Der VUB300 unterstützt USB2.0 High-Speed. 
-
-\paragraph{Achtung:} Leider funktioniert der Zugriff auf Speicherkarten nur bei bestimmten Karten. 
-Welche Karten sich eigenen ist unklar, da kein Muster betreffend Format, Grösse oder Alter erkannt werden konnte.
-Ausserdem existiert kein Treiber für Windows 8 oder neuer, weshalb für den hier entwickelten Dojo Linux oder ein altes Windows verwendet werden muss.
-Weiterhin existiert die Herstellerfirma Elan nach unseren Erkenntnissen nicht mehr. Aus diesen Gründen wird bei einer allfälligen Weiterentwicklung des Produktes stark davon abgeraten den VUB300 weiterhin zu verwenden.
-Stattdessen wird empfohlen den Nachfolger von verwendeten Mikrocontroller zu verwenden. Dieser (nRF52840) bietet eine USB-Peripherie und ist fähig auf eine Speicherkarte zuzugreifen. 
-
-
-\newpage
 
 \subsection{Audio-Schnittstelle}\label{sec:AUDIO}
 
@@ -163,7 +147,7 @@ Stattdessen wird empfohlen den Nachfolger von verwendeten Mikrocontroller zu ver
   Mit einem Impedanzmessgerät (?) wurde die serielle Induktivität und der serielle Widerstand bei f=1000Hz an einem Knochenschallgeber gemessen und in Matlab (siehe Anhang \ref{fig:matlab_anhang}) wurde der Impedanzgang des Modells analysiert (siehe Abbildung \ref{fig:Impedanz_Knochenschall_modell}). 
   Man kam zu der Erkenntnis, dass mittels einer seriellen Kapazität einerseits der effektive Strom durch den Knochenschallgeber (im Frequenzbereich der Sprache) erhöht werden kann und ausserdem tiefe Frequenzen weg gefiltert werden. 
   Letzteres hat den Vorteil, dass die Impedanz der Lastschaltung bei Tiefen Frequenzen nicht unter ca. 8\(\Omega\) fallen würde. Da Versuche mit dem WTV020 gezeigt haben, dass dieser bei Frequenzen über 1000Hz in der Lage ist eine 4\(\Omega\) Last zu treiben,
-   könnte man damit evtl. auf einen seperaten Treiberbaustein in der Schaltung verzichten. 
+   könnte man damit evtl. auf einen separaten Treiberbaustein in der Schaltung verzichten. 
   Die menschliche Sprache würde weiterhin verständlich sein, da unser Gehirn allen, durch die Schaltung weg gefilterten, Grundschwingungen aus dessen Oberschwingungen zusammensetzen kann. 
   Versuche haben jedoch gezeigt, dass tiefe Stimmen nur leise wahrgenommen werden. 
   Aus diesem Grund wurde der Ansatz mit der passiven Schaltung verworfen und man entschied sich definitiv dafür eine separate Treiberstufe zu verwenden, welche eine niederohmige Last treiben kann.
@@ -176,4 +160,25 @@ Stattdessen wird empfohlen den Nachfolger von verwendeten Mikrocontroller zu ver
 	\label{fig:Impedanz_Knochenschall_modell}
   \end{figure}
   
+  
+
+
+
+\subsection{USB-Schnittstelle}\label{sec:USB}
+Das Konzept im Pflichtenheft sieht vor, dass ein Computer auf eine Speicherkarte auf dem Dojo wie auf ein Laufwerk zugreift. Gewöhnlich löst man dieses Problem indem man einen Mikrocontroller mit USB-Peripherie in die Elektronik implementiert.
+Dieser Mikrocontroller müsste dann ausserdem mit einem komplexen Speichersystem arbeiten können. Um dieses Problem zu umgehen, wird in diesem Projekt die USB/SDIO-Bridge VUB300 von Elan verwendet. Diese verwaltet selbständig die Kommunikation zwischen dem PC und der SD-Karte.
+Der VUB300 unterstützt USB2.0 High-Speed. 
+
+\paragraph{Achtung:} Leider funktioniert der Zugriff auf Speicherkarten nur bei bestimmten Karten. 
+Welche Karten sich eigenen ist unklar, da kein Muster betreffend Format, Grösse oder Alter erkannt werden konnte.
+Ausserdem existiert kein Treiber für Windows 8 oder neuer, weshalb für den hier entwickelten Dojo Linux oder ein altes Windows verwendet werden muss.
+Weiterhin existiert die Herstellerfirma Elan nach unseren Erkenntnissen nicht mehr. Aus diesen Gründen wird bei einer allfälligen Weiterentwicklung des Produktes stark davon abgeraten den VUB300 weiterhin zu verwenden.
+Stattdessen wird empfohlen den Nachfolger von verwendeten Mikrocontroller zu verwenden. Dieser (nRF52840) bietet eine USB-Peripherie und ist fähig auf eine Speicherkarte zuzugreifen. 
+
+\subsection{Zugriff auf SD-Karte}\label{sec:SD_KART}
+Auf die SD-Karte greifen sowohl der VUB300 als auch der WTV020 zu. Da nicht beide Komponenten gleichzeitig auf die SD-Karte zugreifen können muss ein Multiplexer verwendet werden.
+An diesen sind aufgrund des schnellen SDIO-Busses hohe Anforderungen gestellt. Die bis zu 50MHz schnellen Signale müssen ohne zu grosse Verzehrung durch den Multiplexer geleitet werden. Der Multiplexer TS3A27 wird diesen Anforderungen gerecht.
+
+
+\newpage
   

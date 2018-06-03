@@ -147,7 +147,7 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   Mit einem Impedanzmessgerät (?) wurde die serielle Induktivität und der serielle Widerstand bei f=1000Hz an einem Knochenschallgeber gemessen und in Matlab (siehe Anhang \ref{fig:matlab_anhang}) wurde der Impedanzgang des Modells analysiert (siehe Abbildung \ref{fig:Impedanz_Knochenschall_modell}). 
   Man kam zu der Erkenntnis, dass mittels einer seriellen Kapazität einerseits der effektive Strom durch den Knochenschallgeber (im Frequenzbereich der Sprache) erhöht werden kann und ausserdem tiefe Frequenzen weg gefiltert werden. 
   Letzteres hat den Vorteil, dass die Impedanz der Lastschaltung bei Tiefen Frequenzen nicht unter ca. 8\(\Omega\) fallen würde. Da Versuche mit dem WTV020 gezeigt haben, dass dieser bei Frequenzen über 1000Hz in der Lage ist eine 4\(\Omega\) Last zu treiben,
-   könnte man damit evtl. auf einen seperaten Treiberbaustein in der Schaltung verzichten. 
+   könnte man damit evtl. auf einen separaten Treiberbaustein in der Schaltung verzichten. 
   Die menschliche Sprache würde weiterhin verständlich sein, da unser Gehirn allen, durch die Schaltung weg gefilterten, Grundschwingungen aus dessen Oberschwingungen zusammensetzen kann. 
   Versuche haben jedoch gezeigt, dass tiefe Stimmen nur leise wahrgenommen werden. 
   Aus diesem Grund wurde der Ansatz mit der passiven Schaltung verworfen und man entschied sich definitiv dafür eine separate Treiberstufe zu verwenden, welche eine niederohmige Last treiben kann.
@@ -160,7 +160,7 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
 	\label{fig:Impedanz_Knochenschall_modell}
   \end{figure}
   
-  \subsection{Zugriff auf SD-Karte}\label{sec:SD_KART}
+  
 
 
 
@@ -175,6 +175,10 @@ Ausserdem existiert kein Treiber für Windows 8 oder neuer, weshalb für den hie
 Weiterhin existiert die Herstellerfirma Elan nach unseren Erkenntnissen nicht mehr. Aus diesen Gründen wird bei einer allfälligen Weiterentwicklung des Produktes stark davon abgeraten den VUB300 weiterhin zu verwenden.
 Stattdessen wird empfohlen den Nachfolger von verwendeten Mikrocontroller zu verwenden. Dieser (nRF52840) bietet eine USB-Peripherie und ist fähig auf eine Speicherkarte zuzugreifen. 
 
+\subsection{Zugriff auf SD-Karte}\label{sec:SD_KART}
+Auf die SD-Karte greifen sowohl der VUB300 als auch der WTV020 zu. Da nicht beide Komponenten gleichzeitig auf die SD-Karte zugreifen können muss ein Multiplexer verwendet werden.
+An diesen sind aufgrund des schnellen SDIO-Busses hohe Anforderungen gestellt. Die bis zu 50MHz schnellen Signale müssen ohne zu grosse Verzehrung durch den Multiplexer geleitet werden. Der Multiplexer TS3A27 wird diesen Anforderungen gerecht.
+Er unterstützt jedoch nur sechs umschaltbare Kanäle und für diese Anwendung benötigt man sieben Kanäle. Das Spannungssignal 
 
 \newpage
   
