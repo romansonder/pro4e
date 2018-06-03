@@ -155,7 +155,7 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.72\textwidth]{graphics/RLGlied.png}
-	\caption{Dargestellt ist der Impedanzverlauf des Knochenschallgebers ohne Anpassnetzwerk (blaue Kurve) und mit Anpassnetzwerk (orange Kurve). Die beiden roten Striche zeigen den für Sprache besonders wichtigen Bereich zwischen 1kHz und 10kHz.
+	\caption{Dargestellt ist der Impedanzverlauf des Knochenschallgebers ohne Anpassnetzwerk (blaue Kurve) und mit Anpassnetzwerk (orange Kurve). Die beiden roten Striche zeigen den für Sprache besonders wichtigen Bereich zwischen 2kHz und 10kHz.
 	Wie man erkennen kann, verhindert das externe Anpassnetzwerk einerseits, dass die Impedanz des Knochenschallgebers bei unter 1000Hz unter 8\(\Omega\) fällt und senkt die Impedanz im relevanten Bereich. Letzteres erhöht die Lautstärke.}
 	\label{fig:Impedanz_Knochenschall_modell}
   \end{figure}
@@ -169,6 +169,8 @@ Das Konzept im Pflichtenheft sieht vor, dass ein Computer auf eine Speicherkarte
 Dieser Mikrocontroller müsste dann ausserdem mit einem komplexen Speichersystem arbeiten können. Um dieses Problem zu umgehen, wird in diesem Projekt die USB/SDIO-Bridge VUB300 von Elan verwendet. Diese verwaltet selbständig die Kommunikation zwischen dem PC und der SD-Karte.
 Der VUB300 unterstützt USB2.0 High-Speed. 
 
+\vspace{0.2cm}
+
 \paragraph{Achtung:} Leider funktioniert der Zugriff auf Speicherkarten nur bei bestimmten Karten. 
 Welche Karten sich eigenen ist unklar, da kein Muster betreffend Format, Grösse oder Alter erkannt werden konnte.
 Ausserdem existiert kein Treiber für Windows 8 oder neuer, weshalb für den hier entwickelten Dojo Linux oder ein altes Windows verwendet werden muss.
@@ -176,9 +178,59 @@ Weiterhin existiert die Herstellerfirma Elan nach unseren Erkenntnissen nicht me
 Stattdessen wird empfohlen den Nachfolger von verwendeten Mikrocontroller zu verwenden. Dieser (nRF52840) bietet eine USB-Peripherie und ist fähig auf eine Speicherkarte zuzugreifen. 
 
 \subsection{Zugriff auf SD-Karte}\label{sec:SD_KART}
-Auf die SD-Karte greifen sowohl der VUB300 als auch der WTV020 zu. Da nicht beide Komponenten gleichzeitig auf die SD-Karte zugreifen können muss ein Multiplexer verwendet werden.
+Auf die SD-Karte greifen sowohl der VUB300 als auch der WTV020 zu. Da nicht beide Komponenten gleichzeitig auf die SD-Karte zugreifen können muss ein Multiplexer verwendet werden, mit welchem der Mikrocontroller je nach Situation den Zugriff regeln kann.
 An diesen sind aufgrund des schnellen SDIO-Busses hohe Anforderungen gestellt. Die bis zu 50MHz schnellen Signale müssen ohne zu grosse Verzehrung durch den Multiplexer geleitet werden. Der Multiplexer TS3A27 wird diesen Anforderungen gerecht.
+Erwähnenswert ist noch, dass auch die Spannungsversorgung der SD-Karte gesteuert werden muss, da sie vom VUB300 zum zurücksetzen benutzt wird. Da der verwendete Multiplexer keinen Kanal für die Spannungsversorgung frei hat, wurde eine kleine Logikschaltung (D1, T1 und T2) entwickelt, welche diese Aufgabe übernimmt (siehe Tabelle \ref{tab:zugriff}).
+Bei den verwendeten Transistoren muss darauf geachtet werden, dass der Durchlasswiderstand klein ist (\(<1\Omega\)). Ausserdem wird parallel zur SD-Karte ein Stützkondensator eingefügt. Dieser verhindert Spannungseinbrüche beim Betrieb.
 
+\vspace{1cm}
 
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    /EN & IN & POWER\\
+    \hline
+    0 & 0 & VUB300 PWR PIN \\
+    \hline
+    0 & 1 & ON \\
+    \hline
+    1 & 0 & OFF \\
+    \hline
+    1 & 1 & OFF \\
+    \hline
+  \end{tabular}
+  \caption{Logiktabelle zum SD-Karten zugriff}\label{tab:zugriff}
+\end{table}
+ 
+\newpage
+
+\subsection{Zum Layout}
+    Verschiedene PDF's zum Layout befinden sich im Anhang \ref{}.
+    Die Leiterplatte ist im Formfaktor des Dojo ( \( (17\times 115)mm \) ) und beinhaltet vier Lagen. 
+    Alle Durchkontaktierungen sind vom Typ through hole. 
+    Die beiden inneren Lagen beinhaltet beide eine durchgehende Kupferfläche. 
+    Einmal auf Ground und einmal auf VCC.
+    Alle sonstigen Verbindungen befinden sich auf den Aussenlagen des Prints.
+    Zwecks Bestückung im Lötofen befinden sich fast alle Bauteile auf der selben Seite. 
+    Nur die Tasten, LED's, der Programmierstecker und die USB-Buchse befinden sich auf der Oberseite.
+    Auf vorderen Seite der Leiterplatte befindet sich der Energieversorgungsteil. 
+    Um hier entstehende Wärme abzuleiten, wurde hier auch auf einer Aussenlage eine Kupferfläche eingefügt.
+    Der Mikrocontroller (nRF52) wurde nicht direkt auf die Leiterplatte implementiert, sondern es wurde ein ASIC verwendet, welcher die 2.4GHz Antenne beinhaltet.
+    Im Datenblatt dieses ASIC (ISP1507) wird empfohlen unterhalb der Antenne auf Kupferflächen zu verzichten, was so befolgt wurde.
+    Die USB-Verbindungen wurde bewusst Kurz und die Leitungen gleich lang eingeplant. 
+    Aus diesem Grund befindet sich die USB-Buchse auf der Oberseite des Prints (um ein Kreuzen der Datenleitungen zu vermeiden) und der USB-Teil befindet sich am hinteren Teil des Dojos.
+    Auch der SDIO-Bus, der vom VUB300 über den Multiplexer zur SD-Karte verläuft wurde möglichst kurz gelayoutet. 
+    Im Datenblatt vom VUB300 werden für jeden Spannungsversorgungspin zwei Kondensatoren (1\(\mu F\) und 100\(nF\)) vorgeschlagen. 
+    Diese Praxis ist jedoch wenig sinnvoll, wenn beide Kondensatoren in einem gleich grossen Gehäuse erhältlich sind.
+    Aus diesem Grund wurde nur jeweils ein 100\(nF\) Kondensator implementiert.
+    
+    \vspace{0.2cm}
+    
+    \paragraph{Achtung:} Beim Layouten wurde eine Verbindung nicht umgesetzt. Es handelt sich um die Standby-Leitung des Audioverstärkers, mit welcher der Mikrocontroller diesen in den Standby-Zustand versetzen kann.
+    Auf der aktuellen Version der Leiterplatte wird der betroffene Pin mit einer Drahtbrücke konstant auf VCC gezogen. 
+    Dies ist vertretbar, da der Stromverbrauch des Audioverstärkers ohne Audiosignal nicht ins Gewicht fällt.
+    
+    
 \newpage
   
