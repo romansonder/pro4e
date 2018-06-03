@@ -78,12 +78,26 @@ Wir erhalten einen Wirkunsggrad von
 Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Dojo über Nacht problemlos aufladen. Auch Aufladungen zwischen Besuchen können so realisiert werden.
 \clearpage
 
+\subsection{Zugriff auf SD-Karte}
+
+
 \subsection{USB-Schnittstelle}
+Das Konzept im Pflichtenheft sieht vor, dass ein Computer auf eine Speicherkarte auf dem Dojo wie auf ein Laufwerk zugreift. Gewöhnlich löst man dieses Problem indem man einen Mikrocontroller mit USB-Peripherie in die Elektronik implementiert.
+Dieser Mikrocontroller müsste dann ausserdem mit einem komplexen Speichersystem arbeiten können. Um dieses Problem zu umgehen, wird in diesem Projekt die USB/SDIO-Bridge VUB300 von Elan verwendet. Diese verwaltet selbständig die Kommunikation zwischen dem PC und der SD-Karte.
+Der VUB300 unterstützt USB2.0 High-Speed. 
+
+\paragraph{Achtung:} Leider funktioniert der Zugriff auf Speicherkarten nur bei bestimmten Karten. 
+Welche Karten sich eigenen ist unklar, da kein Muster betreffend Format, Grösse oder Alter erkannt werden konnte.
+Ausserdem existiert kein Treiber für Windows 8 oder neuer, weshalb für den hier entwickelten Dojo Linux oder ein altes Windows verwendet werden muss.
+Weiterhin existiert die Herstellerfirma Elan nach unseren Erkenntnissen nicht mehr. Aus diesen Gründen wird bei einer allfälligen Weiterentwicklung des Produktes stark davon abgeraten den VUB300 weiterhin zu verwenden.
+Stattdessen wird empfohlen den Nachfolger von verwendeten Mikrocontroller zu verwenden. Dieser (nRF52840) bietet eine USB-Peripherie und ist fähig auf eine Speicherkarte zuzugreifen. 
+
+
 \newpage
 
 \subsection{Audio-Schnittstelle}
 
-  Der Soundmanager-Chip verfügt über einen differentiellen Ausgang (zwei Anschlüsse) an welchem direkt ein Lautsprecher angeschlossen werden könnte. 
+  Um den Entwicklungsaufwand zu begrenzen, wird ein Soundmanager-Chip implementiert, welcher selbständig aus einer Speicherkarte Audiodaten auslesen und wiedergeben kann. Verwendet wurde der WTV020, welcher über einen differentiellen Ausgang (zwei Anschlüsse) verfügt, an welchem direkt ein Lautsprecher angeschlossen werden könnte. 
   Im Datenblatt des WTV020 wird leider nicht definiert, welche Dimensionen der Ausgangstreiber hat. 
   Versuche haben jedoch gezeigt, dass die Leistung nicht ausreicht, um mit dem verwendeten Knochenschallgeber ein deutliches Audiosignal zu erzeugen. 
   Deshalb wird eine Treiberstufe in die Schaltung implementiert. 
@@ -95,20 +109,6 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   Dadurch verschwindet offenbar die zuvor erwähnte Resonanz. 
   Wie man auf den Abbildungen erkennen kann, befindet sich die Impedanz bei Frequenzen über 100Hz in einem Bereich über 4\(\Omega\) wird mit steigender Frequenz höher. 
   [2 Bilder vom Impedanzgang]
-  \begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{graphics/kurve_knochenschallgeber_1.png}
-	\caption{Bodediagramm Knochenschallgeber in Luft. Bei 2kHz kann eine Resonanz beobachtet werden.}
-	\label{fig:bode_knochenschall1}
-  \end{figure}
-  
-  \newpage
-  \begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{graphics/kurve_knochenschallgeber_1.png}
-	\caption{Bodediagramm Knochenschallgeber auf Platte. Die Resonanz bei 2kHz ist nicht vorhanden.}
-	\label{fig:bode_knochenschall2}
-  \end{figure}
   
   Die Treiberstufe muss Lasten von bis zu 4\(\Omega\) treiben können. 
   Es gibt diverse Audiotreiberbausteine, welche diese Aufgabe übernehmen können. 
@@ -116,26 +116,46 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   Selbstverständliche bietet jede Klasse gewisse Vor- und Nachteile. 
   Verwendet man einen Klasse-A-Verstärker, erreicht an am wenigsten Signalverzerrung auf Kosten des Energieverbrauchs. 
   Ein Klasse-D-Verstärker hingegen ermöglicht einen sehr effizienten Betrieb, verzehrt dafür das Signal stärker. 
-  Für dieses Projekt wurde Wiedergabe von Sprache und Musik mit diesen beiden Typen getestet. 
-  Der Klasse-A-Verstärker ()
+  Für dieses Projekt wurde Wiedergabe von Sprache und Musik mit diesen beiden Typen getestet (Klasse-A: TS4871 von STMicroelectronics und Klasse-D: PAM8302AASCR von Diodes Incorperated). 
+  Subjektiv betrachtet, waren beide Typen in der Lage, Audiodaten in einer sinnvollen Qualität wiederzugeben und man konnte keinen Qualitätsunterschied feststellen. Der Energieverbrauch des Klasse-A-Verstärkers (ca. 120mA) war jedoch rund 6 mal höher als derjenige des Klasse-D-Verstärkers (20mA).
+  Dieses Resultat wurde so erwartet. Weil der Klasse-A-Verstärker keinen merklichen Vorteil bot, wurde der PAM8302AASCR in die Elektronik implementiert.
+ 
+  \begin{figure}[!tbph]
+    \centering
+    \begin{minipage}[b]{0.45\textwidth}
+	\includegraphics[width=\textwidth]{graphics/kurve_knochenschallgeber_1.png}
+	\caption{Bodediagramm Knochenschallgeber in Luft. Bei 2kHz kann eine Resonanz beobachtet werden.}
+	\label{fig:bode_knochenschall1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{graphics/kurve_knochenschallgeber_1.png}
+	\caption{Bodediagramm Knochenschallgeber auf Platte. Die Resonanz bei 2kHz ist nicht vorhanden.}
+	\label{fig:bode_knochenschall2}
+    \end{minipage}
+  \end{figure}
   
   
-  \paragraph{Anmerkung:}
+  \clearpage
+  
+  \subsubsection{Versuch: Passive Anpassung der Last:}
   Es wurde versucht ein simples Ersatzschaltbild für das elektrische Verhalten des Knochenschallgebers zu finden. 
   Das Ziel war, mit einer passiven Schaltung die Impedanz von diesem auf den Ausgang des Soundmanger-Chips oder einer Treiberstufe anzupassen. 
-  Als elektrisches Model für den Knochenschallgeber wurde ein RL-Glied gewählt. 
-  Mit einem Impedanzmessgeräte [… siehe wie es heisst] wurde die serielle Induktivität und der serielle Widerstand bei f=1000Hz an einem Kochenschallgeber gemessen und in Matlab (siehe Matlab im Anhang) wurde der Impedanzgang des Modells analysiert (siehe bild von Matlab). 
-  Man kam zu der Erkenntnis, dass mittels einer seriellen Kapazität einerseits der effektive Strom durch den Knochenschallgeber (im Frequenzbereich der Sprache) erhöt werden kann und ausserdem tiefe Frequenzen weggefiltert werden. 
-  Letzteres hat den Vorteil, dass die Impedanz der Lastschaltung nicht unter ca. 8Ohm fallen würde. 
-  Somit könnte man evtl. auf einen seperaten Treiberbaustein in der Schaltung verzichten. 
-  Die menschliche Sprache würde weiterhin verständlich sein, da unser Gehirn allen, durch die Schaltung weggefilterten, Grundschwingungen aus dessen Oberschwingungen zusammensetzen kann. 
+  Als elektrisches Modell für den Knochenschallgeber wurde eine RL-Serienschaltung gewählt. 
+  Mit einem Impedanzmessgerät (?) wurde die serielle Induktivität und der serielle Widerstand bei f=1000Hz an einem Knochenschallgeber gemessen und in Matlab (siehe Anhang \ref{fig:matlab_anhang}) wurde der Impedanzgang des Modells analysiert (siehe Abbildung \ref{fig:Impedanz_Knochenschall_modell}). 
+  Man kam zu der Erkenntnis, dass mittels einer seriellen Kapazität einerseits der effektive Strom durch den Knochenschallgeber (im Frequenzbereich der Sprache) erhöht werden kann und ausserdem tiefe Frequenzen weg gefiltert werden. 
+  Letzteres hat den Vorteil, dass die Impedanz der Lastschaltung bei Tiefen Frequenzen nicht unter ca. 8\(\Omega\) fallen würde. Da Versuche mit dem WTV020 gezeigt haben, dass dieser bei Frequenzen über 1000Hz in der Lage ist eine 4\(\Omega\) Last zu treiben,
+   könnte man damit evtl. auf einen seperaten Treiberbaustein in der Schaltung verzichten. 
+  Die menschliche Sprache würde weiterhin verständlich sein, da unser Gehirn allen, durch die Schaltung weg gefilterten, Grundschwingungen aus dessen Oberschwingungen zusammensetzen kann. 
   Versuche haben jedoch gezeigt, dass tiefe Stimmen nur leise wahrgenommen werden. 
-  Aus diesem Grund wurde der Ansatz mit der passiven Schaltung verworfen und man entschied sich definitiv dafür eine separate Treiberstufe zu verwenden, welche eine niederhomigere Last treiben kann.
-  [Bild von Matlab]
-
-
-\subsubsection{Messungen}
-
-\subsection{Zugriff auf SD-Karte}
-
-\subsection{Mikrokontroller}
+  Aus diesem Grund wurde der Ansatz mit der passiven Schaltung verworfen und man entschied sich definitiv dafür eine separate Treiberstufe zu verwenden, welche eine niederohmige Last treiben kann.
+  
+  \begin{figure}[h]
+	\centering
+	\includegraphics[width=0.72\textwidth]{graphics/RLGlied.png}
+	\caption{Dargestellt ist der Impedanzverlauf des Knochenschallgebers ohne Anpassnetzwerk (blaue Kurve) und mit Anpassnetzwerk (orange Kurve). Die beiden roten Striche zeigen den für Sprache besonders wichtigen Bereich zwischen 1kHz und 10kHz.
+	Wie man erkennen kann, verhindert das externe Anpassnetzwerk einerseits, dass die Impedanz des Knochenschallgebers bei unter 1000Hz unter 8\(\Omega\) fällt und senkt die Impedanz im relevanten Bereich. Letzteres erhöht die Lautstärke.}
+	\label{fig:Impedanz_Knochenschall_modell}
+  \end{figure}
+  
+  
