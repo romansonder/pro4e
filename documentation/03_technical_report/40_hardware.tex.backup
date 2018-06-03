@@ -112,12 +112,7 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   
   Die Treiberstufe muss Lasten von bis zu 4\(\Omega\) treiben können. 
   Es gibt diverse Audiotreiberbausteine, welche diese Aufgabe übernehmen können. 
-  Diese Verstärker lassen sich in eine Hand voll Klassen aufteilen, welche sich von einander in der Art ihrer Ausgangsstufe unterscheiden. 
-  Selbstverständliche bietet jede Klasse gewisse Vor- und Nachteile. 
-  Verwendet man einen Klasse-A-Verstärker, erreicht an am wenigsten Signalverzerrung auf Kosten des Energieverbrauchs. 
-  Ein Klasse-D-Verstärker hingegen ermöglicht einen sehr effizienten Betrieb, verzehrt dafür das Signal stärker. 
-  Für dieses Projekt wurde Wiedergabe von Sprache und Musik mit diesen beiden Typen getestet. 
-  Der Klasse-A-Verstärker ()
+  Diese Verstärker lassen sich in eine Hand voll Klassen aufteilen. Diese unterscheiden sich von einander in der Art ihrer Ausgangsstufe. Getestet wurde ein A-Typ Verstärker und ein D-Typ Verstärker. Beide 
   
   
   \paragraph{Anmerkung:}
