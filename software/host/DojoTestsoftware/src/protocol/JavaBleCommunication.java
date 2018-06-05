@@ -1,8 +1,10 @@
 package protocol;
 
 public enum JavaBleCommunication {
-	COMMANDOENDING("\n"), REQUESTALIVE("ra"), ALIVE("a"), SENDACCESSRIGHT("ar"), SENDLANGUAGE("l"), UNKNOWNCOMMAND(
-			"unknown");
+	COMMANDOENDING("\n"), ACCESSLEVEL1("a1"), ACCESSLEVEL2("a2"), ACCESSLEVEL3("a3"), ACCESSLEVEL4("a4"), ACCESSLEVEL5(
+			"a5"), LANGUAGEGERMAN("lg"), LANGUAGEENGLISH("le"), LANGUAGEFRENCH("lf"), REQUESTALIVE("ra"), AKNOWLEDGE(
+					"ak"), SENDACCESSRIGHT("ar"), SENDLANGUAGE("ar"), REQUESTLANGUAGE(
+							"rl"), REQUESTACCESSLEVEL("real"), REQUESTEVALUATION("id"), UNKNOWNCOMMAND("unknown");
 
 	private final String commandString;
 
@@ -25,7 +27,6 @@ public enum JavaBleCommunication {
 				return commandType;
 			}
 		}
-
 		return UNKNOWNCOMMAND;
 	}
 }

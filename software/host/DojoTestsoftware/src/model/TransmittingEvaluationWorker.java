@@ -3,13 +3,12 @@ package model;
 import javax.swing.SwingWorker;
 
 import protocol.JavaBleCommunication;
-import userinterface.StatusBar;
 
-public class TransmittingPreferencesWorker extends SwingWorker<Object, Object> {
+public class TransmittingEvaluationWorker extends SwingWorker<Object, Object> {
 	private Model model;
 	private String port;
 
-	public TransmittingPreferencesWorker(Model model, String port) {
+	public TransmittingEvaluationWorker(Model model, String port) {
 		this.model = model;
 		this.port = port;
 	}
@@ -18,13 +17,13 @@ public class TransmittingPreferencesWorker extends SwingWorker<Object, Object> {
 	protected Object doInBackground() throws Exception {
 		boolean success = false;
 
-		StatusBar.setStatus(StatusType.TRANSMITTINGPREFERENCES, "");
-
 		success = model.openSerialConnection(port);
 		if (success) {
-			success = model.sendCommandToSerial(JavaBleCommunication.SENDACCESSRIGHT);
+			success = model.sendCommandToSerial(JavaBleCommunication.REQUESTEVALUATION);
 			if (success) {
-				StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGSUCCESSFUL, "");
+				model.setTransmittingEvaluation(true);
+				// StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGSUCCESSFUL,
+				// "");
 			}
 		}
 

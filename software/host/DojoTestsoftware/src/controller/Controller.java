@@ -58,9 +58,9 @@ public class Controller {
 		return success;
 	}
 
-	public boolean evaluateDojo() {
+	public boolean evaluateDojo(String port) {
 		boolean success = false;
-		success = model.evaluateDojo();
+		success = model.evaluateDojo(port);
 		return success;
 	}
 }

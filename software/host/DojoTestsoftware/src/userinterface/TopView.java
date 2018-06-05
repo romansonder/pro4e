@@ -80,9 +80,9 @@ public class TopView extends JPanel implements Observer {
 		return success;
 	}
 
-	public boolean evaluateDojo() {
+	public boolean evaluateDojo(String port) {
 		boolean success = false;
-		success = controller.evaluateDojo();
+		success = controller.evaluateDojo(port);
 		return success;
 	}
 

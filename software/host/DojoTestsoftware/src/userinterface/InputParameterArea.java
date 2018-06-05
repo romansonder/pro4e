@@ -317,7 +317,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 			success = topView.transmitUserPreferences(comboPorts.getSelectedItem().toString());
 			comboPorts.setEnabled(!success);
 		} else if (event.getSource() == btEvaluate) {
-			topView.evaluateDojo();
+			topView.evaluateDojo(comboPorts.getSelectedItem().toString());
 		}
 	}
 }
