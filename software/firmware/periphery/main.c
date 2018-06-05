@@ -5,9 +5,13 @@
 #include "app_error.h"
 
 #include "dojo.h"
-#include "nrf_delay.h"
 
 #include "periphery.h"
+
+/* Noch ausstehend
+ * - in- decvolume3
+ * - aufräumen
+ * */
 
 int main(void)
 {
@@ -15,10 +19,8 @@ int main(void)
 
 	while (true)
 	{
-		nrf_gpio_pin_clear(LED_1);
-		nrf_delay_ms(500);
-		nrf_gpio_pin_set(LED_1);
-		nrf_delay_ms(500);
+		periphery_button_action();
+		// Do nothing.
 	}
 }
 
