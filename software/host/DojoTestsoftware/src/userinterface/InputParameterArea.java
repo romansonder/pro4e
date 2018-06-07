@@ -66,7 +66,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpAccessRights = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpAccessRights.setToolTipText(
-				"<html><b>Zutrittsrecht:</b><br><br>Das Zutrittsrecht regelt den erlaubten Zugang<br> zu allen Besichtigungsräumen.<br><br></html>");
+				"<html><b>Zutrittsrecht:</b><br><br>Das Zutrittsrecht regelt den erlaubten Zugang<br> zu den entsprechenden Besichtigungsräumen.<br><br></html>");
 		btHelpAccessRights.setOpaque(false);
 		btHelpAccessRights.setContentAreaFilled(false);
 		btHelpAccessRights.setBorderPainted(false);
@@ -76,7 +76,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpLanguage1 = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpLanguage1.setToolTipText(
-				"<html><b>Sprache:</b><br><br>Spezifiziert in welcher Sprache die Hördateien<br> abgespielt werden.<br><br></html>");
+				"<html><b>Sprache:</b><br><br>Spezifiziert in welcher Sprache die Hördateien<br> abgespielt werden sollen.<br><br></html>");
 		btHelpLanguage1.setOpaque(false);
 		btHelpLanguage1.setContentAreaFilled(false);
 		btHelpLanguage1.setBorderPainted(false);
@@ -96,7 +96,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpEvaluate = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpEvaluate.setToolTipText(
-				"<html><b>Dojo auswerten:</b><br><br>Wertet Informationen auf dem Dojo aus und<br> legt diese in einer Textdatei ab.<br><br></html>");
+				"<html><b>Dojo auswerten:</b><br><br>Empfängt alle Beacon IDs die mit dem Dojo<br>geliked wurden und legt diese in einer<br>gewünschten Textdatei ab.<br><br>Damit die Auswertung funktioniert,<br>muss sich der Dojo in der Nähe<br>der Dojo Transmitter Station befinden.<br><br></html>");
 		btHelpEvaluate.setOpaque(false);
 		btHelpEvaluate.setContentAreaFilled(false);
 		btHelpEvaluate.setBorderPainted(false);
@@ -106,7 +106,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpSettings = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpSettings.setToolTipText(
-				"<html><b>Einstellungen:</b><br><br>Unter Windows kann der verwendete Port<br>via Geräte-Manager unter Anschlüsse (COM und LPT)<br>nachgeschaut werden.<br><br>Benötigt wird der Port von JLink CDC UART.<br><br></html>");
+				"<html><b>Einstellungen:</b><br><br>Unter Windows kann der verwendete Port<br>via Geräte-Manager unter Anschlüsse (COM und LPT)<br>nachgeschaut werden.<br><br>Benötigt wird der Port von JLink CDC UART.<br><br>Damit die Konfiguration funktioniert,<br>muss sich der Dojo in der Nähe<br>der Dojo Transmitter Station befinden.<br><br></html>");
 		btHelpSettings.setOpaque(false);
 		btHelpSettings.setContentAreaFilled(false);
 		btHelpSettings.setBorderPainted(false);
@@ -313,12 +313,10 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		} else if (event.getSource() == btTransmitUSB) {
 			topView.transmitMuseumData();
 		} else if (event.getSource() == btTransmitBT) {
-			boolean success = false;
 			String port = comboPorts.getSelectedItem().toString();
 			LanguagesTypes language = (LanguagesTypes) comboLanguage.getSelectedItem();
 			AccessRightsTypes accessRight = (AccessRightsTypes) comboAccessRights.getSelectedItem();
-			success = topView.transmitUserPreferences(port, language, accessRight);
-			comboPorts.setEnabled(!success);
+			topView.transmitUserPreferences(port, language, accessRight);
 		} else if (event.getSource() == btEvaluate) {
 			topView.evaluateDojo(comboPorts.getSelectedItem().toString());
 		}
