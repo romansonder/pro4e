@@ -18,13 +18,11 @@ public class TransmittingPreferencesWorker extends SwingWorker<Object, Object> {
 	protected Object doInBackground() throws Exception {
 		boolean success = false;
 
-		StatusBar.setStatus(StatusType.TRANSMITTINGPREFERENCES, "");
-
 		success = model.openSerialConnection(port);
 		if (success) {
 			success = model.sendCommandToSerial(JavaBleCommunication.SENDACCESSRIGHT);
 			if (success) {
-				StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGSUCCESSFUL, "");
+				StatusBar.setStatus(StatusType.TRANSMITTINGPREFERENCES, "");
 			}
 		}
 

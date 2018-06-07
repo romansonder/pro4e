@@ -3,7 +3,7 @@ package model;
 public class GuiTypes {
 
 	public enum AccessRightsTypes {
-		LEVEL1("Level 1"), LEVEL2("Level 2"), LEVEL3("Level 3");
+		LEVEL1("Level 1"), LEVEL2("Level 2"), LEVEL3("Level 3"), LEVEL4("Level 4"), LEVEL5("Level 5");
 
 		private final String accessRights;
 

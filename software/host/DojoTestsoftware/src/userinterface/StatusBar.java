@@ -28,13 +28,26 @@ public final class StatusBar extends JPanel {
 	}
 
 	public static void setStatus(StatusType statusType, String message) {
-		if (statusType == StatusType.TRANSMITTINGDATA || statusType == StatusType.TRANSMITTINGPREFERENCES) {
+		if (statusType == StatusType.TRANSMITTINGDATA) {
 			if (null != timerThread) {
 				timerThread.setTransmittingRunning(true);
 			}
+
+		} else if (statusType == StatusType.TRANSMITTINGPREFERENCES) {
+			if (null != timerThread) {
+				timerThread.setPreferencesTransmittingRunning(true);
+			}
+
+		} else if (statusType == StatusType.TRANSMITTINGDOJOEVALUATION) {
+			if (null != timerThread) {
+				timerThread.setEvaluationRunning(true);
+			}
+
 		} else {
 			if (null != timerThread) {
 				timerThread.setTransmittingRunning(false);
+				timerThread.setPreferencesTransmittingRunning(false);
+				timerThread.setEvaluationRunning(false);
 			}
 		}
 

@@ -21,6 +21,8 @@ import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
+import model.GuiTypes.AccessRightsTypes;
+import model.GuiTypes.LanguagesTypes;
 import protocol.JavaBleCommunication;
 import userinterface.StatusBar;
 
@@ -29,6 +31,8 @@ public class Model extends Observable {
 	private SerialPort serialPort;
 	private String receivedMessage;
 	private File storageDrive;
+	private LanguagesTypes selectedLanguage = LanguagesTypes.GERMAN;
+	private AccessRightsTypes selectedAccessRight = AccessRightsTypes.LEVEL1;
 	private boolean portIsOpened;
 	public boolean receivingEvaluation = false;
 	List<Integer> likedIDs = new ArrayList<Integer>();
@@ -112,7 +116,7 @@ public class Model extends Observable {
 			}
 
 		} catch (SerialPortException exception) {
-			StatusBar.setStatus(StatusType.USERPREFERENCESTRANSMITTINGFAILURE, "");
+			StatusBar.setStatus(StatusType.TRANSMITTINGDATAFAILURE, "");
 			System.out.println("Fehler beim senden von String aufgetreten: " + exception);
 		}
 
@@ -242,10 +246,12 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean transmitUserPreferences(String port) {
+	public boolean transmitUserPreferences(String port, LanguagesTypes language, AccessRightsTypes accessRight) {
 		boolean success = false;
 
 		try {
+			selectedLanguage = language;
+			selectedAccessRight = accessRight;
 			transmittingPreferencesWorker = new TransmittingPreferencesWorker(this, port);
 			transmittingPreferencesWorker.execute();
 			success = true;
@@ -503,25 +509,40 @@ public class Model extends Observable {
 			case COMMANDOENDING:
 				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
 				break;
+			case ACCESSLEVEL1:
+				System.out.println("Command received: " + JavaBleCommunication.ACCESSLEVEL1.toString());
+				break;
+			case ACCESSLEVEL2:
+				System.out.println("Command received: " + JavaBleCommunication.ACCESSLEVEL2.toString());
+				break;
+			case ACCESSLEVEL3:
+				System.out.println("Command received: " + JavaBleCommunication.ACCESSLEVEL3.toString());
+				break;
+			case ACCESSLEVEL4:
+				System.out.println("Command received: " + JavaBleCommunication.ACCESSLEVEL4.toString());
+				break;
+			case ACCESSLEVEL5:
+				System.out.println("Command received: " + JavaBleCommunication.ACCESSLEVEL5.toString());
+				break;
+			case LANGUAGEGERMAN:
+				System.out.println("Command received: " + JavaBleCommunication.LANGUAGEGERMAN.toString());
+				break;
+			case LANGUAGEENGLISH:
+				System.out.println("Command received: " + JavaBleCommunication.LANGUAGEENGLISH.toString());
+				break;
+			case LANGUAGEFRENCH:
+				System.out.println("Command received: " + JavaBleCommunication.LANGUAGEFRENCH.toString());
+				break;
 			case REQUESTALIVE:
 				System.out.println("Command received: " + JavaBleCommunication.REQUESTALIVE.toString());
-				break;
-			case REQUESTACCESSLEVEL:
-				System.out.println("Command received: " + JavaBleCommunication.REQUESTACCESSLEVEL.toString());
-				sendCommandToSerial(JavaBleCommunication.ACCESSLEVEL1);
-				break;
-			case REQUESTLANGUAGE:
-				System.out.println("Command received: " + JavaBleCommunication.REQUESTLANGUAGE.toString());
-				sendCommandToSerial(JavaBleCommunication.LANGUAGEGERMAN);
 				break;
 			case AKNOWLEDGE:
 				if (receivingEvaluation) {
 					System.out.println("Command received: " + JavaBleCommunication.AKNOWLEDGE.toString());
-					// StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGSUCCESSFUL,
-					// "");
 					receivingEvaluation = false;
 					evaluateDojoToFile();
-					System.out.println("Evaluation received complete");
+					System.out.println("Receiving of evaluation successful completed.");
+					StatusBar.setStatus(StatusType.EVALUATIONSUCCESSFUL, "");
 					break;
 				} else {
 					System.out.println("Command received: " + JavaBleCommunication.AKNOWLEDGE.toString());
@@ -534,29 +555,42 @@ public class Model extends Observable {
 			case SENDLANGUAGE:
 				System.out.println("Command received: " + JavaBleCommunication.SENDLANGUAGE.toString());
 				break;
-			case ACCESSLEVEL1:
-				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
+			case REQUESTLANGUAGE:
+				System.out.println("Command received: " + JavaBleCommunication.REQUESTLANGUAGE.toString());
+				switch (selectedLanguage) {
+				case GERMAN:
+					sendCommandToSerial(JavaBleCommunication.LANGUAGEGERMAN);
+					break;
+				case ENGLISH:
+					sendCommandToSerial(JavaBleCommunication.LANGUAGEENGLISH);
+					break;
+				case FRENCH:
+					sendCommandToSerial(JavaBleCommunication.LANGUAGEFRENCH);
+					break;
+				}
 				break;
-			case ACCESSLEVEL2:
-				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
+			case REQUESTACCESSLEVEL:
+				System.out.println("Command received: " + JavaBleCommunication.REQUESTACCESSLEVEL.toString());
+				switch (selectedAccessRight) {
+				case LEVEL1:
+					sendCommandToSerial(JavaBleCommunication.ACCESSLEVEL1);
+					break;
+				case LEVEL2:
+					sendCommandToSerial(JavaBleCommunication.ACCESSLEVEL2);
+					break;
+				case LEVEL3:
+					sendCommandToSerial(JavaBleCommunication.ACCESSLEVEL3);
+					break;
+				case LEVEL4:
+					sendCommandToSerial(JavaBleCommunication.ACCESSLEVEL4);
+					break;
+				case LEVEL5:
+					sendCommandToSerial(JavaBleCommunication.ACCESSLEVEL5);
+					break;
+				}
 				break;
-			case ACCESSLEVEL3:
-				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
-				break;
-			case ACCESSLEVEL4:
-				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
-				break;
-			case ACCESSLEVEL5:
-				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
-				break;
-			case LANGUAGEGERMAN:
-				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
-				break;
-			case LANGUAGEENGLISH:
-				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
-				break;
-			case LANGUAGEFRENCH:
-				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
+			case UNKNOWNCOMMAND:
+				System.out.println("Command received: " + JavaBleCommunication.UNKNOWNCOMMAND.toString());
 				break;
 			default:
 				if (true == receivingEvaluation) {

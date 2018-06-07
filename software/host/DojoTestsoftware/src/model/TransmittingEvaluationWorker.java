@@ -3,6 +3,7 @@ package model;
 import javax.swing.SwingWorker;
 
 import protocol.JavaBleCommunication;
+import userinterface.StatusBar;
 
 public class TransmittingEvaluationWorker extends SwingWorker<Object, Object> {
 	private Model model;
@@ -22,8 +23,7 @@ public class TransmittingEvaluationWorker extends SwingWorker<Object, Object> {
 			success = model.sendCommandToSerial(JavaBleCommunication.REQUESTEVALUATION);
 			if (success) {
 				model.setTransmittingEvaluation(true);
-				// StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGSUCCESSFUL,
-				// "");
+				StatusBar.setStatus(StatusType.TRANSMITTINGDOJOEVALUATION, "");
 			}
 		}
 
