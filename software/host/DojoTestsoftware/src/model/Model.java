@@ -271,6 +271,7 @@ public class Model extends Observable {
 		boolean success = false;
 
 		try {
+			likedIDs = new ArrayList<Integer>();
 			transmittingEvaluationWorker = new TransmittingEvaluationWorker(this, port);
 			transmittingEvaluationWorker.execute();
 			success = true;
@@ -303,14 +304,17 @@ public class Model extends Observable {
 
 			try {
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-				writer.write("Dieser Funktion wurde leider noch nicht implementiert.");
+				writer.write("Folgende Beacon IDs wurden vom Besucher geliked:");
+				writer.newLine();
 				writer.newLine();
 
 				for (int i = 0; i < likedIDs.size(); i++) {
-					writer.write(likedIDs.get(i));
+					writer.write("Beacon ID: " + likedIDs.get(i));
+					writer.newLine();
 				}
 
-				writer.write("Beste Grüsse Team 3 HS18.");
+				writer.newLine();
+				writer.write("Beste Grüsse Team 3 Pro4E FS18.");
 				writer.close();
 				success = true;
 			} catch (Exception exception) {
@@ -537,15 +541,14 @@ public class Model extends Observable {
 				System.out.println("Command received: " + JavaBleCommunication.REQUESTALIVE.toString());
 				break;
 			case AKNOWLEDGE:
+				System.out.println("Command received: " + JavaBleCommunication.AKNOWLEDGE.toString());
 				if (receivingEvaluation) {
-					System.out.println("Command received: " + JavaBleCommunication.AKNOWLEDGE.toString());
 					receivingEvaluation = false;
 					evaluateDojoToFile();
 					System.out.println("Receiving of evaluation successful completed.");
 					StatusBar.setStatus(StatusType.EVALUATIONSUCCESSFUL, "");
 					break;
 				} else {
-					System.out.println("Command received: " + JavaBleCommunication.AKNOWLEDGE.toString());
 					StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGSUCCESSFUL, "");
 					break;
 				}
@@ -591,14 +594,14 @@ public class Model extends Observable {
 				break;
 			case UNKNOWNCOMMAND:
 				System.out.println("Command received: " + JavaBleCommunication.UNKNOWNCOMMAND.toString());
-				break;
-			default:
 				if (true == receivingEvaluation) {
 					String idNumber = receivedMessage.toString().replaceAll("\\D+", "");
 					int likedID = Integer.parseInt(idNumber);
 					likedIDs.add(likedID);
+					System.out.println("Received liked ID: " + likedID);
 				}
-				System.out.println("Command received: " + "Unknown command");
+				break;
+			default:
 				break;
 			}
 		}

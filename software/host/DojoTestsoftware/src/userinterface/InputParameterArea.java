@@ -106,7 +106,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpSettings = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpSettings.setToolTipText(
-				"<html><b>Einstellungen:</b><br><br>Der genutzte Port der Dojo Schnittstelle<br>kann unter Windows 10 via weitere<br>Bluetooth-Optionen unter Bluetooth- und<br>andere Geräte nachgeschaut werden.<br><br>Benötigt wird der ausgehende Port<br>von XYZ.<br><br></html>");
+				"<html><b>Einstellungen:</b><br><br>Unter Windows kann der verwendete Port<br>via Geräte-Manager unter Anschlüsse (COM und LPT)<br>nachgeschaut werden.<br><br>Benötigt wird der Port von JLink CDC UART.<br><br></html>");
 		btHelpSettings.setOpaque(false);
 		btHelpSettings.setContentAreaFilled(false);
 		btHelpSettings.setBorderPainted(false);
@@ -201,7 +201,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 	private MuseumsObject displayNewObjectDialog() {
 		final int minValue = 0;
-		final int maxValue = 512;
+		final int maxValue = 999;
 		MuseumsObject museumsObject = new MuseumsObject();
 
 		NumberFormat format = NumberFormat.getInstance();
