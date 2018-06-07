@@ -43,16 +43,14 @@ extern void wtv020sd_init(void){
 	nrf_gpio_pin_set(data_pin);
 	nrf_gpio_pin_set(clk_pin);
 
-//	nrf_gpio_pin_clear(reset_pin);
 	nrf_gpio_pin_set(reset_pin);
 
 	/* define inputs */
-//	nrf_gpio_cfg_input(clk_pin, NRF_GPIO_PIN_NOPULL);
 	nrf_gpio_cfg_input(busy_pin, NRF_GPIO_PIN_NOPULL);
 	nrf_gpio_cfg_input(play_pin, NRF_GPIO_PIN_NOPULL);
 	nrf_gpio_cfg_input(prev_pin, NRF_GPIO_PIN_NOPULL);
 	nrf_gpio_cfg_input(next_pin, NRF_GPIO_PIN_NOPULL);
-//	nrf_gpio_cfg_input(data_pin, NRF_GPIO_PIN_NOPULL);
+
 
 	/* define start volume */
 	wtv020sd_send(current_vol);
@@ -84,14 +82,11 @@ extern void wtv020sd_dec_vol(void){
 extern void wtv020sd_reset(void){
 	nrf_gpio_pin_set(clk_pin);
 
-//	nrf_gpio_pin_clear(reset_pin);
 	nrf_gpio_pin_set(reset_pin);
 
 	/* trigger reset pin */
-//	nrf_gpio_pin_set(reset_pin);
 	nrf_gpio_pin_clear(reset_pin);
 	nrf_delay_ms(100);
-//	nrf_gpio_pin_clear(reset_pin);
 	nrf_gpio_pin_set(reset_pin);
 
 	nrf_delay_ms(500);

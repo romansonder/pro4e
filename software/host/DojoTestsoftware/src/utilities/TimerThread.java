@@ -13,6 +13,8 @@ import userinterface.StatusBar;
 public class TimerThread extends Thread {
 	private boolean isRunning;
 	private boolean isTransmittingRunning;
+	private boolean isPreferencesTransmittingRunning;
+	private boolean isEvaluationRunning;
 	private int counter = 0;
 
 	private JLabel dateLabel;
@@ -70,6 +72,68 @@ public class TimerThread extends Thread {
 						break;
 					}
 				}
+
+				if (isPreferencesTransmittingRunning) {
+					switch (counter) {
+					case 0:
+						StatusBar.setStatus(StatusType.TRANSMITTINGPREFERENCES, " ");
+						counter++;
+						break;
+					case 1:
+						StatusBar.setStatus(StatusType.TRANSMITTINGPREFERENCES, ".");
+						counter++;
+						break;
+					case 2:
+						StatusBar.setStatus(StatusType.TRANSMITTINGPREFERENCES, ". .");
+						counter++;
+						break;
+					case 3:
+						StatusBar.setStatus(StatusType.TRANSMITTINGPREFERENCES, ". . .");
+						counter++;
+						break;
+					case 4:
+						StatusBar.setStatus(StatusType.TRANSMITTINGPREFERENCES, ". . . .");
+						counter++;
+						break;
+					case 5:
+						StatusBar.setStatus(StatusType.TRANSMITTINGPREFERENCES, ". . . . .");
+						counter = 0;
+						break;
+					default:
+						break;
+					}
+				}
+
+				if (isEvaluationRunning) {
+					switch (counter) {
+					case 0:
+						StatusBar.setStatus(StatusType.TRANSMITTINGDOJOEVALUATION, " ");
+						counter++;
+						break;
+					case 1:
+						StatusBar.setStatus(StatusType.TRANSMITTINGDOJOEVALUATION, ".");
+						counter++;
+						break;
+					case 2:
+						StatusBar.setStatus(StatusType.TRANSMITTINGDOJOEVALUATION, ". .");
+						counter++;
+						break;
+					case 3:
+						StatusBar.setStatus(StatusType.TRANSMITTINGDOJOEVALUATION, ". . .");
+						counter++;
+						break;
+					case 4:
+						StatusBar.setStatus(StatusType.TRANSMITTINGDOJOEVALUATION, ". . . .");
+						counter++;
+						break;
+					case 5:
+						StatusBar.setStatus(StatusType.TRANSMITTINGDOJOEVALUATION, ". . . . .");
+						counter = 0;
+						break;
+					default:
+						break;
+					}
+				}
 			} catch (InterruptedException exception) {
 				exception.printStackTrace();
 			}
@@ -84,6 +148,22 @@ public class TimerThread extends Thread {
 		this.isTransmittingRunning = isTransmittingRunning;
 
 		if (isTransmittingRunning == false) {
+			counter = 0;
+		}
+	}
+
+	public void setPreferencesTransmittingRunning(boolean isPreferencesTransmittingRunning) {
+		this.isPreferencesTransmittingRunning = isPreferencesTransmittingRunning;
+
+		if (isPreferencesTransmittingRunning == false) {
+			counter = 0;
+		}
+	}
+
+	public void setEvaluationRunning(boolean isEvaluationRunning) {
+		this.isEvaluationRunning = isEvaluationRunning;
+
+		if (isEvaluationRunning == false) {
 			counter = 0;
 		}
 	}

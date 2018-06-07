@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 import javax.swing.JFileChooser;
@@ -19,6 +21,8 @@ import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
+import model.GuiTypes.AccessRightsTypes;
+import model.GuiTypes.LanguagesTypes;
 import protocol.JavaBleCommunication;
 import userinterface.StatusBar;
 
@@ -27,9 +31,16 @@ public class Model extends Observable {
 	private SerialPort serialPort;
 	private String receivedMessage;
 	private File storageDrive;
+	private LanguagesTypes selectedLanguage = LanguagesTypes.GERMAN;
+	private AccessRightsTypes selectedAccessRight = AccessRightsTypes.LEVEL1;
 	private boolean portIsOpened;
+	public boolean receivingEvaluation = false;
+	List<Integer> likedIDs = new ArrayList<Integer>();
+
 	private TransmittingDataWorker transmittingDataWorker;
 	private TransmittingPreferencesWorker transmittingPreferencesWorker;
+	private TransmittingEvaluationWorker transmittingEvaluationWorker;
+
 	private String operatingSystem = System.getProperty("os.name").toLowerCase();
 	private String loggedInUserName = System.getProperty("user.name");
 
@@ -51,7 +62,7 @@ public class Model extends Observable {
 					portIsOpened = true;
 					System.out.println("Port geöffnet");
 
-					serialPort.setParams(SerialPort.BAUDRATE_9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
+					serialPort.setParams(SerialPort.BAUDRATE_115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
 							SerialPort.PARITY_NONE);
 
 					serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
@@ -105,7 +116,7 @@ public class Model extends Observable {
 			}
 
 		} catch (SerialPortException exception) {
-			StatusBar.setStatus(StatusType.USERPREFERENCESTRANSMITTINGFAILURE, "");
+			StatusBar.setStatus(StatusType.TRANSMITTINGDATAFAILURE, "");
 			System.out.println("Fehler beim senden von String aufgetreten: " + exception);
 		}
 
@@ -235,10 +246,12 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean transmitUserPreferences(String port) {
+	public boolean transmitUserPreferences(String port, LanguagesTypes language, AccessRightsTypes accessRight) {
 		boolean success = false;
 
 		try {
+			selectedLanguage = language;
+			selectedAccessRight = accessRight;
 			transmittingPreferencesWorker = new TransmittingPreferencesWorker(this, port);
 			transmittingPreferencesWorker.execute();
 			success = true;
@@ -250,7 +263,26 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean evaluateDojo() {
+	public void setTransmittingEvaluation(boolean transmitting) {
+		receivingEvaluation = transmitting;
+	}
+
+	public boolean evaluateDojo(String port) {
+		boolean success = false;
+
+		try {
+			transmittingEvaluationWorker = new TransmittingEvaluationWorker(this, port);
+			transmittingEvaluationWorker.execute();
+			success = true;
+		} catch (Exception exception) {
+			StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGFAILURE, "");
+			exception.printStackTrace();
+		}
+
+		return success;
+	}
+
+	public boolean evaluateDojoToFile() {
 		boolean success = false;
 
 		JFileChooser fc = new JFileChooser();
@@ -273,6 +305,11 @@ public class Model extends Observable {
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 				writer.write("Dieser Funktion wurde leider noch nicht implementiert.");
 				writer.newLine();
+
+				for (int i = 0; i < likedIDs.size(); i++) {
+					writer.write(likedIDs.get(i));
+				}
+
 				writer.write("Beste Grüsse Team 3 HS18.");
 				writer.close();
 				success = true;
@@ -456,37 +493,111 @@ public class Model extends Observable {
 							message = new StringBuilder();
 							JavaBleCommunication commandType = JavaBleCommunication
 									.convertCommandStringToCommandType(receivedMessage);
-							HandleReceivedCommand(commandType);
+							HandleReceivedCommand(commandType, receivedMessage);
 						} else {
 							message.append((char) oneByte);
 						}
 					}
-
 				} catch (SerialPortException exception) {
 					System.out.println(exception);
 				}
 			}
 		}
 
-		public void HandleReceivedCommand(JavaBleCommunication commandType) {
+		public void HandleReceivedCommand(JavaBleCommunication commandType, String receivedMessage) {
 			switch (commandType) {
 			case COMMANDOENDING:
 				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
 				break;
+			case ACCESSLEVEL1:
+				System.out.println("Command received: " + JavaBleCommunication.ACCESSLEVEL1.toString());
+				break;
+			case ACCESSLEVEL2:
+				System.out.println("Command received: " + JavaBleCommunication.ACCESSLEVEL2.toString());
+				break;
+			case ACCESSLEVEL3:
+				System.out.println("Command received: " + JavaBleCommunication.ACCESSLEVEL3.toString());
+				break;
+			case ACCESSLEVEL4:
+				System.out.println("Command received: " + JavaBleCommunication.ACCESSLEVEL4.toString());
+				break;
+			case ACCESSLEVEL5:
+				System.out.println("Command received: " + JavaBleCommunication.ACCESSLEVEL5.toString());
+				break;
+			case LANGUAGEGERMAN:
+				System.out.println("Command received: " + JavaBleCommunication.LANGUAGEGERMAN.toString());
+				break;
+			case LANGUAGEENGLISH:
+				System.out.println("Command received: " + JavaBleCommunication.LANGUAGEENGLISH.toString());
+				break;
+			case LANGUAGEFRENCH:
+				System.out.println("Command received: " + JavaBleCommunication.LANGUAGEFRENCH.toString());
+				break;
 			case REQUESTALIVE:
 				System.out.println("Command received: " + JavaBleCommunication.REQUESTALIVE.toString());
-				// sendCommandToSerial(JavaBleCommunication.ALIVE);
 				break;
-			case ALIVE:
-				System.out.println("Command received: " + JavaBleCommunication.ALIVE.toString());
-				break;
+			case AKNOWLEDGE:
+				if (receivingEvaluation) {
+					System.out.println("Command received: " + JavaBleCommunication.AKNOWLEDGE.toString());
+					receivingEvaluation = false;
+					evaluateDojoToFile();
+					System.out.println("Receiving of evaluation successful completed.");
+					StatusBar.setStatus(StatusType.EVALUATIONSUCCESSFUL, "");
+					break;
+				} else {
+					System.out.println("Command received: " + JavaBleCommunication.AKNOWLEDGE.toString());
+					StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGSUCCESSFUL, "");
+					break;
+				}
 			case SENDACCESSRIGHT:
 				System.out.println("Command received: " + JavaBleCommunication.SENDACCESSRIGHT.toString());
 				break;
 			case SENDLANGUAGE:
 				System.out.println("Command received: " + JavaBleCommunication.SENDLANGUAGE.toString());
 				break;
+			case REQUESTLANGUAGE:
+				System.out.println("Command received: " + JavaBleCommunication.REQUESTLANGUAGE.toString());
+				switch (selectedLanguage) {
+				case GERMAN:
+					sendCommandToSerial(JavaBleCommunication.LANGUAGEGERMAN);
+					break;
+				case ENGLISH:
+					sendCommandToSerial(JavaBleCommunication.LANGUAGEENGLISH);
+					break;
+				case FRENCH:
+					sendCommandToSerial(JavaBleCommunication.LANGUAGEFRENCH);
+					break;
+				}
+				break;
+			case REQUESTACCESSLEVEL:
+				System.out.println("Command received: " + JavaBleCommunication.REQUESTACCESSLEVEL.toString());
+				switch (selectedAccessRight) {
+				case LEVEL1:
+					sendCommandToSerial(JavaBleCommunication.ACCESSLEVEL1);
+					break;
+				case LEVEL2:
+					sendCommandToSerial(JavaBleCommunication.ACCESSLEVEL2);
+					break;
+				case LEVEL3:
+					sendCommandToSerial(JavaBleCommunication.ACCESSLEVEL3);
+					break;
+				case LEVEL4:
+					sendCommandToSerial(JavaBleCommunication.ACCESSLEVEL4);
+					break;
+				case LEVEL5:
+					sendCommandToSerial(JavaBleCommunication.ACCESSLEVEL5);
+					break;
+				}
+				break;
+			case UNKNOWNCOMMAND:
+				System.out.println("Command received: " + JavaBleCommunication.UNKNOWNCOMMAND.toString());
+				break;
 			default:
+				if (true == receivingEvaluation) {
+					String idNumber = receivedMessage.toString().replaceAll("\\D+", "");
+					int likedID = Integer.parseInt(idNumber);
+					likedIDs.add(likedID);
+				}
 				System.out.println("Command received: " + "Unknown command");
 				break;
 			}

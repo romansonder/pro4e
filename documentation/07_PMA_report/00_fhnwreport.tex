@@ -1,15 +1,15 @@
-\documentclass[10pt,a5paper,landscape]{article}
+\documentclass[10pt,a4paper,oneside]{99_fhnwreport}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % basic font and language packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[left=20mm,right=20mm,top=20mm,bottom=20mm]{geometry}
+%\usepackage[left=20mm,right=20mm,top=20mm,bottom=20mm]{geometry}
 \usepackage[T1]{fontenc} % font encoding
 \usepackage{lmodern} % font latin modern
 \usepackage[utf8]{inputenc} % input encoding
-\usepackage[ngerman]{babel} % english and german word spelling
+\usepackage[ngerman, english]{babel} % english and german word spelling
 \usepackage[babel, german=swiss]{csquotes} % german cites
-%\usepackage[babel, english=british]{csquotes} % english cites
+%\usepacktage[babel, english=british]{csquotes} % english cites
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % style packages
@@ -25,6 +25,7 @@
 \usepackage{cite} % citations
 \usepackage{pdflscape} % allow landscape sites in pdf documents
 \usepackage{pdfpages} % include pdf files
+\usepackage{array}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % mathematical packages
@@ -34,6 +35,7 @@
 \usepackage{amssymb} % formula
 \usepackage{amsthm} % formula
 \usepackage{listings} % source code formatting
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % optional parameters
@@ -45,6 +47,8 @@
 \lstset{numbers=left, numberstyle=\tiny, numbersep=6pt}
 \lstset{captionpos=b, tabsize=4, basicstyle=\small, xleftmargin=0mm, xrightmargin=0mm}
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % debugging parameters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,8 +58,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % document settings
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\title{Title\\\large Undertitle}
 \title{
-	\textsc{\LARGE{Bedienungsanleitung}}\\[5mm]
+	\textsc{\LARGE{PMA-Bericht}}\\[10mm]
 	\textsc{\LARGE{Dojo - Mehr als nur ein Museumsführer}}
 }
 
@@ -110,7 +115,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-
+\begin{otherlanguage}{ngerman}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % title page
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,20 +127,19 @@
 \noindent % einzug
 \rule{\linewidth}{0.5mm}
 
-\begin{center}
-\parbox{50mm}{
 \textsc{
 \begin{tabbing}
-\hspace{50mm}	\= \hspace{15mm} \=\kill
-Auftraggeber	\> Jana Kalbermatter und Hans Gysin \\[2.5mm]
-Fachcoaches		\> Matthias Meier und Pascal Schleuniger\\[2.5mm]
+\hspace{40mm}	\= \hspace{15mm} \=\kill
+Auftraggeber	\> Jana Kalbermatter und Hans Gysin \\[5mm]
+Fachcoaches		\> Matthias Meier und Pascal Schleuniger\\[5mm]
 Projektleiter	\> Dominik Hiltbrunner\\
 Team			\> Alexander Stutz, Emerson Lattmann, \\
-				\> Pius Ochs, Tobias Klenke und Roman Sonder\\[2.5mm]
-Studiengang		\> Elektro- und Informationstechnik \\[2.5mm]
-\end{tabbing}}}
-\end{center}
+				\> Pius Ochs, Tobias Klenke und Roman Sonder\\[5mm]
+Studiengang	\> Elektro- und Informationstechnik \\[5mm]
+\end{tabbing}
+}
 
+\clearpage
 \color{black}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -144,56 +148,56 @@ Studiengang		\> Elektro- und Informationstechnik \\[2.5mm]
 \tableofcontents
 \clearpage
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Geräte Übersicht
+% Einleitung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{arabic}
 \setcounter{page}{1}
-\section{Geräte Übersicht}\label{sec:Geräte Übersicht}
-\label{sec:geraete_uebersicht}
-\input{10_geraete_uebersicht}
+
+\section{Einleitung}\label{sec:einleitung}
+\input{20_einleitung}
 \clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Über dieses Gerät
+% Analyse
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Über dieses Gerät}\label{sec:Über dieses Gerät}
-\input{20_ueber_dieses_geraet}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Analyse}\label{sec:analyse}
+\input{30_analyse}
 \clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Inbetriebnahme
+% Reflexion
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Inbetriebnahme}\label{sec:Inbetriebnahme}
-\input{30_inbetriebnahme}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Reflexion}\label{sec:reflexion}
+\input{40_reflexion}
 \clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Datenaustausch mit dem Computer
+% Schlusswort
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Datenaustausch mit dem Computer}\label{sec:Datenaustausch mit dem Computer}
-\input{40_datenaustausch_mit_computer }
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Schlusswort}\label{sec:schlusswort}
+\input{50_schlusswort}
 \clearpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bedienung
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Bedienung}\label{sec:Bedienung}
-\input{50_bedienung}
-\clearpage
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Technische Daten
+% bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Technische Daten}\label{sec:Technische Daten}
-\input{60_technische_daten}
+\section{Bibliographie}\label{sec:bibliographie}
+\bibliography{01_bibliography}
 \clearpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Entsorgung
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Entsorgung}\label{sec:Entsorgung}
-\input{70_entsorgung}
-\clearpage
-
+\end{otherlanguage}
 \end{document}

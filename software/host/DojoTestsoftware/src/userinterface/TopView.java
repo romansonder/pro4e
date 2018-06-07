@@ -9,6 +9,8 @@ import java.util.Observer;
 import javax.swing.JPanel;
 
 import controller.Controller;
+import model.GuiTypes.AccessRightsTypes;
+import model.GuiTypes.LanguagesTypes;
 import model.Model;
 import model.MuseumsObject;
 import utilities.MyBorderFactory;
@@ -68,9 +70,9 @@ public class TopView extends JPanel implements Observer {
 		return success;
 	}
 
-	public boolean transmitUserPreferences(String port) {
+	public boolean transmitUserPreferences(String port, LanguagesTypes language, AccessRightsTypes accessRight) {
 		boolean success = false;
-		success = controller.transmitUserPreferences(port);
+		success = controller.transmitUserPreferences(port, language, accessRight);
 		return success;
 	}
 
@@ -80,9 +82,9 @@ public class TopView extends JPanel implements Observer {
 		return success;
 	}
 
-	public boolean evaluateDojo() {
+	public boolean evaluateDojo(String port) {
 		boolean success = false;
-		success = controller.evaluateDojo();
+		success = controller.evaluateDojo(port);
 		return success;
 	}
 

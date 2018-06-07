@@ -1,5 +1,7 @@
 package controller;
 
+import model.GuiTypes.AccessRightsTypes;
+import model.GuiTypes.LanguagesTypes;
 import model.Model;
 import model.MuseumsObject;
 
@@ -46,9 +48,9 @@ public class Controller {
 		return success;
 	}
 
-	public boolean transmitUserPreferences(String port) {
+	public boolean transmitUserPreferences(String port, LanguagesTypes language, AccessRightsTypes accessRight) {
 		boolean success = false;
-		success = model.transmitUserPreferences(port);
+		success = model.transmitUserPreferences(port, language, accessRight);
 		return success;
 	}
 
@@ -58,9 +60,9 @@ public class Controller {
 		return success;
 	}
 
-	public boolean evaluateDojo() {
+	public boolean evaluateDojo(String port) {
 		boolean success = false;
-		success = model.evaluateDojo();
+		success = model.evaluateDojo(port);
 		return success;
 	}
 }

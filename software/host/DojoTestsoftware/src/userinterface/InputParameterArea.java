@@ -314,10 +314,13 @@ public class InputParameterArea extends JPanel implements ActionListener {
 			topView.transmitMuseumData();
 		} else if (event.getSource() == btTransmitBT) {
 			boolean success = false;
-			success = topView.transmitUserPreferences(comboPorts.getSelectedItem().toString());
+			String port = comboPorts.getSelectedItem().toString();
+			LanguagesTypes language = (LanguagesTypes) comboLanguage.getSelectedItem();
+			AccessRightsTypes accessRight = (AccessRightsTypes) comboAccessRights.getSelectedItem();
+			success = topView.transmitUserPreferences(port, language, accessRight);
 			comboPorts.setEnabled(!success);
 		} else if (event.getSource() == btEvaluate) {
-			topView.evaluateDojo();
+			topView.evaluateDojo(comboPorts.getSelectedItem().toString());
 		}
 	}
 }
