@@ -3661,7 +3661,7 @@ Covered vias can be set in Masks (Limit).
 <element name="C27" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0402" package3d_urn="urn:adsk.eagle:package:23626/1" value="100n" x="11" y="56.2" rot="R90">
 <attribute name="SPICEPREFIX" value="C" x="11" y="56.2" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="C29" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="0R" x="1.21" y="45.06" rot="R90">
+<element name="C29" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="10u" x="1.21" y="45.06" rot="R90">
 <attribute name="SPICEPREFIX" value="C" x="1.21" y="45.06" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="C3" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="10u" x="10.5" y="91.06">
@@ -3670,7 +3670,7 @@ Covered vias can be set in Masks (Limit).
 <element name="C31" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n" x="3.17" y="52.41">
 <attribute name="SPICEPREFIX" value="C" x="3.17" y="52.41" size="1.778" layer="27" display="off"/>
 </element>
-<element name="C34" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="100u" x="3.84" y="50.56">
+<element name="C34" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="100u Tan" x="3.84" y="50.56">
 <attribute name="SPICEPREFIX" value="C" x="3.84" y="50.56" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="1u" x="10.48" y="89.15">
@@ -3739,26 +3739,26 @@ Covered vias can be set in Masks (Limit).
 <element name="R41" library="resistor" library_urn="urn:adsk.eagle:library:348" package="R0402" package3d_urn="urn:adsk.eagle:package:26058/1" value="1k" x="3.19" y="61.55" rot="R180"/>
 <element name="R6" library="resistor" library_urn="urn:adsk.eagle:library:348" package="R0402" package3d_urn="urn:adsk.eagle:package:26058/1" value="12k" x="4.2" y="5.9" rot="R180"/>
 <element name="R7" library="resistor" library_urn="urn:adsk.eagle:library:348" package="R0402" package3d_urn="urn:adsk.eagle:package:26058/1" value="1M" x="5.9" y="10.6" rot="R90"/>
-<element name="R8" library="resistor" library_urn="urn:adsk.eagle:library:348" package="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="Ferit Bead" x="12.1" y="113.6" rot="R90"/>
-<element name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" package="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="Ferit Bead" x="12.1" y="109.5" rot="R270"/>
+<element name="R8" library="resistor" library_urn="urn:adsk.eagle:library:348" package="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="0R" x="12.1" y="113.6" rot="R90"/>
+<element name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" package="R0603" package3d_urn="urn:adsk.eagle:package:26057/1" value="0R" x="12.1" y="109.5" rot="R270"/>
 <element name="SW1" library="Pro3E" package="EVQ-Q2" value="SW_TACT_SMD" x="4.3" y="108.5" rot="R90"/>
 <element name="SW2" library="Pro3E" package="EVQ-Q2" value="SW_TACT_SMD" x="8.5" y="99" rot="MR180"/>
 <element name="SW3" library="Pro3E" package="EVQ-Q2" value="SW_TACT_SMD" x="8.5" y="88.5" rot="MR180"/>
 <element name="SW4" library="Pro3E" package="EVQ-Q2" value="SW_TACT_SMD" x="8.5" y="109.5" rot="MR180"/>
 <element name="SW5" library="Pro3E" package="EVQ-Q2" value="SW_TACT_SMD" x="8.5" y="71" rot="MR180"/>
-<element name="T1" library="zetex" library_urn="urn:adsk.eagle:library:418" package="SOT-23" package3d_urn="urn:adsk.eagle:package:30981/1" value="" x="2.3" y="23.1" rot="R180">
+<element name="T1" library="zetex" library_urn="urn:adsk.eagle:library:418" package="SOT-23" package3d_urn="urn:adsk.eagle:package:30981/1" value="IRLML6302TRPBF" x="2.3" y="23.1" rot="R180">
 <attribute name="MF" value="" x="2.3" y="23.1" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="2.3" y="23.1" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="2.3" y="23.1" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="2.3" y="23.1" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="T2" library="zetex" library_urn="urn:adsk.eagle:library:418" package="SOT-23" package3d_urn="urn:adsk.eagle:package:30981/1" value="" x="2.3" y="19.9" rot="R180">
+<element name="T2" library="zetex" library_urn="urn:adsk.eagle:library:418" package="SOT-23" package3d_urn="urn:adsk.eagle:package:30981/1" value="1HP04CH" x="2.3" y="19.9" rot="R180">
 <attribute name="MF" value="" x="2.3" y="19.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="2.3" y="19.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="2.3" y="19.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="2.3" y="19.9" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="T3" library="zetex" library_urn="urn:adsk.eagle:library:418" package="SOT-23" package3d_urn="urn:adsk.eagle:package:30981/1" value="" x="7.57" y="65.33" rot="R90">
+<element name="T3" library="zetex" library_urn="urn:adsk.eagle:library:418" package="SOT-23" package3d_urn="urn:adsk.eagle:package:30981/1" value="IRLML6302TRPBF" x="7.57" y="65.33" rot="R90">
 <attribute name="MF" value="" x="7.57" y="65.33" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="" x="7.57" y="65.33" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="7.57" y="65.33" size="1.778" layer="27" rot="R90" display="off"/>
