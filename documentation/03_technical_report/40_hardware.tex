@@ -105,12 +105,12 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   Deshalb wird eine Treiberstufe in die Schaltung implementiert. 
   Diese hat die Aufgabe das differentielles Analogsignal vom WTV020 genügend niederohmig zur Verfügung zu stellen. 
   Für die Auswahl eines Treiberbausteins muss man deshalb die (frequenzabhängige) Impedanz des Knochenschallgebers kennen. 
-  In den Abbildungen \ref{fig:bode_knochenschall1} und \ref{fig:bode_knochenschall2} ist der mittels eines Frequenz Analysator (Agilent 4294A PRECISION IMPEDANCE ANALYZER) gemessene Impedanzgang des Knochenschallgebers dargestellt. 
-  Der Impedanzgang in der Abbildung \ref{fig:bode_knochenschall1} wurde mit einem frei in der Luft hängenden Knochenschallgeber gemessen. Man erkennt ein Resonanzverhalten bei ca. 2kHz. 
-  Für die Messung aus der Abbildung \ref{fig:bode_knochenschall2} wurde derselbe Knochenschallgeber verwendet, jedoch flach auf einen Tisch gelegt. 
+  In der Abbildung \ref{fig:bode_knochenschall} ist der mittels eines Frequenz Analysator (Agilent 4294A PRECISION IMPEDANCE ANALYZER) gemessene Impedanzgang des Knochenschallgebers dargestellt. 
+  Der Impedanzgang in der linken Abbildung wurde mit einem frei in der Luft hängenden Knochenschallgeber gemessen. Man erkennt ein Resonanzverhalten bei ca. 2kHz. 
+  Für die Messung in der rechten Abbildung wurde derselbe Knochenschallgeber verwendet, jedoch flach auf einen Tisch gelegt. 
   Dadurch verschwindet offenbar die zuvor erwähnte Resonanz. 
-  Wie man auf den Abbildungen erkennen kann, befindet sich die Impedanz bei Frequenzen über 100Hz in einem Bereich über 4\(\Omega\) wird mit steigender Frequenz höher. 
-  [2 Bilder vom Impedanzgang]
+  Wie man auf den Abbildungen erkennen kann, befindet sich die Impedanz in einem Bereich über 4\(\Omega\) wird mit steigender Frequenz höher. 
+  
   
   Die Treiberstufe muss Lasten von bis zu 4\(\Omega\) treiben können. 
   Es gibt diverse Audiotreiberbausteine, welche diese Aufgabe übernehmen können. 
@@ -121,20 +121,12 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   Für dieses Projekt wurde Wiedergabe von Sprache und Musik mit diesen beiden Typen getestet (Klasse-A: TS4871 von STMicroelectronics und Klasse-D: PAM8302AASCR von Diodes Incorperated). 
   Subjektiv betrachtet, waren beide Typen in der Lage, Audiodaten in einer sinnvollen Qualität wiederzugeben und man konnte keinen Qualitätsunterschied feststellen. Der Energieverbrauch des Klasse-A-Verstärkers (ca. 120mA) war jedoch rund 6 mal höher als derjenige des Klasse-D-Verstärkers (20mA).
   Dieses Resultat wurde so erwartet. Weil der Klasse-A-Verstärker keinen merklichen Vorteil bot, wurde der PAM8302AASCR in die Elektronik implementiert.
- 
-  \begin{figure}[!tbph]
-    \centering
-    \begin{minipage}[b]{0.45\textwidth}
-	\includegraphics[width=\textwidth]{graphics/kurve_knochenschallgeber_1.png}
-	\caption{Bodediagramm Knochenschallgeber in Luft. Bei 2kHz kann eine Resonanz beobachtet werden.}
+  
+  \begin{figure}[h]
+	 \subfigure[Bei 2kHz kann eine Resonanz beobachtet werden.]{\includegraphics[width=0.49\textwidth]{graphics/123111.png}} 
+    \subfigure[Die Resonanz bei 2kHz ist nicht vorhanden.]{\includegraphics[width=0.49\textwidth]{graphics/123222.png}}
+	\caption{Bodediagramm Knochenschallgeber}
 	\label{fig:bode_knochenschall1}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[b]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{graphics/kurve_knochenschallgeber_1.png}
-	\caption{Bodediagramm Knochenschallgeber auf Platte. Die Resonanz bei 2kHz ist nicht vorhanden.}
-	\label{fig:bode_knochenschall2}
-    \end{minipage}
   \end{figure}
   
   
