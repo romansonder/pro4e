@@ -313,7 +313,6 @@ public class Model extends Observable {
 				}
 
 				writer.newLine();
-				writer.newLine();
 				writer.write("Beste Grüsse Team 3 Pro4E FS18.");
 				writer.close();
 				success = true;
