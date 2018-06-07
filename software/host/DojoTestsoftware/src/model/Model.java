@@ -271,6 +271,7 @@ public class Model extends Observable {
 		boolean success = false;
 
 		try {
+			likedIDs = new ArrayList<Integer>();
 			transmittingEvaluationWorker = new TransmittingEvaluationWorker(this, port);
 			transmittingEvaluationWorker.execute();
 			success = true;
