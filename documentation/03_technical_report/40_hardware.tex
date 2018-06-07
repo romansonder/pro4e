@@ -7,7 +7,7 @@
   Da sowohl der USB- als auch der Sound-Teil auf die SD-Karte zugreifen, muss ein Multiplexer verwendet werden (siehe Kapitel \ref{sec:SD_KART}). 
   Die restliche Hardware besteht aus Ein- und Ausgaben, die vom nRF52 fast direkt angesteuert werden.
   
-  \begin{figure}[h]
+  \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{graphics/Dojo.png}
     \caption{Hardwarekonzept des Dojo}
@@ -105,7 +105,7 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   Deshalb wird eine Treiberstufe in die Schaltung implementiert. 
   Diese hat die Aufgabe das differentielles Analogsignal vom WTV020 genügend niederohmig zur Verfügung zu stellen. 
   Für die Auswahl eines Treiberbausteins muss man deshalb die (frequenzabhängige) Impedanz des Knochenschallgebers kennen. 
-  In der Abbildung \ref{fig:bode_knochenschall} ist der mittels eines Frequenz Analysator (Agilent 4294A PRECISION IMPEDANCE ANALYZER) gemessene Impedanzgang des Knochenschallgebers dargestellt. 
+  In der Abbildung \ref{fig:bode_knochenschall1} ist der mittels eines Frequenz Analysator (Agilent 4294A PRECISION IMPEDANCE ANALYZER) gemessene Impedanzgang des Knochenschallgebers dargestellt. 
   Der Impedanzgang in der linken Abbildung wurde mit einem frei in der Luft hängenden Knochenschallgeber gemessen. Man erkennt ein Resonanzverhalten bei ca. 2kHz. 
   Für die Messung in der rechten Abbildung wurde derselbe Knochenschallgeber verwendet, jedoch flach auf einen Tisch gelegt. 
   Dadurch verschwindet offenbar die zuvor erwähnte Resonanz. 
@@ -136,7 +136,7 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   Es wurde versucht ein simples Ersatzschaltbild für das elektrische Verhalten des Knochenschallgebers zu finden. 
   Das Ziel war, mit einer passiven Schaltung die Impedanz von diesem auf den Ausgang des Soundmanger-Chips oder einer Treiberstufe anzupassen. 
   Als elektrisches Modell für den Knochenschallgeber wurde eine RL-Serienschaltung gewählt. 
-  Mit einem Impedanzmessgerät (?) wurde die serielle Induktivität und der serielle Widerstand bei f=1000Hz an einem Knochenschallgeber gemessen und in Matlab (siehe Anhang \ref{fig:matlab_anhang}) wurde der Impedanzgang des Modells analysiert (siehe Abbildung \ref{fig:Impedanz_Knochenschall_modell}). 
+  Mit einem Impedanzmessgerät (PM 6303 RCLmeter von der Ingenieurschule beider Basel in Muttenz) wurde die serielle Induktivität und der serielle Widerstand bei f=1000Hz an einem Knochenschallgeber gemessen und in Matlab (siehe Anhang \ref{fig:matlab_anhang}) wurde der Impedanzgang des Modells analysiert (siehe Abbildung \ref{fig:Impedanz_Knochenschall_modell}). 
   Man kam zu der Erkenntnis, dass mittels einer seriellen Kapazität einerseits der effektive Strom durch den Knochenschallgeber (im Frequenzbereich der Sprache) erhöht werden kann und ausserdem tiefe Frequenzen weg gefiltert werden. 
   Letzteres hat den Vorteil, dass die Impedanz der Lastschaltung bei Tiefen Frequenzen nicht unter ca. 8\(\Omega\) fallen würde. Da Versuche mit dem WTV020 gezeigt haben, dass dieser bei Frequenzen über 1000Hz in der Lage ist eine 4\(\Omega\) Last zu treiben,
    könnte man damit evtl. auf einen separaten Treiberbaustein in der Schaltung verzichten. 
@@ -224,6 +224,12 @@ Bei den verwendeten Transistoren muss darauf geachtet werden, dass der Durchlass
     Auf der aktuellen Version der Leiterplatte wird der betroffene Pin mit einer Drahtbrücke konstant auf VCC gezogen. 
     Dies ist vertretbar, da der Stromverbrauch des Audioverstärkers ohne Audiosignal nicht ins Gewicht fällt.
     
+\subsection{Zu den Tasten}
+    Die Tasten werden per Software entprellt. 
+    Die verwendete Button-Bibliothek von Nordic sollte dazu in der Lage sein, doch leider prellen die verwendeten Tasten zu lang und es kommt immer wieder zu Fehlinterpretationen. 
+    Um das Problem zu beheben, wurde bei jeder Taste ein \(10\mu F\) Kondensator parallel angeschlossen. Dadurch wurde konnte das Prellen genug stark unterdrückt werden und die Eingabe funktioniert nun ohne Prellen.
+    Die erwähnten Kondensatoren sind auf dem Schema nicht ersichtlich.
     
+   
 \newpage
   
