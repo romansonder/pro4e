@@ -41,12 +41,14 @@ import model.GuiTypes.AccessRightsTypes;
 import model.GuiTypes.LanguagesTypes;
 import protocol.JavaBleCommunication;
 import userinterface.StatusBar;
+import userinterface.TopView;
 
 public class Model extends Observable {
 	private Museum museum;
 	private SerialPort serialPort;
 	private String receivedMessage;
 	private File storageDrive;
+	private TopView topView;
 	private LanguagesTypes selectedLanguage = LanguagesTypes.GERMAN;
 	private AccessRightsTypes selectedAccessRight = AccessRightsTypes.LEVEL1;
 	private boolean portIsOpened;
@@ -140,7 +142,7 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean readInObjects() {
+	public boolean readInObjects(TopView topView) {
 		boolean success = false;
 
 		JFileChooser fc = new JFileChooser();
@@ -149,7 +151,7 @@ public class Model extends Observable {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionXml,
 				Definitions.fileExtensionXml);
 		fc.setFileFilter(filter);
-		fc.showOpenDialog(null);
+		fc.showOpenDialog(topView);
 
 		if (null != fc.getSelectedFile()) {
 			Museum museum = new Museum();
@@ -169,7 +171,7 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean saveObjects() {
+	public boolean saveObjects(TopView topView) {
 		boolean success = false;
 
 		JFileChooser fc = new JFileChooser();
@@ -178,7 +180,7 @@ public class Model extends Observable {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionXml,
 				Definitions.fileExtensionXml);
 		fc.setFileFilter(filter);
-		fc.showSaveDialog(null);
+		fc.showSaveDialog(topView);
 
 		File file = fc.getSelectedFile();
 
@@ -285,10 +287,11 @@ public class Model extends Observable {
 		receivingEvaluation = transmitting;
 	}
 
-	public boolean evaluateDojo(String port) {
+	public boolean evaluateDojo(String port, TopView topView) {
 		boolean success = false;
 
 		try {
+			this.topView = topView;
 			dojoAlive = false;
 			likedIDs = new ArrayList<Integer>();
 			transmittingEvaluationWorker = new TransmittingEvaluationWorker(this, port);
@@ -311,7 +314,7 @@ public class Model extends Observable {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionTxt,
 				Definitions.fileExtensionTxt);
 		fc.setFileFilter(filter);
-		fc.showSaveDialog(null);
+		fc.showSaveDialog(topView);
 
 		File file = fc.getSelectedFile();
 

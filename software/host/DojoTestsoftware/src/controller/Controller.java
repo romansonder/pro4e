@@ -20,9 +20,11 @@ import model.GuiTypes.AccessRightsTypes;
 import model.GuiTypes.LanguagesTypes;
 import model.Model;
 import model.MuseumsObject;
+import userinterface.TopView;
 
 public class Controller {
 	private Model model;
+	private TopView topView;
 
 	public Controller(Model model) {
 		this.model = model;
@@ -42,7 +44,13 @@ public class Controller {
 
 	public boolean readInObjects() {
 		boolean success = false;
-		success = model.readInObjects();
+		success = model.readInObjects(topView);
+		return success;
+	}
+
+	public boolean saveObjects() {
+		boolean success = false;
+		success = model.saveObjects(topView);
 		return success;
 	}
 
@@ -55,12 +63,6 @@ public class Controller {
 	public boolean deleteObject(MuseumsObject museumsObject) {
 		boolean success = false;
 		success = model.deleteObject(museumsObject);
-		return success;
-	}
-
-	public boolean saveObjects() {
-		boolean success = false;
-		success = model.saveObjects();
 		return success;
 	}
 
@@ -78,7 +80,11 @@ public class Controller {
 
 	public boolean evaluateDojo(String port) {
 		boolean success = false;
-		success = model.evaluateDojo(port);
+		success = model.evaluateDojo(port, topView);
 		return success;
+	}
+
+	public void setView(TopView topView) {
+		this.topView = topView;
 	}
 }
