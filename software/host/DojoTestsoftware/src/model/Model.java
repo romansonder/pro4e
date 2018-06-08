@@ -35,14 +35,15 @@ public class Model extends Observable {
 	private AccessRightsTypes selectedAccessRight = AccessRightsTypes.LEVEL1;
 	private boolean portIsOpened;
 	public boolean receivingEvaluation = false;
+	public boolean dojoAlive = false;
 	List<Integer> likedIDs = new ArrayList<Integer>();
+
+	private String operatingSystem = System.getProperty("os.name").toLowerCase();
+	private String loggedInUserName = System.getProperty("user.name");
 
 	private TransmittingDataWorker transmittingDataWorker;
 	private TransmittingPreferencesWorker transmittingPreferencesWorker;
 	private TransmittingEvaluationWorker transmittingEvaluationWorker;
-
-	private String operatingSystem = System.getProperty("os.name").toLowerCase();
-	private String loggedInUserName = System.getProperty("user.name");
 
 	public Model() {
 		museum = new Museum();
@@ -250,6 +251,7 @@ public class Model extends Observable {
 		boolean success = false;
 
 		try {
+			dojoAlive = false;
 			selectedLanguage = language;
 			selectedAccessRight = accessRight;
 			transmittingPreferencesWorker = new TransmittingPreferencesWorker(this, port);
@@ -271,6 +273,7 @@ public class Model extends Observable {
 		boolean success = false;
 
 		try {
+			dojoAlive = false;
 			likedIDs = new ArrayList<Integer>();
 			transmittingEvaluationWorker = new TransmittingEvaluationWorker(this, port);
 			transmittingEvaluationWorker.execute();
@@ -477,6 +480,20 @@ public class Model extends Observable {
 		notifyObservers();
 	}
 
+	public void timeoutTransmittingEvaluationWorker() {
+		if (false == dojoAlive) {
+			StatusBar.setStatus(StatusType.DOJONOTRESPONDING, "");
+			System.out.println("Timeout of TransmittingEvaluationWorker");
+		}
+	}
+
+	public void timeoutTransmittingPreferencesWorker() {
+		if (false == dojoAlive) {
+			StatusBar.setStatus(StatusType.DOJONOTRESPONDING, "");
+			System.out.println("Timeout of TransmittingPreferencesWorker");
+		}
+	}
+
 	public void notifyObservers() {
 		setChanged();
 		super.notifyObservers();
@@ -509,6 +526,7 @@ public class Model extends Observable {
 		}
 
 		public void HandleReceivedCommand(JavaBleCommunication commandType, String receivedMessage) {
+			dojoAlive = true;
 			switch (commandType) {
 			case COMMANDOENDING:
 				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
@@ -597,7 +615,10 @@ public class Model extends Observable {
 				if (true == receivingEvaluation) {
 					String idNumber = receivedMessage.toString().replaceAll("\\D+", "");
 					int likedID = Integer.parseInt(idNumber);
-					likedIDs.add(likedID);
+					boolean alreadyLiked = likedIDs.contains(likedID);
+					if (false == alreadyLiked) {
+						likedIDs.add(likedID);
+					}
 					System.out.println("Received liked ID: " + likedID);
 				}
 				break;

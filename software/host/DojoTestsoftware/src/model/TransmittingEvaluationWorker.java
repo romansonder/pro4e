@@ -1,5 +1,7 @@
 package model;
 
+import java.util.TimerTask;
+
 import javax.swing.SwingWorker;
 
 import protocol.JavaBleCommunication;
@@ -8,6 +10,7 @@ import userinterface.StatusBar;
 public class TransmittingEvaluationWorker extends SwingWorker<Object, Object> {
 	private Model model;
 	private String port;
+	private final int timeout = 5000;
 
 	public TransmittingEvaluationWorker(Model model, String port) {
 		this.model = model;
@@ -24,6 +27,14 @@ public class TransmittingEvaluationWorker extends SwingWorker<Object, Object> {
 			if (success) {
 				model.setTransmittingEvaluation(true);
 				StatusBar.setStatus(StatusType.TRANSMITTINGDOJOEVALUATION, "");
+
+				final java.util.Timer timer = new java.util.Timer();
+				timer.scheduleAtFixedRate(new TimerTask() {
+					public void run() {
+						timer.cancel();
+						model.timeoutTransmittingEvaluationWorker();
+					}
+				}, timeout, timeout);
 			}
 		}
 

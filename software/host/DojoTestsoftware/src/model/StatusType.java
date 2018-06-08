@@ -1,7 +1,7 @@
 package model;
 
 public enum StatusType {
-	RUNNING("Anwendung geladen."), EVALUATIONSUCCESSFUL(
+	RUNNING("Anwendung geladen."), DOJONOTRESPONDING("Dojo antwortet in gewünschter Zeit nicht."), EVALUATIONSUCCESSFUL(
 			"Auswertung erfolgreich abgeschlossen."), PREFERENCESTRANSMITTINGFAILURE(
 					"Fehler beim Übertragen von Einstellungen."), PREFERENCESTRANSMITTINGSUCCESSFUL(
 							"Einstellungen wurde erfolgreich übertragen."), DATATRANSMITTINGSUCCESSFUL(
