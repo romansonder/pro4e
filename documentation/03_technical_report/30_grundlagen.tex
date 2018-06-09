@@ -1,31 +1,45 @@
-<<<<<<< HEAD
 \subsection{Dojo Funktion}
 Die Funktionalitäten wurden von der Auftraggeberin Jana Kalbermatten ausgearbeitet. In diesem Abschnitt werden die alltäglichen Bedienungsfunktionen erklährt. Es wird dabei in Grundsätzlich drei Funtionsmodi unterteilt, die nachfolgend genauer erläutert werden.
 \subsubsection{Modus Dojo laden}
 Zum laden wird der Dojo an eine Spetzielle Ladevorrichtung oder eine ladestation angeschlossen. Dabei wird ein Mikro-USB Kabel de Ladestation an den Dojo angeschlossen. Diese Ladestationen können auch problemlos als Stationen mit Steckplätzen für mehrere Dojos realisiert werden.
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Zustand_Laden.png}
+\caption{Zustand beim Laden} % picture caption
+\label{fig:image2}
+\end{figure}
 \subsubsection{Modus Ausstellung laden}
 Vor der Eröffnung einer neuen Ausstellungen müssen die Audiodateien auf den Dojo geladden werden. Dies geschieht, mit dem Verbinden des Dojos auf einen Computer mittels Mikro-USB Kabel. Die SD Karte auf dem Dojo wird dadurch im Dateiverzeichniss des Computers sichtbahr. Durch unsere Java Applikation kann eine Ausstellung mit den verschiedenen Audiodateien zusammengestellt und die entsprechenden Beacon ID's und der entsprechenden Sprache gesetzt werden. Durch drücken des Buttons USB-Übertragung werden die Audiodateien automatisch mit der richtigen konfiguration auf den Dojo geladen.
-
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Zustand_Programmieren.png}
+\caption{Zustand beim Programmieren} % picture caption
+\label{fig:image3}
+\end{figure}
 \subsubsection{Modus Sprach- und Zutittsrechte laden}
 Die Zutritts- und die Sprachinformationen werden beim Start des Museumsbesuch durch den Rezeptionisten auf den Dojo geladen. Diese Übertragung funktioniert drahtlos über Bluetooth. Zur Vorführzwecken haben wir diese Funktion ebenfalls in unsere Java Applikation eingefügt. Der Rezeptionist kann anhand des Besuchers die Zutrittsrechte und die Sprache bestimmen und diese Informationen drahtlos an den Dojo übertragen.
-
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Zustand_Ein_Aus_Checken.png}
+\caption{Zustand beim Ein- und Auschecken} % picture caption
+\label{fig:image1}
+\end{figure}
 \subsubsection{Modus Rundgang}
 Während dem Rundgang hat der Dojo 2 Funktionen. Die Hauptfunktion ist dabei das Abspielen der Kunstinformationen vor einem Objekt. Wenn der Besucher mit dem Dojo in die Nähre eines Objektes kommt, fibriert der Dojo kurz, um dem Besucher das vorhandenseins einer Audiodatei zu signalisieren. Drückt der Besucher den Play Button, wird die Audiodatei der letzten Vibration abgespielt.Die Audiodatei kann durch den Knochenschallgeber, wercher sich am oberen Ende des Dojos befindet abgehört werden. Durch betätigen der Lauter-und der Leiser Taste kann die Lautstärke varriert werden. Wenn der Besucher ein zweites Mal den Play-Button betätigt, wird die Audiodatei pausiert, und kann durch ein weiteres mal betätigen wieder fortgesetzt werden. Wird nach dem Pausieren das Objekt gewechselt, signalisiert der Dojo das Vorhandenseins einer weiteren Audiodatei und diese wird zum Abspielen forbereitet. Der Fortschritt der Pausieren Audiodatei wird dabei nicht gespeichert. Wenn der Besucher vor einem Objekt steht, und es besonders interessant findet, und später noch weitere Informationen darüber erhalten möchte, kann er den Like Button betätigen. Der Like Butten speichert die ID des Beacons auf dem Dojo ab. Nach dem Besuch kann der Dojo kabellos über eine Bluetoothverbindung mit einer Besucherkonsole verbunden werden. Der Dojo sendet die gelikten ID's an die Konsole, welche weitere Nützliche Informatioen für den Besucher bereitstellen kann. Nach korrektem Übertragen werden die ID-Daten auf dem Dojo gelöscht.
 Eine weitere Funktion, die wir in unseren Prototypen eingebaut haben ist die Zugnagsberechtigung. Bei einem Durchgang, der verschlodden ist, kann der Dojo, ähnlich wie ein Badge an eine Konsole gehalten werden. Der Dojo stellt automatisch eine Verbindung mit der Türkonsole her, und vergleicht seine Berechtigungen mit dem Durchgang. Wurde die Berechtigung bei der Rezeption erteilt, wird der Durchgang erlaubt, und die Türe öffnet sich. Diese Funktion kann beispielsweise beim Haupteingang nach der Rezeption mit einem Drehkreuz verwendet werden, oder bei mehreren Ausstellungen in verschiedenen Räumen.
-=======
-Die Funktionalität wurde von der Auftraggeberin Jana Kalbermatten ausgearbeitet. Nachfolgend wird die alltägliche Nutzung des Dojos aus Sicht des Benutzers sowie des Museumsmitarbeiters erklärt.
-\subsubsection{Aufladen des Akkus}
-Zum Laden wird der Dojo an eine Ladevorrichtung oder eine Ladestation angeschlossen. Dabei wird ein Mikro-USB Kabel an den Dojo angeschlossen. Alternativ kann eine Ladestation mit mehreren Steckplätzen realisiert werden, an welcher mehrere Dojos gleichzeitig geladen werden können.
-\subsubsection{Konfigurieren einer Ausstellung}
-Vor der Eröffnung einer neuen Ausstellungen müssen die Audiodateien auf den Dojo geladen werden. Dies geschieht mit dem Verbinden des Dojos auf einen Computer mittels Mikro-USB Kabel. Die SD Karte auf dem Dojo wird dadurch im Dateiverzeichnis des Computers sichtbar. Durch unsere Java Applikation kann eine Ausstellung mit den verschiedenen Audiodateien zusammengestellt und die entsprechenden Beacon IDs sowie der dazugehörigen Sprache gesetzt werden. Die Software überträgt anschliessend die Dateien mit der korrekten Codierung, damit der Dojo diese verarbeiten kann.
+\begin{figure}[htb]
+\includegraphics[width=\textwidth]{Zustand_Rundgang.png}
+\caption{Zustand beim Rundgang} % picture caption
+\label{fig:image4}
+\end{figure}
 
-\subsubsection{Konfigurieren eines Dojos}
-Die Zutritts- und die Sprachinformationen werden beim Start des Museumsbesuches durch den Rezeptionisten auf den Dojo geladen. Diese Übertragung funktioniert drahtlos über Bluetooth. Es ist auch möglich, während des Besuches neue Berechtigungen zu erwerben und den Dojo entsprechend zu aktualisieren.
 
-\subsubsection{Museumsrundgang mit dem Dojo}
-Während des Rundgangs hat der Dojo zwei Funktionen. Die Hauptfunktion ist das Lokalisieren von Bluetooth Beacons und das Abspielen der dazugehörigen Informationen vor einem Objekt. Wenn der Besucher mit dem Dojo in die Nähe eines Objektes kommt, vibriert dieser kurz, um dem Besucher das Vorhandensein einer Audiodatei zu signalisieren. Drückt der Besucher die Play-Taste, so wird die Audiodatei abgespielt.Diese kann durch den Knochenschallgeber, welcher sich am oberen Ende des Dojos befindet, angehört werden. Durch betätigen der Lauter- und der Leiser-Taste kann die Lautstärke variiert werden. Wenn der Besucher ein zweites Mal den Play-Button betätigt, wird die Wiedergabe pausiert.  Wird nach dem Pausieren das Objekt gewechselt, signalisiert der Dojo das Vorhandensein einer weiteren Audiodatei und diese wird zum Abspielen vorbereitet. Der Fortschritt der pausierten Audiodatei wird dabei nicht gespeichert. Wenn der Besucher vor einem Objekt steh und es besonders interessant findet, kann er später noch weitere Informationen darüber erhalten, indem er die Like-Taste betätigt. Dadurch speichert der Dojo die ID des Beacons ab. Nach dem Besuch kann der Dojo kabellos über eine Bluetoothverbindung mit einer Besucherkonsole verbunden werden. Der Dojo sendet die gelikten IDs an die Konsole, welche weitere Nützliche Informationen für den Besucher bereitstellen kann. Nach korrektem Übertragen werden die ID-Daten auf dem Dojo gelöscht. Die Funktionsweise einer solchen Konsole wurde zu Demonstrationszwecken in der PC-Anwendung implementiert.
-Eine weitere Funktion, die im Prototypen eingebaut wurde, ist die Zugangsberechtigung. Das Museum kann eine Ausstellung in verschiedene Bereiche unterteilen. Der Dojo dient als elektronisches Ticket für die einzelnen Bereiche. Ähnlich wie ein Badge muss er dafür nur an eine Konsole gehalten werden. Der Dojo stellt automatisch eine Verbindung mit der Station her und tauscht seine Berechtigungen aus. Wurde die Berechtigung bei der Rezeption erteilt, so wird der Durchgang geöffnet. Diese Funktion kann beispielsweise beim Haupteingang nach der Rezeption mit einem Drehkreuz verwendet werden oder bei mehreren Ausstellungen in verschiedenen Räumen.
->>>>>>> dc6e85fb75aab10659d3d31a7a726a1a4f42ed7b
+
+
+
+
+
+
+
+
+
 \clearpage
 \subsection{Dojo Aufbau}
 Das Design des Dojos aus Abbildung \ref{fig:DojoBild} wurde für die Bachelorarbeit von Jana Kalbermatten erarbeitet und dient als Vorlage für das Gerät. Der Dojo ist mit $245mm$ ziemlich lang, besitzt jedoch mit einem Aussendurchmesser von nur $19.5mm$ einen kleinen Querschnitt. Dieses Gehäuse setzt eine detaillierte Planung der elektronischen Bauteile voraus sowie ein kompaktes Design der elektronischen Schaltung.

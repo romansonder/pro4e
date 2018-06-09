@@ -52,17 +52,6 @@ Ebenfalls kennt BLE das Konzept von Mehrfachverbindungen. Es können also mehrer
 verschiedenen Instanzen gleichzeitig aktiv sein. Für einen kontrollierten Softwareablauf wurde dies 
 jedoch bewusst unterbunden. In Abbildung \ref{} ist das Kommunikationskonzept aus Sicht von BLE dargestellt.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Abbildung ...
-Die Implementation der in Tabelle \ref{tab:BLE} erwähnten Profile werden nachfolgend beschrieben. 
-Auf dem Link-Layer implementieren die Peripheriegeräte einen Advertiser. Dieser sendet periodisch Datenpakete an die Umwelt. Der Inhalt wurde dabei auf ein Minimum beschränkt. Ausgesendet wird nur die Peer-Adresse ohne Payload. Mit einem Flag wird zusätzlich signalisiert, 
-dass es sich um ein "non discoverable" device handelt. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Streng genommen handelt es sich um das XXX Flag. Erkennt ein Scanner dieses Flag, so geht er davon aus, dass…
-Damit wird verhindert, dass fremde Geräte (z.B. Mobiltelefone) beim Scannen der Umgebung die Peripheriegeräte des Museums 
-finden können. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Natürlich können die Geräte mit einer entsprechenden Software trotzdem gefunden werden. Sie werden nur standardmässig nicht angezeigt.
-Es ist jedoch trotzdem möglich, bei Kenntnis der Geräteadresse eine Verbindung auszubauen. Dies wurde im Projekt auch so verwendet (Erläuterung erfolgt später).
-Auf GAP-Ebene sind alle Parameter für den Verbindungsaufbau hinterlegt. Zusätzlich wird auf der Seite des \textit{Central Devices} eine Whitelist implementiert. Diese sorgt dafür, dass beim Scannen nur die Geräte gefunden werden, welche auch zum Museum gehören.
-Als eigentliche Anwendung wurde ein UART-Service auf GATT-Ebene implementiert, der sogenannte NUS (Nordic UART Service). Dieser ermöglicht die Kommunikation zwischen den Geräten. Alle Benutzerdaten, welche über BLE übertragen werden, können bei Bedarf direkt auf die interne UART-Schnittstelle umgeleitet werden. Die Kommunikation von Dojo zu PC-Dongle zur Java-Applikation wurde auf diese Weise realisiert.
-
 
 
 
