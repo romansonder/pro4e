@@ -632,13 +632,17 @@ public class Model extends Observable {
 			case UNKNOWNCOMMAND:
 				System.out.println("Command received: " + JavaBleCommunication.UNKNOWNCOMMAND.toString());
 				if (true == receivingEvaluation) {
-					String idNumber = receivedMessage.toString().replaceAll("\\D+", "");
-					int likedID = Integer.parseInt(idNumber);
-					boolean alreadyLiked = likedIDs.contains(likedID);
-					if (false == alreadyLiked) {
-						likedIDs.add(likedID);
+					try {
+						String idNumber = receivedMessage.toString().replaceAll("\\D+", "");
+						int likedID = Integer.parseInt(idNumber);
+						boolean alreadyLiked = likedIDs.contains(likedID);
+						if (false == alreadyLiked) {
+							likedIDs.add(likedID);
+						}
+						System.out.println("Received liked ID: " + likedID);
+					} catch (Exception exception) {
+
 					}
-					System.out.println("Received liked ID: " + likedID);
 				}
 				break;
 			default:

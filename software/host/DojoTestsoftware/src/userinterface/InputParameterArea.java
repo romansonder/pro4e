@@ -152,7 +152,6 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		String[] portNames = null;
 		portNames = SerialPortList.getPortNames();
 		comboPorts = new JComboBox<String>(portNames);
-		comboPorts.setSelectedIndex(comboPorts.getItemCount() - 1);
 
 		add(new JLabel("Ausstellung:"), new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
