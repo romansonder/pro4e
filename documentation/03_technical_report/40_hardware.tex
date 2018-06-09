@@ -7,7 +7,7 @@
   Da sowohl der USB- als auch der Sound-Teil auf die SD-Karte zugreifen, muss ein Multiplexer verwendet werden (siehe Kapitel \ref{sec:SD_KART}). 
   Die restliche Hardware besteht aus Ein- und Ausgaben, die vom nRF52 fast direkt angesteuert werden.
   
-  \begin{figure}[h]
+  \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{graphics/Dojo.png}
     \caption{Hardwarekonzept des Dojo}
@@ -105,12 +105,12 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   Deshalb wird eine Treiberstufe in die Schaltung implementiert. 
   Diese hat die Aufgabe das differentielles Analogsignal vom WTV020 genügend niederohmig zur Verfügung zu stellen. 
   Für die Auswahl eines Treiberbausteins muss man deshalb die (frequenzabhängige) Impedanz des Knochenschallgebers kennen. 
-  In den Abbildungen \ref{fig:bode_knochenschall1} und \ref{fig:bode_knochenschall2} ist der mittels eines Frequenz Analysator (Agilent 4294A PRECISION IMPEDANCE ANALYZER) gemessene Impedanzgang des Knochenschallgebers dargestellt. 
-  Der Impedanzgang in der Abbildung \ref{fig:bode_knochenschall1} wurde mit einem frei in der Luft hängenden Knochenschallgeber gemessen. Man erkennt ein Resonanzverhalten bei ca. 2kHz. 
-  Für die Messung aus der Abbildung \ref{fig:bode_knochenschall2} wurde derselbe Knochenschallgeber verwendet, jedoch flach auf einen Tisch gelegt. 
+  In der Abbildung \ref{fig:bode_knochenschall1} ist der mittels eines Frequenz Analysator (Agilent 4294A PRECISION IMPEDANCE ANALYZER) gemessene Impedanzgang des Knochenschallgebers dargestellt. 
+  Der Impedanzgang in der linken Abbildung wurde mit einem frei in der Luft hängenden Knochenschallgeber gemessen. Man erkennt ein Resonanzverhalten bei ca. 2kHz. 
+  Für die Messung in der rechten Abbildung wurde derselbe Knochenschallgeber verwendet, jedoch flach auf einen Tisch gelegt. 
   Dadurch verschwindet offenbar die zuvor erwähnte Resonanz. 
-  Wie man auf den Abbildungen erkennen kann, befindet sich die Impedanz bei Frequenzen über 100Hz in einem Bereich über 4\(\Omega\) wird mit steigender Frequenz höher. 
-  [2 Bilder vom Impedanzgang]
+  Wie man auf den Abbildungen erkennen kann, befindet sich die Impedanz in einem Bereich über 4\(\Omega\) wird mit steigender Frequenz höher. 
+  
   
   Die Treiberstufe muss Lasten von bis zu 4\(\Omega\) treiben können. 
   Es gibt diverse Audiotreiberbausteine, welche diese Aufgabe übernehmen können. 
@@ -121,20 +121,12 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   Für dieses Projekt wurde Wiedergabe von Sprache und Musik mit diesen beiden Typen getestet (Klasse-A: TS4871 von STMicroelectronics und Klasse-D: PAM8302AASCR von Diodes Incorperated). 
   Subjektiv betrachtet, waren beide Typen in der Lage, Audiodaten in einer sinnvollen Qualität wiederzugeben und man konnte keinen Qualitätsunterschied feststellen. Der Energieverbrauch des Klasse-A-Verstärkers (ca. 120mA) war jedoch rund 6 mal höher als derjenige des Klasse-D-Verstärkers (20mA).
   Dieses Resultat wurde so erwartet. Weil der Klasse-A-Verstärker keinen merklichen Vorteil bot, wurde der PAM8302AASCR in die Elektronik implementiert.
- 
-  \begin{figure}[!tbph]
-    \centering
-    \begin{minipage}[b]{0.45\textwidth}
-	\includegraphics[width=\textwidth]{graphics/kurve_knochenschallgeber_1.png}
-	\caption{Bodediagramm Knochenschallgeber in Luft. Bei 2kHz kann eine Resonanz beobachtet werden.}
+  
+  \begin{figure}[h]
+	 \subfigure[Bei 2kHz kann eine Resonanz beobachtet werden.]{\includegraphics[width=0.49\textwidth]{graphics/123111.png}} 
+    \subfigure[Die Resonanz bei 2kHz ist nicht vorhanden.]{\includegraphics[width=0.49\textwidth]{graphics/123222.png}}
+	\caption{Bodediagramm Knochenschallgeber}
 	\label{fig:bode_knochenschall1}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[b]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{graphics/kurve_knochenschallgeber_1.png}
-	\caption{Bodediagramm Knochenschallgeber auf Platte. Die Resonanz bei 2kHz ist nicht vorhanden.}
-	\label{fig:bode_knochenschall2}
-    \end{minipage}
   \end{figure}
   
   
@@ -144,7 +136,7 @@ Das komplette Aufladen der Batterie dauerte $2.5h$. Somit kann das Museum den Do
   Es wurde versucht ein simples Ersatzschaltbild für das elektrische Verhalten des Knochenschallgebers zu finden. 
   Das Ziel war, mit einer passiven Schaltung die Impedanz von diesem auf den Ausgang des Soundmanger-Chips oder einer Treiberstufe anzupassen. 
   Als elektrisches Modell für den Knochenschallgeber wurde eine RL-Serienschaltung gewählt. 
-  Mit einem Impedanzmessgerät (?) wurde die serielle Induktivität und der serielle Widerstand bei f=1000Hz an einem Knochenschallgeber gemessen und in Matlab (siehe Anhang \ref{fig:matlab_anhang}) wurde der Impedanzgang des Modells analysiert (siehe Abbildung \ref{fig:Impedanz_Knochenschall_modell}). 
+  Mit einem Impedanzmessgerät (PM 6303 RCLmeter von der Ingenieurschule beider Basel in Muttenz) wurde die serielle Induktivität und der serielle Widerstand bei f=1000Hz an einem Knochenschallgeber gemessen und in Matlab (siehe Anhang \ref{fig:matlab_anhang}) wurde der Impedanzgang des Modells analysiert (siehe Abbildung \ref{fig:Impedanz_Knochenschall_modell}). 
   Man kam zu der Erkenntnis, dass mittels einer seriellen Kapazität einerseits der effektive Strom durch den Knochenschallgeber (im Frequenzbereich der Sprache) erhöht werden kann und ausserdem tiefe Frequenzen weg gefiltert werden. 
   Letzteres hat den Vorteil, dass die Impedanz der Lastschaltung bei Tiefen Frequenzen nicht unter ca. 8\(\Omega\) fallen würde. Da Versuche mit dem WTV020 gezeigt haben, dass dieser bei Frequenzen über 1000Hz in der Lage ist eine 4\(\Omega\) Last zu treiben,
    könnte man damit evtl. auf einen separaten Treiberbaustein in der Schaltung verzichten. 
@@ -232,6 +224,12 @@ Bei den verwendeten Transistoren muss darauf geachtet werden, dass der Durchlass
     Auf der aktuellen Version der Leiterplatte wird der betroffene Pin mit einer Drahtbrücke konstant auf VCC gezogen. 
     Dies ist vertretbar, da der Stromverbrauch des Audioverstärkers ohne Audiosignal nicht ins Gewicht fällt.
     
+\subsection{Zu den Tasten}
+    Die Tasten werden per Software entprellt. 
+    Die verwendete Button-Bibliothek von Nordic sollte dazu in der Lage sein, doch leider prellen die verwendeten Tasten zu lang und es kommt immer wieder zu Fehlinterpretationen. 
+    Um das Problem zu beheben, wurde bei jeder Taste ein \(10\mu F\) Kondensator parallel angeschlossen. Dadurch wurde konnte das Prellen genug stark unterdrückt werden und die Eingabe funktioniert nun ohne Prellen.
+    Die erwähnten Kondensatoren sind auf dem Schema nicht ersichtlich.
     
+   
 \newpage
   

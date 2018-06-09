@@ -1,3 +1,19 @@
+/*******************************************************************************
+ * Copyright (C) 2018  FHNW Pro4E FS18 Team 3
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package model;
 
 import java.io.BufferedWriter;
@@ -25,24 +41,27 @@ import model.GuiTypes.AccessRightsTypes;
 import model.GuiTypes.LanguagesTypes;
 import protocol.JavaBleCommunication;
 import userinterface.StatusBar;
+import userinterface.TopView;
 
 public class Model extends Observable {
 	private Museum museum;
 	private SerialPort serialPort;
 	private String receivedMessage;
 	private File storageDrive;
+	private TopView topView;
 	private LanguagesTypes selectedLanguage = LanguagesTypes.GERMAN;
 	private AccessRightsTypes selectedAccessRight = AccessRightsTypes.LEVEL1;
 	private boolean portIsOpened;
 	public boolean receivingEvaluation = false;
+	public boolean dojoAlive = false;
 	List<Integer> likedIDs = new ArrayList<Integer>();
+
+	private String operatingSystem = System.getProperty("os.name").toLowerCase();
+	private String loggedInUserName = System.getProperty("user.name");
 
 	private TransmittingDataWorker transmittingDataWorker;
 	private TransmittingPreferencesWorker transmittingPreferencesWorker;
 	private TransmittingEvaluationWorker transmittingEvaluationWorker;
-
-	private String operatingSystem = System.getProperty("os.name").toLowerCase();
-	private String loggedInUserName = System.getProperty("user.name");
 
 	public Model() {
 		museum = new Museum();
@@ -50,31 +69,26 @@ public class Model extends Observable {
 
 	public boolean openSerialConnection(String port) {
 		boolean success = false;
+		serialPort = new SerialPort(port);
 
-		if (null == serialPort) {
-			serialPort = new SerialPort(port);
+		try {
+			if (false == serialPort.isOpened()) {
+				serialPort.openPort();
 
-			try {
-				if (false == serialPort.isOpened()) {
-					serialPort.openPort();
+				StatusBar.setStatus(StatusType.OPENEDCONNECTION, serialPort.getPortName());
+				portIsOpened = true;
+				System.out.println("Port geöffnet");
 
-					StatusBar.setStatus(StatusType.OPENEDCONNECTION, serialPort.getPortName());
-					portIsOpened = true;
-					System.out.println("Port geöffnet");
+				serialPort.setParams(SerialPort.BAUDRATE_115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
+						SerialPort.PARITY_NONE);
 
-					serialPort.setParams(SerialPort.BAUDRATE_115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
-							SerialPort.PARITY_NONE);
-
-					serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
-					serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
-					success = true;
-				}
-			} catch (SerialPortException exception) {
-				System.out.println("Fehler beim öffnen von Port: " + exception);
-				StatusBar.setStatus(StatusType.OPENPORTFAILURE, serialPort.getPortName());
+				serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
+				serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
+				success = true;
 			}
-		} else {
-			success = true;
+		} catch (SerialPortException exception) {
+			System.out.println("Fehler beim öffnen von Port: " + exception);
+			StatusBar.setStatus(StatusType.OPENPORTFAILURE, serialPort.getPortName());
 		}
 
 		return success;
@@ -123,7 +137,7 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean readInObjects() {
+	public boolean readInObjects(TopView topView) {
 		boolean success = false;
 
 		JFileChooser fc = new JFileChooser();
@@ -132,7 +146,7 @@ public class Model extends Observable {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionXml,
 				Definitions.fileExtensionXml);
 		fc.setFileFilter(filter);
-		fc.showOpenDialog(null);
+		fc.showOpenDialog(topView);
 
 		if (null != fc.getSelectedFile()) {
 			Museum museum = new Museum();
@@ -152,7 +166,7 @@ public class Model extends Observable {
 		return success;
 	}
 
-	public boolean saveObjects() {
+	public boolean saveObjects(TopView topView) {
 		boolean success = false;
 
 		JFileChooser fc = new JFileChooser();
@@ -161,7 +175,7 @@ public class Model extends Observable {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionXml,
 				Definitions.fileExtensionXml);
 		fc.setFileFilter(filter);
-		fc.showSaveDialog(null);
+		fc.showSaveDialog(topView);
 
 		File file = fc.getSelectedFile();
 
@@ -250,6 +264,7 @@ public class Model extends Observable {
 		boolean success = false;
 
 		try {
+			dojoAlive = false;
 			selectedLanguage = language;
 			selectedAccessRight = accessRight;
 			transmittingPreferencesWorker = new TransmittingPreferencesWorker(this, port);
@@ -267,10 +282,13 @@ public class Model extends Observable {
 		receivingEvaluation = transmitting;
 	}
 
-	public boolean evaluateDojo(String port) {
+	public boolean evaluateDojo(String port, TopView topView) {
 		boolean success = false;
 
 		try {
+			this.topView = topView;
+			dojoAlive = false;
+			likedIDs = new ArrayList<Integer>();
 			transmittingEvaluationWorker = new TransmittingEvaluationWorker(this, port);
 			transmittingEvaluationWorker.execute();
 			success = true;
@@ -291,7 +309,7 @@ public class Model extends Observable {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(Definitions.fileExtensionDescriptionTxt,
 				Definitions.fileExtensionTxt);
 		fc.setFileFilter(filter);
-		fc.showSaveDialog(null);
+		fc.showSaveDialog(topView);
 
 		File file = fc.getSelectedFile();
 
@@ -303,14 +321,17 @@ public class Model extends Observable {
 
 			try {
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-				writer.write("Dieser Funktion wurde leider noch nicht implementiert.");
+				writer.write("Folgende Beacon IDs wurden vom Besucher geliked:");
+				writer.newLine();
 				writer.newLine();
 
 				for (int i = 0; i < likedIDs.size(); i++) {
-					writer.write(likedIDs.get(i));
+					writer.write("Beacon ID: " + likedIDs.get(i));
+					writer.newLine();
 				}
 
-				writer.write("Beste Grüsse Team 3 HS18.");
+				writer.newLine();
+				writer.write("Beste Grüsse Team 3 Pro4E FS18.");
 				writer.close();
 				success = true;
 			} catch (Exception exception) {
@@ -473,6 +494,22 @@ public class Model extends Observable {
 		notifyObservers();
 	}
 
+	public void timeoutTransmittingEvaluationWorker() {
+		if (false == dojoAlive) {
+			closeSerialConnection();
+			StatusBar.setStatus(StatusType.DOJONOTRESPONDING, "");
+			System.out.println("Timeout of TransmittingEvaluationWorker");
+		}
+	}
+
+	public void timeoutTransmittingPreferencesWorker() {
+		if (false == dojoAlive) {
+			closeSerialConnection();
+			StatusBar.setStatus(StatusType.DOJONOTRESPONDING, "");
+			System.out.println("Timeout of TransmittingPreferencesWorker");
+		}
+	}
+
 	public void notifyObservers() {
 		setChanged();
 		super.notifyObservers();
@@ -537,15 +574,17 @@ public class Model extends Observable {
 				System.out.println("Command received: " + JavaBleCommunication.REQUESTALIVE.toString());
 				break;
 			case AKNOWLEDGE:
+				dojoAlive = true;
+				System.out.println("Command received: " + JavaBleCommunication.AKNOWLEDGE.toString());
 				if (receivingEvaluation) {
-					System.out.println("Command received: " + JavaBleCommunication.AKNOWLEDGE.toString());
 					receivingEvaluation = false;
 					evaluateDojoToFile();
+					closeSerialConnection();
 					System.out.println("Receiving of evaluation successful completed.");
 					StatusBar.setStatus(StatusType.EVALUATIONSUCCESSFUL, "");
 					break;
 				} else {
-					System.out.println("Command received: " + JavaBleCommunication.AKNOWLEDGE.toString());
+					closeSerialConnection();
 					StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGSUCCESSFUL, "");
 					break;
 				}
@@ -556,6 +595,7 @@ public class Model extends Observable {
 				System.out.println("Command received: " + JavaBleCommunication.SENDLANGUAGE.toString());
 				break;
 			case REQUESTLANGUAGE:
+				dojoAlive = true;
 				System.out.println("Command received: " + JavaBleCommunication.REQUESTLANGUAGE.toString());
 				switch (selectedLanguage) {
 				case GERMAN:
@@ -570,6 +610,7 @@ public class Model extends Observable {
 				}
 				break;
 			case REQUESTACCESSLEVEL:
+				dojoAlive = true;
 				System.out.println("Command received: " + JavaBleCommunication.REQUESTACCESSLEVEL.toString());
 				switch (selectedAccessRight) {
 				case LEVEL1:
@@ -591,14 +632,22 @@ public class Model extends Observable {
 				break;
 			case UNKNOWNCOMMAND:
 				System.out.println("Command received: " + JavaBleCommunication.UNKNOWNCOMMAND.toString());
+				if (true == receivingEvaluation) {
+					dojoAlive = true;
+					try {
+						String idNumber = receivedMessage.toString().replaceAll("\\D+", "");
+						int likedID = Integer.parseInt(idNumber);
+						boolean alreadyLiked = likedIDs.contains(likedID);
+						if (false == alreadyLiked) {
+							likedIDs.add(likedID);
+						}
+						System.out.println("Received liked ID: " + likedID);
+					} catch (Exception exception) {
+
+					}
+				}
 				break;
 			default:
-				if (true == receivingEvaluation) {
-					String idNumber = receivedMessage.toString().replaceAll("\\D+", "");
-					int likedID = Integer.parseInt(idNumber);
-					likedIDs.add(likedID);
-				}
-				System.out.println("Command received: " + "Unknown command");
 				break;
 			}
 		}

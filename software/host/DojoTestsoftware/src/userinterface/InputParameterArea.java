@@ -1,3 +1,19 @@
+/*******************************************************************************
+ * Copyright (C) 2018  FHNW Pro4E FS18 Team 3
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package userinterface;
 
 import java.awt.GridBagConstraints;
@@ -66,7 +82,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpAccessRights = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpAccessRights.setToolTipText(
-				"<html><b>Zutrittsrecht:</b><br><br>Das Zutrittsrecht regelt den erlaubten Zugang<br> zu allen Besichtigungsräumen.<br><br></html>");
+				"<html><b>Zutrittsrecht:</b><br><br>Das Zutrittsrecht regelt den erlaubten Zugang<br> zu den entsprechenden Besichtigungsräumen.<br><br></html>");
 		btHelpAccessRights.setOpaque(false);
 		btHelpAccessRights.setContentAreaFilled(false);
 		btHelpAccessRights.setBorderPainted(false);
@@ -76,7 +92,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpLanguage1 = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpLanguage1.setToolTipText(
-				"<html><b>Sprache:</b><br><br>Spezifiziert in welcher Sprache die Hördateien<br> abgespielt werden.<br><br></html>");
+				"<html><b>Sprache:</b><br><br>Spezifiziert in welcher Sprache die Hördateien<br> abgespielt werden sollen.<br><br></html>");
 		btHelpLanguage1.setOpaque(false);
 		btHelpLanguage1.setContentAreaFilled(false);
 		btHelpLanguage1.setBorderPainted(false);
@@ -96,7 +112,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpEvaluate = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpEvaluate.setToolTipText(
-				"<html><b>Dojo auswerten:</b><br><br>Wertet Informationen auf dem Dojo aus und<br> legt diese in einer Textdatei ab.<br><br></html>");
+				"<html><b>Dojo auswerten:</b><br><br>Empfängt alle Beacon IDs die mit dem Dojo<br>geliked wurden und legt diese in einer<br>gewünschten Textdatei ab.<br><br>Damit die Auswertung funktioniert,<br>muss sich der Dojo in der Nähe<br>der Dojo Transmitter Station befinden.<br><br></html>");
 		btHelpEvaluate.setOpaque(false);
 		btHelpEvaluate.setContentAreaFilled(false);
 		btHelpEvaluate.setBorderPainted(false);
@@ -106,7 +122,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 		btHelpSettings = new JButton("", Utility.loadResourceIcon("Dojo_Testsoftware_Help.png"));
 		btHelpSettings.setToolTipText(
-				"<html><b>Einstellungen:</b><br><br>Der genutzte Port der Dojo Schnittstelle<br>kann unter Windows 10 via weitere<br>Bluetooth-Optionen unter Bluetooth- und<br>andere Geräte nachgeschaut werden.<br><br>Benötigt wird der ausgehende Port<br>von XYZ.<br><br></html>");
+				"<html><b>Einstellungen:</b><br><br>Unter Windows kann der verwendete Port<br>via Geräte-Manager unter Anschlüsse (COM und LPT)<br>nachgeschaut werden.<br><br>Benötigt wird der Port von JLink CDC UART.<br><br>Damit die Konfiguration funktioniert,<br>muss sich der Dojo in der Nähe<br>der Dojo Transmitter Station befinden.<br><br></html>");
 		btHelpSettings.setOpaque(false);
 		btHelpSettings.setContentAreaFilled(false);
 		btHelpSettings.setBorderPainted(false);
@@ -136,7 +152,6 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		String[] portNames = null;
 		portNames = SerialPortList.getPortNames();
 		comboPorts = new JComboBox<String>(portNames);
-		comboPorts.setSelectedIndex(comboPorts.getItemCount() - 1);
 
 		add(new JLabel("Ausstellung:"), new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.EAST,
 				GridBagConstraints.BOTH, new Insets(10, 10, 10, 10), 0, 0));
@@ -201,7 +216,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 
 	private MuseumsObject displayNewObjectDialog() {
 		final int minValue = 0;
-		final int maxValue = 512;
+		final int maxValue = 999;
 		MuseumsObject museumsObject = new MuseumsObject();
 
 		NumberFormat format = NumberFormat.getInstance();
@@ -313,12 +328,10 @@ public class InputParameterArea extends JPanel implements ActionListener {
 		} else if (event.getSource() == btTransmitUSB) {
 			topView.transmitMuseumData();
 		} else if (event.getSource() == btTransmitBT) {
-			boolean success = false;
 			String port = comboPorts.getSelectedItem().toString();
 			LanguagesTypes language = (LanguagesTypes) comboLanguage.getSelectedItem();
 			AccessRightsTypes accessRight = (AccessRightsTypes) comboAccessRights.getSelectedItem();
-			success = topView.transmitUserPreferences(port, language, accessRight);
-			comboPorts.setEnabled(!success);
+			topView.transmitUserPreferences(port, language, accessRight);
 		} else if (event.getSource() == btEvaluate) {
 			topView.evaluateDojo(comboPorts.getSelectedItem().toString());
 		}

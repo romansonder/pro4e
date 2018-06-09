@@ -1,5 +1,5 @@
-NAME	= technical_report_usermanual
-SRCS	= 00_fhnwreport_usermanual.tex
+NAME	= technical_report
+SRCS	= 00_fhnwreport.tex
 # Attention: make clean removes all ${JOB}.* files
 JOB	= zzz
 
