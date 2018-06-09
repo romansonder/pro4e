@@ -69,31 +69,26 @@ public class Model extends Observable {
 
 	public boolean openSerialConnection(String port) {
 		boolean success = false;
+		serialPort = new SerialPort(port);
 
-		if (null == serialPort) {
-			serialPort = new SerialPort(port);
+		try {
+			if (false == serialPort.isOpened()) {
+				serialPort.openPort();
 
-			try {
-				if (false == serialPort.isOpened()) {
-					serialPort.openPort();
+				StatusBar.setStatus(StatusType.OPENEDCONNECTION, serialPort.getPortName());
+				portIsOpened = true;
+				System.out.println("Port geöffnet");
 
-					StatusBar.setStatus(StatusType.OPENEDCONNECTION, serialPort.getPortName());
-					portIsOpened = true;
-					System.out.println("Port geöffnet");
+				serialPort.setParams(SerialPort.BAUDRATE_115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
+						SerialPort.PARITY_NONE);
 
-					serialPort.setParams(SerialPort.BAUDRATE_115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
-							SerialPort.PARITY_NONE);
-
-					serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
-					serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
-					success = true;
-				}
-			} catch (SerialPortException exception) {
-				System.out.println("Fehler beim öffnen von Port: " + exception);
-				StatusBar.setStatus(StatusType.OPENPORTFAILURE, serialPort.getPortName());
+				serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
+				serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
+				success = true;
 			}
-		} else {
-			success = true;
+		} catch (SerialPortException exception) {
+			System.out.println("Fehler beim öffnen von Port: " + exception);
+			StatusBar.setStatus(StatusType.OPENPORTFAILURE, serialPort.getPortName());
 		}
 
 		return success;
@@ -501,6 +496,7 @@ public class Model extends Observable {
 
 	public void timeoutTransmittingEvaluationWorker() {
 		if (false == dojoAlive) {
+			closeSerialConnection();
 			StatusBar.setStatus(StatusType.DOJONOTRESPONDING, "");
 			System.out.println("Timeout of TransmittingEvaluationWorker");
 		}
@@ -508,6 +504,7 @@ public class Model extends Observable {
 
 	public void timeoutTransmittingPreferencesWorker() {
 		if (false == dojoAlive) {
+			closeSerialConnection();
 			StatusBar.setStatus(StatusType.DOJONOTRESPONDING, "");
 			System.out.println("Timeout of TransmittingPreferencesWorker");
 		}
@@ -582,10 +579,12 @@ public class Model extends Observable {
 				if (receivingEvaluation) {
 					receivingEvaluation = false;
 					evaluateDojoToFile();
+					closeSerialConnection();
 					System.out.println("Receiving of evaluation successful completed.");
 					StatusBar.setStatus(StatusType.EVALUATIONSUCCESSFUL, "");
 					break;
 				} else {
+					closeSerialConnection();
 					StatusBar.setStatus(StatusType.PREFERENCESTRANSMITTINGSUCCESSFUL, "");
 					break;
 				}
