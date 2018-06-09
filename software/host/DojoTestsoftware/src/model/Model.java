@@ -542,7 +542,6 @@ public class Model extends Observable {
 		}
 
 		public void HandleReceivedCommand(JavaBleCommunication commandType, String receivedMessage) {
-			dojoAlive = true;
 			switch (commandType) {
 			case COMMANDOENDING:
 				System.out.println("Command received: " + JavaBleCommunication.COMMANDOENDING.toString());
@@ -575,6 +574,7 @@ public class Model extends Observable {
 				System.out.println("Command received: " + JavaBleCommunication.REQUESTALIVE.toString());
 				break;
 			case AKNOWLEDGE:
+				dojoAlive = true;
 				System.out.println("Command received: " + JavaBleCommunication.AKNOWLEDGE.toString());
 				if (receivingEvaluation) {
 					receivingEvaluation = false;
@@ -595,6 +595,7 @@ public class Model extends Observable {
 				System.out.println("Command received: " + JavaBleCommunication.SENDLANGUAGE.toString());
 				break;
 			case REQUESTLANGUAGE:
+				dojoAlive = true;
 				System.out.println("Command received: " + JavaBleCommunication.REQUESTLANGUAGE.toString());
 				switch (selectedLanguage) {
 				case GERMAN:
@@ -609,6 +610,7 @@ public class Model extends Observable {
 				}
 				break;
 			case REQUESTACCESSLEVEL:
+				dojoAlive = true;
 				System.out.println("Command received: " + JavaBleCommunication.REQUESTACCESSLEVEL.toString());
 				switch (selectedAccessRight) {
 				case LEVEL1:
@@ -631,6 +633,7 @@ public class Model extends Observable {
 			case UNKNOWNCOMMAND:
 				System.out.println("Command received: " + JavaBleCommunication.UNKNOWNCOMMAND.toString());
 				if (true == receivingEvaluation) {
+					dojoAlive = true;
 					try {
 						String idNumber = receivedMessage.toString().replaceAll("\\D+", "");
 						int likedID = Integer.parseInt(idNumber);
