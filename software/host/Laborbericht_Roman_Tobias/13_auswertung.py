@@ -39,8 +39,11 @@ def f_uns_mw_a(array,m):
 ################################################################################
 # Messresultate einlesen
 ################################################################################
-messung_1 = [[229, 327, 427, 528,625,725,826,925,1027],[0, 9.00E-05,1.63E-04,2.36E-04,3.33E-04,4.07E-04,4.74E-04,5.57E-04,6.51E-04]]		# Weglänge Spannung
-#  messung_2 = [[0.04, 0.08, 0.12],[3.36, 2.13, 1.185]]	# Weglänge Spannung
+messung_1 = []		# Messung 1
+messung_2 = []		# Messung 2
+
+messung_1 = (readarray("13_messung_1.txt").transpose())
+messung_2 = (readarray("13_messung_2.txt").transpose())
 
 ################################################################################
 # Variablen ueber alle Messungen
@@ -54,13 +57,17 @@ print('=========================================================================
 print('Auswertung Aufgabe 1')
 print('================================================================================')
 
-def f_messung_1(x, u, p):
-	return p * exp(-u*x)
+f1 = 1
+f2 = 4.82
+s1 = 0.12
+s2 = 4.75
+
+def f_messung_1(f, c, x):
+	return 4*2*pi*f*((f1 * (s2+f2))/(c)) + x
 
 
 
 
-#  # Achtung als Startwert nicht null einsetzen p0=[1,1,1,1,ect]
 popt, pcov = curve_fit(f_messung_1, messung_1[0], messung_1[1],p0=[1,1])
 
 print('Fitwerte' + str(popt))
@@ -79,19 +86,70 @@ plot.rc('ytick',labelsize=LABEL_S)
 plot.rc('text', usetex=True)
 plot.rc('font', family='serif')
 
-fig = plot.figure(figsize=(10,5))
-fig.suptitle('Amplitudendaempfung 5MHz Longitudinal', fontsize=LABEL_S)
-plot.xlabel('Weglaenge [m]',fontsize=LABEL_S)
-plot.ylabel('Spannung [V]',fontsize=LABEL_S)
+fig = plot.figure(figsize=(10,6))
+fig.suptitle('Lichtgeschwindigkeit Messung 1', fontsize=LABEL_S)
+plot.ylabel('x [m]',fontsize=LABEL_S)
+plot.xlabel('Frequenz [Hz]',fontsize=LABEL_S)
 plot.minorticks_on()
 plot.grid()
 
 #-----------------------------------------------------------------------------#
-plot.plot(messung_1[0], messung_1[1], '.', label='PMMA', color='blue')
-plot.plot(t_messung_1_fit, y_messung_1_fit, '-', color='blue')
+plot.plot(messung_1[0], messung_1[1], '.', label='Messwerte', color='blue')
+plot.plot(t_messung_1_fit, y_messung_1_fit, '-', label='Fit', color='black')
 
-----------------#
+#-----------------------------------------------------------------------------#
 
 plot.legend(fontsize=LABEL_S)
 #plot.show()
 fig.savefig('graphics/messung_1.png')
+
+################################################################################
+# Auswertung Aufgabe 2
+################################################################################
+print('================================================================================')
+print('Auswertung Aufgabe 2')
+print('================================================================================')
+
+f1 = 1
+f2 = 4.82
+s1 = 0.12
+s2 = 4.75
+
+def f_messung_1(f, c, x):
+	return 4*2*pi*f*((f1 * (s2+f2))/(c)) + x
+
+
+popt, pcov = curve_fit(f_messung_1, messung_2[0], messung_2[1],p0=[1,1])
+
+print('Fitwerte' + str(popt))
+print('Fehlergrenze' + str(sqrt(diag(pcov))))
+
+t_messung_2_fit = linspace(min(messung_2[0]), max(messung_2[0]), 5000)
+y_messung_2_fit = f_messung_1(t_messung_2_fit, popt[0], popt[1])
+
+################################################################################
+# Figur plotten
+################################################################################
+
+
+plot.rc('xtick',labelsize=LABEL_S)
+plot.rc('ytick',labelsize=LABEL_S)
+plot.rc('text', usetex=True)
+plot.rc('font', family='serif')
+
+fig = plot.figure(figsize=(10,6))
+fig.suptitle('Lichtgeschwindigkeit Messung 2', fontsize=LABEL_S)
+plot.ylabel('x [m]',fontsize=LABEL_S)
+plot.xlabel('Frequenz [Hz]',fontsize=LABEL_S)
+plot.minorticks_on()
+plot.grid()
+
+#-----------------------------------------------------------------------------#
+plot.plot(messung_2[0], messung_2[1], '.', label='Messwerte', color='blue')
+plot.plot(t_messung_2_fit, y_messung_2_fit, '-', label='Fit', color='black')
+
+#-----------------------------------------------------------------------------#
+
+plot.legend(fontsize=LABEL_S)
+#plot.show()
+fig.savefig('graphics/messung_2.png')
