@@ -2,7 +2,7 @@ Im  Folgenden werden jeweils zwei positive und zwei negative Projekterfahrungen 
 
 \subsection{Die Analysephase des Projektes wurde schnell abgeschlossen}
 
-Voller Tatendrang und motiviert durch den Wunsch möglichst bald mit dem Bau des Prototyps starten zu können, stürzten wir uns sogleich in den ersten beiden Semesterwochen auf die Analyse der Problemstellung. Die Arbeit wurde gleich am ersten Tag auf alle Teammitglieder aufgeteilt und alle nutzten die eher moderat ausgelastete Zeit, um sich in Ihr Teilgebiet einzuarbeiten und die benötigten Informationen zusammenzutragen.\\
+Voller Tatendrang und motiviert durch den Wunsch möglichst bald mit dem Bau des Prototyps starten zu können, stürzten wir uns sogleich in den ersten beiden Semesterwochen auf die Analyse der Problemstellung. Die Arbeit wurde gleich am ersten Tag auf alle Teammitglieder aufgeteilt und alle nutzten die eher moderat ausgelastete Zeit, um sich in ihr Teilgebiet einzuarbeiten und die benötigten Informationen zusammenzutragen.\\
 Die ersten Ergebnisse dieses frühen Efforts liessen sich bereits in der zweiten Semesterwoche zeigen und wir wussten bereits bis auf ein paar Details, wie wir diese Herausforderung meistern können. Die Analyse konnte dann sogar bis in der dritten Semesterwoche nahezu abgeschlossen werden.\\
 \\
 Ausschlaggebend für diese Entwicklung war bestimmt, dass sich viele unserer Teammitglieder auf den Bau des Prototypen freuten. Genau diese Freude steckte die Anderen an und sie setzten sich für ein zeitnahes Resultat ein. Ein schönes Sprichwort, das dieses Phänomen umschreibt, lautet:  ''Wenn Du ein Schiff bauen willst, dann trommle nicht Männer zusammen um Holz zu beschaffen, Aufgaben zu vergeben und die Arbeit einzuteilen, sondern lehre die Männer die Sehnsucht nach dem weiten, endlosen Meer.'' \cite{SCHIFF} und genau das geschah.\\
@@ -24,7 +24,9 @@ Bereits schon in der Analysephase wurde der Fehler gemacht, dass der Fokus grös
 \\
 Ein weiterer Grund für diese Fehlplanung war, dass wir aufgrund der vom Hersteller des Mikrokontrollers zur freien Verfügung gestellten Bibliotheken davon ausgingen, hierfür nicht viel Zeit investieren zu müssen. Wie sich dann aber schnell herausstellte, war lediglich das Einarbeiten in diese Entwicklungsumgebung und Bibliotheken schon sehr zeitintensiv.\\
 \\
-Gegen Ende des Projektes zeigten sich dann immer mehr Tücken im Code, welche von der hauptzuständigen Person nicht alleine gelöst werden konnten. Beim gemeinsamen Lösen der Problemstellen zeigte sich dann jedoch schnell, dass diese nicht aufgrund von fehlendem Know-how waren, sondern vielmehr ''Timing-Issues'' waren, welche schwer vorhersehbar sind. Im Hinterkopf behalten wir deshalb, dass das Vieraugenprinzip schnell zu Lösungen führt und die Softwarearbeiten auch bei bereits vorhandenen Bibliotheken keinesfalls unterschätzt werden dürfen.
+Gegen Ende des Projektes zeigten sich dann immer mehr Tücken im Code, welche von der hauptzuständigen Person nicht alleine gelöst werden konnten. Beim gemeinsamen Lösen der Problemstellen zeigte sich dann aber schnell, dass diese nicht aufgrund von fehlendem Know-How waren, sondern vielmehr ''Timing-Issues'' waren, welche schwer vorhersehbar sind.\\
+\\
+Im Hinterkopf behalten wir deshalb, dass das Vieraugenprinzip schnell zu Lösungen führt und die Softwarearbeiten auch bei bereits vorhandenen Bibliotheken keinesfalls unterschätzt werden dürfen.
 
 
 \subsection{Es funktionieren nicht alle SD-Kartentypen}
@@ -34,6 +36,6 @@ Um die Verbindung zwischen USB und der Speicherkarte zu realisieren, standen zwe
 \\
 Durch das Ereignis entstanden rund 7 Arbeitsstunden Mehraufwand.  Um das Problem sauber zu beheben, wäre eine fundamentale Änderung im Hardwarekonzept nötig, was zum Zeitpunkt als man das Problem entdeckte, nicht mehr möglich war. Da es sich beim Projekt um eine Machbarkeitsstudie handelt und der Zugriff auf die Speicherkarte nicht essenziell für die Funktionsweise des Dojos ist, war es trotz des beschriebenen Problems möglich das Projekt erfolgreich zu beenden.  Einzige Folge ist, dass bei zwei der drei produzierten Prototypen die USB-Verbindung nicht funktioniert.\\
 \\
-Als Workaround können die SD-Karten entnommen und direkt im Computer beschrieben werden. Aufgrund des hier beschriebenen Problems wird bei einer allfälligen Weiterentwicklung des Produktes stark davon abgeraten, den VUB300 weiterhin zu verwenden. Stattdessen wird empfohlen, den Nachfolger von verwendetem Mikrocontroller zu verwenden. Dieser (nRF52840) bietet eine USB-Peripherie und ist fähig auf eine Speicherkarte zuzugreifen. \\
+Als Workaround können die SD-Karten entnommen und direkt im Computer beschrieben werden. Aufgrund des hier beschriebenen Problems wird bei einer allfälligen Weiterentwicklung des Produktes stark davon abgeraten, den VUB300 weiterhin zu verwenden. Stattdessen wird empfohlen, den Nachfolger von verwendetem Mikrocontroller zu verwenden. Dieser (nRF52840) bietet eine USB-Peripherie an und ist fähig auf eine Speicherkarte zuzugreifen. \\
 \\
-Um in künftigen Projekten nicht auf ähnliche Probleme zu stossen, müssen allfällige exotische Chips auf jeden Fall gut evaluiert werden. Falls dafür nicht genug Informationen zur Verfügung stehen, sollte falls möglich auf eine Implementation verzichtet werden. 
+Um in künftigen Projekten nicht auf ähnliche Probleme zu stossen, müssen allfällige exotische Chips auf jeden Fall gut evaluiert werden. Falls dafür nicht genügend Informationen zur Verfügung stehen, sollte falls möglich auf eine Implementation verzichtet werden. 
