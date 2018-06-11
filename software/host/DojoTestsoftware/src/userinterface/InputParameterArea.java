@@ -215,7 +215,7 @@ public class InputParameterArea extends JPanel implements ActionListener {
 	}
 
 	private MuseumsObject displayNewObjectDialog() {
-		final int minValue = 0;
+		final int minValue = 1;
 		final int maxValue = 999;
 		MuseumsObject museumsObject = new MuseumsObject();
 

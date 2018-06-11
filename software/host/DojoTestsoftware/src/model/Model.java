@@ -445,6 +445,12 @@ public class Model extends Observable {
 	public boolean writeMuseumDataToDrive(File drivePath) {
 		boolean success = false;
 
+		if (museum.list.size() >= 0) {
+			for (File file : drivePath.listFiles())
+				if (!file.isDirectory())
+					file.delete();
+		}
+
 		for (int i = 0; i < museum.list.size(); i++) {
 			MuseumsObject museumObject = museum.list.get(i);
 			int languageIndex = 0;
