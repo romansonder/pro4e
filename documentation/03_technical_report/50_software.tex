@@ -143,12 +143,12 @@ Das Gesamtkonzept der Firmware basiert auf einem Mix zwischen interruptgesteuert
 Während des Abarbeitens der States können sehr viele Ereignisse auftreten. Diese werten unterteilt in kritische und unkritische Ereignisse. Damit ist vorwiegend deren Einfluss auf den Programmablauf gemeint und nicht deren Dringlichkeit. 
 Unkritische Ereignisse haben keinen wesentlichen Einfluss auf den Programmablauf und werden sofort in der Interruptroutine abgearbeitet. Dazu gehören die Lautstärke +/- Taste und die Signalisation vom Softdevice, dass ein Advertisement Paket empfangen wurde (BLE Advertisement Event).
 Alle anderen Ereignisse sind kritisch und setzen nur Eventflags. Diese werden erst im Hauptprogramm verarbeitet, da sie nur unter bestimmten Bedingungen ausgeführt werden dürfen. Abbildung \ref{fig:soft_2} zeigt eine Übersicht über den Programmablauf. 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{graphics/platzhalter.png}
-	\caption{ ... }
-	\label{fig:soft_2}
-\end{figure}
+
+ZITIERUNG IRGENDWAS IHFBGLZIFGLIUSFHGLSIUFHGIUHSGLÖIUSAARGHÖOIUHÖRIWAUGHÖAI
+
+
+
+
 An dieser Stelle sollte kurz geklärt werden, weshalb "kritische" Ereignisse nur im Mainloop verarbeitet werden.
 Grundsätzlich sind alle Events, welche BLE-Funktionen des Softdevices auslösen, problematisch. Das Softdevice deaktiviert für die Dauer der Ausführung alle Interrupts. Dies ist weniger das Problem, da ansonsten keine zeitkritischen Vorgänge abgearbeitet werden müssen. Problematisch ist das Ausführen von BLE Funktionen zu falschen Zeitpunkten. Dies führt nämlich zum Absturz der Software. Für eine sichere Verwendung unterstützt das Softdevice ein Error-Handling. D.h. alle Funktionen können Fehlercodes zurückgeben, welche ausgewertet werden können. Diese sind jedoch sehr beschränkt und lassen oft keine eindeutige Identifikation des Fehlers zu. Aus diesem Grund entschieden wird uns für einen anderen Ansatz. Alle kritischen Funktionen können nur im Hauptprogramm verarbeitet werden. Dieses sorgt durch intelligente Steuerung des Ablaufs sowie durch Signalisieren von Flags dazu, dass das Programm zuverlässig läuft und BLE-Funktionen nie "zum falschen Zeitpunkt" aufgerufen werden können. Das Error Handling dient lediglich zur Verifikation des Ablaufs.
 Einzige Ausnahme ist das "order received" Ereignis, welches ein Kommunikationsprotokoll übersetzt (Erklärung später). Das Verarbeiten von Strings dauert zu lange für eine ISR und ist deshalb ausgelagert.
@@ -165,14 +165,9 @@ In diesem Zustand wird zuerst geprüft, ob der aktuell gespeicherte stärkste Be
 Solange eine Audiodatei wiedergegeben wird, erfolgt das Scannen und Baffern von Beacons auf gleiche Weise wie im Idle Mode.\\ Allerdings gibt es zwei Spezialfälle. Im ersten Fall hört sich der Benutzer das Stück komplett an, bis es zu Ende ist. Der verwendete Audiochip kann dies signalisieren. Der Status vom Audioplayer wird ebenfalls bei jedem Durchgang geprüft. Ist dies der Fall, so wird das Programm zurück in den Idle Mode wechseln. Im zweiten Spezialfall entfernt sich der Benutzer, während die Wiedergabe läuft. D.h. es wurde fünfmal hintereinander eine neue stärkste Adresse lokalisiert.\\ Dem Programm wird nun signalisiert, dass sich der Benutzer vor einem neuen Ausstellungsstück befindet. Nun kommt die bereits erwähnte Logik zum Einsatz. Die Auftraggeberin wünschte, dass in diesem Fall ebenfalls ein Feedback an den Benutzer gesendet wird (Vibration). Bei einem Drücken der Play-Taste wird nun die Audiodatei des neuen Beacons geladen.\\
 Der letzte Zustand im Normalmodus ist der Pause Mode. Wie der Name vermuten lässt, landet das Programm immer hier, wenn die Play/Pause-Taste während einer Wiedergabe gedrückt wurde. Das Verhalten ist äquivalent zum Play Mode. Das Scannen wird fortgesetzt und der Benutzer wird benachrichtigt, wenn er davonläuft und ein neuer Beacon der stärkste wird. Die Logik wurde hier so implementiert, dass bei einem Tastendruck das alte Audiostück nicht fortgesetzt wird, sondern ebenfalls das neue geladen wird. 
 Der gesamte Ablauf dieser drei Modi ist in der Abbildung \ref{fig:soft_3} graphisch abgebildet.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{graphics/platzhalter.png}
-	\caption{ ... }
-	\label{fig:soft_3}
-\end{figure}
 
- %%delay erklären. blubb
+SIEHE ANHANG SHGUIGHGGHSRÖOUIGHRÖOUIGHÖGOOUIGHROEIGREOIG
+
  
  
  
@@ -191,11 +186,12 @@ Der letzte Hauptzustand ist der PC Connection Mode . Der Verbindungsaufbau erfol
 Steht die Verbindung so, wartet der Dojo auf zwei Befehle. Entweder will das Personal die Daten auswerten, d.h. die IDs der gelikten Beacons auslesen, oder der Dojo soll neu konfiguriert werden. Im ersten Fall wird die Software alle IDs übertragen und nach einer Quittierung den Speicher löschen und die Verbindung trennen. Möchte man den Dojo nach der Auswertung neu konfigurieren so muss das Personal kurz warten bis der No connection Timer abgelaufen ist. Bei einer Konfiguration werden sequenziell die Zugriffsrechte und die gewünschte Sprache übertragen. Die Linkinformationen für Beacon ID und dazugehörige Audiodatei müssen nicht übertragen werden. Diese kann sich der Dojo dank intelligenter Namensgebung errechnen (siehe Kapiel \ref{}). Wichtig ist, dass der Dojo vorhergehende Zugriffsrechte nicht löscht. Damit erhält man die Möglichkeit, während des Besuchs weitere Ausstellungen zu erschliessen. Eine Löschung erfolgt also erst dann, wenn die gelikten IDs übertragen wurden.
 \subsubsection{Ansteuerung der Hardware }
 In den Abbildungen \ref{} bis \ref{} sind noch nicht alle einzelnen Punkte erläutert worden. Was bisher ausgelassen wurde, ist die Ansteuerung der Hardware. Damit der Dojo mit seiner Umwelt agieren kann, wird diverse Peripherie benötigt (nicht zu Verwechseln mit den Bluetooth Peripheriegeräten). Als Peripherie werden alle Aktoren betrachtet, welche auf dem Dojo angebracht sind. Dieses Kapitel erläutert die wichtigsten Zusammenhänge der einzelnen Peripherieeinheiten. Abbildung \ref{fig:soft_4} zeigt die Verbindungen zwischen den einzelnen Komponenten.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{graphics/platzhalter.png}
-	\caption{Verbindungen zwischen den einzelnen Komponenten des Dojos}
-	\label{fig:soft_4}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=\textwidth]{periphery_uebersicht.jpg}
+\caption{Übersicht Periphery} % picture caption
+\label{fig:p_uebersicht}
+\end{center}
 \end{figure}
 Das Abspielen von Audiodateien wird vom Audiochip wtv020sd gesteuert. Dieser wiederum steuert das Audiointerface, welches die Daten von der SD-Karte liest. Die Kommunikation zum Audiochip erfolgt via SPI-Schnittstelle. Die Daten werden als 16-Bit-Befehle übertragen. Die genaue Codierung kann aus dem Datenblatt entnommen werden [QUELLE]. Um den Chip zurückzusetzen oder den Status abzufragen reicht das Setzen bzw. Auslesen eines GPIO-Pins (General Purpose Input Output). Das Audiointerface kann die Audiodaten abspielen, pausieren, stoppen sowie die Lautstärke vermindern oder erhöhen. 
 Ebenfalls durch Setzen von GPIO-Pins können der Audioverstärker ein- und ausgeschalt, der Vibrator gestartet oder gestoppt sowie der Multiplexer umgeschaltet werden. Es wird zwischen Audio- und USB-Modus unterschieden. Jeweils nur eines der beiden Geräte kann auf die SD-Karte zugreifen. Für die Software bedeutet dies, dass bei der Verbindung zum PC-Dongle auf USB-Modus gewechselt werden muss, damit die Java-Applikation auf die SD-Karte zugreifen kann. Für den restlichen Betrieb befindet sich der Multiplexer im Audio-Modus.
@@ -213,7 +209,7 @@ Für den Zugriff auf die SD-Karte wird diese durch den Multiplexer im Prinzip al
 	\label{fig:soft_5}
 \end{figure}
 Um die korrekte Audiodatei zu ermitteln muss, der Dojo also lediglich die Beacon ID mal 10 rechnen und die Sprache dazu addieren. Somit spart man sich das Übertragen einer gegebenenfalls sehr langen Liste von Beacon-IDs und Audiodateinamen.
-Im Gegensatz zu den Audiodateien werden die Konfigurationsinformationen sowie das Auslesen der gelikten Beacons drahtlos über BLE übertragen. Diese Aufgabe übernimmt der PC-Dongle. Die Befehle müssen aber zuerst auf diesen gelangen. Zwischen Dongle und PC wird eine virtuelle serielle Schnittstelle emuliert, über welche die Kommunikation läuft. Aus diesem Grund muss der Benutzer den entsprechenden COM-Port im Programm selektieren. Natürlich bedingt besagter Vorgang auch, dass der Dojo nahe beim Dongle ist.
+Im Gegensatz zu den Audiodateien werden die Konfigurationsinformationen sowie das Auslesen der gelikten Beacons drahtlos über BLE übertragen. Diese Aufgabe übernimmt der PC-Dongle. Die Befehle müssen aber zuerst auf diesen gelangen. Zwischen Dongle und PC wird eine virtuelle serielle Schnittstelle emuliert, über welche die Kommunikation läuft. Aus diesem Grund muss der Benutzer den entsprechenden COM-Port im Programm selektieren. Natürlich bedingt besagter Vorgang auch, dass der Dojo nahe beim Dongle ist. \newpage
 Als letzte Funktion wird das Aufsetzen einer Ausstellung erläutert. Abbildung \ref{fig:soft_6} zeigt die Java- Anwendung, in der zurzeit gerade eine Ausstellung mit drei Kunstobjekten (in allen drei Sprachen) geladen ist. Per "Neues Kunstobjekt" kann er eine Audiodatei einer Beacon-ID zuweisen. Statusmeldungen sowie eventuelle Fehleingaben werden in der Statusleiste unten links ausgegeben.
 \begin{figure}[h]
 	\centering
@@ -221,7 +217,7 @@ Als letzte Funktion wird das Aufsetzen einer Ausstellung erläutert. Abbildung \
 	\caption{Dateiname Konventionen}
 	\label{fig:soft_6}
 \end{figure}
-\subsection{Validierung}
+
 \subsection{Softwarelizenzen}
 Die in diesem Projekt entwickelte Hard- und Software wird unter den Bedingungen der GNU
 GPL v3 (GNU General Public License) freigeben. Das komplette Softdevice S132 Version 5.1.0,
@@ -241,24 +237,9 @@ im Anhang (siehe \ref{}).
 
 
 
-\subsection{Ein- und Ausgabeelemente des Dojos}
 
-Damit der Dojo mit seiner Umwelt agiern kann wird diverse Peripherie benötigt. Als Peripherie werden alle Aktoren und Sensoren betrachtet welche auf dem Dojo angebracht sind. Diese ermöglichen es dem Museumsbesucher mit dem Gerät zu interagieren. Dieser Abschnitt erläutert die wichtigsten Zusammenhänge der einzelnen Peripherieeinheiten. Die Abbildung \ref{fig:p_uebersicht} zeigt die Verbindungen zwischen den einzelnen Komponennten.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htb]
-\begin{center}
-\includegraphics[width=\textwidth]{periphery_uebersicht.jpg}
-\caption{Übersicht Periphery} % picture caption
-\label{fig:p_uebersicht}
-\end{center}
-\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Audiointerface -- wtv020sd.c}
-Das Modul wtv020sd.c beinhaltet die Initialisierung und Ansteuerung des Audiochip Wtv020sd \cite{WTV020}. Die Kommunikation zum Audiointerface erfolgt über die Standard GPIO (General Purpose Input Output) des nRF52. Es werden die Pins: Reset, Busy, Clk und Data verwendet. Über das Audiointerface können die Audiofiles der SD-Karte gezielt Abgespielt, Pausiert und die Audioausgabe vermindert oder verstärkt werden. Dabei handelt es sich um 16-Bit Befehle welche über ein SPI (synchroner serieller Datenbus) mit einer Geschwindigkeit von 5kHz gesendet werden.
-
-\subsubsection{Peripherie -- ts3a27518e.c ts4871.c periphery.c }
-
-Im Modul ts4871.c ist definiert mit welchem Pin der Audioverstärker ein- und ausgeschalten werden kann, in diesem Falle ist es der Standbypin (gem. Datenblat \cite{TS4871}). Des weiteren sind im Modul ts3a27518e.c die Pinausgänge für den Multiplexer, zwischen SD-Karte und Audiointerface definiert (gem. Datenblatt \cite{TS3A27518E}). Es kann zwischen Adio- und USB-Modus gewechselt werden.\\
-Das Modul periphery.c beinhaltet die Verarbeitung der Tastereingaben und die Ausgabe des Feedbacks über den Vibrator.
