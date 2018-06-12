@@ -19,7 +19,7 @@
 Die Elektronik des Dojos bezieht die Energie von einem Akkumulator. Verwendet wird ein Lithiumakkumulator der Marke Trustfire mit einer Nennspannung von $3.7V$. Der Akkumulator besitzt eine Ladungskapazität von $600mAh$.
 
 \subsubsection{Entladevorgang} 
-Der Akkumulator besitzt eine Nennspannung von $4.2V$ bei voller Kapazität und $0V$ \ref{test_Spannungsversorgung} wenn die Kapazität erschöpft ist. Die $0V$ kommen daher zustande, dass der Tiefenentladungsschutz der Batterie die Spannungsversorgung ab einer Spannung unter $2.75V$ kappt. Aus der Batteriespannung wird mit einem Linearregler des Types TL1963A eine $3.3V$ Spannungsversorgung erstellt. Mit dieser Versorgung wird die gesammte Elektronik gespiesen.
+Der Akkumulator besitzt eine Nennspannung von $4.2V$ bei voller Kapazität und $0V$ wenn die Kapazität erschöpft ist. Die $0V$ kommen daher zustande, dass der Tiefenentladungsschutz der Batterie die Spannungsversorgung ab einer Spannung unter $2.75V$ kappt. Aus der Batteriespannung wird mit einem Linearregler des Types TL1963A eine $3.3V$ Spannungsversorgung erstellt. Mit dieser Versorgung wird die gesammte Elektronik gespiesen.
 
 \subsubsection{Ladevorgang}
 Der Akkumulator wird über die Spannungsversorgung des USB-Ports geladen. Ein Akkumulator-Management-Chip sorgt dabei für eine konstante Spannung von $4.2V$. Diese Spannung wird benötigt um den Akkumulator zu laden. Die Ladezeit beträgt $2.5h$, siehe Messungen Ladevorgang \ref{sec:Ladevorgang}. Somit ist es möglich, den Akkumulator über eine Nacht komplett zu laden, oder ihn zwischen den Benützungen einmal zu laden. 
@@ -198,7 +198,7 @@ Bei den verwendeten Transistoren muss darauf geachtet werden, dass der Durchlass
 \newpage
 
 \subsection{Zum Layout}
-    Verschiedene PDF's zum Layout befinden sich im Anhang \ref{}.
+    Verschiedene PDF's zum Layout befinden sich im Anhang \ref{Prototyp 1}.
     Die Leiterplatte ist im Formfaktor des Dojo ( \( (17\times 115)mm \) ) und beinhaltet vier Lagen. 
     Alle Durchkontaktierungen sind vom Typ through hole. 
     Der minimale Kupferabstand beträgt 0.15mm und der minimale Bohrdurchmesser beträgt 0.3mm.
