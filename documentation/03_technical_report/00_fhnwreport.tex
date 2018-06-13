@@ -9,6 +9,8 @@
 \usepackage[utf8]{inputenc} % input encoding
 \usepackage[ngerman, english]{babel} % english and german word spelling
 \usepackage[babel, german=swiss]{csquotes} % german cites
+\usepackage[T1]{fontenc}
+
 %\usepacktage[babel, english=british]{csquotes} % english cites
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -147,12 +149,6 @@ Studiengang	\> Elektro- und Informationstechnik \\[5mm]
 \input{10_abstract}
 \clearpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% executive summary
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Management summary}\label{sec:summary}
-\input{80_summary}
-\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % table of contents
@@ -191,12 +187,6 @@ Studiengang	\> Elektro- und Informationstechnik \\[5mm]
 \input{50_software}
 \clearpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Testkonzept
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Testkonzept}\label{sec:testkonzept}
-\input{60_test}
-\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Schlusswort
@@ -215,7 +205,7 @@ Studiengang	\> Elektro- und Informationstechnik \\[5mm]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % list of tables / list of figures
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\cleardoublepage
+
 \addcontentsline{toc}{subsection}{\listtablename}
 \listoftables
 \addcontentsline{toc}{subsection}{\listfigurename}
