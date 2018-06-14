@@ -9,7 +9,7 @@ clc;
 
 % Generate simulation results if they don't exist
 if ~exist('simlog_sh_well_jet_pump', 'var')
-    sim('wasserpumpe')
+    sim('wasserpumpe');
 end
 
 % Reuse figure if it exists, else create new figure
@@ -31,27 +31,27 @@ simlog_tankq = simlog_sh_well_jet_pump.Pipe_Tank.flow_rate.series.values('lpm');
 
 % Plot results
 simlog_handles(1) = subplot(2, 1, 1);
-plot(simlog_t, simlog_tankv, 'LineWidth', 3)
+plot(simlog_t, simlog_tankv, 'LineWidth', 3);
 grid on
-title('Wasservolumen im Tank')
-ylabel('Volumen (Liter)')
+title('Wasservolumen im Becken');
+ylabel('Volumen [Liter]');
 
 simlog_handles(2) = subplot(2, 1, 2);
-plot(simlog_t, simlog_tankq, 'LineWidth', 3)
-hold on
-plot(simlog_t, simlog_welljqP, 'LineWidth', 1)
-plot(simlog_t, simlog_welljqS, 'LineWidth', 2, 'LineStyle','--')
-plot(simlog_t, simlog_welljqA, 'LineWidth', 1)
-hold off
-grid on
-title('Jet Pump Flow Rates')
-ylabel('Flow Rates (lpm)')
-legend({'Tank Inlet','Jet Pump Outlet','Jet Pump Primary Inlet','Jet Pump Secondary Inlet'},'Location','Best');
-xlabel('Time (s)')
+plot(simlog_t, simlog_tankq, 'LineWidth', 3);
+hold on;
+plot(simlog_t, simlog_welljqP, 'LineWidth', 1);
+plot(simlog_t, simlog_welljqS, 'LineWidth', 2, 'LineStyle','--');
+plot(simlog_t, simlog_welljqA, 'LineWidth', 1);
+hold off;
+grid on;
+title('Jet Pump Durchsatz');
+ylabel('Fliessraten [Liter/Minute]');
+legend({'Tank Eingang','Jet Pump Ausgang','Jet Pump Haupteingang','Jet Pump Zweiteingang'},'Location','Best');
+xlabel('Zeit [s]');
 set(gca,'YLim',[0 800]);
 
-linkaxes(simlog_handles, 'x')
+linkaxes(simlog_handles, 'x');
 
 % Remove temporary variables
-clear simlog_t simlog_handles
+clear simlog_t simlog_handles;
 clear simlog_welljqP simlog_tankq simlog_welljqS simlog_tankv simlog_welljqA 
