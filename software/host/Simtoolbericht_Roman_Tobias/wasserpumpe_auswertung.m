@@ -9,7 +9,8 @@ clc;
 
 % Generate simulation results if they don't exist
 if ~exist('simlog_sh_well_jet_pump', 'var')
-    sim('wasserpumpe');
+    sim('wasserpumpe_2016b');
+    % sim('wasserpumpe_2018a');
 end
 
 % Reuse figure if it exists, else create new figure
