@@ -8,12 +8,6 @@ clc;
 % Copyright 2015 The MathWorks, Inc.
 
 % Generate simulation results if they don't exist
-% if ~exist('simlog_sh_well_jet_pump', 'var')
-%     sim('sh_well_jet_pump')
-% end
-
-
-% Generate simulation results if they don't exist
 if ~exist('simlog_sh_well_jet_pump', 'var')
     sim('wasserpumpe')
 end
@@ -29,18 +23,18 @@ clf(h1_wasserpumpe)
 
 % Get simulation results
 simlog_t = simlog_sh_well_jet_pump.Jet_Pump.q_1.series.time;
-simlog_tankv = simlog_sh_well_jet_pump.Tank.tank.volume.series.values('gal');
-simlog_welljqA = simlog_sh_well_jet_pump.Jet_Pump.q_1.series.values('gpm');
-simlog_welljqS = simlog_sh_well_jet_pump.Jet_Pump.q_2.series.values('gpm');
-simlog_welljqP = simlog_sh_well_jet_pump.Jet_Pump.q_pump.series.values('gpm');
-simlog_tankq = simlog_sh_well_jet_pump.Pipe_Tank.flow_rate.series.values('gpm');
+simlog_tankv = simlog_sh_well_jet_pump.Tank.volume.series.values('l');
+simlog_welljqA = simlog_sh_well_jet_pump.Jet_Pump.q_1.series.values('lpm');
+simlog_welljqS = simlog_sh_well_jet_pump.Jet_Pump.q_2.series.values('lpm');
+simlog_welljqP = simlog_sh_well_jet_pump.Jet_Pump.q_pump.series.values('lpm');
+simlog_tankq = simlog_sh_well_jet_pump.Pipe_Tank.flow_rate.series.values('lpm');
 
 % Plot results
 simlog_handles(1) = subplot(2, 1, 1);
 plot(simlog_t, simlog_tankv, 'LineWidth', 3)
 grid on
-title('Volume of Water in Tank')
-ylabel('Volume (gallons)')
+title('Wasservolumen im Tank')
+ylabel('Volumen (Liter)')
 
 simlog_handles(2) = subplot(2, 1, 2);
 plot(simlog_t, simlog_tankq, 'LineWidth', 3)
@@ -51,10 +45,10 @@ plot(simlog_t, simlog_welljqA, 'LineWidth', 1)
 hold off
 grid on
 title('Jet Pump Flow Rates')
-ylabel('Flow Rates (gpm)')
+ylabel('Flow Rates (lpm)')
 legend({'Tank Inlet','Jet Pump Outlet','Jet Pump Primary Inlet','Jet Pump Secondary Inlet'},'Location','Best');
 xlabel('Time (s)')
-set(gca,'YLim',[0 200]);
+set(gca,'YLim',[0 800]);
 
 linkaxes(simlog_handles, 'x')
 
